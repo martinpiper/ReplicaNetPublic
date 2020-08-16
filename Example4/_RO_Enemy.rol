@@ -1,0 +1,69 @@
+object Enemy
+{
+	datablock Predict_Float;
+	datablock NData;
+
+	networking
+	{
+		NData mSpeed;
+		{
+			Reliable();
+		}
+		Predict_Float mPosition.x;
+		{
+			SetMinError(0.5f);
+			SetMinDistance(50.0f);
+			SetMaxError(5.5f);
+			SetMaxDistance(200.0f);
+			Quadratic();
+		}
+		Predict_Float mPosition.y;
+		{
+			SetMinError(0.5f);
+			SetMinDistance(50.0f);
+			SetMaxError(5.5f);
+			SetMaxDistance(200.0f);
+			Quadratic();
+		}
+		Predict_Float mPosition.z;
+		{
+			SetMinError(0.5f);
+			SetMinDistance(50.0f);
+			SetMaxError(5.5f);
+			SetMaxDistance(200.0f);
+			Quadratic();
+		}
+
+		Predict_Float mRotation.x;
+		{
+			SetMinError(0.01f);
+			SetMinDistance(0.1f);
+			SetMaxError(0.05f);
+			SetMaxDistance(50.0f);
+			Quadratic();
+		}
+		Predict_Float mRotation.y;
+		{
+			SetMinError(0.01f);
+			SetMinDistance(0.1f);
+			SetMaxError(0.05f);
+			SetMaxDistance(50.0f);
+			Quadratic();
+		}
+		Predict_Float mRotation.z;
+		{
+			SetMinError(0.01f);
+			SetMinDistance(0.1f);
+			SetMaxError(0.05f);
+			SetMaxDistance(50.0f);
+			Quadratic();
+		}
+	}
+
+/* This makes the enemy change to another session if the host session fails for some reason */
+	ApproveFault();
+
+// We want to make our objects "Certain" not "Reliable" because "Certain" packets use less bandwidth.
+	Certain();
+
+}

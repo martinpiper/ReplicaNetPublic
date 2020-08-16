@@ -1,0 +1,35 @@
+/* The Plane object */
+object Plane
+{
+/* The Plane uses type types of data blocks. The Predict_Float for the position and rotation */
+	datablock Predict_Float;
+
+	networking
+	{
+		Predict_Float mPosition.x;
+		{
+			SetError(0.5f);
+		}
+		Predict_Float mPosition.y;
+		{
+			SetError(0.5f);
+		}
+		Predict_Float mPosition.z;
+		{
+			SetError(0.5f);
+		}
+
+		Predict_Float mRotation.x;
+		{
+			SetError(0.01f);
+		}
+		Predict_Float mRotation.y;
+		{
+			SetError(0.01f);
+		}
+		Predict_Float mRotation.z;
+		{
+			SetError(0.01f);
+		}
+	}
+}

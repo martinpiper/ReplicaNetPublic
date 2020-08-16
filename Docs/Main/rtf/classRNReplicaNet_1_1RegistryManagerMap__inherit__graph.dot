@@ -1,0 +1,15 @@
+digraph "RegistryManagerMap&lt; I, T, C &gt;"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="RegistryManagerMap\l\< I, T, C \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="orange",fontsize="10",style="dashed",label=" \< int, SessionBlock\l_Function \>" ,fontname="Helvetica"];
+  Node2 [label="RegistryManagerMap\l\< int, SessionBlock\l_Function \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRNReplicaNet_1_1RegistryManagerMap.html"];
+  Node1 -> Node3 [dir="back",color="orange",fontsize="10",style="dashed",label=" \< int, RNReplicaNet\l::DataBlock_Predict\l_Float::SessionBlock\l_Predict_Float \>" ,fontname="Helvetica"];
+  Node3 [label="RegistryManagerMap\l\< int, RNReplicaNet\l::DataBlock_Predict_Float\l::SessionBlock_Predict_Float \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRNReplicaNet_1_1RegistryManagerMap.html"];
+  Node1 -> Node4 [dir="back",color="orange",fontsize="10",style="dashed",label=" \< int, RNReplicaNet\l::DataBlock_NData::Session\lBlock_NData \>" ,fontname="Helvetica"];
+  Node4 [label="RegistryManagerMap\l\< int, RNReplicaNet\l::DataBlock_NData::SessionBlock\l_NData \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRNReplicaNet_1_1RegistryManagerMap.html"];
+  Node1 -> Node5 [dir="back",color="orange",fontsize="10",style="dashed",label=" \< std::string, RNReplica\lNet::RNLobby::CodeServer\l::CodeEntry, RNReplicaNet\l::RNLobby::CodeServer::CodeEntry\l::ThisLess \>" ,fontname="Helvetica"];
+  Node5 [label="RegistryManagerMap\l\< std::string, RNReplicaNet\l::RNLobby::CodeServer::CodeEntry,\l RNReplicaNet::RNLobby::CodeServer\l::CodeEntry::ThisLess \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRNReplicaNet_1_1RegistryManagerMap.html"];
+}

@@ -1,0 +1,7 @@
+#pragma once
+// Values used by the StatServer for AsmExternal calls
+#define StatServer_GetResult			1000
+#define StatServer_GetVariable			1001
+#define StatServer_SetVariable			1002
+#define StatServer_ShiftVariables		1003
+#define StatServer_GetTimeAsSeconds		1004

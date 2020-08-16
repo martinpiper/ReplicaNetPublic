@@ -1,0 +1,19 @@
+object AnObject
+{
+	datablockcustom WatchedFloat;
+	datablock NData;
+	datablockcustom STL;
+
+	networking
+	{
+		// Use the defined WatchedFloat extension ROL class
+		WatchedFloat	mWatchedValue;
+
+		// Note that mWatchedValueSelfRegister is not included in the ROL file, this variable class is self registered by the object ctor
+
+		NData			mAnIntValue;
+
+		// Here we include the variable "mSTLVector" and the type of that variable "std::vector<float>" to pass to the _RO_DO_REGISTERBLOCK_STL_VAR macro.
+		STL				mSTLVector,std::vector<float>
+	}
+}

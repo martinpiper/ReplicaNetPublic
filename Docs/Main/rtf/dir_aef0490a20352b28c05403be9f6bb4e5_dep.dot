@@ -1,0 +1,18 @@
+digraph "ReplicaNetWork" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_aef0490a20352b28c05403be9f6bb4e5 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_aef0490a20352b28c05403be9f6bb4e5.html"];
+    dir_aef0490a20352b28c05403be9f6bb4e5 [shape=plaintext label="ReplicaNetWork"];
+    dir_cbc2550a5c35ce96404ea0b8e0b88bcb [shape=box label="RNLobby" color="red" fillcolor="white" style="filled" URL="dir_cbc2550a5c35ce96404ea0b8e0b88bcb.html"];
+    dir_2983781891bf6956e2c75bad204293ba [shape=box label="RNPlatform" color="red" fillcolor="white" style="filled" URL="dir_2983781891bf6956e2c75bad204293ba.html"];
+    dir_b5f8825fabca75f2ca7a1fa69938067a [shape=box label="RNReplicaNet" color="red" fillcolor="white" style="filled" URL="dir_b5f8825fabca75f2ca7a1fa69938067a.html"];
+    dir_8ecd172a41e41bef4d28448fb1c95453 [shape=box label="RNROLCompiler" color="black" fillcolor="white" style="filled" URL="dir_8ecd172a41e41bef4d28448fb1c95453.html"];
+    dir_1cc5ceacbe854efc3881eea4997f3516 [shape=box label="RNSimpleScriptCompiler" color="black" fillcolor="white" style="filled" URL="dir_1cc5ceacbe854efc3881eea4997f3516.html"];
+    dir_a24cf73c8e128070133d129da6de76f0 [shape=box label="RNXPCompression" color="red" fillcolor="white" style="filled" URL="dir_a24cf73c8e128070133d129da6de76f0.html"];
+    dir_a9d65548928f9648aa6094d5ef2da1b8 [shape=box label="RNXPSession" color="red" fillcolor="white" style="filled" URL="dir_a9d65548928f9648aa6094d5ef2da1b8.html"];
+    dir_cfe2b1791ed6b4b07b7dd915e5ecae07 [shape=box label="RNXPSockets" color="red" fillcolor="white" style="filled" URL="dir_cfe2b1791ed6b4b07b7dd915e5ecae07.html"];
+    dir_8df6b0eec2f2ee09c20bf0ea4a2155ac [shape=box label="RNXPURL" color="red" fillcolor="white" style="filled" URL="dir_8df6b0eec2f2ee09c20bf0ea4a2155ac.html"];
+  }
+}

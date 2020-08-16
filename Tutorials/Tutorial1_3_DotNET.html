@@ -1,0 +1,103 @@
+<HTML>
+	<HEAD>
+		<TITLE>© Replica Software</TITLE>
+		<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta name="description" content="ReplicaNet is an object oriented C++ library that is engineered to help the developer of applications that require a stable and low maintenance middleware solution to networking.">
+	<meta name="keywords" content="ReplicaNet, RNLobby, middleware, replica, net, C++, network, game, gaming, multiplayer, library, source, develop">
+	<link href="../assets/replica.css" rel="stylesheet" type="text/css">
+	</HEAD>
+		<table align="center" width="760" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td>
+					<table width="100%" border="0" cellspacing="1" cellpadding="0">
+						<TBODY>
+							<tr>
+								<td colspan="9" height="89"><img src="../assets/images/headr.gif"></td>
+							</tr>
+				</td>
+			</tr>
+		</table>
+		<h1 align="center">Tutorial 1 Part 3 - DotNET</h1>
+		<p align="left">Technical terms used in this tutorial can be found in
+        the <a href="Tutorial_Glossary.html">glossary</a>.
+                    </p>
+                    <p align="left">This tutorial shows:</p>
+                    <ul>
+                      <li>
+                        <p align="left">How to share values used in the object
+                        classes to the replicas of objects.<br>
+                        </p>
+                      </li>
+                    </ul>
+                        <h4 align="left">Share values
+                        </h4>
+                        <p align="left">Edit &quot;_RO_Player.rol&quot; to be:
+                        </p>
+                        <p align="left"><textarea rows="12" name="S1" cols="96">object Player
+{
+	datablock NData;
+
+	networking
+	{
+		NData(mPlayerColour)
+		{
+			Reliable;
+		}
+	};
+}
+</textarea>
+                        </p>
+                    <p align="left">Build the project. This time the &quot;_RO_Player.cpp&quot;
+                    will contain code to tell ReplicaNet to transmit the changes
+                    to the &quot;mPlayerColour&quot; variable. One C++ compiler
+                    problem you might see while building is &quot;Skipping...
+                    (no relevant changes detected)&quot;. This means the C++
+                    compiler doesn't think the file has changed but if it is a
+                    compiled ROL output file then sometimes it misses important
+                    code changes. It is a good idea to force a compile by
+                    choosing to rebuild all the project when this happens.
+                        </p>
+                        <p align="left">When you run two copies of this tutorial
+                        you should see in the output:
+                        </p>
+                        <p align="left"><textarea rows="25" name="S1" cols="96">New Frame
+Object session id 0 and id 0 with type 0
+Player::Tick(8.520287)
+mPlayerColour = 41
+Object session id 0 and id 1 with type 1
+Enemy::Tick(8.520411)
+Object session id 0 and id 2 with type 1
+Enemy::Tick(8.520555)
+Object session id 0 and id 3 with type 1
+Enemy::Tick(8.520668)
+Object session id 0 and id 4 with type 1
+Enemy::Tick(8.520754)
+Object session id 1 and id 0 with type 0
+Player::Tick(8.520856)
+mPlayerColour = 45
+Object session id 1 and id 1 with type 1
+Enemy::Tick(8.520967)
+Object session id 1 and id 2 with type 1
+Enemy::Tick(8.521069)
+Object session id 1 and id 3 with type 1
+Enemy::Tick(8.521152)
+Object session id 1 and id 4 with type 1
+Enemy::Tick(8.521232)</textarea>
+                        </p>
+                        <p align="left">This shows the &quot;mPlayerColour&quot;
+                        variable is now being transmitted automatically by
+                        ReplicaNet.
+                        </p>
+                        <p align="left">ReplicaNet can also be used to
+                        automatically update other types of variables such as
+                        position, speed or any other values.
+                        </p>
+                        <p align="left">This concludes tutorial 1.
+                        </p>
+                        <p align="left">&nbsp;
+                        </p>
+                        <p align="left">&nbsp;
+                        </p>
+                        <p align="left">&nbsp;
+                        </p>
+                </TD></TR></TABLE></HTML>

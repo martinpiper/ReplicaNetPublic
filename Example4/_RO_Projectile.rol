@@ -1,0 +1,67 @@
+/* The Projectile object */
+object Projectile
+{
+/* The Projectile uses Predict_Float types of data blocks. The Predict_Float for the position and rotation */
+	datablock Predict_Float;
+
+/* The same as the Camera object, we define which member variables from the Projectile class can be accessed by ReplicaNet */
+	networking
+	{
+/* Notice that the minimum and maximum errors are quite strict for this object, this is because the object needs a */
+/* good balance between network bandwidth and actual displayed accuracy on screen */
+/* You can try changing the Quadratic(); to Linear(); to see the difference this makes */
+/* Also try changing the error and distance values to get a feel for how smaller errors lead to high bytes/second being transmitted */
+		Predict_Float mPosition.x;
+		{
+			SetMinError(5.5f);
+			SetMinDistance(50.0f);
+			SetMaxError(50.5f);
+			SetMaxDistance(200.0f);
+			Quadratic();
+		}
+		Predict_Float mPosition.y;
+		{
+			SetMinError(5.5f);
+			SetMinDistance(50.0f);
+			SetMaxError(50.5f);
+			SetMaxDistance(200.0f);
+			Quadratic();
+		}
+		Predict_Float mPosition.z;
+		{
+			SetMinError(5.5f);
+			SetMinDistance(50.0f);
+			SetMaxError(50.5f);
+			SetMaxDistance(200.0f);
+			Quadratic();
+		}
+
+		Predict_Float mRotation.x;
+		{
+			SetMinError(0.01f);
+			SetMinDistance(0.1f);
+			SetMaxError(0.05f);
+			SetMaxDistance(50.0f);
+			Quadratic();
+		}
+		Predict_Float mRotation.y;
+		{
+			SetMinError(0.01f);
+			SetMinDistance(0.1f);
+			SetMaxError(0.05f);
+			SetMaxDistance(50.0f);
+			Quadratic();
+		}
+		Predict_Float mRotation.z;
+		{
+			SetMinError(0.01f);
+			SetMinDistance(0.1f);
+			SetMaxError(0.05f);
+			SetMaxDistance(50.0f);
+			Quadratic();
+		}
+	}
+
+// We want to make our objects "Certain" not "Reliable" because "Certain" packets use less bandwidth.
+	Certain();
+}

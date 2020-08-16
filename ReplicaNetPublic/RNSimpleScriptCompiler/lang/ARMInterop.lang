@@ -1,0 +1,91 @@
+#pragma once
+#include <SSE_Standard>
+Label ._startOfSection_CallARM
+
+// If ARMInterop.lang is included near the start of the code (in memory) then with the stack growing downwards it will quickly produce a memory exception if the stack descends too far
+Label .ARMStackLow
+// Some space for a stack
+// Each line is 128 bytes (8 * 4 * 4 byte ints)
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Label .ARMStackHigh
+
+Label ._CalledGCCGlobalInits
+Data $0
+
+// The address of the function should be passed in r1
+Label ._procCallARM
+AsmPush sl
+AsmAdd sl , r0 , r0
+
+// Don't preserve r1, since it is used for the return value
+// Preserve all the registers that might be used by the processed ARM code
+AsmPush r2
+AsmPush r3
+AsmPush r4
+AsmPush r5
+AsmPush r6
+AsmPush r7
+AsmPush r8
+AsmPush r9
+AsmPush r10
+AsmPush r11
+AsmPush r12
+AsmPush r13
+AsmPush r14
+AsmPush r15
+AsmPush r16
+// Now the kSimpleScriptGCC_Temp registers that could be used
+AsmPush r17
+AsmPush r18
+AsmPush r19
+AsmPush r20
+AsmPush r21
+AsmPush r22
+
+//AsmExternal SSE_DumpRegisters
+
+AsmAddr r16 , _CalledGCCGlobalInits
+AsmLoadRegInt r14 , r16
+AsmCmp r14 , r0
+AsmBranch NE _CalledGCCGlobalInitsDone
+
+// Flag it as been called
+AsmGetInt r14 , #1
+AsmStoreReg32 r16 , r14
+
+// Yes it's recursive because CallGCCGlobalInits() calls this _procCallARM() function , just one level recursion though
+
+AsmPush r1
+// If _procCallGCCGlobalInits doesn't contain any global init calls then it is just AsmRet which means the AsmRet and the following branch are removed by the optimiser. The surrounding AsmPush/AsmPop are then optimised.
+AsmBranch PP _procCallGCCGlobalInits
+AsmPop r1
+
+Label ._CalledGCCGlobalInitsDone
+
+AsmPush r1	// The address to execute
+
+AsmAddr r11 , ARMStackLow			// Effectively point the ARM r10 (stack limit) which is really SimpleScript r11 to the start of the full descending stack.
+AsmAddr r14 , ARMStackHigh			// Effectively point the ARM r13 (stack) which is really SimpleScript r14 to the end of the full descending stack.
+AsmAddr r15 , _proc_PopStackFrames	// Effectively point the ARM r14 (lr) which is really SimpleScript r15
+
+// Setup the next four ARM input registers from any other parameters we have
+// Input SimpleScript r2 = ARM r0 (which is SimpleScript r1) etc
+AsmAdd r1 , r2 , r0
+AsmAdd r2 , r3 , r0
+AsmAdd r3 , r4 , r0
+AsmAdd r4 , r5 , r0
+
+//AsmExternal SSE_DumpRegisters
+
+AsmRet	// Jumps to the GCC ASM
+
+Label ._endOfSection_CallARM
+
+#include <FunctionEpilogue.lang>

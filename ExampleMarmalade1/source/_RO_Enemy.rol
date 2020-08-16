@@ -1,0 +1,56 @@
+// ..\..\ReplicaNetPublic\RNROLCompiler\bin\RNROLCompiler.exe _RO_Enemy.rol
+
+object Enemy
+{
+	Certain;
+	ApproveMigration;
+	ApproveFault;
+
+	datablock Predict_Float;
+	datablock NData;
+
+	networking
+	{
+		Predict_Float(mPosX)
+		{
+			SetInterpolationFilter(0.1f);
+			SetError(5.0f);
+			SetForceSendMaximumUpdates(3);
+			SetForceSendTimeDelay(0.4f);
+			SetUpdateDelayMinimum(0.1f);
+			SetValueShortFloat;
+			SetDeltaFloat;
+			Manual;
+			SetLagged(0.1f);
+		}
+
+		Predict_Float(mPosY)
+		{
+			SetInterpolationFilter(0.1f);
+			SetError(5.0f);
+			SetForceSendMaximumUpdates(3);
+			SetForceSendTimeDelay(0.4f);
+			SetUpdateDelayMinimum(0.1f);
+			SetValueShortFloat;
+			SetDeltaFloat;
+			Manual;
+			SetLagged(0.1f);
+		}
+
+		NData mSeed;
+
+		// Instead of using Reliable updates use Certain with a discard window
+		NData mVelX
+		{
+			Certain;
+			SetDiscardOlder(8);
+		}
+		NData mVelY
+		{
+			Certain;
+			SetDiscardOlder(8);
+		}
+	};
+
+	SetOpaqueType(BaseObject);
+}

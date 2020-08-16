@@ -1,0 +1,18 @@
+digraph "CodeServer"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="CodeServer",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="firebrick4",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ThreadClass",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRNReplicaNet_1_1ThreadClass.html"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="MutexClass",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRNReplicaNet_1_1MutexClass.html"];
+  Node4 -> Node1 [dir="back",color="firebrick4",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Thread",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRNReplicaNet_1_1Thread.html"];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" mCodesMutex" ,fontname="Helvetica"];
+  Node5 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" mCodes" ,fontname="Helvetica"];
+  Node5 [label="RegistryManagerMap\l\< std::string, RNReplicaNet\l::RNLobby::CodeServer::CodeEntry,\l RNReplicaNet::RNLobby::CodeServer\l::CodeEntry::ThisLess \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRNReplicaNet_1_1RegistryManagerMap.html"];
+  Node6 -> Node5 [dir="back",color="orange",fontsize="10",style="dashed",label=" \< std::string, RNReplica\lNet::RNLobby::CodeServer\l::CodeEntry, RNReplicaNet\l::RNLobby::CodeServer::CodeEntry\l::ThisLess \>" ,fontname="Helvetica"];
+  Node6 [label="RegistryManagerMap\l\< I, T, C \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRNReplicaNet_1_1RegistryManagerMap.html"];
+}

@@ -1,0 +1,19 @@
+#pragma once
+
+// Common function epilogue code that handles everything pushed onto the stack for this function context.
+// When a function is entered the sl is pushed onto the stack and then set to 0.
+// In effect use this code for the function prolog:
+// AsmPush sl
+// AsmAdd sl , r0 , r0
+
+
+Label ._startOfSection__PopStackFrames
+Label ._proc_PopStackFramesPop
+AsmPop r0		// Restore the original pushing register
+// Procedures come in at _proc_PopStackFrames first
+Label ._proc_PopStackFrames
+AsmCmp sl,r0	// sl contains the number of stack entries pushed for this function context
+AsmBranch GT _proc_PopStackFramesPop
+AsmPop sl		// Restore the number of stack entries for the next function
+AsmRet
+Label ._endOfSection__PopStackFrames

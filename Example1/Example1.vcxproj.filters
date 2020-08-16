@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{22d707d6-f259-4511-9eec-562c4dd7733b}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Media">
+      <UniqueIdentifier>{259c5551-ce77-42d4-a1fc-ee3dc26d4b2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ROLFiles">
+      <UniqueIdentifier>{68f78c4a-4a65-4de9-ad42-8f3962b338a3}</UniqueIdentifier>
+      <Extensions>rol</Extensions>
+    </Filter>
+    <Filter Include="GameObjects">
+      <UniqueIdentifier>{2fedc06f-a709-45f3-a36e-5fc513592e40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CompiledGameObjects">
+      <UniqueIdentifier>{36f004b5-943a-4eeb-a852-7a2fbe08e5de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameClass">
+      <UniqueIdentifier>{ad81540b-8bf0-43f0-855d-0ec4dbe82c4f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="_Def_Example1.h">
+      <Filter>CompiledGameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="_RO_Camera.h">
+      <Filter>CompiledGameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="_RO_Plane.h">
+      <Filter>CompiledGameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="DIInterface.h">
+      <Filter>GameClass</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClass.h">
+      <Filter>GameClass</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>GameClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Network.h">
+      <Filter>GameClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Shadow.h">
+      <Filter>GameClass</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="winmain.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Plane.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="_Def_Example1.cpp">
+      <Filter>CompiledGameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="_RO_Camera.cpp">
+      <Filter>CompiledGameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="_RO_Plane.cpp">
+      <Filter>CompiledGameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="DIInterface.cpp">
+      <Filter>GameClass</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClass.cpp">
+      <Filter>GameClass</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>GameClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Network.cpp">
+      <Filter>GameClass</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp" />
+    <ClCompile Include="..\ReplicaNetPublic\AmalgamatedReplicaNet.cpp" />
+    <ClCompile Include="BandwidthGraph.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="airplane 2.x">
+      <Filter>Media</Filter>
+    </CustomBuild>
+    <CustomBuild Include="bihull.bmp">
+      <Filter>Media</Filter>
+    </CustomBuild>
+    <CustomBuild Include="directx.ico">
+      <Filter>Media</Filter>
+    </CustomBuild>
+    <CustomBuild Include="seafloor.bmp">
+      <Filter>Media</Filter>
+    </CustomBuild>
+    <CustomBuild Include="seafloor.x">
+      <Filter>Media</Filter>
+    </CustomBuild>
+    <CustomBuild Include="wings.bmp">
+      <Filter>Media</Filter>
+    </CustomBuild>
+    <CustomBuild Include="_Def_Example1.rol">
+      <Filter>ROLFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="_RO_Camera.rol">
+      <Filter>ROLFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="_RO_Plane.rol">
+      <Filter>ROLFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

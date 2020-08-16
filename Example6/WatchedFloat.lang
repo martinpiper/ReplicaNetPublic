@@ -1,0 +1,6 @@
+// This defines the macros used in the compiled _RO_ object.
+class WatchedFloat
+{
+	WatchedFloat(x)				EXTENSION_WATCHEDFLOATCTOR(x);
+	~WatchedFloat()				EXTENSION_WATCHEDFLOATDTOR();
+};

@@ -1,0 +1,4 @@
+application
+{
+	object AnObject;
+}

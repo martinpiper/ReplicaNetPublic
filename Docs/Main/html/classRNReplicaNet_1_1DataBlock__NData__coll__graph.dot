@@ -1,0 +1,19 @@
+digraph "DataBlock_NData"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="DataBlock_NData",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="DataBlock",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRNReplicaNet_1_1DataBlock.html"];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" mBoundReplicaNet" ,fontname="Helvetica"];
+  Node3 [label="ReplicaNet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRNReplicaNet_1_1ReplicaNet.html"];
+  Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" mBoundObject" ,fontname="Helvetica"];
+  Node4 [label="ReplicaObject",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRNReplicaNet_1_1ReplicaObject.html"];
+  Node5 -> Node4 [dir="back",color="firebrick4",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="MutexClass",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRNReplicaNet_1_1MutexClass.html"];
+  Node6 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" mPerSessionData" ,fontname="Helvetica"];
+  Node6 [label="RegistryManagerMap\l\< int, RNReplicaNet\l::DataBlock_NData::SessionBlock\l_NData \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRNReplicaNet_1_1RegistryManagerMap.html"];
+  Node7 -> Node6 [dir="back",color="orange",fontsize="10",style="dashed",label=" \< int, RNReplicaNet\l::DataBlock_NData::Session\lBlock_NData \>" ,fontname="Helvetica"];
+  Node7 [label="RegistryManagerMap\l\< I, T, C \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRNReplicaNet_1_1RegistryManagerMap.html"];
+}

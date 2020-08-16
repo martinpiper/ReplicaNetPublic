@@ -1,0 +1,5 @@
+class namespace
+{
+	namespace(x)			__namespace(x);
+	~namespace()			__namespaceend();
+};

@@ -1,0 +1,16 @@
+digraph "AdvertiseServer"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="AdvertiseServer",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="BaseTransportServer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRNReplicaNet_1_1RNLobby_1_1BaseTransportServer.html",tooltip="A server base class that handles encrypted messages to and from a transport. "];
+  Node3 -> Node2 [dir="back",color="firebrick4",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="CommonServer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRNReplicaNet_1_1RNLobby_1_1CommonServer.html",tooltip="A common server support class. "];
+  Node4 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="ThreadClass",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRNReplicaNet_1_1ThreadClass.html"];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="MutexClass",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRNReplicaNet_1_1MutexClass.html"];
+  Node6 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="Thread",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRNReplicaNet_1_1Thread.html"];
+}

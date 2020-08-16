@@ -1,0 +1,8 @@
+object Test1
+{
+	networking
+	{
+	}
+
+	ApproveFault();
+}

@@ -1,0 +1,75 @@
+/* Auto-generated with RNROLCompiler V3.1.0.0 don't edit */
+#include "_RO_Test1.h"
+#include "Test1.h"
+_RO_DO_STD_FRAMEWORK(Test1)
+#include "RNReplicaNet/Inc/DataBlock_Function.h"
+_RO_DO_MEMBERFUNC_PRESTAGE_DEF(Test1,APrivateFunction)
+float value1
+_RO_DO_MEMBERFUNC_PRESTAGE(APrivateFunction)
+_RO_DO_MEMBERFUNC_ADDVAR2(value1,float)
+_RO_DO_MEMBERFUNC_POSTSTAGE(APrivateFunction)
+_RO_DO_MEMBERFUNC_CRACK_START(Test1,APrivateFunction)
+float value1;
+_RO_DO_MEMBERFUNC_MESSAGE_CRACK(value1)
+_RO_DO_MEMBERFUNC_CRACK_END(Test1,APrivateFunction)
+value1
+_RO_DO_MEMBERFUNC_CRACK_END2()
+_RO_DO_MEMBERFUNC_PRESTAGE_DEF(Test1,APublicFunction)
+int value1,
+float value2
+_RO_DO_MEMBERFUNC_PRESTAGE(APublicFunction)
+_RO_DO_MEMBERFUNC_ADDVAR2(value1,int)
+_RO_DO_MEMBERFUNC_ADDVAR2(value2,float)
+_RO_DO_MEMBERFUNC_POSTSTAGE(APublicFunction)
+_RO_DO_MEMBERFUNC_CRACK_START(Test1,APublicFunction)
+int value1;
+float value2;
+_RO_DO_MEMBERFUNC_MESSAGE_CRACK(value1)
+_RO_DO_MEMBERFUNC_MESSAGE_CRACK(value2)
+_RO_DO_MEMBERFUNC_CRACK_END(Test1,APublicFunction)
+value1,
+value2
+_RO_DO_MEMBERFUNC_CRACK_END2()
+_RO_DO_MEMBERFUNC_PRESTAGE_DEF(Test1,APublicFunctionWithCustomTypeByValue)
+ExampleCustomType value1,
+int value2
+_RO_DO_MEMBERFUNC_PRESTAGE(APublicFunctionWithCustomTypeByValue)
+_RO_DO_MEMBERFUNC_ADDVAR2(value1,ExampleCustomType)
+_RO_DO_MEMBERFUNC_ADDVAR2(value2,int)
+_RO_DO_MEMBERFUNC_POSTSTAGE(APublicFunctionWithCustomTypeByValue)
+_RO_DO_MEMBERFUNC_CRACK_START(Test1,APublicFunctionWithCustomTypeByValue)
+ExampleCustomType value1;
+int value2;
+_RO_DO_MEMBERFUNC_MESSAGE_CRACK(value1)
+_RO_DO_MEMBERFUNC_MESSAGE_CRACK(value2)
+_RO_DO_MEMBERFUNC_CRACK_END(Test1,APublicFunctionWithCustomTypeByValue)
+value1,
+value2
+_RO_DO_MEMBERFUNC_CRACK_END2()
+_RO_DO_MEMBERFUNC_PRESTAGE_DEF(Test1,APublicFunctionWithCustomTypeByReference)
+ExampleCustomType& value1,
+int value2
+_RO_DO_MEMBERFUNC_PRESTAGE(APublicFunctionWithCustomTypeByReference)
+_RO_DO_MEMBERFUNC_ADDVAR2(value1,ExampleCustomType&)
+_RO_DO_MEMBERFUNC_ADDVAR2(value2,int)
+_RO_DO_MEMBERFUNC_POSTSTAGE(APublicFunctionWithCustomTypeByReference)
+_RO_DO_MEMBERFUNC_CRACK_START(Test1,APublicFunctionWithCustomTypeByReference)
+ExampleCustomType value1;
+int value2;
+_RO_DO_MEMBERFUNC_MESSAGE_CRACK(value1)
+_RO_DO_MEMBERFUNC_MESSAGE_CRACK(value2)
+_RO_DO_MEMBERFUNC_CRACK_END(Test1,APublicFunctionWithCustomTypeByReference)
+value1,
+value2
+_RO_DO_MEMBERFUNC_CRACK_END2()
+_RO_DO_BEGINREGISTERDATABLOCKS(Test1)
+_RO_DO_REGISTERBLOCK_FUNCTION_VAR(APrivateFunction)
+_RO_DO_REGISTERBLOCK_END()
+_RO_DO_REGISTERBLOCK_FUNCTION_VAR(APublicFunction)
+_RO_DO_DATABLOCK_MAKERELIABLE()
+_RO_DO_REGISTERBLOCK_END()
+_RO_DO_REGISTERBLOCK_FUNCTION_VAR(APublicFunctionWithCustomTypeByValue)
+_RO_DO_REGISTERBLOCK_END()
+_RO_DO_REGISTERBLOCK_FUNCTION_VAR(APublicFunctionWithCustomTypeByReference)
+_RO_DO_REGISTERBLOCK_END()
+_RO_DO_ENDREGISTERDATABLOCKS(Test1)

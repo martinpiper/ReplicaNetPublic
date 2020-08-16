@@ -1,0 +1,5 @@
+#pragma once
+// StatServer expects the first two instructions to be branches to the player and game
+// processing functions.
+AsmBranch _procProcessPlayer
+AsmBranch _procProcessGame

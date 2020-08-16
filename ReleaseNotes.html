@@ -1,0 +1,1885 @@
+<HTML>
+	<HEAD>
+		<TITLE>© Replica Software</TITLE>
+		<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta name="description" content="ReplicaNet is an object oriented C++ library that is engineered to help the developer of applications that require a stable and low maintenance middleware solution to networking.">
+	<meta name="keywords" content="ReplicaNet, RNLobby, middleware, replica, net, C++, network, game, gaming, multiplayer, library, source, develop">
+	<link href="assets/replica.css" rel="stylesheet" type="text/css">
+	</HEAD>
+		<table align="center" width="760" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td>
+					<table width="100%" border="0" cellspacing="1" cellpadding="0">
+						<TBODY>
+							<tr>
+								<td colspan="9" height="89"><img src="assets/images/headr.gif"></td>
+							</tr>
+				</td>
+			</tr>
+		</table>
+		<h1 align="center">ReplicaNet Release notes</h1>
+                    <p align="left">The workspace for all example projects are contained in
+                    the 'Examples' directory. The DotNET2008 solution file
+                    is 'Examples\Examples_2008.sln'. The DotNET2010 solution is 'Examples_2010.sln' etc.
+		</p>
+		<p align="left">Each example has a &quot;readme.txt&quot; file that explains the brief outline 
+			of each example.<BR>
+			<STRONG>Example 4 </STRONG>is a particularly useful example that shows how to 
+			use ReplicaNet inside a typical game situation where the game uses classes for 
+			each object.<BR>
+			The 'Docs' folder contains <a href="http://www.doxygen.org">Doxygen</a> generated documentation and CHM
+        files for this build of 
+			the libraries</p>
+		<p align="left">The components to ReplicaNet are in the <STRONG>ReplicaNetPublic</STRONG>
+			folder. Your include directories need to be set to &quot;ReplicaNetPublic/Includes&quot;.
+        </p>
+		<p align="left">The <b>tutorial index</b> can be found in <a href="Tutorials/index.html">&quot;Tutorials\index.html&quot;</a></p>
+
+<p><b>Compiling and linking</b><br>
+This public release uses amalgamated source code for ReplicaNet and RNLobby client APIs. Just add &quot;ReplicaNetPublic\AmalgamatedReplicaNet.cpp&quot; to your project and an include path to &quot;ReplicaNetPublic\Includes&quot; then you're ready to compile.
+This source includes all of the original client facing source code from the core ReplicaNet and RNLobby libraries.
+The core libraries are around 100 C++ source files in around 12 projects with extra private headers that do not comprise the public interfaces.
+The amalgamated source is simpler to include in a project and compile. An added bonus is that during testing the amalgamated source runs faster.
+Most compilers are able to utilise extra optimisations when all the code is included into one block. Performance improvements of 5 to 10% have been measured.
+<br />
+Individual source files are available in the full SDK.
+
+Full instructions are in the "Using ReplicaNet" section of the ReplicaNet class documentation.
+</p>
+<p><b>Microsoft Windows<br></b>
+This SDK has been tested with:<br />
+<ul>
+<li>dotNET2012 Update 5.</li>
+<li>dotNET2017 15.8.5.</li>
+<li>MinGW GCC 4.6.2</li>
+<li>C# with <a href="http://www.swig.org/">SWIG</a> 2.0.6</li>
+</ul>
+</p>
+<p><b>Linux<br></b>
+The headers and tools for Linux can be found in the 'ReplicaNetLinux.tar.gz' archive.
+Example2 has an example makefile.
+Tested with Ubuntu 18.04.1 LTS and GCC 7.3.0
+</p>
+<p><b>Android<br></b>
+Tested with Android NDK R8
+</p>
+<p><b>Apple<br></b>
+Tested with iOS/iPhone/iPad using Xcode 4.3.2
+</p>
+
+<p><b>For games consoles<br>
+</b>Please contact us with your requirements and we will do our best to help.
+</p>
+<p><b>Common headers<br>
+</b>The header files for all builds are in the 'ReplicaNetPublic\Includes' directory.
+<p><b>Examples<br>
+</b>
+The 'Demo1' directory now contains the "Planes and Dolphin" demo with integrated lobby and statistics tracking.
+<br>
+Workspace solutions are available in the 'Examples' directory.
+The solution 'Examples_2008.sln' is used by dotNET2008. The solution 'Examples_2010.sln' is used by dotNET2010. etc.
+                    <p>
+
+        <br>
+        <b>Windows build notes<br>
+        </b>
+
+        DotNET2008 and DotNET2010 may produce &quot;libci.lib&quot; link problems when using
+        some versions of the DirectX SDK. To resolve this problem add &quot;libci&quot;
+        to Project Properties-&gt;Linker-&gt;Input-&gt;Ignore Specific Library.
+		<P align="left">The graphical examples use the <b>Microsoft® DirectX® 9.0 SDK Update (April 2005)
+                    </b>with patches for Visual Studio 6.0 from the <b> Microsoft® DirectX® 9.0 SDK Update (Summer 2003)</b>
+                    and this was used to test the installation. This DirectX
+                    version still maintains compiler support for Visual Studio 6.0
+                    where later DirectX SDK versions remove this compiler
+                    support. The
+                    library and header files for this version of the DirectX SDK
+                    can be downloaded from <a href="http://www.replicanet.com/DX90SDK.zip">http://www.replicanet.com/DX90SDK.zip</a>.</P>
+
+		<P align="left">Some of the examples use the <b>Microsoft® WTL library</b>.<br>
+                    The dotNET2008 and dotNET2010 projects have been tested with <a href="http://www.microsoft.com/downloads/details.aspx?familyid=48cb01d7-112e-46c2-bb6e-5bb2fe20e626">WTL 7.5</a>
+        (<a href="WTL75.exe">mirror</a>)<br>
+					After decompressing the relevant archive add the WTL include path to the compiler include directory paths.</P>
+
+                    <P align="left">
+        To get technical support on any issues you may have please email <A href="mailto:techsupport@replicanet.com">
+				techsupport@replicanet.com</A></P>
+
+
+		<h3 align="left"> 
+ Release V7.3</h3>
+                     <p align="left"><b>Global additions and changes</b></p>
+                    <ul>
+<li><p align="left">RNWeb/Inc is a new cross platform optimised server side daemon library to facilitate the creation of HTTP/REST based services.
+</li>
+<li><p align="left">RLHubLib::UserManager and hence the GameLobby and the Demo1 game application now use REST based communication for IPC, allowing cross platform with logged in lobby sessions.
+</li>
+<li><p align="left">ODBCSQL/RNSQL: Added command "SHOW TABLES;" to return the tables in the current connection.
+</li>
+<li><p align="left"><a href="http://www.replicanet.com/Demo1Patcher.exe">http://www.replicanet.com/Demo1Patcher.exe</a> is a new demonstration product patcher showing complete end-to-end product patching.
+</li>
+<li><p align="left">Decompression code now checks for buffer under-run and over-run situations.
+</li>
+                    </ul>
+
+                    <p align="left"><b>Additions and changes to XPSession and ReplicaNet</b></p>
+                    <ul>
+<li><p align="left">XPSession code complexity reduced by removing the XPSessionPrivate class structure.
+</li>
+<li><p align="left">XPSession will drop connections that try to send corrupt compressed data.
+</li>
+<li><p align="left">XPSession and ReplicaNet now have SetMaximumDataSize() to set the maximum amount of fragmented data to be received per connection.
+</li>
+<li><p align="left">XPSession and ReplicaNet can now configure compression level with SetPacketCompressionLevel() and SetLargePacketCompressionLevel().
+</li>
+                    </ul>
+
+                    <p align="left"><b>Additions and changes to RNLobby</b></p>
+                    <ul>
+<li><p align="left">ScanForDiffs::CompressFile now uses multiple cores if available.
+</li>
+<li><p align="left">RLSrvUtility and UtilityServer have been updated with the RNWeb library.
+</li>
+<li><p align="left">RNMakePatches FTP upload has been made more reliable.
+</li>
+<li><p align="left">Create.asp has been updated to correctly clear any previously logged in user when creating a new account.
+</li>
+<li><p align="left">RNLobby website cookie banner added to comply with the relevant <a href="https://www.cookielaw.org/the-cookie-law/">law</a>
+</li>
+<li><p align="left">RNLobby\SQL\CreateTables.sql can now be used to populate the initial DB when installing RNLobby services. These services no longer try to create tables at startup.
+</li>
+                    </ul>
+
+
+
+
+		<h3 align="left"> 
+ Release V7.2</h3>
+                     <p align="left"><b>Global additions and changes</b></p>
+                    <ul>
+<li><p align="left">TransportUDP is now even more reliable when there is lots of packet loss.
+</li>
+<li><p align="left">XPSock_Utility* functions have been removed and similar functionality added to the status MessageHelper::Get*/Set* functions.
+</li>
+<li><p align="left">XPStream has been deprecated.
+</li>
+<li><p align="left">Added ExampleAndroidNDK
+</li>
+<li><p align="left">Example 1 now has bandwidth graphs and allows network latency and packet loss to be emulated.
+</li>
+<li><p align="left">Checksum::ChecksumDataWithSlots has been improved to include optional initialisation of the checksum slots.
+</li>
+<li><p align="left">Added Encrypt::CommutativeEncrypt() and Encrypt::CommutativeDecrypt()
+</li>
+<li><p align="left">Windows threading has switched to using _beginthreadex() etc.
+</li>
+<li><p align="left">Added RNReplicaNet::GetStringSafe()
+</li>
+<li><p align="left">Added RNODBCSQL::Prepare to aid in the creation of SQL queries with proper escaping.
+</li>
+<li><p align="left">Added RNSQL.exe tool to allow RNODBCSQL to be used from the command line, it will automatically translate queries for the supported database providers.
+</li>
+<li><p align="left">Transport CRYPTOUDP@ has been added. This uses a handshake to enforce a different encryption key for every connection.
+</li>
+<li><p align="left">Microsoft Visual Studio 2012 solution and projects created.
+</li>
+<li><p align="left">TransportConfig::SetPacketBufferEnable() and SetPacketBufferTime() now default to using packet buffering with a time of 0.01f seconds. Previously packet buffers were disabled and had to be explicitly enabled.
+</li>
+                    </ul>
+
+                    <p align="left"><b>Additions and changes to ReplicaNet</b></p>
+                    <ul>
+<li><p align="left">Added ReplicaObject::SetDelayIDFetch() to control when GetNewSessionIDAndUniqueID() is called.
+</li>
+<li><p align="left">Added virtual int ReplicaObject::GetNumExpectedDataBlocks(void) and StaticSetExpectedNumDataBlocks()
+</li>
+<li><p align="left">Added ReplicaNet and XPSession GetNetworkPacketsRejected().
+</li>
+<li><p align="left">ReplicaObject::GetNewSessionIDAndUniqueID() accepts an optional ReplicaNet pointer to attach the ReplicaObject instance to.
+</li>
+                    </ul>
+
+                    <p align="left"><b>Additions and changes to RNLobby</b></p>
+                    <ul>
+<li><p align="left">RNSimpleScriptCompiler can now accept ARM source code in GCC format.
+</li>
+<li><p align="left">Compile C/C++ or any other language supported by GCC into SimpleScript for use with the StatServer statistics parsing engine.
+</li>
+<li><p align="left">RNSimpleScriptDebugger has been improved to display more register and source level debugging.
+</li>
+<li><p align="left">Added more debug logs to AdvertiseServer.
+</li>
+<li><p align="left">RNLobby website updated to use the new escaping and user/email validation code.
+</li>
+<li><p align="left">RNLog no longer replaces ' with _ and the allowed range of characters has been increased.
+</li>
+<li><p align="left">Service::DebugOut and Service::DebugPrintFile are now much faster.
+</li>
+<li><p align="left">Added REST mobile API XMLLoginProcess.asp XMLGetVariables.asp XMLSetVariable.asp for the website to login and set variables that have relevant access.
+</li>
+<li><p align="left">Added Service::Get/SetRegistry 
+</li>
+<li><p align="left">User SQL tables now have TimeUpdated added to allow operations to be more easily audited.
+</li>
+<li><p align="left">Default service long descriptions now include the service name.
+</li>
+<li><p align="left">Added MyService::GetDebugStatusLine() to improve common service debug information.
+</li>
+<li><p align="left">Added Example12Script2.cpp to demonstrate using C++ with StatServer.
+</li>
+<li><p align="left">RNAdminTool improved with extra status display.
+</li>
+<li><p align="left">RNLobby web APIs now use UTF-8 encoding.
+</li>
+<li><p align="left">RLHub source updated to compile with VS2012
+</li>
+<li><p align="left">Windows services can now be configured to operate with more secure access rights to the registry.
+</li>
+<li><p align="left">Service::GetServiceList() now differentiates between 32 and 64 bit service processes.
+</li>
+<li><p align="left">Service processes can now be 32 or 64 bit.
+</li>
+<li><p align="left">Service configuration and debug reporting via the command line has been improved.
+</li>
+<li><p align="left">RLSrvSecurity helps to guard against server hacking attempts by blocking suspicious activity detected on the network.
+</li>
+                    </ul>
+
+
+		<h3 align="left"> 
+ Release V7.1</h3>
+                     <p align="left"><b>Global additions and changes</b></p>
+                    <ul>
+<li><p align="left">Added support for MinGW, C# using SWIG, native Android and Apple using Xcode.
+</li>
+                    </ul>
+
+                    <p align="left"><b>Additions and changes to ReplicaNet</b></p>
+                    <ul>
+<li><p align="left">ReplicaNet::SetObserver() can observe ReplicaObjects using any update type.
+</li>
+<li><p align="left">Added ReplicaObject::SetPropagateToSessionDistanceInclude() and SetPropagateToSessionDistanceExclude() to allow a minimum and maximum distance to be set for distance based propagation.
+</li>
+<li><p align="left">RNROLCompiler has been updated to allow lang file classes to include text, use "H<", into the output header file instead of the default output cpp file. An example can be found in "RNROLCompiler\lang\object.lang".
+</li>
+<li><p align="left">RNROLCompiler now splits the application::object() defintion macros.
+</li>
+<li><p align="left">RNROLCompiler lang files have been updated.
+</li>
+<li><p align="left">RNROLCompiler now only searches the registry key include path after other include paths. User defined include paths have priority.
+</li>
+<li><p align="left">DataBlock_Predict_Float::ReplicaContinuityBreak changed to add ignoreTimeCheck and clearPreviousUpdates options.
+</li>
+<li><p align="left">Added checks for the defines RN_EXCEPTIONS_IGNORE/RN_EXCEPTIONS_ENABLED
+</li>
+<li><p align="left">Added a templated ReplicaObject::FindDataBlock() that will return the correct DataBlock derived class pointer type for a class member.
+</li>
+<li><p align="left">Each DataBlock derived class wanting to support type checking functionality should add the macro RN_CLASS_MINIMAL_RTTI to the public portion of their class definition.
+</li>
+<li><p align="left">ReplicaNet::CallbackGetObjectUniqueID() has been added to allow ReplicaObject unique IDs to be calculated by the user.
+</li>
+                    </ul>
+
+                    <p align="left"><b>Additions and changes to RNLobby</b></p>
+                    <ul>
+<li><p align="left">ProductPatcher::GetRealFilePath now copes with some proxies that were returning incorrect zero length files.
+</li>
+<li><p align="left">ProductPatcher::GetDownloadAttemptsAndFailed() and ProductPatcher::GetDownloadSpeed() have been added.
+</li>
+<li><p align="left">UserServer, StatServer and BackendServer has more logging.
+</li>
+<li><p align="left">All the RLSrv instances log the bandwidth sent and received and CPU to the server monitor.
+</li>
+<li><p align="left">TransportNATUDP::Accepted() now reports the connection state correctly.
+</li>
+<li><p align="left">BaseTransportServer::Start() renamed to StartWithTransport().
+</li>
+<li><p align="left">BaseServer::Start() renamed to StartWithSocket().
+</li>
+<li><p align="left">Patcher speed and compression improved.
+</li>
+<li><p align="left">The database function RN_INTERVAL_TO_DOUBLE() has been added. In MySQL it does nothing since MySQL returns a numerical value. In PostgreSQL it uses EXRACT(EPOCH...
+</li>
+                    </ul>
+
+		<h3 align="left"> 
+ Release V7.0</h3>
+                     <p align="left"><b>Global additions and changes</b></p>
+                    <ul>
+<li><p align="left">Amalgamated source code is included, binary library builds are no longer needed.
+</li>
+<li><p align="left">FreewareSetRegistrationCode() and "RNPlatform/Inc/FreewareCode.h" are no longer needed and have been deprecated.
+</li>
+<li><p align="left">ReplicaNet_MemoryDumpAllocatedBlocks and ReplicaNet_MemoryBreakOnAllocatedBlocks are deprecated. Since source is now included any memory tracking can be included at compile time.
+</li>
+<li><p align="left">DLL builds have been deprecated and REPNETEXPORTAPI REPLICANETDLL_API XPSESSIONDLL_API XPURLDLL_API have been removed.
+</li>
+                    </ul>
+
+                    <p align="left"><b>Additions and changes to ReplicaNet</b></p>
+                    <ul>
+                      <li><p align="left">RNPlatform/Inc/Rand.h has added RNReplicaNet::Rand::SeedFastWeak() and FastWeak() functions to avoid conflicts with the CRT srand() and rand() functions. All internal ReplicaNet calls to srand and rand have been replaced with this new API.
+                      </li>
+                      <li><p align="left">Windows XP support for IPv6 addresses has been added. Specifically this fixes the wsock32.dll missing exports for inep_pton and inet_ntop.
+                      </li>
+                      <li><p align="left">Handling of incomming data packets has been improved when multi-threading is enabled.
+                      </li>
+                      <li><p align="left">XPSession::SetProxyMode() and GetProxyMode() have been added. This allows a master session to act as a proxy for messages, only allowing messages to be routed through the master. Messages cannot be sent to or from the master. The master session ID is not not notified to other machines as a joiner or leaver, therefore ReplicaNet will not attempt to replicate objects to the master ID. This can be useful where a dedicated server needs to start a session to allow clients behind a restrictive firewall to connect and where the server does not want to receive any ReplicaObject updates. In effect a ReplicaNet session can connect to this proxy XPSession instance and not have to worry about superfluous object updates being sent to the master ID.
+                      </li>
+<li><p align="left">DataBlock_Predict_Float::GetLastDelta() Adds the ability to read the last received delta hint for a data block.
+</li>
+<li><p align="left">DataBlock::SetForceReflectionUpdate() Adds the ability to use received delta update hint values for any outgoing reflection master updates.
+</li>
+                    </ul>
+
+                    <p align="left"><b>Additions and changes to RNLobby</b></p>
+                    <ul>
+                      <li><p align="left">PatchIndexManager now uses a file information cache index and scanning for modified files is quicker.
+                      </li>
+                      <li><p align="left">UserServer: The user ID to enter a room is always the last to get a UserClient::CallbackChatRoomEntered().
+                      </li>
+                      <li><p align="left">GameLobby now has a remove all friend requests menu item.
+                      </li>
+                      <li><p align="left">GameLobby chat now expires old chat messages to avoid filling up the chat window during prolonged use.
+                      </li>
+                      <li><p align="left">UserServer password security has been improved during login by using a unique login attempt salt.
+                      </li>
+                      <li><p align="left">All servers using BaseTransportServer have had their security improved by using a unique connection key.
+                      </li>
+<li><p align="left">NATResolver, NAT punch through and negotiation, has been improved for some rare types of firewall with very restrictive policies.
+</li>
+<li><p align="left">RLSrv services from different versions can be used on the same physical server by adding a "_VERxxx" extension to the EXE name.
+</li>
+<li><p align="left">RLSrv services can be configured to use different databases.
+</li>
+<li><p align="left">Added Debug.asp to test for common ASP/DB/COM setup problems.
+</li>
+<li><p align="left">RLSrvUtility is a platform agnostic RESTful HTTP server designed to handle requests from the web server. This replaces functionality from RLCOMUser which has been deprecated.
+</li>
+                    </ul>
+
+                    <p align="left"><b>Additions and changes to RNSimpleScript</b></p>
+                    <ul>
+                      <li><p align="left">RNSimpleScriptcompiler spots duplicate labels and produces an error.
+                      </li>
+                      <li><p align="left">The script engine is now endian agnostic.
+                      </li>
+<li><p align="left">RNSimpleScriptCompiler will automatically include "FunctionEpilogue.lang" after encountering the first EndProc command.
+</li>
+                    </ul>
+
+
+		<h3 align="left"> 
+ Release V6.4</h3>
+                    <p align="left"><b>Additions and changes to the RNLobby API</b></p>
+                    <ul>
+                      <li><p align="left">StatServer: Scripting added the ability to shift a range of variables in contiguous sections by an offset. This can be used for a history of scores to be built up and rendered as a graph or table by the web backend. Script:Stat.lang: ShiftVariables(loginID,startSection,access,name,numItems,sectionOffset)
+                      </li>
+                      <li><p align="left">StatServer: Scripting added the ability to output the date/time stamp as a variable value. This can be used by the stat script backend to check the frequency of updates for game sessions and to reject sessions that are too frequent. Script:Stat.lang: GetTimeAsSeconds()
+                      </li>
+                    </ul>
+
+                    <p align="left"><b>Additions and changes to the RNSimpleScript API</b></p>
+                    <ul>
+                      <li><p align="left">Added update of sl(r31) when items are pushed or popped on the stack. Also added "AsmPop r0" which will pop the register to the same pushing register. Very useful for self-unwinding stacks.
+                      </li>
+                      <li><p align="left">The include file "FunctionEpilogue.lang" needs to be included when procedures are used because it defines the label _proc_PopStackFrames
+                      </li>
+                      <li><p align="left">RNSimpleScriptCompiler now has a separate lang directory containing include scripts. The compiler will search this as part of the default include path.
+                      </li>
+                      <li><p align="left">RNSimpleScriptCompiler now optimises multiple branch chains with conditions.
+                      </li>
+                      <li><p align="left">Unusued script procedures are removed from the build output.
+                      </li>
+                      <li><p align="left">DefProc can now be used with blank () parameters.
+                      </li>
+                      <li><p align="left">The keywords "#define" and "#pragma once" can now be used in script files, allowing these files to also be included in C/C++ code.
+                      </li>
+                      <li><p align="left">RNSimpleScriptDebugger will display more accurate debug line information from the ".bnd" file.
+                      </li>
+                    </ul>
+
+                    <p align="left"><b>Additions and changes to the ReplicaNet API</b></p>
+                    <ul>
+                      <li><p align="left">DataBlocks now support SetDiscardOlder() updates to tag each update with a variable window size allowing old out of order updates to be detected and discarded. This is instead of using the transport level unreliable ordered delivery.
+                      </li>
+                      <li><p align="left">The virtual method DataBlock::Poll() has changed to include two extra parameters. Classes that derive from DataBlock will need to be updated.
+                      </li>
+                    </ul>
+
+                    <p align="left"><b>Global changes</b></p>
+                    <ul>
+                      <li><p align="left">IPv6 format addresses are now supported by ReplicaNet, XPSession, RNXPURL, RNXPSockets and RNLobby servers. Each socket or transport can support a listen address on IPv4 and IPv6 addresses at the same time. A socket or transport can choose either IPv4 or IPv6 to connect to a listening address.
+					  The textual address format has changed as follows in these examples: IPv4 only "127.0.0.1:80". IPv6 only "[1234::1bcd:4321:1234:43bc]:80". Combined IPv4 and IPv6 address, note the separating '-' character "127.0.0.1:80-[1000:0123:0000:0000:0000:0000:1234:4321]:80".
+                      </li>
+                      <li><p align="left">To aid IPv4 and IPv6 compatibility TransportConfig::SetIPv4Detection(), TransportConfig::GetIPv4Detection(), TransportConfig::SetIPv6Detection(), TransportConfig::GetIPv6Detection() TransportConfig::SetIPv4Detected() TransportConfig::GetIPv4Detected(), TransportConfig::SetIPv6Detected() TransportConfig::GetIPv6Detected() have been added.
+                      </li>
+                      <li><p align="left">Transport has a new pure virtual function "Error Listen(const std::string &address)". This allows a Transport to listen on a specific address.
+                      </li>
+                      <li><p align="left">Unreliable ordered packet delivery options for RNPXURL, RNXPSession and RNReplicaNet are now supported. Similar to the reliable ordered delivery option there are separate bands provided by XPURL transports.
+                      </li>
+                      <li><p align="left">RNXPCompression speed and compression has been improved.
+                      </li>
+                      <li><p align="left">Transport discovery and replies have been improved for machines on a LAN that are behind their own NAT.
+                      </li>
+                    </ul>
+
+
+
+
+		<h3 align="left"> 
+ Release V6.3</h3>
+                    <p align="left"><b>Additions and changes to the RNLobby API</b></p>
+                    <ul>
+                      <li><p align="left">Password salting and security for UserServer and RLCOMUser Account::ObfuscatePassword() has been improved.
+                      </li>
+                      <li><p align="left">PostgreSQL database support has been added. MySQL and PostgreSQL are now automatically detected when lobby services start and compatible code is used.
+                      </li>
+                      <li><p align="left">UserServer, StatServer and AdvertiseServer now include extensive logging for actions taken by each user. The ASP web based account manager example code includes these extra logs.
+                      </li>
+                      <li><p align="left">Web based password resets now require two step authentication.
+                      </li>
+                      <li><p align="left">NATResolver connection negotiation has been improved.
+                      </li>
+                    </ul>
+                    <p align="left"><b>Global changes</b></p>
+                    <ul>
+                      <li><p align="left">Example 4 now uses DataBlock frame based synchronisation using ReplicaNet::ProcessDataBlockUpdate() and recording compression using a separate thread.
+                      </li>
+                      <li><p align="left">To simplify the build process the separate libraries such as RNXPSession, RNPlatform, RNXPURL etc have all been merged into RNReplicaNet library. VC6 builds and builds that allow DLL linking have been deperecated.
+                      </li>
+                      <li><p align="left">Handling of the "getinfo" UDP packet (FF FF FF FF 67 65 74 69 6E 66 6F) by listen services has been fixed.
+                      </li>
+                      <li><p align="left">The Linux build now includes RNLobby support, with optional memory tracking.
+                      </li>
+                    </ul>
+
+
+
+
+		<h3 align="left"> 
+ Release V6.2</h3>
+                    <p align="left"><b>Additions and changes&nbsp; to the
+                    ReplicaNet API</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">Added DataBlock_Predict_Float::ReplicaContinuityBreak() to allow local replica extrapolation/interpolation to be used until an update arrives from the network.</li>
+                        <li>
+                            <p align="left">The RNVisualDebugger tool has been updated to allow selection of the 
+                                packet graph to highlight and filter packet updates. This allows unusual packet 
+                                data to be analysed to find ReplicaObject updates causing bandwidth spikes.</li>
+                    </ul>
+                    <p align="left"><b>Additions and changes&nbsp; to the
+                    RNLobby API</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">ODBCSQL TransactionBegin(), TransactionRollback
+                        and TransactionCommit() have been added to aid
+                        readability of SQL related transactions. The related SQL
+                        commands will also still work as intended.
+                      </li>
+                      <li>
+                        <p align="left">UserClient ChatRoomAdminMessage(), ChatRoomSay() and ChatRoomWhisper() all now accept user defined flags that can be used by the application.
+                      </li>
+                      <li>
+                        <p align="left">BaseTransportServer::GetNumTotalSessions()
+                        has been added.</li>
+                        <li>
+                            <p align="left">UserClient::CallbackChatRoomMessage() the flags have changed from 
+                                size_t to be unsigned int.</li>
+                        <li>
+                            <p align="left">UserServer now has the ability to lock user account details such as 
+                                email address and password.</li>
+                        <li>
+                            <p align="left">Added RNSimpleScriptCompiler and RNSimpleScriptDebugger to allow 
+                                scripting to be used with the StatServer and StatClient. Example12 and Demo1 
+                                examples demonstrate persistent user data.</li>
+                        <li>
+                            <p align="left">Added RNAdminTool be able to upload files to the StatServer.</li>
+                    </ul>
+                    <p align="left"><b>Additions and changes&nbsp; to the
+                    RNXPURL API</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">TransportConfig::SetExtraPacketSecurity() allows the packet security 
+                            to be enabled or disabled. Versions of RNXPURL prior to 6000 (ReplicaNet 6200, 
+                            RNLobby 0700) do not use this extra security. To allow later versions to connect 
+                            to earlier versions use SetExtraPacketSecurity(false). All old clients will 
+                            still be able to connect to new servers. Security will be disabled for those 
+                            connections.</li>
+                    </ul>
+                    <p align="left"><b>Global changes</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">64bit x64 builds are available along with CLR enabled libraries.</li>
+                    </ul>
+		<h3 align="left"> 
+ Release V6.1</h3>
+                    <p align="left"><b>Additions and changes&nbsp; to the
+                    ReplicaNet API</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">The compression algorithm has been changed so it is slightly quicker than before, uses half as much memory and compresses slightly better with test data.
+                      </li>
+                      <li>
+                        <p align="left">Example2 has been updated to show hExample2 has been updated to show how to pass variable length parameters with network function calls.</li>
+                      <li>
+                        <p align="left">Added a virtual function
+                        ReplicaNet::SetSessionIDCallback() to allow the session IDs to be calculated by the user instead of the code. For example, random session IDs.</li>
+                    </ul>
+                    <p align="left"><b>Additions and changes&nbsp; to the
+                    XPSession API</b></p>
+					<ul>
+					  <li>
+                        <p align="left">Added a registered callback
+                        XPSession::RegisterSessionIDCallback() to allow the session IDs to be calculated by the user instead of the code. For example, random session IDs.
+                      </li>
+                    </ul>
+                    <p align="left"><b>Additions and changes&nbsp; to the
+                    RNLobby API</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">UserClient::CallbackUserLoginFailed() changed to add
+                        a &quot;const Reason reason&quot;.
+                      </li>
+                      <li>
+                        <p align="left">Added the ability to kick and ban users
+                        from the UserServer and created chat rooms with the
+                        functions UserClient::ChatRoomKickUser(),
+                        UserClient::GlobalKickUser(),
+                        UserClient::CallbackGlobalKicked(), UserClient::CallbackChatRoomKicked().
+                      </li>
+                      <li>
+                        <p align="left">Whispering and friend messages added to
+                        RLHub.
+                      </li>
+                      <li>
+                        <p align="left">Added RLCOMUser which is a helper object that can be used with ASP pages to reset passwords.
+                      </li>
+                      <li>
+                        <p align="left">Added the ability to change password and
+                        email address using the functions
+                        UserClient::ChangePassword(), UserClient::ChangeEmail().
+                      </li>
+                      <li>
+                        <p align="left">Added a user state option function
+                        UserClient::PlayingAGame().<br>
+                      </li>
+                      <li>
+                        <p align="left">Statisics and tracking updates using StatServer and StatClient.<br>
+                      </li>
+                      <li>
+                        <p align="left">GameLobby and Demo1 game demonstration with integrated user and statistics tracking using ASP web hosting. The full source is included as part of the Developer Premier SDK. The page for player ranking information is available <a href="http://www.rnlobby.com/test/Report.asp">at this report page</a><br>
+                      </li>
+                    </ul>
+		<h3 align="left"> 
+ Release V6.0</h3>
+                    <p align="left"><b>Additions and changes&nbsp; to the
+                    ReplicaNet API</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">A new object migration option ReplicaNet::kMigrateObjectsToNewMaster
+                        has been added to SetOnSessionError()
+                      </li>
+                      <li>
+                        <p align="left">DataBlock_Predict_Float has been updated
+                        to include a 16 bit short floating point value or delta.
+                        This can reduce bandwidth for frequently updated
+                        floating point numbers using this DataBlock type. See SetValueShortFloat()
+                        and SetDeltaShortFloat()
+                      </li>
+                      <li>
+                        <p align="left">Added ReplicaNet::CallbackMasterSessionIDChanged()
+                      </li>
+                      <li>
+                        <p align="left">Added GetLatencyToSessionID() for ReplicaNet and XPSession.
+                      </li>
+                      <li>
+                        <p align="left">Added SetBand() to the ReplicaObject and
+                        DataBlock updates. The <i>band</i> parameter allows the
+                        object to send reliable updates and ensure they are in original order grouped by band.
+                      </li>
+                    </ul>
+                    <p align="left"><b>Additions and changes&nbsp; to the
+                    XPSession API</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">Added GetLatencyToSessionID() for ReplicaNet and XPSession.
+                      </li>
+                      <li>
+                        <p align="left">DataSendToSession() and DataSendToSessionReliable()
+                        now have an extra <i>band</i> parameter. This allows the user to send reliable packets and ensure they are in original order grouped by band.
+                      </li>
+                    </ul>
+                    <p align="left"><b>Additions and changes&nbsp; to the
+                    RNLobby API</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">AdvertiseClient now uses a port range from 4400 to 4409 for LAN discovery
+                        of servers.
+                      </li>
+                    </ul>
+                        <p align="left"><b>Bug fixes</b>
+                    <ul>
+                      <li>
+                        <p align="left"> After session migration sessions would receive the same data packets from the new host twice if the packet was sent with
+                        kXPSessionBroadcastID, data packets are now only sent
+                        once.
+                      </li>
+                      <li>
+                        <p align="left"> After session migration the new host would not calculate ping to the remaining peers.
+                        The ping to peers is now calculated by the new host.<br>
+                      </li>
+                    </ul>
+		<h3 align="left"> 
+ Release V5.9</h3>
+                    <p align="left"><b>Additions and changes&nbsp; to the
+                    ReplicaNet API</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">Added TransportConfig::SetExternalIP() and TransportConfig::GetExternalIP()
+                      </li>
+                      <li>
+                        <p align="left">Speed optimised pending connections for
+                        TransportUDP.
+                      </li>
+                      <li>
+                        <p align="left">Added DataBlock_Predict_Float::SetSnapToDifference()
+                        allows this replica DataBlock to snap to the extrapolated value if the difference is greater than the configured difference.
+                      </li>
+                      <li>
+                        <p align="left">Added DataBlock_Predict_Float BoundaryEnable(), BoundaryDisable(), BoundaryWrapAround(), BoundaryCapped(), BoundaryLowerUpper(), BoundaryApplyToMaster() to allow values that wrap around or are clamped.
+                      </li>
+                      <li>
+                        <p align="left">The documentation for all components is
+                        now included as one file with all classes
+                        cross-referenced.
+                      </li>
+                    </ul>
+                        <p align="left"><b>Bug fixes</b>
+                    <ul>
+                      <li>
+                        <p align="left">Xbox360: When calling&nbsp; PlatformHeap::ForceFree()
+                        the Live registered transport is now de-allocated at the
+                        correct time.
+                      </li>
+                      <li>
+                        <p align="left">Transport::GetPeerURL() now returns
+                        std::string(&quot;&quot;) when there is no peer.
+                      </li>
+                      <li>
+                        <p align="left">ReplicaNet::GetTime() and GetLocalTime()
+                        are now called during PlaybackAdvanceTo()
+                      </li>
+                      <li>
+                        <p align="left">When using manual ReplicaNet polling and
+                        the poll rate is less than one call per second the DataBlock_Predict_Float
+                        simulation has been improved.&nbsp;
+                      </li>
+                    </ul>
+                    <p align="left"><b>Breaking changes</b>
+                    <ul>
+                      <li>
+                        <p align="left">Transport::SendReliable() has been updated to include an extra band parameter.
+                        Any used created Transport derived classes will need
+                        updating.
+                      </li>
+                    </ul>
+		<h3 align="left"> 
+ <br>
+ Release V5.8</h3>
+                    <p align="left"><b>Additions and changes&nbsp; to the
+                    ReplicaNet API</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">ReplicaObject::FindDataBlock() now registers all DataBlocks before trying to find attached blocks.
+                      </li>
+                      <li>
+                        <p align="left">Added DataBlock_Predict_Float::SetLagged() which allows this DataBlock to use interpolation and permanently lag the changes made to the variable attached to this DataBlock.
+                        SetLagged() has also been added to the Predict_Float ROL
+                        language file.
+                      </li>
+                      <li>
+                        <p align="left">All library DataBlocks now have protected member variables to allow user extensions to have access.
+                      </li>
+                      <li>
+                        <p align="left">Added a delaySeconds parameter to
+                        ReplicaObject::DelayedDelete() to allow the object to be delay deleted in delaySeconds amount of time.
+                      </li>
+                      <li>
+                        <p align="left">The documentation regarding
+                        ReplicaNet_MemoryTotalsEnable() and REPLICANET_ALWAYSDOMEMORYTRACKING has been updated.
+                      </li>
+                      <li>
+                        <p align="left">To allow ReplicaObjects to
+                        become dormant or active after a specified time period
+                        added ReplicaObject::<br>
+                        UpdateSendDormantDelay()<br>
+                        UpdateSendDormantDelayCancel()<br>
+                        GetUpdateSendDormantDelay()<br>
+                        UpdateSendDormantDelayStateChange()<br>
+                      </li>
+                    </ul>
+		<h3 align="left"> 
+ Release V5.7</h3>
+                    <p align="left"><b>Additions and changes&nbsp; to the
+                    ReplicaNet API</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">Added the ROL command "namespace" to allow C++ classes from different namespaces to be defined.
+                      </li>
+                      <li>
+                        <p align="left"> Added
+                        PlatformInfo::SetProcessorReplicaNet()/SetProcessorXPSession()/SetProcessorXPURL() to allow the preferred processor for each of the components.
+                      </li>
+                      <li>
+                        <p align="left"> Added Thread::SetPreferredProcessor() to allow the preferred processor to be set for the thread.<br>
+                        Calling PlatformHeap::ForceFree() will call XPSock_Quit() if
+                        XPSock_Init() was previously called.
+                      </li>
+                      <li>
+                        <p align="left">Added ReplicaObject::GetProcessingDataBlocksFromSessionID() to return the originator sessionID while processing DataBlock updates.
+                      </li>
+                      <li>
+                        <p align="left">Added ReplicaObject::Unpublish() with the supporting callbacks CallbackObjectUnpublishPre() and
+                        CallbackObjectUnpublishPost()
+                      </li>
+                      <li>
+                        <p align="left">Added delayed deletion of ReplicaObjects
+                        with ReplicaObject::DelayedDelete(), DelayedDeleteCancel()
+                        and GetDelayedDelete().
+                      </li>
+                      <li>
+                        <p align="left">Added ReplicaNet::ObjectListFind() to find a ReplicaObject from its sessionID and
+                        uniqueID.
+                      </li>
+                      <li>
+                        <p align="left">Changed the internals of the MutexClass to use critical sections on Windows and Xbox/Xbox360 builds.
+                      </li>
+                      <li>
+                        <p align="left">Added ReplicaObject::IsPublished().
+                      </li>
+                      <li>
+                        <p align="left">Added ReplicaObject::UpdateSendDormant() and
+                        ReplicaObject::GetUpdateSendDormant() to set a ReplicaObject as dormant and not
+                        send any DataBlock updates. Dormant objects use less
+                        processor time because DataBlocks are not checked.
+                      </li>
+                      <li>
+                        <p align="left">Xbox360: Updated the samples to use VC2005
+                      </li>
+                      <li>
+                        <p align="left">Xbox360: Added the option to use VisualDebugger connections
+                        with Test2, currently enabled in the Debug build.<br>
+                      </li>
+                    </ul>
+                        <p align="left"><b>Additions and changes&nbsp; to the
+                        RNLobby API</b>
+                    <ul>
+                      <li>
+                        <p align="left">RNMakePatches: When uploading files using FTP and the patch index has been done then use FtpDeleteFile to delete old patches that are not used in the live index.
+                      </li>
+                      <li>
+                        <p align="left">Removed the RNSQLite database library and
+                        replaced it with an RNODBC interface.
+                      </li>
+                      <li>
+                        <p align="left">RNLobby now uses MySQL via ODBC.
+                      </li>
+                      <li>
+                        <p align="left">The RLSrv services are now dependant on
+                        the database service.
+                      </li>
+                      <li>
+                        <p align="left">AdvertiseClient queries can now use
+                        complex filters based on the rules supplied for each
+                        entry.
+                      </li>
+                      <li>
+                        <p align="left">UserClient::AddUserInfo() allows
+                        UserInfo from a loginID to be requested and watched in a
+                        similar manner to the friends list.
+                      </li>
+                      <li>
+                        <p align="left">Added UserClient::<br>
+	CreateChatRoom()<br>
+	LeaveChatRoom()<br>
+	EnterChatRoom()<br>
+	GetCurrentRoom()<br>
+	ChatRoomAdminMessage()<br>
+	ChatRoomSay()<br>
+	ChatRoomWhisper()
+                      </li>
+                      <li>
+                        <p align="left">The Backend now does not need to be
+                        allocated before other RNLobby classes. However the
+                        Backend class must still successfully complete before
+                        other RNLobby classes are started or connected to the
+                        servers.
+                      </li>
+                      <li>
+                        <p align="left">RLHub is an example of a win32 MFC
+                        application using the RNLobby API to provide a user,
+                        friend, chat and game listings services.
+                      </li>
+                    </ul>
+                        <p align="left"><b>Bug fixes</b>
+                    <ul>
+                      <li>
+                        <p align="left">Fixed the linking problem static MFC
+                        static libraries.
+                      </li>
+                      <li>
+                        <p align="left">Xbox360: Fixed an assert complaining about an invalid handle when calling
+                        ShutdownNetwork(true)
+                      </li>
+                      <li>
+                        <p align="left">Changed the AdvertiseServer rule and user update to be atomic.
+                      </li>
+                      <li>
+                        <p align="left">Fixed an issue when trying to call
+                        networked ReplicaObject functions before the object has
+                        been published.
+                      </li>
+                      <li>
+                        <p align="left">Vastly improved performance with more than 100 connections.
+                      </li>
+                    </ul>
+		<h3 align="left"> 
+ Release V5.6</h3>
+                    <p align="left"><b>Additions and changes&nbsp; to the
+                    ReplicaNet API</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">Protocol &quot;NATUDP@&quot; with
+                        RNLobby can be used by XPURL, XPSession and ReplicaNet
+                        to provide NAT/firewall defeating.
+                      </li>
+                      <li>
+                        <p align="left">Example11 has been added to show how to
+                        use RNLobby services with ReplicaNet.
+                      </li>
+                      <li>
+                        <p align="left">Added templated operator&lt;&lt; and operator>> to DynamicMessageHelper
+                      </li>
+                      <li>
+                        <p align="left">Removed compiler warnings for GCC 4.x in -pedantic
+                        mode. Rebuilding RNROLCompiler generated files will also
+                        help.
+                      </li>
+                      <li>
+                        <p align="left">There is now no limit to the number of parameters for ReplicaObject networked function calls using
+                        DataBlock_Function.
+                      </li>
+                      <li>
+                        <p align="left">Example1 has been updated to include a simple DataBlock_Function example.
+                      </li>
+                      <li>
+                        <p align="left">Example10 has been added to show example use of RNReplicaNet::RNLobby::ProductPatcher
+                      </li>
+                      <li>
+                        <p align="left">XPSock_UrgentSetRawMode(),
+                        XPSocketUrgent::SetRawMode() and
+                        XPSockUrgent::ProcessACKS(), XPSockUrgent::SendWithACK(),<br>
+                        XPSock_UrgentListen() have been removed because they are
+                        obsolete.
+                      </li>
+                      <li>
+                        <p align="left">XPSock_GetAddress() will no longer return 0.0.0.0 as the address of a listening TCP or UDP socket. The IP address of the host will be used. This matches the
+                        Transport::GetAddress() behaviour.
+                      </li>
+                      <li>
+                        <p align="left">XPSock_UrgentCreate(), XPSock_Listen(),
+                        XPSocketUrgent::Create() and XPSocket::Listen() have been updated to include an address<br>
+                        to bind to for the socket. This is useful for multihomed machines.
+                      </li>
+                      <li>
+                        <p align="left">Added ReplicaNet::FindSession(const std::string protocols)
+                      </li>
+                      <li>
+                        <p align="left">Using a debug ReplicaNet DLL library and forgetting to call
+                        REPLICANET_DLLPREREGISTER() will trigger an assert.
+                      </li>
+                      <li>
+                        <p align="left">Added -P option to the RNROLCompiler to allow pre-compiled header files to be added to the output cpp file.
+                      </li>
+                      <li>
+                        <p align="left">Added XPAddress:Import() to import a
+                        string in x.x.x.x:x format.
+                      </li>
+                      <li>
+                        <p align="left">MessageHelper::SetGuardSize() can be
+                        used to throw a C++ exception of type
+                        MessageHelper::Exception()
+                        when the data is read from beyond the end of a message.
+                      </li>
+                      <li>
+                        <p align="left">Added: XPSock_ICMPCreate(),
+                        XPSock_ICMPSendPing(), XPSock_ICMPRecvPing(),
+                        XPSock_ICMPWaitForPing()
+                      </li>
+                      <li>
+                        <p align="left">TransportUDP has been optimised for
+                        processor time and memory use.
+                      </li>
+                    </ul>
+                        <p align="left"><b>Additions and changes&nbsp; to the
+                        RNLobby API</b>
+                    <ul>
+                      <li>
+                        <p align="left">This version of RNLobby is in the alpha stage of development and as such may be subject to substantial changes until beta.
+                      </li>
+                      <li>
+                        <p align="left"> Binary difference patch creation and delivery.
+                        (RNMakePatches tool/Patcher)
+                      </li>
+                      <li>
+                        <p align="left">Backend availability and TitleID verification.
+                        (BackendServer/BackendClient)
+                      </li>
+                      <li>
+                        <p align="left">Internet CD/License key verification. (CodeServer /
+                        CodeClient)
+                      </li>
+                      <li>
+                        <p align="left">NAT Detection. (NATDetectServer /
+                        NATDetectClient)
+                      </li>
+                      <li>
+                        <p align="left">NAT Resolving. (NATResolver) TransportNATUDP for use with XPURL/XPSession/ReplicaNet uses
+                        NATResolver.
+                      </li>
+                      <li>
+                        <p align="left">Advertising and querying of sessions
+                        player list and rule list. (AdvertiseServer /
+                        AdvertiseClient)
+                      </li>
+                      <li>
+                        <p align="left">Added LAN only operation for
+                        AdvertiseClient.
+                      </li>
+                      <li>
+                        <p align="left">User account create/authenticate, friends list, game invites and
+                        persistent data storage. (UserServer / UserClient)
+                      </li>
+                      <li>
+                        <p align="left">All servers now have service modules.
+                        For Win32 these are be configured to start with the
+                        system and restart on error.
+                      </li>
+                      <li>
+                        <p align="left">RLSrvMonitor can be used to produce an
+                        HTML report to a file which is useful for producing web
+                        based reports.&nbsp; ( <a href="http://www.rnlobby.com/RLSrvMonitor.html">http://www.rnlobby.com/RLSrvMonitor.html</a>
+                        )
+                      </li>
+                      <li>
+                        <p align="left">RLServerMonitor is a Win32 GUI
+                        application to display the status like RLSrvMonitor.
+                      </li>
+                    </ul>
+                        <p align="left"><b>Bug fixes</b>
+                    <ul>
+                      <li>
+                        <p align="left">Calling PlatformHeap::ForceFree() will call
+                        XPSock_Quit() if XPSock_Init() was previously called.
+                      </li>
+                      <li>
+                        <p align="left">Fixed a bug in MutexClass::~MutexClass() where a mutex handle was being closed before it was
+                        released on Win32 platforms.
+                      </li>
+                      <li>
+                        <p align="left">Fixed a deadlock issue with the database
+                        when many threads and processes were accessing it at the
+                        same time.
+                      </li>
+                    </ul>
+                    <p align="left"><b>Proposed deprecation<br>
+                    </b>The next version of ReplicaNet is planned to deprecate
+                    the includes (and classes included in) DatabaseManager.h and
+                    Database.h<br>
+                    Please email <a href="mailto:techsupport@replicanet.com">techsupport@replicanet.com</a>
+                    if you wish to discuss or find out more about this
+                    particular change.
+                        <p align="left">&nbsp;
+		<h3 align="left"> 
+ Release V5.5</h3>
+                    <p align="left"><b>Additions and changes&nbsp; to the API</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">A quick view of functions added:<br>
+                        ReplicaNet::CallbackPlaybackAdvanceToFinished()<br>
+                        [ReplicaNet/XPSession]::DataReceivePeek()
+                      </li>
+                      <li>
+                        <p align="left">Packets larger than 512 bytes can now be
+                        sent through XPsession::DataSendToSession[Unreliable/Certain/Reliable]
+                        and ReplicaNet::DataSend().
+                      </li>
+                      <li>
+                        <p align="left">ReplicaObject updates can now be any
+                        size, memory permitting.
+                      </li>
+                      <li>
+                        <p align="left">The version of the ReplicaNet recording files has been increased. Previous versions will not playback with this version of ReplicaNet.
+                      </li>
+                      <li>
+                        <p align="left">ReplicaNet::CallbackPlaybackAdvanceToFinished()
+                        has been added as a callback to signal when the last
+                        requested ReplicaNet::PlaybackAdvanceTo() finishes.
+                      </li>
+                      <li>
+                        <p align="left"> A DataBlock reason event called kDataBlockReason_AfterDataBlocksReceived
+                        has been added to provide better flexibility for the
+                        ReplicaObject::PostObjectCreate() event.
+                      </li>
+                      <li>
+                        <p align="left"> Processing DataBlock updates has been
+                        optimised.
+                      </li>
+                      <li>
+                        <p align="left"> ReplicaObject::DataSend() and
+                        ReplicaObject::CallBackDataReceive()
+                        have been added to allow ReplicaObject derived classes
+                        to send and receive raw data.
+                      </li>
+                      <li>
+                        <p align="left"> XPsocket::Send(), XPSocket::Recv(),
+                        XPSock_Send() and XPSock_Recv() now propagate XPSOCK_ECLOSED to the last
+                        xoscket error when a connection failed to connect.
+                      </li>
+                      <li>
+                        <p align="left"> RNReplicaNet::StrDup() has been added
+                        to RNPlatform/Inc/StrDup.h to avoid problems with
+                        dotNET2005 warning _strdup has been deprecated.
+                      </li>
+                      <li>
+                        <p align="left"> Code changes have been made to remove
+                        warnings when compiling with Linux Suse 9.3
+                      </li>
+                      <li>
+                        <p align="left"> TransportConfig::SetPacketMTU() has
+                        been added to allow the the MTU of packets to be set when using packet buffering.<br>
+                      </li>
+                    </ul>
+                    <p align="left"><b>Bug fixes</b></p>
+                    <ul>
+                      <li>
+                        <p align="left"> When network packet loss emulation is
+                        enabled some memory was allocated after calling
+                        PlatformHeap::ForceFree().
+                      </li>
+                      <li>
+                        <p align="left"> After deleting an XPSession instance
+                        and allocating a new instance to connect to the same
+                        server within thirty seconds some Certain packets were
+                        lost.
+                      </li>
+                      <li>
+                        <p align="left"> XPCompression now uses the DLL export
+                        API to avoid having to statically link this library.
+                      </li>
+                      <li>
+                        <p align="left"> XPAddress operator == and != tests the
+                        port number with the IP address.
+                      </li>
+                      <li>
+                        <p align="left"> ReplicaObject::PostObjectCreate() was not being called when in playback
+                        mode.
+                      </li>
+                      <li>
+                        <p align="left"> RNXPURL.DLL DebugMTDLL/ReleaseMTDLL builds were not using the correct code generation options.
+                      </li>
+                    </ul>
+		<h3 align="left"> <br>
+ Release V5.4</h3>
+                    <p align="left"><b>Additions and changes&nbsp; to the API</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">A quick view of functions added:<br>
+                        ReplicaNet::SetPlaybackSpeed()<br>
+                        ReplicaNet::PlaybackAdvanceTo()<br>
+                        ReplicaNet::GetSessionRecord()<br>
+                        XPSock_GetHardwareStatus()<br>
+                        [ReplicaNet/XPSession]::[Set/Get]NodeBuffers()
+                      </li>
+                      <li>
+                        <p align="left">ReplicaNet and XPSession have session
+                        manager and ReplicaObject database optimisations.
+                      </li>
+                      <li>
+                        <p align="left">ReplicaNet and XPSession can utilise
+                        extra memory to offset thread synchronisation costs by
+                        using SetNodeBuffers().
+                      </li>
+                      <li>
+                        <p align="left">Network session recordings can now be
+                        started at any time and are not limited to starting
+                        before a session is created or joined.
+                      </li>
+                      <li>
+                        <p align="left">Playback of a network session recording
+                        can be paused or played at any other speed or advanced
+                        to any future time.
+                      </li>
+                      <li>
+                        <p align="left">When a playback of a recording finishes
+                        ReplicaNet::GetSessionErrorReason() returns ReplicaNet::kReplicaNet_EEND_RECORDING
+                      </li>
+                      <li>
+                        <p align="left">Extra debugging information is shown by
+                        RNVisualDebugger for&nbsp; DataBlocks, including
+                        function parameters and other parameters used to
+                        configure the DataBlock to show if/when those values are
+                        changed by the user.
+                      </li>
+                      <li>
+                        <p align="left">When RNVisualDebugger makes a successful
+                        debug connection to a ReplicaNet session the address of
+                        the node is included in the debug file.<br>
+                      </li>
+                    </ul>
+                    <p align="left"><b>Bug fixes</b></p>
+                    <ul>
+                      <li>
+                        <p align="left"> DataBlock_Predict_Float would sometimes
+                        use an old incorrect value when migrating a ReplicaObject from
+                        a session node to a different session node and then back
+                        to the original session node.<br>
+                      </li>
+                    </ul>
+		<h3 align="left"> <br>
+ Release V5.3</h3>
+                    <p align="left"><b>Additions and changes&nbsp; to the API</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">A quick view of functions added:<br>
+                        ReplicaNet::BeginSessionRecord()<br>
+                        ReplicaNet::StopSessionRecord()<br>
+                        ReplicaNet::CallbackSessionRecord()<br>
+                        ReplicaNet::BeginSessionPlayback()<br>
+                        ReplicaNet::StopSessionPlayback()<br>
+                        ReplicaNet::CallbackSessionPlayback()<br>
+                        ReplicaNet::GetSessionPlayback()<br>
+                        ReplicaNet::SetPlaybackAllowMasterReplicaObjects()<br>
+                        ReplicaNet::GetPlaybackAllowMasterReplicaObjects()<br>
+                        DebugHandler::CallbackConnectionError()<br>
+                        ReplicaNet::CallBackAllocate()<br>
+                        ReplicaNet::CallBackDelete()<br>
+                        Transport::GetTransportClosed()<br>
+                        XPSession::GetSessionErrorReason()<br>
+                        ReplicaNet::GetSessionErrorReason()<br>
+                        Transport::SetEnableLANDiscovery()<br>
+                        XPSession::SetAllowConnections()<br>
+                        XPSession::GetAllowConnections()<br>
+                        ReplicaNet::SetAllowConnections()<br>
+                        ReplicaNet::GetAllowConnections()
+                      </li>
+                      <li>
+                        <p align="left"><b>Recording and playback of ReplicaNet
+                        sessions</b> is now possible using the SessionRecord/SessionPlayback
+                        functions. The CallbackSessionRecord/CallbackSessionPlayback
+                        functions allow the user to implement their own storage
+                        solution for the data. Example4 has been updated to use
+                        this functionality.
+                      </li>
+                      <li>
+                        <p align="left">Added virtual void
+                        DebugHandler::CallbackConnectionError() to allow visual
+                        debugger connection errors to be detected.
+                      </li>
+                      <li>
+                        <p align="left">ReplicaNet::CallBackAllocate() and
+                        ReplicaNet::CallBackDelete() allow users to <b> override the
+                        ReplicaObject allocation and deletion</b> behaviour from a
+                        callback.
+                      </li>
+                      <li>
+                        <p align="left">Example 2 has been updated to show how to add custom data types to networked function parameters.
+                      </li>
+                      <li>
+                        <p align="left">Transport::GetTransportClosed(),
+                        XPSession::GetSessionErrorReason() and
+                        ReplicaNet::CallbackSessionErrorReason() allows the type of
+                        transport and session errors to be
+                        determined.
+                      </li>
+                      <li>
+                        <p align="left">LAN Discovery of transports can be
+                        enabled or disabled by using
+                        Transport::SetEnableLANDiscovery().
+                      </li>
+                      <li>
+                        <p align="left">A master session can now allow or deny
+                        other session nodes from joining a session by using
+                        SetAllowConnections() when using ReplicaNet or XPSession.<br>
+                      </li>
+                    </ul>
+                    <p align="left"><b>Bug fixes</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">Fixed a bug in the RNROLCompiler when
+                        parsing ">" directives such as &quot;object >
+                        RealInclude...&quot;
+                      </li>
+                      <li>
+                        <p align="left">Fixed sending data packets with ReplicaNet when
+                        <b> SetDataRetention()</b> is not true would result in an assert "Not allowed to leave unknown packets types in the queue".<br>
+                      </li>
+                    </ul>
+                    <p align="left"><b>Other changes</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">The <b>RNVisualDebugger</b> displays packets in the list view sorted by time.
+                      </li>
+                      <li>
+                        <p align="left">The <b>RNVisualDebugger</b> remembers the last settings used for the Connect dialog.
+                      </li>
+                      <li>
+                        <p align="left">The <b> RNVisualDebugger</b> debug output for DataBlocks contains more information about what distance and
+                        tolerance values are used when calculating updates.<br>
+                      </li>
+                    </ul>
+                        <p align="left"><b>Compiler support</b>
+                    <ul>
+                      <li>
+                        <p align="left">Support for DotNET2002 has been
+                        discontinued. Visual Studio 6.0, DotNET2003 and Linux
+                        continue to be supported. Support for DotNET2005 will be
+                        added when the compiler finishes its beta phase.</li>
+                    </ul>
+		<h3 align="left"> &nbsp;</h3>
+		<h3 align="left"> Release V5.2</h3>
+                    <p align="left"><b>Additions and changes&nbsp; to the API</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">A quick view of functions added:<br>
+                        XPSock_SentHistogram()<br>
+                        XPSock_RecvHistogram()<br>
+                        TransportConfig::PacketBufferBeginCaptureWindow()<br>
+                        TransportConfig::PacketBufferEndCaptureWindow()<br>
+                        TransportConfig::SetPacketBufferEnable()<br>
+                        TransportConfig::GetPacketBufferEnable()<br>
+                        DataBlock::GetForceSendTimeDelay()<br>
+                        DataBlock::GetForceSendMaximumUpdates()<br>
+                        XPSession::GetBandwidthFromSessionID()<br>
+                        ReplicaNet::GetBandwidthFromSessionID()
+                      </li>
+                      <li>
+                        <p align="left">Detailed logs of the packets sent using
+                        the low-level XPSock API can be created by using
+                        XPSock_SentHistogram() and XPSock_RecvHistogram(). For
+                        example the reliable UDP transport uses the cross
+                        platform XPSock layer.
+                      </li>
+                      <li>
+                        <p align="left">The application can now define a
+                        specific window for packet buffering to use.
+                        TransportConfig::PacketBuffer[Begin/End]CaptureWindow().
+                        Packet buffering will now need to be enabled or disabled
+                        by using TransportConfig::SetPacketBufferEnable() in conjunction
+                        with the packet buffer API. If
+                        TransportConfig::SetPacketBufferTime()
+                        was used previously, a new call to SetPacketBufferEnable()
+                        will need to be added.
+                      </li>
+                      <li>
+                        <p align="left">DataBlock::GetForceSendTimeDelay() and
+                        DataBlock::GetForceSendMaximumUpdates() have been added.
+                      </li>
+                      <li>
+                        <p align="left">Configuration options have been
+                        improved&nbsp; for reliable UDP packets that have been
+                        lost or have missing ACKs by increasing the table of
+                        resend times. TransportConfig::SetResendTimes() and
+                        TransportConfig::GetResendTimes() have been updated.
+                      </li>
+                      <li>
+                        <p align="left">The CXPSession interface, to allow the
+                        XPSession class to be used from C, has had the extra
+                        functionality of XPSession added.
+                      </li>
+                      <li>
+                        <p align="left">It is now possible to read the
+                        configured bandwidth of a session by using the
+                        [XPSession/ReplicaNet]::GetBandwidthFromSessionID()
+                        functions.
+                      </li>
+                      <li>
+                        <p align="left">The RNPlatform utility library has been
+                        made available to all builds so that applications
+                        wishing to only use the RNPlatform headers do not need
+                        to include the RNXPURL library.<br>
+                      </li>
+                    </ul>
+                    <p align="left"><b>Bug fixes</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">The changes to the reliable UDP
+                        transport resend times and internal buffering controls
+                        in the event of excessive packet loss have improved the
+                        situation where the Demo1 game session will stay
+                        connected when emulating 1000ms latency, 300ms jitter
+                        and 30% packet loss. The plane pitch and roll values
+                        have also had maximum values added so that latency
+                        artefacts with these rotation values are much less
+                        apparent.</li>
+                    </ul>
+                    <p align="left">&nbsp;
+		<h3 align="left"> Release V5.1</h3>
+                    <p align="left"><b>Additions and changes&nbsp; to the API</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">A quick view of functions added:<br>
+                        ReplicaNet::SetAutomaticPacketCompression()<br>
+                        ReplicaNet::GetAutomaticPacketCompression()<br>
+                        ReplicaNet::GetCompressionStatistics()<br>
+                        ReplicaNet::GetMergedStatistics()<br>
+                        ReplicaNet::SetPollLayerBelowForXPSession()<br>
+                        ReplicaNet::GetPollLayerBelowForXPSession()<br>
+                        ReplicaNet::GetMasterSessionID()<br>
+                        ReplicaNet::GetURLFromSessionID()<br>
+                        XPSession::SetAutomaticPacketCompression()<br>
+                        XPSession::GetAutomaticPacketCompression()<br>
+                        XPSession::GetCompressionStatistics()<br>
+                        XPSession::GetMergedStatistics()<br>
+                        XPSession::GetMasterSessionID()<br>
+                        XPSession::GetURLFromSessionID()<br>
+                        ReplicaNet::SetClientOnly()<br>
+                        ReplicaNet::GetClientOnly()<br>
+                        XPSession::SetClientOnly()<br>
+                        XPSession::GetClientOnly()
+                      </li>
+                      <li>
+                        <p align="left"> Automatic <b>packet compression</b> can
+                        be configured by using:<br>
+                        XPSession::SetAutomaticPacketCompression()<br>
+                        XPSession::GetAutomaticPacketCompression()<br>
+                        XPSession::GetCompressionStatistics()
+                      </li>
+                      <li>
+                        <p align="left"> Added RNPlatform include files to the documentation.
+                      </li>
+                      <li>
+                        <p align="left"> Added documentation for
+                        FreewareSetRegistrationCode().
+                      </li>
+                      <li>
+                        <p align="left"><b>Packet buffering</b> (coalescing/packet
+                        marshalling) has been added to the RNXPURL library with
+                        the <b>TransportConfig::SetPacketBufferTime()</b> and
+                        related functions. Transport::GetPacketsSentMerged() and
+                        Transport::GetPacketsReceivedMerged() have been added to
+                        the Transport class. ReplicaNet::GetMergedStatistics()
+                        and XPSession::GetMergedStatistics() have also been
+                        added to allow packet statistics to be read.
+                      </li>
+                      <li>
+                        <p align="left"> Spider nodes or potential master nodes now try to use the
+                        configured game channel for their listen connections first. If the transport isn't listening on the game channel when it becomes a master
+                        node it will try again to allocate listen connections
+                        using the configured game channel.
+                      </li>
+                      <li>
+                        <p align="left">Spelling errors corrected and
+                        documentation made clearer for numerous functions.
+                      </li>
+                      <li>
+                        <p align="left"><b>Client only</b> nodes can now be
+                        configured using XPSession/ReplicaNet SetClientOnly()
+                        and GetClientOnly(). If set then the node will only
+                        receive session joiner and leaver notification for nodes
+                        that are able to become a master node and use spidering.
+                        This helps a MMO type of game enforce a rigid data
+                        propagation policy for client nodes connecting to
+                        peer-to-peer server nodes.
+                      </li>
+                      <li>
+                        <p align="left">The ability to control the use of
+                        threads used for XPSession and XPURL from ReplicaNet has
+                        been added with the SetPollLayerBelowForXPSession()
+                        function.
+                      </li>
+                      <li>
+                        <p align="left">The session ID for the master session
+                        can be read using the [ReplicaNet/XPSession]::GetMasterSessionID()
+                        function.
+                      </li>
+                      <li>
+                        <p align="left">A session ID can be resolved to a URL
+                        using the [ReplicaNet::XPSession]::GetURLFromSessionID()
+                        function.
+                      </li>
+                      <li>
+                        <p align="left"><b>Transport Network bandwidth</b> can
+                        be configured by transport type using
+                        Transport::SetBandwidthLimit()
+                        and Transport::SetMaximum[Output/Input]Bandwidth()
+                        functions.<br>
+                      </li>
+                    </ul>
+                    <p align="left"><b>Bug fixes</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">The reliable UDP disconnect packet was not be being matched
+                        against valid input packet addresses for a socket
+                        created from a connect call. This would cause a premature disconnect if a socket received this packet from any other address that isn't valid.</li>
+                      <li>
+                        <p align="left">Extraneous reliable UDP disconnect
+                        packets were being sent when a connection was already
+                        broken by one end of the communication channel.</li>
+                      <li>
+                        <p align="left">Fixed a bug caused by network emulation being enabled with packet latency, which then was not sending disconnect packets when a transport was disconnected or deleted. This was causing the disconnection to take longer than normal when network emulation was enabled.<br>
+                      </li>
+                    </ul>
+		<h3 align="left"> <br>
+ Release V5.0</h3>
+                    <p align="left"><b>Breaking changes</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">Header files are now fully qualified.
+                        For example #include &quot;ReplicaNet.h&quot; has changed to
+                        be #include &quot;RNReplicaNet/Inc/ReplicaNet.h&quot;.
+                        Similar changes are required for all of the other
+                        ReplicaNet, XPSession and XPURL header files.</li>
+                      <li>
+                        <p align="left">Now all ReplicaNet classes are in the
+                        RNReplicaNet namespace, previously used empty forward
+                        declarations of ReplicaNet classes might produce
+                        compiler errors. The fix for this is to make sure your
+                        own empty forward declarations of ReplicaNet classes are
+                        included in the correct namespace.</li>
+                      <li>
+                        <p align="left">Examples, tutorials and documentation
+                        have been updated to use the new library directories and
+                        the new directories for the <b>RNROLCompiler</b>.</li>
+                    </ul>
+                    <p align="left"><b>Additions and changes&nbsp; to the API</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">A <b>visual debugger</b> had been added
+                        called <b>RNVisualDebugger</b> and is able to display debug information about a network
+                        session. The preprocessor define REPLICANET_VISUALDEBUGGER
+                        is used to turn on this extra debug information. The standard implementations of
+                        DataBlock_NData, DataBlock_PredictFloat and DataBlock_Function have been updated to use this macro.
+                        The new DebugHandler class (&quot;XPURL/Inc/DebugHandler.h&quot;) can be extended and registered with the
+                        <b> XPURL::RegisterDebugHandler()</b> function. Please
+                        see the XPURL and the ReplicaNet documentation for more
+                        information.</li>
+                      <li>
+                        <p align="left">Added more speed improvements for distance based
+                        propagation.</li>
+                      <li>
+                        <p align="left">When using DataBlock_PredictFloat delta hints
+                        the resulting extrapolation has been improved to be more
+                        accurate.</li>
+                      <li>
+                        <p align="left"><b> DataBlock::SetID()</b> changed to be
+                        protected and a friend of ReplicaObject to highlight
+                        that this function method should not normally be called
+                        by the user.</li>
+                      <li>
+                        <p align="left">Added <b> ReplicaNet::[Set/Get]DataBlockUpdatePolicy()</b> and
+                        <b> ReplicaNet::ProcessDataBlockUpdate()</b> to optionally separate the DataBlock updates from the normal
+                        ReplicaNet::Poll() or threaded periodic updates.</li>
+                      <li>
+                        <p align="left">The pure virtual <b> ReplicaObject::GetRegistryBlock()</b> has been promoted from private to public to allow the s_RO_RegistryBlock for an unknown ReplicaObject class to be queried by the user.<br>
+	For example, to get the registered class name of an unknown "ReplicaObject *theObject&quot; pointer:<br>
+                        theObject-&gt;GetRegistryBlock()-&gt;GetName()</li>
+                      <li>
+                        <p align="left"><b>XPSession::SetLatencyRecalculationDelay()</b> and therefore
+                        <b> ReplicaNet::SetLatencyRecalculationDelay()</b> have had their algorithm
+                        changed to calculate a more accurate latency to the
+                        master session. The input parameter meaning has changed so existing code should be checked for this change.</li>
+                      <li>
+                        <p align="left"><b>XPSession/ReplicaNet::GetLatencyToMasterSession()</b> was reporting latency in the event of the master disconnecting and a session becomming master. The latency is now reported to be 0 seconds if the session becomes the new session master.</li>
+                      <li>
+                        <p align="left"><b>DataBlock</b> update filters have
+                        been extended to use the functions <b>SetUpdateDelayMinimum(),SetForceSendMaximumUpdates()
+                        </b>and<br>
+                        <b>SetForceSendTimeDelay()</b>. Please see the
+                        ReplicaNet documentation for a complete description.</li>
+                      <li>
+                        <p align="left"><b>XPSock_GetHostAddress()</b> (and <b> Transport::ExportURL()
+                        </b>which uses this function)<b> </b>changed to avoid using DNS queries if at all possible.</li>
+                      <li>
+                        <p align="left"><b>XPSock_Send()</b> and <b>XPSocket::Send()
+                        </b>changed to return the number of sent bytes.</li>
+                      <li>
+                        <p align="left">Session spider messages have been made
+                        shorter, this improves network bandwidth from the master
+                        session.</li>
+                      <li>
+                        <p align="left">XPSession fault recovery and notification of faults improved.</li>
+                      <li>
+                        <p align="left">Documentation improved relating to
+                        GetTime() and GetLocalTime().</li>
+                      <li>
+                        <p align="left">Each example ReadMe.txt file states what build configurations are available.</li>
+                      <li>
+                        <p align="left">Examples 1,4,9 updated to include a section on how to implement a graceful shutdown for ReplicaNet.</li>
+                      <li>
+                        <p align="left"> SysTime.h is now a public include.<br>
+                      </li>
+                    </ul>
+                    <p align="left"><b>ROLCompiler and ROL Language changes</b>
+                    </p>
+                    <ul>
+                      <li>
+                        <p align="left">RNROLCompiler <b>object::datablockcustom()</b>
+                        This keyword defines a custom <b>DataBlock</b> that is used in the object
+                        and added in to RNROLCompiler documentation.</li>
+                    </ul>
+                    <p align="left"><b>Bug fixes</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">RNROLCompiler <b> object::addinclude()</b>
+                        was changed so that it uses the whole line minus comments for the include file.</li>
+                      <li>
+                        <p align="left">Removed a strdup and replaced it with
+                        malloc, strcpy. Was causing problems with the memory
+                        hooks.</li>
+                      <li>
+                        <p align="left">Fixed a few bugs with session propagation filter and thus distance based propagation which uses the session propagation.</li>
+                      <li>
+                        <p align="left">A session without an observer was
+                        getting a spike of all available objects when using distance based
+                        propagation.</li>
+                      <li>
+                        <p align="left">Fixed a couple of std::string bugs that cause problems on non-Win32 versions of the
+                        STL.</li>
+                      <li>
+                        <p align="left">Found a memory leak with TransportUDP that would very rarely leave
+                        memory allocated when the network stack was shutdown.</li>
+                      <li>
+                        <p align="left">Fixed a bug if multithreading is enabled the session thread could hang if pre-connection is enabled.</li>
+                      <li>
+                        <p align="left">Fixed a bug where broadcast packets were using too much bandwidth when spidering was enabled.</li>
+                      <li>
+                        <p align="left">Bug fixed with reflected ReplicaObjects
+                        where some DataBlocks were not getting updated properly.</li>
+                      <li>
+                        <p align="left">UDPReliableManager now frees all memory allocated in the
+                        databases when shutdown.</li>
+                    </ul>
+		<h3 align="left"> &nbsp;</h3>
+		<h3 align="left"> Release V4.1</h3>
+                    <p align="left"><b>Additions and changes&nbsp; to the API</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">Fixed: <b>ReplicaNet::DataReceive()</b>
+                        was not setting the session ID properly.</li>
+                      <li>
+                        <p align="left"><b>Observer</b> ReplicaObjects can now
+                        be allocated and used from any session node.</li>
+                      <li>
+                        <p align="left">Fixed: A rare bug could have happened when deleting
+                        the ReplicaNet class and using XPURL::ShutdownNetwork().</li>
+                      <li>
+                        <p align="left">The examples have not changed from the
+                        previous release.</li>
+                    </ul>
+                    <p align="left"><b>Proposed breaking changes<br>
+                    </b>The next version of ReplicaNet is planned to include one
+                    significant breaking change for existing code. This change
+                    will involve adding a RNReplicaNet namespace to the
+                    components XPURL and XPSession. The helper classes attached
+                    to ReplicaNet including, but not limited to, Encryption,
+                    PlatformInfo, SysTime, MutexClass and ThreadClass will also be added to
+                    the same RNReplicaNet namespace. The ReplicaNet component naming
+                    will remain unchanged. The quick fix for existing code could
+                    be to include &quot;using namespace RN ReplicaNet;&quot; at the
+                    top of every CPP file or, less recommended, inside a header
+                    file. The better fix would involve adding the prefix
+                    namespace &quot;RNReplicaNet::&quot; to every referenced class
+                    used in the ReplicaNet library, except the ReplicaNet class.<p align="left">The
+                    second change to reduce header file name collisions will be
+                    to change all of the header files for each component to
+                    include the prefix &quot;ReplicaNet/Inc/&quot;. The examples
+                    will be updated to reflect this change. To quickly fix
+                    existing code the header include directory could include
+                    both paths to the ReplicaNet include directory so that both
+                    the long and short versions resolve to the same location.
+                    The better fix could involve adding the necessary prefix to
+                    all header files that include parts of ReplicaNet
+                    components.<p align="left">These changes have been driven by the need for developers
+                    to avoid potential name collisions for classes and header
+                    files.<p align="left">This version will be called V5.0 to
+                    reflect this significant change in version from the previous
+                    releases.<p align="left">Please email <a href="mailto:version5@replicanet.com">version5@replicanet.com</a>
+                    if you wish to discuss or find out more about this
+                    particular change.<p align="left">&nbsp;
+		<h3 align="left"> Release V4.0</h3>
+                    <p align="left"><b>Additions and changes&nbsp; to the API</b></p>
+                    <p align="left">This is a large update with some very
+                    exciting additions to the API. A special thank you goes to
+                    the developers who helped to beta test the stability of this
+                    release.</p>
+                    <ul>
+                      <li>
+                        <p align="left"><b>ReplicaObject Session propagation</b><b>,</b>
+                        when enabled the ReplicaObject will ignore all joining sessions and the user application is then responsible for supplying the session IDs that this object will propagate to. This mechanism
+                        effectively turns off all ReplicaNet object propagation functions for this object, including the distance based propagation. This mechanism can only be enabled or disabled before the object is published to ReplicaNet.
+                        This gives full user control over how and where
+                        ReplicaObjects are propagated in a session.</li>
+                      <li>
+                        <p align="left">For <b> XPSession</b> and <b> ReplicaNet</b> the function
+                        <b> Disconnect()</b> can be used to force disconnect any session node ID.</li>
+                      <li>
+                        <p align="left">Before a session node fully connects, a state can be entered in to that
+                        allows raw data packets to be exchanged between the joining
+                        node and the master session node.</li>
+                      <li>
+                        <p align="left">The <b> raw packet mechanism</b> has been added
+                        to <b>ReplicaNet</b> allowing user created raw data
+                        packets to be transferred.</li>
+                      <li>
+                        <p align="left">Added two <b>new examples </b>that show
+                        the new features available in ReplicaNet V4.0</li>
+                      <li>
+                        <p align="left">Updated Example6 to show how to create a DataBlock derived class that updates an STL
+                        container member variable.</li>
+                      <li>
+                        <p align="left">For the DataBlock NData and NDataAt a new ROL keyword has been added
+                        DisableEndianTest(). This disables the endian test for the block of memory.</li>
+                      <li>
+                        <p align="left">Removed a potential for a thread deadlock to happen inside TransportUDP with regards to
+                        THREADSAFELOCKCLASS(gUDPKnownAddresses) and
+                        THREADSAFELOCKCLASS(gUDPKnownTransports) being out of order is some cases.</li>
+                      <li>
+                        <p align="left">Added build rules for Example2 Linux build. Also added extended build rules for the Linux libraries.</li>
+                      <li>
+                        <p align="left">Known issues with Linux are with the pthread mutex mechanism where Linux pthreads operate differently to SGI IRIX pthread
+                        mutex. This Linux problem is expected to be resolved soon.</li>
+                      <li>
+                        <p align="left">Added an extra class called NetworkVector3 to Example6 that shows how to create a networked representation of a 3D vector.</li>
+                      <li>
+                        <p align="left">Documented the ReplicaObject extensions
+                        AllocateForReplicaNet() and DeleteForReplicaNet().</li>
+                      <li>
+                        <p align="left">Fixed - Trying to call a network
+                        function on an object before it was published caused a
+                        null pointer exception.</li>
+                      <li>
+                        <p align="left">It is possible to alter the disconnection and packet retry parameters
+                        using the TransportConfig class.
+                      </li>
+                      <li>
+                        <p align="left">Documentation for load balancing ha been
+                        added.&nbsp;
+                      </li>
+                      <li>
+                        <p align="left">A virtual function when a DataBlock
+                        receives packet data has been added,
+                        ReplicaObject::DataBlockPacketDataReceived()<br>
+                      </li>
+                    </ul>
+                    <p align="left"><b>ROLCompiler and ROL Language changes</b>
+                    <ul>
+                      <li>
+                        <p align="left">The win32 pragma to disable a harmless browse database warning has been wrapped in
+                        #ifdef _WIN32/#endif</li>
+                      <li>
+                        <p align="left">		SetOpaqueType() allows "::" to be used so that namespaces can be included as part of the opaque type.</li>
+                    </ul>
+		<P align="left">&nbsp;</P>
+		<H3 align="left">Release V3.9</H3>
+                    <p align="left"><b>Additions and changes&nbsp; to the API</b></p>
+                    <ul>
+                      <li>
+                        <p align="left">The function 'realloc' has been added to the memory tracking layer.</li>
+                      <li>
+                        <p align="left">The documentation for
+                        ReplicaObject::GetUniqueID()
+                        has been updated.</li>
+                      <li>
+                        <p align="left"><b>ReplicaNet::AllocateReplicaObject()</b> Has been moved to be a private function. This function should not have been
+                        available for public use.</li>
+                      <li>
+                        <p align="left">Memory tracking now has the option to enable total and peak blocks and sizes,
+                        see <b>ReplicaNet_MemoryTotalsEnable()</b></li>
+                      <li>
+                        <p align="left">Added Example7 - Which shows just basic <b>XPSession</b> operation.</li>
+                      <li>
+                        <p align="left">Beta - <b>ReplicaObject::SetPropagateToSessionDistance()
+                        </b>, <b>ReplicaObject::SetPropagateToSessionDistanceDefault()</b> and
+                        <b>ReplicaObject::GetPropagateToSessionDistance()</b> have been added.<br>
+	These allow objects to specify a distance and if that object is outside the distance to a session observer then that session does not get object updates.
+                        This is very useful for helping to reduce network bandwidth for MMO games.</li>
+                      <li>
+                        <p align="left"><b>CurrentThreadSleep_SetHook()</b> has been added in CThreadClass.h to allow a hook to be set for the
+                        CurrentThreadSleep() function.</li>
+                      <li>
+                        <p align="left">Beta - <b>ReplicaObject::SetMessageReflectionID</b>(const int
+                        sessionID)<br>
+	This function allows an object to state which sessionID should be used for sending messages to other sessions.<br>
+	By default the master object is used to send DataBlock and message updates.
+                        Useful for MMO games where the network bandwidth for
+                        object replication can be assigned to other sessions.</li>
+                      <li>
+                        <p align="left"><b>ReplicaObject::SetClassID()</b> Has been removed because the idea of setting the classID of an allocated replica object is outside the scope of the user.</li>
+                      <li>
+                        <p align="left">	ROLCompiler created ReplicaObject derived classes used the static class member function Allocate() to allocate a
+                        derived class.<br>
+	This function has been renamed to AllocateForReplicaNet(). This was to tidy up the naming convention for this derived class<br>
+	Also a static delete function has been added called DeleteForReplicaNet(ReplicaObject *)<br>
+	Both of these functions can be implemented in a derived class to alter the behaviour of allocate and delete methods for these classes.</li>
+                      <li>
+                        <p align="left">Callbacks <b>ReplicaNet::JoinerSessionID[Pre/Post]()</b> and
+                        <b>ReplicaNet::LeaverSessionID[Pre/Post]()</b> have been
+                        added to allow a ReplicaNet derived class to be notified
+                        when a sessionID joins or leaves the network session.<br>
+                      </li>
+                    </ul>
+		<H3 align="left">Release V3.8</H3>
+                    <p align="left"><b>Additions and changes&nbsp; to the API</b></p>
+                    <ul>
+                      <li>
+                        <p align="left"><b>XPURL</b>, <b> XPSession </b> and <b> ReplicaNet
+                        </b> have been changed to use an <b> optional DLL</b>
+                        component.<br>
+                        The libraries that start with "DLL" will force the library DLL to be loaded at run time.<br>
+                        When using the DLL libraries you must define DOREPNETEXPORTAPI in the
+                        preprocessor. This ensures importing of the correct dll functions. It also automatically does #include
+                        &quot;MemoryTracking.h&quot;<br>
+                        The memory tracking header is needed to ensure that the dll calling method accounts for memory properly.<br>
+                        The automatic inclusion of the header during DLL builds can be turned off by defining REPLICANET_NOAUTOMATICINCLUDEMEMORYTRACKING<br>
+                        For non-dll builds the memory tracking header is not included.<br>
+                        Specifically for ReplicaNet and DLL builds,
+                        REPLICANET_DLLPREREGISTER() must used called before the ReplicaNet class is allocated. This ties the object classes to the DLL.<br>
+                        REPLICANET_DLLPREREGISTER() can also be called in a non-DLL build without any adverse side effects.</li>
+                      <li>
+                        <p align="left">The <b> memory tracking</b> header
+                        (&quot;MemoryTracking.h&quot;) can be auto included by defining REPLICANET_ALWAYSDOMEMORYTRACKING for
+                        non-dll based builds.</li>
+                      <li>
+                        <p align="left">Some include <b>headers changed</b>. ReplicaNet.h changed to remove as much private data from the
+                        public class as possible.<br>
+                        ReplicaManager.h removed from the public API.<br>
+                        Added DLLExportAPI.h</li>
+                      <li>
+                        <p align="left">ROLCompiler: Changed to spot bugs due to braces being
+                        mismatched.</li>
+                      <li>
+                        <p align="left"> ROL Language: Command object::Reliable() was not implemented. Since all objects default to using the reliable method this wasn't a bad bug.</li>
+                      <li>
+                        <p align="left">ROL Language: Added #include "&lt;file>" and
+                        #includeclass &lt;class> and updated the ROLCompiler docs.</li>
+                      <li>
+                        <p align="left">ROL Language: Added object::RealInclude(),
+                        see the ROL Compiler documentation for details.</li>
+                      <li>
+                        <p align="left">ROL Language: Added
+                        object::SetOpaqueType(), see the ROL Compiler
+                        documentation for details.</li>
+                    </ul>
+                    <p align="left">&nbsp;</p>
+		<H3 align="left">Release V3.7</H3>
+		<P align="left">Please consult the documentation for complete
+        information covering the added features.
+		</P>
+		<P align="left"><b>Additions and changes&nbsp;</b><b> to the API</b>
+		</P>
+                    <ul>
+                      <li>
+                        <p align="left"><b>Automatic load balancing</b> has been added. The default is for load balancing to be switched
+                        off to remain compatible with previous version of
+                        ReplicaNet.<br>
+                        Use these added functions in ReplicaNet:<br>
+	void SetLoadBalancing(const bool enable = false);<br>
+	bool GetLoadBalancing(void);<br>
+	void SetMaximumLoad(float load = 0.0f);<br>
+	float GetMaximumLoad(int sessionID = kReplicaNetUnknownUniqueID);<br>
+	float GetTotalLoad(int sessionID = kReplicaNetUnknownUniqueID);<br>
+	void ObjectListBeginIterate(void);<br>
+                        and in ReplicaObject:<br>
+	void SetLoadBalancing(const bool enable = false);<br>
+	bool GetLoadBalancing(void);<br>
+	void SetLoadScore(const float load = 0.0f);<br>
+	float GetLoadScore(void);</li>
+                      <li>
+                        <p align="left"><b>Optimisations</b> to the <b> reliable UDP layer</b> to include a fast matching database have been successful in reducing CPU load for intensive packet transfers.</li>
+                      <li>
+                        <p align="left">More <b>ROL Compiler </b>documentation
+                        has been added to describe the data blocks.</li>
+                      <li>
+                        <p align="left"><b>virtual
+                        ReplicaObject::UserRegisterDataBlocks()</b> has been added to allow user extensions of the
+                        data block mechanism. Using this function, or by
+                        extending the ROL language includes, it is possible to
+                        create your own data blocks that could use your own
+                        complex extrapolated motion routines.</li>
+                      <li>
+                        <p align="left"><b>Object list iteration</b> in
+                        ReplicaNet:<br>
+	void ObjectListBeginIterate(void);<br>
+	void ObjectListFinishIterate(void);<br>
+	ReplicaObject *ObjectListIterate(void);</li>
+                      <li>
+                        <p align="left">The <b>NData</b> datablock now has
+                        SetDefaultData()
+                        which can set default data for a member variable and
+                        reduce packet size for newly created objects.</li>
+                      <li>
+                        <p align="left">Bug fixed in <b> ReplicaObject::FindDataBlock()</b> that wasn't finding all
+                        data blocks for all member variables.</li>
+                      <li>
+                        <p align="left"><b>Object iteration functions</b> with
+                        automatic object list locking.<br>
+	void ReplicaNet::ObjectListBeginIterate(void);<br>
+	void ReplicaNet::ObjectListFinishIterate(void);<br>
+	ReplicaObject *ReplicaNet::ObjectListIterate(void);</li>
+                      <li>
+                        <p align="left">A <b> thread locking</b> problem that affected some
+                        <b> Windows98 </b> machines when the application shut down has been fixed.</li>
+                      <li>
+                        <p align="left"><strong>ReplicaNet::GetTime()</strong> and <STRONG>XPSession::GetTime()</STRONG>
+			are unchanged, however since these time values can vary due to latency changing 
+			between each machine, another time function has been added. <STRONG>ReplicaNet::GetLocalTime()</STRONG>
+			and <STRONG>XPSession::GetLocalTime()</STRONG> now report the local time for 
+			the machine. The examples have been changed to reflect this.</li>
+                      <li>
+                        <p align="left">Memory function hooks have been added to
+                        MemoryTracking.h.<br>
+ void SetReplicaNetAllocateFunction(tReplicaNet_AllocateFunc *allocateFunction);<br>
+ void SetReplicaNetClearAndAllocateFunction(tReplicaNet_ClearAndAllocateFunc *allocateFunction);<br>
+ void SetReplicaNetFreeFunction(tReplicaNet_FreeFunc *allocateFunction);<br>
+                        All memory in the libraries is now allocated through
+                        functions provided by this API. Memory allocated in the
+                        user application is unchanged unless you include &quot;MemoryTracking.h&quot;&nbsp;</li>
+                    </ul>
+                    <p align="left"><strong>Changes that might throw up minor
+                    compatibility problems</strong></p>
+                    <ul>
+                      <li>
+                        <p align="left"><b>void
+                        ReplicaObject::ValidateObject(void)</b>
+                        and virtual void <b>ReplicaObject:: RegisterDataBlock(DataBlock
+                        *block)</b> have been moved to be private/protected status since they are for internal use only.</li>
+                    </ul>
+                    <p align="left">&nbsp;</p>
+		<H3 align="left">Release V3.6</H3>
+		<P align="left">An improved object and session migration API.<BR>
+			A new type of update packet that relieves network congestion.<BR>
+			Two new example applications, including the source code to a multiplayer demo 
+			game.<BR>
+			More optimisations to the network packet layer to reduce CPU and memory use.<BR>
+			Increased stability for networks with packet loss.<BR>
+			Network emulation API to allow your application to be tested using different 
+			types of lag and packet loss.<BR>
+			Microsoft dotNET library builds included.</P>
+		<H3 align="left">Release V3.5</H3>
+		<P align="left">Optimisations to ReplicaNet, XPSession and XPURL have significantly 
+			reduced CPU time to around 10% of what was being used before. A breakthrough in 
+			caching has enabled this incredible performance jump.<BR>
+			Significant gains have also been made while improving the accuracy of 
+			interpolated data types and reducing jitter from extrapolated data.<BR>
+			Encryption has been made stronger without compromising speed.<BR>
+			Extra API functions allow fine tuning of the network session to cater for 
+			specific latency calculation intervals.<BR>
+			Initial session discovery and connection has been improved to reduce some of 
+			the initial packet traffic.</P>
+		<P align="left">&nbsp;</P></TD></TR>
+			<tr>
+				<td>
+                </TD></TR></TABLE></HTML>

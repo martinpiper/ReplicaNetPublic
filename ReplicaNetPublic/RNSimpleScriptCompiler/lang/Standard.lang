@@ -1,0 +1,97 @@
+#pragma once
+#include <SSE_Standard>
+
+// Some functions
+//DefProc CallAddress(address)
+Label ._startOfSection_CallAddress
+Label ._procCallAddress
+AsmPush r10
+AsmPush r9
+AsmAdd r9,r1,r0
+AsmAddr r10,_inprocCallAddressReturnAddr
+AsmPush r10						// Push the return address
+AsmPush r9						// Push the address to jump to
+AsmRet							// Pop the pushed PC value and jump to it
+Label ._inprocCallAddressReturnAddr
+AsmPop r9
+AsmPop r10
+AsmRet
+Label ._endOfSection_CallAddress
+
+
+
+//DefProc ThreadExit
+Label ._startOfSection_ThreadExit
+Label ._procThreadExit
+AsmExternal SSE_ThreadExit
+AsmRet
+Label ._endOfSection_ThreadExit
+
+//DefProc DumpRegisters
+Label ._startOfSection_DumpRegisters
+Label ._procDumpRegisters
+AsmExternal SSE_DumpRegisters
+AsmRet
+Label ._endOfSection_DumpRegisters
+
+//DefProc ThreadYield
+Label ._startOfSection_ThreadYield
+Label ._procThreadYield
+AsmExternal SSE_ThreadYield
+AsmRet
+Label ._endOfSection_ThreadYield
+
+// Returns the threadID of the created thread
+//DefProc ThreadCreate(address,param)
+Label ._startOfSection_ThreadCreate
+Label ._procThreadCreate
+AsmExternal SSE_ThreadCreate
+AsmRet
+Label ._endOfSection_ThreadCreate
+
+// Returns the threadID
+//DefProc ThreadGetID
+Label ._startOfSection_ThreadGetID
+Label ._procThreadGetID
+AsmExternal SSE_ThreadGetID
+AsmRet
+Label ._endOfSection_ThreadGetID
+
+// If any signal bits 0-31 are set for a thread then the thread is suspended.
+//DefProc ThreadSignalIndexSet(threadID,signalIndex)
+Label ._startOfSection_ThreadSignalIndexSet
+Label ._procThreadSignalIndexSet
+AsmExternal SSE_ThreadSignalIndexSet
+AsmRet
+Label ._endOfSection_ThreadSignalIndexSet
+
+//DefProc ThreadSignalIndexClear(threadID,signalIndex)
+Label ._startOfSection_ThreadSignalIndexClear
+Label ._procThreadSignalIndexClear
+AsmExternal SSE_ThreadSignalIndexClear
+AsmRet
+Label ._endOfSection_ThreadSignalIndexClear
+
+DefProc ThreadPause(threadID)
+	ThreadSignalIndexSet(threadID,31)
+EndProc
+
+DefProc ThreadUnPause(threadID)
+	ThreadSignalIndexClear(threadID,31)
+EndProc
+
+// Returns the total signal state
+//DefProc ThreadGetSignal(threadID)
+Label ._startOfSection_ThreadGetSignal
+Label ._procThreadGetSignal
+AsmExternal SSE_ThreadGetSignal
+AsmRet
+Label ._endOfSection_ThreadGetSignal
+
+// Sets the total signal state
+//DefProc ThreadSetSignal(threadID,signal)
+Label ._startOfSection_ThreadSetSignal
+Label .procThreadSetSignal
+AsmExternal SSE_ThreadSetSignal
+AsmRet
+Label ._endOfSection_ThreadSetSignal

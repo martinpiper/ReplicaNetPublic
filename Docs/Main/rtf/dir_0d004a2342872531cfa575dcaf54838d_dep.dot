@@ -1,0 +1,9 @@
+digraph "Inc" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_2983781891bf6956e2c75bad204293ba {
+    graph [ bgcolor="#ddddee", pencolor="black", label="RNPlatform" fontname="Helvetica", fontsize="10", URL="dir_2983781891bf6956e2c75bad204293ba.html"]
+  dir_0d004a2342872531cfa575dcaf54838d [shape=box, label="Inc", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_0d004a2342872531cfa575dcaf54838d.html"];
+  }
+}

@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{8515e3c2-a7cf-4e4d-b773-57cb39f01764}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Media">
+      <UniqueIdentifier>{0d4dac82-5884-4f75-b5eb-57de0dbe634f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ROLFiles">
+      <UniqueIdentifier>{ebfea1ec-2584-4e9b-8088-ff2229e966f0}</UniqueIdentifier>
+      <Extensions>rol</Extensions>
+    </Filter>
+    <Filter Include="GameObjects">
+      <UniqueIdentifier>{fd010a71-72d7-4644-bcc9-ead14ff6f310}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CompiledGameObjects">
+      <UniqueIdentifier>{5546bd35-ad67-4854-a41a-6acb910e24e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameClass">
+      <UniqueIdentifier>{7719a48d-f712-40df-82fe-08f1c88701ba}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dolphin.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="_Def_Example9.h">
+      <Filter>CompiledGameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="_RO_Dolphin.h">
+      <Filter>CompiledGameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="_RO_Plane.h">
+      <Filter>CompiledGameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClass.h">
+      <Filter>GameClass</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>GameClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Network.h">
+      <Filter>GameClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Shadow.h">
+      <Filter>GameClass</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="winmain.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Dolphin.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Plane.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="_Def_Example9.cpp">
+      <Filter>CompiledGameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="_RO_Dolphin.cpp">
+      <Filter>CompiledGameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="_RO_Plane.cpp">
+      <Filter>CompiledGameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClass.cpp">
+      <Filter>GameClass</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>GameClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Network.cpp">
+      <Filter>GameClass</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp" />
+    <ClCompile Include="..\ReplicaNetPublic\AmalgamatedReplicaNet.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="airplane 2.x">
+      <Filter>Media</Filter>
+    </CustomBuild>
+    <CustomBuild Include="bihull.bmp">
+      <Filter>Media</Filter>
+    </CustomBuild>
+    <CustomBuild Include="directx.ico">
+      <Filter>Media</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Dolphin1.x">
+      <Filter>Media</Filter>
+    </CustomBuild>
+    <CustomBuild Include="seafloor.bmp">
+      <Filter>Media</Filter>
+    </CustomBuild>
+    <CustomBuild Include="seafloor.x">
+      <Filter>Media</Filter>
+    </CustomBuild>
+    <CustomBuild Include="wings.bmp">
+      <Filter>Media</Filter>
+    </CustomBuild>
+    <CustomBuild Include="_Def_Example9.rol">
+      <Filter>ROLFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="_RO_Dolphin.rol">
+      <Filter>ROLFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="_RO_Plane.rol">
+      <Filter>ROLFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

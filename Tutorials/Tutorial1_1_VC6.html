@@ -1,0 +1,316 @@
+<HTML>
+	<HEAD>
+		<TITLE>© Replica Software</TITLE>
+		<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta name="description" content="ReplicaNet is an object oriented C++ library that is engineered to help the developer of applications that require a stable and low maintenance middleware solution to networking.">
+	<meta name="keywords" content="ReplicaNet, RNLobby, middleware, replica, net, C++, network, game, gaming, multiplayer, library, source, develop">
+	<link href="../assets/replica.css" rel="stylesheet" type="text/css">
+	</HEAD>
+		<table align="center" width="760" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td>
+					<table width="100%" border="0" cellspacing="1" cellpadding="0">
+						<TBODY>
+							<tr>
+								<td colspan="9" height="89"><img src="../assets/images/headr.gif" width="784" height="89"></td>
+							</tr>
+		</table>
+		<h1 align="center">Tutorial 1 Part 1 - VC6</h1>
+		<p align="left">Technical terms used in this tutorial can be found in
+        the <a href="Tutorial_Glossary.html">glossary</a>.
+        This tutorial assumes the ReplicaNet files are in the default location
+        used by the installer.
+                    </p>
+                    <p align="left">This tutorial shows:</p>
+                    <ul>
+                      <li>
+                        <p align="left">How to create a simple ReplicaNet
+                        project from scratch, using Microsoft Visual Studio 6.</p>
+                      </li>
+                      <li>
+                        <p align="left">How to set-up a new project with the necessary
+                        header include files.</p>
+                      </li>
+                      <li>
+                        <p align="left">Prepare some custom build rules to build
+                        ROL files using the ROLCompiler tool.</p>
+                      </li>
+                    </ul>
+                    <h4 align="left"><b>
+        Start Microsoft Visual Studio C++ 6.0</b></h4>
+                    <p align="left">
+        If there is a workspace loaded then Menu bar->File->Close Workspace.<br>
+                    </p>
+                    <h4 align="left"><b>
+        Now create our workspace.</b></h4>
+                    <p align="left">Menu
+                    bar-&gt;File-&gt;New...-&gt;&quot;Projects&quot; Tab-&gt;Win32
+                    Console Application</p>
+                    <p align="left"><img border="0" src="../assets/images/Tutorial1Assets/Pic1.jpeg" width="561" height="400"><br>
+                    <br>
+                    Change the "Location:" <a href="Tutorial_Glossary.html">Box</a>
+                    to &quot;C:\Program Files\Replica Software\ReplicaNet\&quot;<br>
+                    Change the "Project name:&quot; <a href="Tutorial_Glossary.html">Box</a>&nbsp;
+                    to &quot;Tutorial1&quot;<br>
+                    The &quot;Location&quot; <a href="Tutorial_Glossary.html">Box</a>
+                    will then show &quot;Tutorial1&quot; being added to the path name.<br>
+                    Check "Create new workspace" is enabled.<br>
+                    Check that "Platforms:" has the &quot;Win32&quot; option
+                    enabled.<br>
+                    <a href="Tutorial_Glossary.html">
+	Click</a> "OK".</p>
+                    <p align="left"><img border="0" src="../assets/images/Tutorial1Assets/Pic2.jpeg" width="477" height="384"></p>
+                    <p align="left">Check that "An empty project" is enabled.<br>
+                    <a href="Tutorial_Glossary.html">
+	Click</a> "Finish".<br>
+        <br>
+                    <img border="0" src="../assets/images/Tutorial1Assets/Pic3.jpeg" width="414" height="423"><br>
+                    </p>
+                    <p align="left">
+                    This <a href="Tutorial_Glossary.html">dialog</a> tells you
+                    what files are about to be created for the project. <a href="Tutorial_Glossary.html">Click</a> "OK".</p>
+                    <h4 align="left">Workspace created</h4>
+                    <p align="left">
+        The Workspace view should display. If this does not display then you can open
+                    the display by choosing:<br>
+        Menu bar->View->Workspace</p>
+                    <div align="center">
+                      <center>
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                          <td width="50%">
+        Open the tree view for "Tutorial1 files" by clicking on the <a href="Tutorial_Glossary.html">cross
+                            mark</a>.</td>
+                          <td width="50%"><img border="0" src="../assets/images/Tutorial1Assets/Pic4.jpeg" width="275" height="99"></td>
+                        </tr>
+                      </table>
+                      </center>
+                    </div>
+                    <p align="left">&nbsp;</p>
+                    <div align="center">
+                      <center>
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                          <td width="50%">A view containing &quot;Source
+                            Files&quot;, &quot;Header Files&quot; and
+                            &quot;Resource Files&quot; should then be displayed.</td>
+                          <td width="50%"><img border="0" src="../assets/images/Tutorial1Assets/Pic5.jpeg" width="275" height="117"></td>
+                        </tr>
+                      </table>
+                      </center>
+                    </div>
+                    <p align="left">
+        Open the menu above the "Tutorial1 files" entry in the list. Choose "New Folder...".</p>
+                    <div align="center">
+                      <center>
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                          <td width="50%">
+        In the dialog's boxes "Name of the new folder:" = "ROL Files"<br>
+                            and "File extensions:" = "rol".</td>
+                          <td width="50%"><img border="0" src="../assets/images/Tutorial1Assets/Pic6.jpeg" width="309" height="126"></td>
+                        </tr>
+                      </table>
+                      </center>
+                    </div>
+                    <p align="left">
+        Click "OK".<br>
+        Adding an extra folder helps to keep ROL files, that describe objects, separate from our other source files.<br>
+        <br>
+        Open the menu above the "Tutorial1 files" entry again and choose "New Folder..." once more.<br>
+                    </p>
+                    <div align="center">
+                      <center>
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                          <td width="50%">In the dialog's boxes &quot;Name of
+                            the new folder:&quot; = &quot;Compiled Objects&quot;
+                            and leave the other box blank.&nbsp;</td>
+                          <td width="50%"><img border="0" src="../assets/images/Tutorial1Assets/Pic7.jpeg" width="309" height="126"></td>
+                        </tr>
+                      </table>
+                      </center>
+                    </div>
+                    <p align="left">
+        Click "OK".<br>
+        This folder is where the compiled ROL file output files can go to keep the project tidy.<br>
+        <br>
+        <br>
+        Open the menu on "Tutorial1 files" and choose "Settings...".</p>
+                    <p align="left">Change &quot;Settings For:&quot; to
+                    &quot;All Configurations&quot;.<br>
+                    Choose the &quot;C/C++&quot; <a href="Tutorial_Glossary.html">tab</a>.<br>
+                    Change the &quot;Category:&quot; to &quot;Preprocessor&quot;<br>
+                    Change &quot;Additional include directories:&quot; to
+                    &quot;..\ReplicaNetPublic\Includes&quot;</p>
+                    <p align="left">
+                    <img border="0" src="../assets/images/Tutorial1Assets/Pic9.jpeg" width="577" height="372"><br>
+                    <br>
+        <br>
+        <br>
+                    <p align="left">
+        Choose the "C/C++" tab again.<br>
+        Change the &quot;Category:&quot; to "Code Generation".<br>
+        Change "Settings For:" to "Win32 Release".<br>
+        Change the "Use run-time library:" to "Multithreaded".
+                    </p>
+                    <p align="left">
+        &nbsp; <img border="0" src="../assets/images/Tutorial1Assets/Pic11.jpeg" width="577" height="372"><br>
+                    </p>
+                    <p align="left">
+        Change "Settings For:" to "Win32 Debug".<br>
+        Change the "Use run-time library:" to "Debug Multithreaded".
+                    </p>
+                    <p align="left">
+        &nbsp; <img border="0" src="../assets/images/Tutorial1Assets/Pic12.jpeg" width="577" height="372"><br>
+                    </p>
+                    <p align="left">
+        Click &quot;OK&quot;.</p>
+                    <h4 align="left">
+        <br>
+                    Start adding files to the project.</h4>
+                    <p align="left"><br>
+        Menu bar->File->New->"Files" Tab->Choose "C++ Source File"<br>
+	Change the "File name:" box to &quot;main.cpp&quot;.<br>
+	Check the "Add to project:" item is checked and the "Tutorial1" item is selected.<br>
+	Check the "Location:" box is correct and contains &quot;C:\Program Files\Replica Software\ReplicaNet\Tutorial1&quot;</p>
+                    <p align="left">
+                    <img border="0" src="../assets/images/Tutorial1Assets/Pic8.jpeg" width="561" height="400"><br>
+                    </p>
+                    <p align="left">
+	Click "OK".<br>
+        Now add the ReplicaNet amalgamated source file found in <strong>"C:\Program&nbspFiles\Replica&nbspSoftware\ReplicaNet\ReplicaNetPublic\AmalgamatedReplicaNet.cpp"</strong> using similar steps as the above.<br />
+        NOTE: After adding a file to the project workspace you might be asked if you want to add it to source control. You can usually choose no for now.
+                    However source control is a good idea for projects. Dealing with source control is really beyond the scope of this tutorial.</p>
+                    <p align="left">
+        The workspace view will then update to contain the new file and put the new file in the "Source Files" folder.<br>
+        To view the filenames in each folder click the <a href="Tutorial_Glossary.html">cross
+                    box</a> to the left of the folder name.</p>
+                    <div align="center">
+                      <center>
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                          <td width="33%"><img border="0" src="../assets/images/Tutorial1Assets/Pic14.jpeg" width="274" height="95"></td>
+                          <td width="33%" valign="middle" align="center">Gives</td>
+                          <td width="34%"><img border="0" src="../assets/images/Tutorial1Assets/Pic14a.jpeg" width="251" height="112"></td>
+                        </tr>
+                      </table>
+                      </center>
+                    </div>
+                    <p align="left"><br>
+        To edit each file you can <a href="Tutorial_Glossary.html"> double click</a> the file name and the file will display. The newly created "main.cpp" file should be empty.<br>
+        <br>
+        Now we can start writing our ReplicaNet program.<br>
+        Double-click the "main.cpp" filename to edit the file and add this code to the "main.cpp" file.<br>
+                    </p>
+                      <p align="left"><textarea rows="12" name="S1" cols="96">#include <stdio.h>
+#include <stdlib.h>
+
+#include "RNReplicaNet/Inc/ReplicaNet.h"
+
+int main(int argc,char **argv)
+{
+    RNReplicaNet::ReplicaNet *myNetwork = new RNReplicaNet::ReplicaNet;
+
+    return 0;
+}
+</textarea></p>
+                    <p align="left">
+        <br>
+        Menu bar->File->New->"Files" Tab->Choose "Text File"<br>
+                    <br>
+	Change the "File name:&quot; box to &quot;Application.rol&quot;.</p>
+                    <p align="left">
+        <img border="0" src="../assets/images/Tutorial1Assets/Pic13.jpeg" width="561" height="400"></p>
+                    <p align="left">
+	Click "OK".<br>
+                    </p>
+                    <p align="left">
+        The workspace view will then update to contain the new file and put the new file in the "ROL Files" folder.<br>
+        Click the <a href="Tutorial_Glossary.html">cross box</a> to the left of "ROL Files" in the workspace view to see the newly added "Applicatio.rol" filename.<br>
+        Double-click the "Application.rol" filename to edit the file and add this code:<br>
+                    </p>
+                    <h4 align="left"><textarea rows="4" name="S2" cols="96">application
+{
+}
+</textarea>
+                    </h4>
+                    <p align="left"><b>Tip: When editing rol files, the file
+                    must end with a carriage return otherwise the RNROLCompiler
+                    will display the&nbsp;message &quot;warning : EOF
+                    encountered while close braces needed&quot;.</b></p>
+                    <h4 align="left">
+        <br>
+                    Custom build rules for ROL files
+                    </h4>
+                    <p align="left">
+        Now we need to tell VC6 how to compile ROL files. This uses the custom build rules available to us.<br>
+        Open the workspace projects settings by opening the menu on "Tutorial1" in the workspace view and choosing "Settings..."<br>
+        Open the "ROL Files" folder and select the &quot;Application.rol&quot; file.<br>
+        Change "Settings For:" to be "All Configurations".<br>
+        Choose the "Custom Build" tab.<br>
+        In the "Commands" box change in to be:<br>
+        &nbsp;&quot;..\ReplicaNetPublic\RNROLCompiler\bin\rnrolcompiler.exe $(InputName).rol $(InputName).cpp $(InputName).h&quot;
+                    </p>
+                    <p align="left">
+        In the "Outputs" box change it to contain "$(InputName).cpp" and "$(InputName).h" on two
+        separate lines.<br>
+                    </p>
+                    <p align="left">
+        The dialog should look like:</p>
+                    <p align="left">
+        &nbsp; <img border="0" src="../assets/images/Tutorial1Assets/Pic15.jpeg" width="577" height="372"></p>
+                    <p align="left"><b>Tip: Remember how to update the custom
+                    build settings because you will need to repeat it for every
+                    ROL file you add to your application. VC6 does not inherit
+                    settings for newly added files from the folder or file type.</b></p>
+                    <p align="left">
+        Click "OK".<br>
+        <br>
+        The "Application.rol" file will generate two source files called "Application.cpp" and
+        &quot;Application.h&quot; when the project is built.<br>
+        These files, even though they are not generated yet, need to be
+                    compiled.<br>
+        To add these files to the project open a menu over "Tutorial1 files" in the workspace view.<br>
+        Choose "Add File to Project...".<br>
+        In the file open dialog, change the "File name:" box to "Application.cpp".
+                    <img border="0" src="../assets/images/Tutorial1Assets/Pic16.jpeg" width="428" height="297"></p>
+                    <p align="left"><br>
+        Click "OK" and answer "Yes" to the warning box that tells you about the file not existing.<br>
+        Add "Application.h" using the same method as for "Application.cpp" remembering to use the "Application.h" name this time. Answer yes again to the question about the file not existing.
+                    You might want to add these generated files to the
+                    &quot;Compiled Objects&quot; folder to keep everything tidy.<br>
+                    </p>
+                    <h4 align="left">Try a build.</h4>
+                    <p align="left">
+        Choose Menu bar-&gt;Build-&gt;Rebuild All<br>
+        You should see this output in the build output window.<br>
+                    </p>
+                    <p align="left"><textarea rows="13" name="S2" cols="96">Deleting intermediate files and output files for project 'Tutorial1 - Win32 Debug'.
+--------------------Configuration: Tutorial1 - Win32 Debug--------------------
+Performing Custom Build Step on .\Application.rol
+Compiling...
+main.cpp
+Application.cpp
+Linking...
+
+Tutorial1.exe - 0 error(s), 0 warning(s)
+</textarea>
+        <br>
+        <br>
+                    </p>
+                    <p align="left">
+        Now looking at the "Application.cpp" and "Application.h" you should see some generated code from the ROL compiler.<br>
+        NOTE: At the top of these two source files is &quot;/* Auto-generated with RNROLCompiler
+        Vx.x.x.x don't edit */&quot; which tells you the files get generated by the ROL Compiler. Changes in these files will get lost if they are edited.<br>
+        <br>
+        <br>
+        At this stage the application does not do much except allocate a new ReplicaNet class.<br>
+        <br>
+        Now we can start to add C++ classes. These classes could be objects in a game that control enemies or the player, for example.
+        This is covered in <a href="Tutorial1_2_VC6.html">tutorial 1 part 2</a>.
+                    </p>
+                    <p align="left">
+        &nbsp;
+                    </p>
+                </TD></TR></TABLE></HTML>

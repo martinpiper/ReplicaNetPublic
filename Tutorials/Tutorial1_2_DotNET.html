@@ -1,0 +1,670 @@
+<HTML>
+	<HEAD>
+		<TITLE>© Replica Software</TITLE>
+		<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta name="description" content="ReplicaNet is an object oriented C++ library that is engineered to help the developer of applications that require a stable and low maintenance middleware solution to networking.">
+	<meta name="keywords" content="ReplicaNet, RNLobby, middleware, replica, net, C++, network, game, gaming, multiplayer, library, source, develop">
+	<link href="../assets/replica.css" rel="stylesheet" type="text/css">
+	</HEAD>
+		<table align="center" width="760" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td>
+					<table width="100%" border="0" cellspacing="1" cellpadding="0">
+						<TBODY>
+							<tr>
+								<td colspan="9" height="89"><img src="../assets/images/headr.gif" width="784" height="89"></td>
+							</tr>
+		</table>
+		<h1 align="center">Tutorial 1 Part 2 - DotNET</h1>
+		<p align="left">Technical terms used in this tutorial can be found in
+        the <a href="Tutorial_Glossary.html">glossary</a>.
+                    </p>
+                    <p align="left">This tutorial shows:</p>
+                    <ul>
+                      <li>
+                        <p align="left">ReplicaNet session finding or create.</p>
+                      </li>
+                      <li>
+                        <p align="left">Include two different C++ class object
+                        types and how to get those objects shared in a network
+                        session.<br>
+                        </p>
+                      </li>
+                    </ul>
+                    <h4 align="left">Adding session discovery or creation
+                        </h4>
+                    <p align="left">Go back to editing the &quot;main.cpp&quot;
+                    file to contain this code.
+                        </p>
+                    <p align="left"><textarea rows="12" name="S1" cols="96">#include <stdio.h>
+#include <stdlib.h>
+#include <string>
+
+#include "RNReplicaNet/Inc/ReplicaNet.h"
+#include "RNPlatform/Inc/ThreadClass.h"
+
+int main(int argc,char **argv)
+{
+	RNReplicaNet::ReplicaNet *myNetwork = new RNReplicaNet::ReplicaNet;
+
+	if (!myNetwork)
+	{
+		printf("ReplicaNet failed to start\n");
+		exit(-1);
+	}
+
+	printf("ReplicaNet started\nFinding a session...\n");
+
+	// Start finding any sessions out there
+	myNetwork->SessionFind();
+
+	// Sleep for a second
+	RNReplicaNet::CurrentThread::Sleep(1000);
+
+	// Now enumerate through our list of found sessions
+	std::string found;
+	std::string firstFound;
+	do
+	{
+		found = myNetwork->SessionEnumerateFound();
+		// If a session is found then print the address
+		if (found != "")
+		{
+			printf("Found '%s'\n",found.c_str());
+		}
+		// If we have not found any sessions yet and the session address contains "Tutorial1" then store the address
+		if (found.find(std::string("Tutorial1")) != std::string::npos && firstFound == "")
+		{
+			firstFound = found;
+		}
+	} while (found != "");
+
+	// Did we find a suitable session?
+	if (firstFound == "")
+	{
+		// If no session found then create a session
+		printf("Failed to find a session, so starting a new session\n");
+		myNetwork->SessionCreate("Tutorial1");
+	}
+	else
+	{
+		// Try to join the session
+		printf("Joining '%s'\n",firstFound.c_str());
+		myNetwork->SessionJoin(firstFound);
+	}
+
+	// We do not have to wait for the session ot become stable, however in a game with hundreds of
+	// active objects it can take a second for the data to propagate to our session.
+	// We can wait for the session to become stable so we know when the session is populated with
+	// objects.
+	while (!myNetwork->IsStable())
+	{
+		printf("Waiting for the session to become stable\n");
+		RNReplicaNet::CurrentThread::Sleep(500);
+	}
+	printf("Session now stable\n");
+
+	return 0;
+}
+</textarea>
+                        </p>
+                    <p align="left">As you can see uses quite a lot of paranoid
+                    checking to list and check session names. Lets look at a smaller
+                    code chunk below.
+                        </p>
+                    <p align="left">The code chunk below
+                    shows how to use a small loop to start a session find, wait
+                    a short time for the results to come back and then enumerate
+                    the results if there are any.
+                        </p>
+                    <p align="left"><textarea rows="17" name="S1" cols="96">	myNetwork->SessionFind();
+	RNReplicaNet::CurrentThread::Sleep(1000);
+	std::string found;
+	do
+	{
+		found = myNetwork->SessionEnumerateFound();
+	} while (found != "");
+
+	if (found == "")
+	{
+		myNetwork->SessionCreate("Tutorial1");
+	}
+	else
+	{
+		myNetwork->SessionJoin(found);
+	}
+</textarea>
+                        </p>
+                    <p align="left">If a ReplicaNet network session is already
+                    running then the &quot;found&quot; string will contain the
+                    address of a session. If a session was found then the
+                    address is passed to ReplicaNet::SessionJoin() otherwise a
+                    new session is created with ReplicaNet::SessionCreate().
+                        </p>
+                    <p align="left">&nbsp;
+                        </p>
+                    <p align="left">Using the new source code in &quot;main.cpp&quot;
+                    you should be able to compile without any errors or
+                    warnings. When you run the program by using Menu bar-&gt;Build-&gt;&quot;Execute
+                    Tutotial1.exe&quot; you should see this output in a window.
+                        </p>
+                    <p align="left"><textarea rows="6" name="S1" cols="96">ReplicaNet started
+Finding a session...
+Failed to find a session, so starting a new session
+Session now stable
+Press any key to continue
+</textarea>
+                        </p>
+                    <p align="left">&nbsp;
+                        </p>
+                    <h4 align="left">Adding game objects as C++ classes
+                        </h4>
+                    <p align="left">Now we are ready to add two game class
+                    objects. In a typical game scenario you might have a C++
+                    class per object type. This way you can define game
+                    behaviour using C++ class features. In this scenario we will
+                    have a base class called &quot;BaseObject&quot; that has
+                    several virtual methods for Init(), Tick() and Render().
+                    This kind of class can be used as a common interface for all
+                    other game objects. For example:
+                        </p>
+                    <p align="left">Create &quot;BaseObject.cpp&quot; in a
+                    similar way to how &quot;main.cpp&quot; was created and
+                    added to the project, then add this code:
+                        </p>
+                    <p align="left"><textarea rows="6" name="S1" cols="96">#include "BaseObject.h"
+
+BaseObject::BaseObject()
+{
+}
+
+BaseObject::~BaseObject()
+{
+}
+
+void BaseObject::Init(void)
+{
+}
+
+void BaseObject::Tick(float timeDelta)
+{
+}
+
+void BaseObject::Render(void)
+{
+}
+</textarea>
+                        </p>
+                    <p align="left">Next create &quot;BaseObject.h&quot; and add
+                    this code:
+                        </p>
+                    <p align="left"><textarea rows="6" name="S1" cols="96">#ifndef _BASEOBJECT_H_
+#define _BASEOBJECT_H_
+
+/**
+ * A typical type of game base object with several virtual access members
+ */
+class BaseObject
+{
+public:
+	BaseObject();
+	virtual ~BaseObject();
+
+	virtual void Init(void);
+	virtual void Tick(float timeDelta);
+	virtual void Render(void);
+};
+
+#endif
+</textarea>
+                        </p>
+                    <p align="left">Editing main.cpp again change the code to be
+                    the code below:
+                        </p>
+                    <p align="left"><textarea rows="6" name="S1" cols="96">#include <stdio.h>
+#include <stdlib.h>
+#include <string>
+
+#include "RNReplicaNet/Inc/ReplicaNet.h"
+#include "RNPlatform/Inc/ThreadClass.h"
+
+#include "Player.h"
+#include "Enemy.h"
+
+int main(int argc,char **argv)
+{
+	RNReplicaNet::ReplicaNet *myNetwork = new RNReplicaNet::ReplicaNet;
+
+	if (!myNetwork)
+	{
+		printf("ReplicaNet failed to start\n");
+		exit(-1);
+	}
+
+	printf("ReplicaNet started\nFinding a session...\n");
+
+	// Start finding any sessions out there
+	myNetwork->SessionFind();
+
+	// Sleep for a second
+	RNReplicaNet::CurrentThread::Sleep(1000);
+
+	// Now enumerate through our list of found sessions
+	std::string found;
+	std::string firstFound;
+	do
+	{
+		found = myNetwork->SessionEnumerateFound();
+		// If a session is found then print the address
+		if (found != "")
+		{
+			printf("Found '%s'\n",found.c_str());
+		}
+		// If we have not found any sessions yet and the session address contains "Tutorial1" then store the address
+		if (found.find(std::string("Tutorial1")) != std::string::npos && firstFound == "")
+		{
+			firstFound = found;
+		}
+	} while (found != "");
+
+	// Did we find a suitable session?
+	if (firstFound == "")
+	{
+		// If no session found then create a session
+		printf("Failed to find a session, so starting a new session\n");
+		myNetwork->SessionCreate("Tutorial1");
+	}
+	else
+	{
+		// Try to join the session
+		printf("Joining '%s'\n",firstFound.c_str());
+		myNetwork->SessionJoin(firstFound);
+	}
+
+	// We do not have to wait for the session to become stable, however in a game with hundreds of
+	// active objects it can take a second for the data to propagate to our session.
+	// We can wait for the session to become stable so we know when the session is populated with
+	// objects.
+	while (!myNetwork->IsStable())
+	{
+		printf("Waiting for the session to become stable\n");
+		RNReplicaNet::CurrentThread::Sleep(500);
+	}
+	printf("Session now stable\n");
+
+	printf("Creating the local objects\n");
+	// Allocate and publish our Player object
+	RNReplicaNet::ReplicaObject *myPlayer = new Player;
+	// Call the PostObjectCreate() function, since we allocated the object.
+	// If ReplicaNet allocates an object then ReplicaObject::PostObjectCreate() is called
+	// after the object has been allocated and the initial DataBlock variables have been initialised.
+	myPlayer->PostObjectCreate();
+	// Publish the myPlayer object so that it can appear on other machines
+	myPlayer->Publish();
+
+	// Allocate and publish our monster objects in a similar way to the player
+	RNReplicaNet::ReplicaObject *object;
+	object = new Enemy;
+	object->PostObjectCreate();
+	object->Publish();
+	object = new Enemy;
+	object->PostObjectCreate();
+	object->Publish();
+	object = new Enemy;
+	object->PostObjectCreate();
+	object->Publish();
+	object = new Enemy;
+	object->PostObjectCreate();
+	object->Publish();
+
+	printf("Going to start the game poll loop\n");
+	RNReplicaNet::CurrentThread::Sleep(5000);
+	
+	bool doGameLoop = true;
+	while(doGameLoop)
+	{
+		RNReplicaNet::ReplicaObject *iterator;
+		myNetwork->ObjectListBeginIterate();
+
+		// Quickly scroll off the old data
+		int i;
+		for (i=0;i<80;i++)
+		{
+			printf("\n");
+		}
+
+		printf("New Frame\n");
+		iterator = myNetwork->ObjectListIterate();
+		while (iterator)
+		{
+			printf("Object session id %d and id %d with type %d\n",iterator->GetSessionID(),iterator->GetUniqueID(),iterator->GetClassID());
+
+			// Every object ctor uses SetOpaquePointer() to set the BaseObject pointer
+			BaseObject *baseObject = (BaseObject *)iterator->GetOpaquePointer();
+			baseObject->Tick(myNetwork->GetLocalTime());
+
+
+			iterator = myNetwork->ObjectListIterate();
+		}
+		myNetwork->ObjectListFinishIterate();
+
+		RNReplicaNet::CurrentThread::Sleep(1000);
+	}
+
+	return 0;
+}
+</textarea>
+                        </p>
+                    <p align="left">The extra code added to &quot;main.cpp&quot;
+                    basically handles allocating some new game objects and
+                    iterating through all available game objects, very much like
+                    a game could do.
+                        </p>
+                    <p align="left">Lastly we need to create the files for our
+                    game objects.
+                        </p>
+                    <p align="left">Create &quot;Enemy.cpp&quot; and add this
+                    code:
+                        </p>
+                    <p align="left"><textarea rows="6" name="S1" cols="96">#include "Enemy.h"
+
+Enemy::Enemy()
+{
+	SetOpaquePointer((BaseObject *)this);
+}
+Enemy::~Enemy()
+{
+}
+
+void Enemy::Init(void)
+{
+	printf("Enemy::Init() called\n");
+}
+void Enemy::Tick(float timeDelta)
+{
+	printf("Enemy::Tick(%f)\n",timeDelta);
+}
+void Enemy::Render(void)
+{
+}
+</textarea>
+                        </p>
+                    <p align="left">Then for&nbsp; &quot;Enemy.h&quot;
+                        </p>
+                    <p align="left"><textarea rows="6" name="S1" cols="96">#ifndef _ENEMY_H_
+#define _ENEMY_H_
+
+#include "BaseObject.h"
+#include "_RO_Enemy.h"
+
+class Enemy : _RO_DO_PUBLIC_RO(Enemy) , public BaseObject
+{
+public:
+	Enemy();
+	virtual ~Enemy();
+
+	void Init(void);
+	void Tick(float timeDelta);
+	void Render(void);
+
+	void PostObjectCreate(void)
+	{
+		Init();
+	}
+};
+
+#endif
+</textarea>
+                        </p>
+                    <p align="left">You will notice that the class
+                    &quot;Enemy&quot; inherits from &quot;BaseObject&quot; and
+                    &quot;_RO_DO_PUBLIC_RO(Enemy)&quot;. The latter term equates
+                    to &quot;public _RO_Enemy&quot; and is included so that
+                    ReplicaNet knows how to control this C++ class.
+                        </p>
+                    <p align="left">Create &quot;Player.cpp&quot; and add this
+                    code:
+                        </p>
+                    <p align="left"><textarea rows="6" name="S1" cols="96">#include "Player.h"
+
+Player::Player() : mPlayerColour(-1)
+{
+	SetOpaquePointer((BaseObject *)this);
+}
+Player::~Player()
+{
+}
+
+void Player::Init(void)
+{
+	printf("Player::Init() called\n");
+
+	if (IsMaster())
+	{
+		srand(GetSessionID()+1);
+		mPlayerColour = rand();
+	}
+
+	printf("mPlayerColour = %d\n",mPlayerColour);
+}
+void Player::Tick(float timeDelta)
+{
+	printf("Player::Tick(%f)\n",timeDelta);
+	printf("mPlayerColour = %d\n",mPlayerColour);
+}
+void Player::Render(void)
+{
+}
+</textarea>
+                        </p>
+                    <p align="left">Then for &quot;Player.h&quot;:
+                        </p>
+                    <p align="left"><textarea rows="6" name="S1" cols="96">#ifndef _PLAYER_H_
+#define _PLAYER_H_
+
+#include "BaseObject.h"
+#include "_RO_Player.h"
+
+class Player : _RO_DO_PUBLIC_RO(Player) , public BaseObject
+{
+public:
+	Player();
+	virtual ~Player();
+
+	void Init(void);
+	void Tick(float timeDelta);
+	void Render(void);
+
+	void PostObjectCreate(void)
+	{
+		Init();
+	}
+
+	int mPlayerColour;
+};
+
+#endif
+</textarea>
+                        </p>
+                    <p align="left">&nbsp;
+                        </p>
+                    <p align="left">You will notice that both objects use the
+                    function &quot;SetOpaquePointer((BaseObject *)this);&quot;
+                    in the constructor. This useful feature enables each class
+                    to set the ReplicaObject opaque pointer so that when in
+                    main.cpp the ReplicaNet object list is iterated the
+                    ReplicaObject::GetOpaquePointer() pointer result can be cast
+                    safely to &quot;(BaseObject *)&quot;. Because the function
+                    members for the &quot;BaseObject&quot; are virtual the real
+                    function members are called in the &quot;Player&quot; and
+                    &quot;Enemy&quot; classes.
+                        </p>
+                    <p align="left">&nbsp;
+                        </p>
+                    <p align="left">Lastly we need to create the ROL files for
+                    both objects and update the &quot;Application.rol&quot;
+                    file.
+                        </p>
+                    <p align="left">Create &quot;_RO_Player.rol&quot; and add
+                    this file to the project as before with the &quot;Application.rol&quot;
+                    file. Make sure the custom build rules are also set for this
+                    file. Then add this code to the file:
+                        </p>
+                    <p align="left"><textarea rows="5" name="S1" cols="96">object Player
+{
+}
+</textarea>
+                        </p>
+                    <p align="left">Do the same for the &quot;_RO_Enemy.rol&quot;
+                    file and add the code:
+                        </p>
+                    <p align="left"><textarea rows="5" name="S1" cols="96">object Enemy
+{
+}
+</textarea>
+                        </p>
+                    <p align="left">Edit &quot;Application.rol&quot; to be:
+                        </p>
+                    <p align="left"><textarea rows="5" name="S1" cols="96">application
+{
+	object Player;
+	object Enemy;
+}
+
+</textarea>
+                        </p>
+                    <p align="left">This tells the ReplicaNet application to
+                    register the classes &quot;Player&quot; and
+                    &quot;Enemy&quot; as network ReplicaObject classes.
+                        </p>
+                    <p align="left">Do a build now (the same way as described in
+                    Tutorial 1 part 1 and you should see that the ROL files get compiled,
+                    for example:
+                        </p>
+                    <p align="left"><textarea rows="5" name="S1" cols="96">Performing Custom Build Step on .\_RO_Player.rol
+Performing Custom Build Step on .\_RO_Enemy.rol
+Performing Custom Build Step on .\Application.rol
+</textarea>
+                        </p>
+                    <p align="left">&nbsp;
+                        </p>
+                    <p align="left">But you will get linker errors. This is
+                    because the compiled ROL file output has not been added to
+                    the project. Add the generated files &quot;_RO_Enemy.cpp&quot;,
+                    &quot;_RO_Enemy.h&quot;, &quot;_RO_Player.cpp&quot; and
+                    &quot;_RO_Player.h&quot; to the project.
+                        </p>
+                    <p align="left">Rebuild the project and you should not have
+                    any errors or warnings.
+                        </p>
+                    <p align="left">When you run the application you should see
+                    the output:
+                        </p>
+                    <p align="left"><textarea rows="13" name="S1" cols="96">ReplicaNet started
+Finding a session...
+Failed to find a session, so starting a new session
+Session now stable
+Creating the local objects
+Player::Init() called
+mPlayerColour = 41
+Enemy::Init() called
+Enemy::Init() called
+Enemy::Init() called
+Enemy::Init() called
+Going to start the game poll loop</textarea>
+                        </p>
+                    <p align="left">Which pauses and then displays a constantly
+                    updating list of game objects:
+                        </p>
+                    <p align="left"><textarea rows="13" name="S1" cols="96">New Frame
+Object session id 0 and id 0 with type 0
+Player::Tick(6.008302)
+mPlayerColour = 41
+Object session id 0 and id 1 with type 1
+Enemy::Tick(6.008535)
+Object session id 0 and id 2 with type 1
+Enemy::Tick(6.008671)
+Object session id 0 and id 3 with type 1
+Enemy::Tick(6.008815)
+Object session id 0 and id 4 with type 1
+Enemy::Tick(6.008950)</textarea>
+                        </p>
+                    <p align="left">&nbsp;
+                        </p>
+                    <p align="left">If you run the tutorial for a second time,
+                    while the first is running you should see some output
+                    similar to this:&nbsp;&nbsp;
+                        </p>
+                    <p align="left"><textarea rows="20" name="S1" cols="96">ReplicaNet started
+Finding a session...
+Found 'SESSION://UDP@10.0.0.10:1227/{SESSIONNAME=Tutorial1}'
+Joining 'SESSION://UDP@10.0.0.10:1227/{SESSIONNAME=Tutorial1}'
+Waiting for the session to become stable
+Player::Init() called
+mPlayerColour = -1
+Enemy::Init() called
+Enemy::Init() called
+Enemy::Init() called
+Enemy::Init() called
+Session now stable
+Creating the local objects
+Player::Init() called
+mPlayerColour = 45
+Enemy::Init() called
+Enemy::Init() called
+Enemy::Init() called
+Enemy::Init() called
+Going to start the game poll loop</textarea>
+                        </p>
+                    <p align="left">You should see this instance of the tutorial
+                    display it has found another session and attempt to join the
+                    session. As you can see the number of objects being created
+                    is twice as many as the tutorial is allocating in the code.
+                    This is because the first set of objects created are
+                    actually objects that come from the first instance of the
+                    tutorial.
+                        </p>
+                    <p align="left">Watch the output in the first instance of
+                    the tutorial and you should see:
+                        </p>
+                    <p align="left">&nbsp;<textarea rows="23" name="S1" cols="96">New Frame
+Object session id 0 and id 0 with type 0
+Player::Tick(8.020727)
+mPlayerColour = 41
+Object session id 0 and id 1 with type 1
+Enemy::Tick(8.020975)
+Object session id 0 and id 2 with type 1
+Enemy::Tick(8.021059)
+Object session id 0 and id 3 with type 1
+Enemy::Tick(8.021178)
+Object session id 0 and id 4 with type 1
+Enemy::Tick(8.021265)
+Object session id 1 and id 0 with type 0
+Player::Tick(8.021347)
+mPlayerColour = -1
+Object session id 1 and id 1 with type 1
+Enemy::Tick(8.021507)
+Object session id 1 and id 2 with type 1
+Enemy::Tick(8.021593)
+Object session id 1 and id 3 with type 1
+Enemy::Tick(8.021676)
+Object session id 1 and id 4 with type 1
+Enemy::Tick(8.021769)</textarea>
+                        </p>
+                    <p align="left">This shows the session is working and that
+                    the objects created by one session are being created by
+                    ReplicaNet on the other session.
+                        </p>
+                    <p align="left">You might notice however that the &quot;mPlayerColour =
+                    -1&quot;
+                    line is wrong as this cannot be the real player colour.
+                        </p>
+                    <p align="left">This is because we have not yet told
+                    ReplicaNet to transmit this information. This is covered in <a href="Tutorial1_3_DotNET.html">tutorial
+                    1 part 3</a>.
+                        </p>
+                    <p align="left">&nbsp;
+                        </p>
+                    <p align="left">&nbsp;
+                        </p>
+                </TD></TR></TABLE></HTML>

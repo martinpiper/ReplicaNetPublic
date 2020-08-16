@@ -1,0 +1,11 @@
+#pragma once
+#include <BootStat>
+#include <ARMInterop>
+
+DefProc ProcessPlayer(loginID)
+	CallARM(&.GCC__ZN12RNReplicaNet7RNLobby17StatServerSession13ProcessPlayerEi , loginID)
+EndProc
+
+DefProc ProcessGame
+	CallARM(&.GCC__ZN12RNReplicaNet7RNLobby17StatServerSession11ProcessGameEv)
+EndProc

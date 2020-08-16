@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ROLFiles">
+      <UniqueIdentifier>{15d53360-8c18-4321-83e6-ea7bee8df16a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CompiledObjects">
+      <UniqueIdentifier>{8cfe422b-8976-444f-ac79-ee433530c2a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{184d3442-23d4-42c4-9c47-ebb26176cb59}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="_Def_Example2.cpp">
+      <Filter>CompiledObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="_RO_Test1.cpp">
+      <Filter>CompiledObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Test1.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\ReplicaNetPublic\AmalgamatedReplicaNet.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="_Def_Example2.h">
+      <Filter>CompiledObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="_RO_Test1.h">
+      <Filter>CompiledObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Test1.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="ExampleCustomType.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="_Def_Example2.rol">
+      <Filter>ROLFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="_RO_Test1.rol">
+      <Filter>ROLFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="makefile" />
+    <CustomBuild Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

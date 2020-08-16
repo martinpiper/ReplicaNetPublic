@@ -1,0 +1,7 @@
+class application
+{
+	application()	__doappdef_ctor();
+	~application()	__doappdef_dtor();
+
+	object(x)	__doappdef_object(x);
+};

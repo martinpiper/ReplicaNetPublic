@@ -1,0 +1,48 @@
+class networking
+{
+	networking()			__networking();
+	~networking()			__networkingend();
+};
+
+class object
+{
+	object(x)											__objectnew(x);
+	~object()											__objectnewend();
+	datablock(x)										__include(x);
+	datablockcustom(x)									__includecustom(x);
+	addinclude(x)										__includecustom2(x);
+
+	extern(...)											__function(...);
+
+	ApproveMigration()									H<_RO_DO_APPROVEMIGRATION();
+	ApproveFault()										H<_RO_DO_APPROVEFAULT();
+
+	Reliable()											H<_RO_DO_REPLICAOBJECT_MAKERELIABLE();
+	Certain()											H<_RO_DO_REPLICAOBJECT_MAKECERTAIN();
+	Ordered()											H<_RO_DO_REPLICAOBJECT_MAKEORDERED();
+	Unreliable()										H<_RO_DO_REPLICAOBJECT_MAKEUNRELIABLE();
+
+	SetLoadBalancing(x)									H<_RO_DO_SETUPLOADBALANCE(x);
+	SetLoadBalancingDefault(x)							H<_RO_DO_SETUPLOADBALANCEDEFAULT(x);
+	SetLoadScore(x)										H<_RO_DO_SETUPLOADBALANCESCORE(x);
+	SetLoadScoreDefault(x)								H<_RO_DO_SETUPLOADBALANCESCOREDEFAULT(x);
+
+	SetPropagateToSessionDistanceRecalculationDelay(x)	H<_RO_DO_SETUPPROPAGATETOSESSIONDISTANCERECALCULATIONDELAY(x);
+
+	SetPropagateToSessionDistance(x)					H<_RO_DO_SETUPPROPAGATEDISTANCE(x);
+	SetPropagateToSessionDistanceDefault(x)				H<_RO_DO_SETUPPROPAGATEDISTANCEDEFAULT(x);
+
+	SetPropagateToSessionDistanceInclude(x)				H<_RO_DO_SETUPPROPAGATEDISTANCEINCLUDE(x);
+	SetPropagateToSessionDistanceIncludeDefault(x)		H<_RO_DO_SETUPPROPAGATEDISTANCEINCLUDEDEFAULT(x);
+
+	SetPropagateToSessionDistanceExclude(x)				H<_RO_DO_SETUPPROPAGATEDISTANCEEXCLUDE(x);
+	SetPropagateToSessionDistanceExcludeDefault(x)		H<_RO_DO_SETUPPROPAGATEDISTANCEEXCLUDEDEFAULT(x);
+
+	SetOpaqueType(x)		__setOpaqueType(x);
+
+
+	RealInclude(x)			__setRealInclude(x);
+	AddHeaderInclude(x)		__includecustom3(x);
+
+	SetBand(x)				H<_RO_DO_SETUPBAND(x);
+};

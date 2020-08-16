@@ -1,0 +1,309 @@
+<HTML>
+	<HEAD>
+		<TITLE>© Replica Software</TITLE>
+		<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta name="description" content="ReplicaNet is an object oriented C++ library that is engineered to help the developer of applications that require a stable and low maintenance middleware solution to networking.">
+	<meta name="keywords" content="ReplicaNet, RNLobby, middleware, replica, net, C++, network, game, gaming, multiplayer, library, source, develop">
+	<link href="../assets/replica.css" rel="stylesheet" type="text/css">
+	</HEAD>
+		<table align="center" width="760" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td>
+					<table width="100%" border="0" cellspacing="1" cellpadding="0">
+						<TBODY>
+							<tr>
+								<td colspan="9" height="89"><img src="../assets/images/headr.gif"></td>
+							</tr>
+				</td>
+			</tr>
+		</table>
+		<h1 align="center">Tutorial 1 Part 1 - DotNET</h1>
+		<p align="left">Technical terms used in this tutorial can be found in
+        the <a href="Tutorial_Glossary.html">glossary</a>. This tutorial assumes
+        the ReplicaNet files are in the default location used by the installer.
+                    </p>
+                    <p align="left">This tutorial shows:</p>
+                    <ul>
+                      <li>
+                        <p align="left">How to create a simple ReplicaNet
+                        project from scratch, using Microsoft Visual C++dotNET. This tutorial uses Visual Studio 2003 however the techniques described are also similar for newer versions.</p>
+                      </li>
+                      <li>
+                        <p align="left">How to set-up a new project with the necessary
+                        header include files.</p>
+                      </li>
+                      <li>
+                        <p align="left">Prepare some custom build rules to build
+                        ROL files using the ROLCompiler tool.</p>
+                      </li>
+                    </ul>
+                    <h4 align="left"><b>
+        Start Microsoft Visual C++ dotNET</b></h4>
+                    <p align="left">
+        If there is a solution loaded then Menu bar->File->Close Solution.<br>
+                    </p>
+                    <h4 align="left"><b>
+        Now create our workspace.</b></h4>
+                    <p align="left">Menu
+                    bar-&gt;File-&gt;New-&gt;Project...</p>
+                    <p align="left">Then pick &quot;Visual C++ Projects&quot;
+                    from the left hand side and &quot;Win32 Project&quot;</p>
+                    <p align="left"><img border="0" src="../assets/images/Tutorial1Assets/DotNETPic1.jpeg"><br>
+                    <br>
+                    Change the &quot;Location:&quot; <a href="Tutorial_Glossary.html">Box</a>
+                    to &quot;C:\Program Files\Replica Software\ReplicaNet\&quot;<br>
+                    Change the &quot;Name:&quot; <a href="Tutorial_Glossary.html">Box</a>&nbsp;
+                    to &quot;Tutorial1&quot;<br>
+                    <a href="Tutorial_Glossary.html">
+	Click</a> "OK".</p>
+                    <p align="left">
+        <br>
+                    <img border="0" src="../assets/images/Tutorial1Assets/DotNETPic1a.jpeg"><br>
+                    </p>
+                    <p align="left">
+                    Select &quot;Application Settings&quot;, select
+                    &quot;Console Application&quot; and check &quot;Empty
+                    Project&quot;</p>
+                    <p align="left">
+ <a href="Tutorial_Glossary.html">Click</a>  &quot;Finish&quot;.</p>
+                    <h4 align="left">Solution created</h4>
+                    <p align="left">
+        The Solution view should display. If this does not display then you can open
+                    the display by choosing:<br>
+        Menu bar-&gt;View-&gt;Solution Explorer</p>
+                    <p align="left">&nbsp;</p>
+                    <div align="center">
+                      <center>
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                          <td width="50%">A view containing &quot;Source
+                            Files&quot;, &quot;Header Files&quot; and
+                            &quot;Resource Files&quot; should be displayed.</td>
+                          <td width="50%"><img border="0" src="../assets/images/Tutorial1Assets/DotNETPic5.jpeg"></td>
+                        </tr>
+                      </table>
+                      </center>
+                    </div>
+                    <p align="left">
+        Open the menu above the "Tutorial1&quot; entry in the list. Choose
+        &quot;Add-&gt;New Folder&quot;.</p>
+                    <p align="left">
+        Name the new folder &quot;ROL Files&quot;.</p>
+                    <div align="center">
+                      <center>
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                          <td width="50%">
+        Open the menu above the &quot;ROL Files&quot; folder and pick
+        &quot;Properties&quot;. From the open &quot;Properties&quot; window
+        change the &quot;Filter&quot; box to be &quot;rol&quot;.</td>
+                          <td width="50%"><img border="0" src="../assets/images/Tutorial1Assets/DotNETPic6.jpeg"></td>
+                        </tr>
+                      </table>
+                      </center>
+                    </div>
+                    <p align="left">
+        Adding an extra folder helps to keep ROL files, that describe objects, separate from our other source files.<br>
+        <br>
+        Open the menu above the "Tutorial1 files" entry again and choose
+        Add-&gt;"New Folder&quot; once more.
+                    </p>
+                    <p align="left">
+        Name the new folder &quot;Compiled Objects&quot;
+                    </p>
+                    <p align="left">
+        This folder is where the compiled ROL file output files can go to keep the project tidy.<br>
+        <br>
+        <br>
+        Open the menu on "Tutorial1&quot; again and choose
+        &quot;Properties&quot;.</p>
+                    <p align="left">Change &quot;Configuration:&quot; to
+                    &quot;All Configurations&quot;.<br>
+                    Choose the &quot;C/C++&quot;-&gt;&quot;General&quot; item.<br>
+                    Change the &quot;Category:&quot; to &quot;Preprocessor&quot;<br>
+                    Change &quot;Additional include directories:&quot; to
+                    &quot;..\ReplicaNetPublic\Includes&quot;</p>
+                    <p align="left">
+                    <img border="0" src="../assets/images/Tutorial1Assets/DotNETPic9.jpeg" width="644" height="433"><br>
+                    <br>
+        <br>
+        <br>
+                    <p align="left">
+        Choose the "C/C++"-&gt;&quot;Code Generation&quot; item.<br>
+        Change &quot;Configuration:&quot; to &quot;Release&quot;, answer
+                    &quot;Yes&quot;<br>
+        Change the &quot;Runtime Library:&quot; to &quot;Multi-threaded
+                    (/MT)&quot;.
+                    </p>
+                    <p align="left">
+        &nbsp; <img border="0" src="../assets/images/Tutorial1Assets/DotNETPic11.jpeg"><br>
+                    </p>
+                    <p align="left">
+        Change &quot;Configuration:&quot; to &quot;Debug&quot;, answer
+        &quot;Yes&quot;<br>
+        Change the &quot;Runtime Library:&quot; to &quot;Multi-threaded Debug (/MTd)&quot;.
+                    </p>
+                    <p align="left">
+        &nbsp; <img border="0" src="../assets/images/Tutorial1Assets/DotNETPic12.jpeg"><br>
+                    </p>
+                    <p align="left">
+        Click &quot;OK&quot;.</p>
+                    <h4 align="left">
+        <br>
+                    Start adding files to the project.</h4>
+                    <p align="left"><br>
+                    Open the menu over &quot;Tutorial1&quot; and choose
+                    &quot;Add-&gt;Add New Item...&quot;<br>
+                    Make sure &quot;C++ File&quot; is selected. Change the
+                    &quot;Name:&quot; box to &quot;main.cpp&quot;<br>
+                    </p>
+                    <p align="left">
+                    <img border="0" src="../assets/images/Tutorial1Assets/DotNETPic8.jpeg"><br>
+                    </p>
+                    <p align="left">
+	Click &quot;Open&quot;.<br>
+        NOTE: After adding a file to the project you might be asked if you want to add it to source control. You can usually choose no for now.
+                    However source control is a good idea for projects. Dealing with source control is really beyond the scope of this tutorial.</p>
+                    <p align="left">
+        The solution view will then update to contain the new file and put the new file in the "Source Files" folder.<br>
+        To view the filenames in each folder click the <a href="Tutorial_Glossary.html">cross
+                    box</a> to the left of the folder name.</p>
+                    <div align="center">
+                      <center>
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                          <td width="33%"><img border="0" src="../assets/images/Tutorial1Assets/DotNETPic14.jpeg"></td>
+                          <td width="33%" valign="middle" align="center">Gives</td>
+                          <td width="34%"><img border="0" src="../assets/images/Tutorial1Assets/DotNETPic14a.jpeg"></td>
+                        </tr>
+                      </table>
+                      </center>
+                    </div>
+                    <p align="left"><br>
+        To edit each file you can <a href="Tutorial_Glossary.html"> double click</a> the file name and the file will display. The newly created "main.cpp" file should be empty.<br>
+        <br>
+        Now add the ReplicaNet amalgamated source file found in <strong>"C:\Program&nbspFiles\Replica&nbspSoftware\ReplicaNet\ReplicaNetPublic\AmalgamatedReplicaNet.cpp"</strong> using similar steps as the above.<br />
+        <br>
+        Now we can start writing our ReplicaNet program.<br>
+        Double-click the "main.cpp" filename to edit the file and add this code to the "main.cpp" file.<br>
+                    </p>
+                      <p align="left"><textarea rows="12" name="S1" cols="96">#include <stdio.h>
+#include <stdlib.h>
+
+#include "RNReplicaNet/Inc/ReplicaNet.h"
+
+int main(int argc,char **argv)
+{
+    RNReplicaNet::ReplicaNet *myNetwork = new RNReplicaNet::ReplicaNet;
+
+    return 0;
+}
+</textarea></p>
+                    <p align="left">
+        <br>
+        Open the menu over &quot;Tutorial1&quot; and choose &quot;Add-&gt;Add
+        New Item...&quot;<br>
+        This time choose &quot;Text File (.txt)&quot;
+                    <br>
+	Change the &quot;Name:&quot; box to &quot;Application.rol&quot;.</p>
+                    <p align="left">
+        <img border="0" src="../assets/images/Tutorial1Assets/DotNETPic13.jpeg"></p>
+                    <p align="left">
+	Click &quot;Open&quot;.<br>
+                    </p>
+                    <p align="left">
+        The solution view will then update to contain the new file and put the new file in the "ROL Files" folder.<br>
+        Double-click the "Application.rol" filename to edit the file and add this code:<br>
+                    </p>
+                    <p align="left"><textarea rows="4" name="S2" cols="96">application
+{
+}
+</textarea>
+        <br>
+                    <br>
+                    <b>Tip: When editing rol files, the file must end with a
+                    carriage return otherwise the RNROLCompiler will display the&nbsp;message
+                    &quot;warning : EOF encountered while close braces
+                    needed&quot;.</b></p>
+                    <h4 align="left">
+        <br>
+                    Custom build rules for ROL files</h4>
+                    <p align="left">
+        Now we need to tell dotNET how to compile ROL files. This uses the custom build rules available to us.<br>
+        Open the workspace projects settings by opening the menu on &quot;Application.rol&quot; in the
+        solution view and choosing &quot;Properties&quot;<br>
+        Select the &quot;Custom Build Step&quot; folder.<br>
+        Change &quot;Configuration:&quot; to be "All Configurations".<br>
+        In the &quot;Command Line&quot; box change in to be:<br>
+        &nbsp;&quot;..\ReplicaNetPublic\RNROLCompiler\bin\rnrolcompiler.exe $(InputName).rol $(InputName).cpp $(InputName).h&quot;
+                    </p>
+                    <p align="left">
+        In the "Outputs" box change it to contain &quot;$(InputName).cpp;$(InputName).h;&quot;<br>
+                    </p>
+                    <p align="left">
+        The dialog should look like:</p>
+                    <p align="left">
+        &nbsp; <img border="0" src="../assets/images/Tutorial1Assets/DotNETPic15.jpeg" width="644" height="433"></p>
+                    <p align="left"><b>Tip: Remember how to update the custom
+                    build settings because you will need to repeat it for every
+                    ROL file you add to your application. DotNET does not inherit
+                    settings for newly added files from the folder or file type.</b></p>
+                    <p align="left">
+        Click "OK".<br>
+                    </p>
+                    <p align="left">Now try to build the solution from
+                    &quot;Menu Bar-&gt;Build-&gt;Build Solution&quot;. You will
+                    get a link error about an &quot;unresolved external&quot;,
+                    this is normal.
+        <br>
+        The "Application.rol" file should have generated two source files called "Application.cpp" and "Application.h".<br>
+        These files, even though they generated by the ROLCompiler, need to be
+                    compiled by dotNET.<br>
+        To add these files to the project open a menu over "Tutorial1 files" in the workspace view.<br>
+        Choose "Add-&gt;Add Existing Item...&quot;.<br>
+        In the file open dialog, select &quot;Application.cpp&quot; and
+                    Application.h&quot;.<br>
+                    &nbsp;<img border="0" src="../assets/images/Tutorial1Assets/DotNETPic16.jpeg"></p>
+                    <p align="left"><br>
+        Click &quot;Open&quot; to add these files. You might want to add these
+                    generated files to the &quot;Compiled Objects&quot; folder
+                    to keep everything tidy.<br>
+                    </p>
+                    <h4 align="left">Try a build.</h4>
+                    <p align="left">
+        Choose Menu bar-&gt;Build-&gt;Build Solution<br>
+        You should see this output in the build output window.<br>
+                    </p>
+                    <p align="left"><textarea rows="13" name="S2" cols="96">------ Build started: Project: Tutorial1, Configuration: Debug Win32 ------
+
+Compiling...
+Application.cpp
+Linking...
+
+Build log was saved at "file://c:\Program Files\Replica Software\ReplicaNet\Tutorial1\Debug\BuildLog.htm"
+Tutorial1 - 0 error(s), 0 warning(s)
+
+
+---------------------- Done ----------------------
+
+    Build: 1 succeeded, 0 failed, 0 skipped
+</textarea>
+        <br>
+        <br>
+                    </p>
+                    <p align="left">
+        Now looking at the "Application.cpp" and &quot;Application.h&quot; (Application.h
+        is in the &quot;Header Files&quot; folder) you should see some generated code from the ROL compiler.<br>
+        NOTE: At the top of these two source files is "/* Auto-generated with
+        RNROLCompiler Vx.x.x.x don't edit */" which tells you the files get generated by the ROL Compiler. Changes in these files will get lost if they are edited.<br>
+        <br>
+        <br>
+        At this stage the application does not do much except allocate a new ReplicaNet class.<br>
+        <br>
+        Now we can start to add C++ classes. These classes could be objects in a game that control enemies or the player, for example.
+        This is covered in <a href="Tutorial1_2_DotNET.html">tutorial 1 part 2</a>.
+                    </p>
+                    <p align="left">
+        &nbsp;
+                    </p>
+                </TD></TR></TABLE></HTML>

@@ -1,0 +1,176 @@
+a:visited    { text-decoration: none; color: #FF6600; }
+a:active     { text-decoration: none; color: #FF6600; }
+a:hover      { text-decoration: underline; color: #FF6600;   }
+table        {
+	font-family:  Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color:#484C4C;
+}
+body         {
+	margin: 0px 50px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #484C4C;
+
+
+
+
+
+}
+H1 {
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+CAPTION { font-weight: bold }
+A.qindex {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+A.qindexRef {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+A.el {
+	text-decoration: none;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+A.elRef { font-weight: bold }
+A.code { text-decoration: none; font-weight: normal; color: #4444ee }
+A.codeRef { font-weight: normal; color: #4444ee }
+DL.el { margin-left: -1cm }
+DIV.fragment { width: 100%; border: none; background-color: #eeeeee }
+DIV.ah { background-color: black; font-weight: bold; color: #ffffff; margin-bottom: 3px; margin-top: 3px }
+TD.md { background-color: #E4EBEC; font-weight: bold; }
+TD.mdname1 { background-color: #E4EBEC; font-weight: bold; color: #602020; }
+TD.mdname { background-color: #E4EBEC; font-weight: bold; color: #602020; width: 600px; }
+DIV.groupHeader { margin-left: 16px; margin-top: 12px; margin-bottom: 6px; font-weight: bold }
+DIV.groupText { margin-left: 16px; font-style: italic; font-size: smaller }
+FONT.keyword       { color: #008000 }
+FONT.keywordtype   { color: #604020 }
+FONT.keywordflow   { color: #e08000 }
+FONT.comment       { color: #800000 }
+FONT.preprocessor  { color: #806020 }
+FONT.stringliteral { color: #002080 }
+FONT.charliteral   { color: #008080 }
+
+.img {
+
+
+margin: 0px 0px 20px 20px
+}
+.ipt {
+font-family:  Arial, Helvetica, sans-serif; font-size: 12px; color:#000000;
+}
+.hd {
+	margin: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #484C4C;
+
+}
+.brd {
+	border-top: 1px none;
+	border-right: 1px solid #637B7D;
+	border-bottom: 1px none;
+	border-left: 1px none;
+
+
+}
+.txt {
+	padding-top: 0px;
+	padding-right: 30px;
+	padding-bottom: 40px;
+	padding-left: 30px;
+
+}
+.smltxt {
+
+	font-family:  Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color:#484C4C;
+}
+.txtr {
+
+	padding-top: 0px;
+	padding-right: 30px;
+	padding-bottom: 40px;
+	padding-left: 30px;
+}
+.smltxto {
+
+
+	font-family:  Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color:#FF6600;
+}
+.list {
+	list-style-position: outside;
+	list-style-image: url(images/bullet.gif);
+
+}
+.brdt {
+
+	border-top: 1px solid #637B7D;
+	border-right: 1px none;
+	border-bottom: 1px none;
+	border-left: 1px none;
+}
+h2 {
+	text-align: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #484C4C;
+
+}
+h3 {
+
+	text-align: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #484C4C;
+}
+a:link {
+text-decoration: none; color: #FF6600;
+}
+
+/* Extra doxygen styles */
+.memtemplate {
+  font-size: 80%;
+  color: #606060;
+  font-weight: normal;
+} 
+.memnav { 
+  background-color: #eeeeee;
+  text-align: center;
+  margin: 2px;
+  margin-right: 15px;
+  padding: 2px;
+}
+.memname {
+  white-space: nowrap;
+  font-weight: bold;
+}
+.memdoc{
+  padding-left: 10px;
+}
+.memproto {
+  background-color: #E4EBEC;
+  width: 100%;
+  font-weight: bold;
+  -moz-border-radius: 8px 8px 8px 8px;
+}
+.paramkey {
+  text-align: right;
+}
+.paramtype {
+  white-space: nowrap;
+}
+.paramname {
+  color: #602020;
+  font-style: italic;
+  white-space: nowrap;
+}

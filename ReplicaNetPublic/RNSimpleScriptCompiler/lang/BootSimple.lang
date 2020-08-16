@@ -1,0 +1,13 @@
+#pragma once
+#Include <SSE_Standard>
+// Standard include script for SimpleScript
+
+AsmNOP
+AsmNOP
+AsmNOP
+AsmNOP
+
+AsmBranch PP _procMain
+
+// This forces the thread to exit
+AsmExternal SSE_ThreadExit

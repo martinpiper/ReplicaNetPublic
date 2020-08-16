@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugMT|Win32">
+      <Configuration>DebugMT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseMT|Win32">
+      <Configuration>ReleaseMT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMT|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugMT|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|Win32'">
+    <OutDir>.\Example9___Win32_ReleaseMT\</OutDir>
+    <IntDir>.\Example9___Win32_ReleaseMT\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMT|Win32'">
+    <OutDir>.\Example9___Win32_DebugMT\</OutDir>
+    <IntDir>.\Example9___Win32_DebugMT\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>../Common3DApp/Inc;../ReplicaNetPublic/Includes;../;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;WIN32;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Example9___Win32_ReleaseMT\</AssemblerListingLocation>
+      <BrowseInformation>true</BrowseInformation>
+      <PrecompiledHeaderOutputFile>.\Example9___Win32_ReleaseMT\Example9.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\Example9___Win32_ReleaseMT\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Example9___Win32_ReleaseMT\</ProgramDataBaseFileName>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\Example9___Win32_ReleaseMT\Example9.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Example9___Win32_ReleaseMT\Example9.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>.\Example9___Win32_ReleaseMT\Example9.exe</OutputFile>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>../Common3DApp/Common3DApp___Win32_ReleaseMT/Common3DApp.lib;d3dx8.lib;d3d8.lib;d3dxof.lib;dxguid.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libci</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugMT|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <MinimalRebuild>true</MinimalRebuild>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>../Common3DApp/Inc;../ReplicaNetPublic/Includes;../;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;WIN32;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Example9___Win32_DebugMT\</AssemblerListingLocation>
+      <BrowseInformation>true</BrowseInformation>
+      <PrecompiledHeaderOutputFile>.\Example9___Win32_DebugMT\Example9.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\Example9___Win32_DebugMT\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Example9___Win32_DebugMT\</ProgramDataBaseFileName>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\Example9___Win32_DebugMT\Example9.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Example9___Win32_DebugMT\Example9.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <OutputFile>.\Example9___Win32_DebugMT\Example9.exe</OutputFile>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>../Common3DApp/Common3DApp___Win32_DebugMT/Common3DApp.lib;d3dx8dt.lib;d3d8.lib;d3dxof.lib;dxguid.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libci</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Dolphin.h" />
+    <ClInclude Include="Plane.h" />
+    <ClInclude Include="_Def_Example9.h" />
+    <ClInclude Include="_RO_Dolphin.h" />
+    <ClInclude Include="_RO_Plane.h" />
+    <ClInclude Include="GameClass.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Network.h" />
+    <ClInclude Include="Shadow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="winmain.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="airplane 2.x">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="bihull.bmp" />
+    <CustomBuild Include="directx.ico" />
+    <CustomBuild Include="Dolphin1.x">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="seafloor.bmp" />
+    <CustomBuild Include="seafloor.x">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="wings.bmp" />
+    <CustomBuild Include="_Def_Example9.rol">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|Win32'">..\ReplicaNetPublic\rnrolcompiler\bin\rnrolcompiler.exe -v1 %(Filename).rol %(Filename).cpp %(Filename).h</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|Win32'">%(Filename).cpp;%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugMT|Win32'">..\ReplicaNetPublic\rnrolcompiler\bin\rnrolcompiler.exe -v1 %(Filename).rol %(Filename).cpp %(Filename).h</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugMT|Win32'">%(Filename).cpp;%(Filename).h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='DebugMT|Win32'">%(Identity) Performing Custom Build Tools</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|Win32'">%(Identity) Performing Custom Build Tools</Message>
+    </CustomBuild>
+    <CustomBuild Include="_RO_Dolphin.rol">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|Win32'">..\ReplicaNetPublic\rnrolcompiler\bin\rnrolcompiler.exe -v1 %(Filename).rol %(Filename).cpp %(Filename).h</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|Win32'">%(Filename).cpp;%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugMT|Win32'">..\ReplicaNetPublic\rnrolcompiler\bin\rnrolcompiler.exe -v1 %(Filename).rol %(Filename).cpp %(Filename).h</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugMT|Win32'">%(Filename).cpp;%(Filename).h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='DebugMT|Win32'">%(Identity) Performing Custom Build Tools</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|Win32'">%(Identity) Performing Custom Build Tools</Message>
+    </CustomBuild>
+    <CustomBuild Include="_RO_Plane.rol">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|Win32'">..\ReplicaNetPublic\rnrolcompiler\bin\rnrolcompiler.exe -v1 %(Filename).rol %(Filename).cpp %(Filename).h</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|Win32'">%(Filename).cpp;%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='DebugMT|Win32'">..\ReplicaNetPublic\rnrolcompiler\bin\rnrolcompiler.exe -v1 %(Filename).rol %(Filename).cpp %(Filename).h</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='DebugMT|Win32'">%(Filename).cpp;%(Filename).h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='DebugMT|Win32'">%(Identity) Performing Custom Build Tools</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|Win32'">%(Identity) Performing Custom Build Tools</Message>
+    </CustomBuild>
+    <CustomBuild Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\ReplicaNetPublic\AmalgamatedReplicaNet.cpp" />
+    <ClCompile Include="Dolphin.cpp" />
+    <ClCompile Include="Plane.cpp" />
+    <ClCompile Include="_Def_Example9.cpp" />
+    <ClCompile Include="_RO_Dolphin.cpp" />
+    <ClCompile Include="_RO_Plane.cpp" />
+    <ClCompile Include="GameClass.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Network.cpp" />
+    <ClCompile Include="MainGame.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

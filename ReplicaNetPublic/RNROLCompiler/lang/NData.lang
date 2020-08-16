@@ -1,0 +1,11 @@
+class NData : std_datablock
+{
+	NData(x)						_RO_DO_REGISTERBLOCK_NDATA_VAR(x);
+	DisableEndianTest()				_RO_DO_REGISTERBLOCK_NDATA_DISABLEENDIANTEST();
+};
+
+class NDataAt : std_datablock
+{
+	NDataAt(x)						_RO_DO_REGISTERBLOCK_NDATA_VARAT(x);
+	DisableEndianTest()				_RO_DO_REGISTERBLOCK_NDATA_DISABLEENDIANTEST();
+};

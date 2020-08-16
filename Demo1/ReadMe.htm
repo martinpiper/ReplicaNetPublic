@@ -1,0 +1,80 @@
+<HTML>
+	<HEAD>
+		<TITLE>© Replica Software</TITLE>
+		<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<link href="assets/replica.css" rel="stylesheet" type="text/css">
+	<meta name="description" content="ReplicaNet is an object orientated C++ library that is engineered to help the developer of applications that require a stable and low maintenance solution to networking.">
+	<meta name="keywords" content="replica, net, C++, network, game, gaming, multiplayer, library, source, develop">
+    </HEAD>
+	<table align="center" width="760" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td>
+				<table width="100%" border="0" cellspacing="1" cellpadding="0">
+					<TBODY>
+						<tr>
+							<td colspan="9" height="89"><img src="assets/images/headr.gif"></td>
+						</tr>
+			</td>
+		</tr>
+	</table>
+	<h1>Demo 1</h1>
+	<p>Run GameLobby.exe to start the integrated user and statistics tracking demonstration.<br>
+	After creating an account or logging in to an existing account you may use the toolbar buttons.
+	The Home button will display the statistics for this demonstration using ASP generated reports.<br>
+	</p>
+	<p>
+	The "Host game" button will start Demo1.exe.<br>
+	</p>
+	<p>When the Demo1.exe demonstration loads you can choose to join or create a game.<br>
+		Pilot the planes using the cursor keys and CTRL to fire. 'S' and 'D' will slow 
+		down and speed up.<br>
+		Each plane, projectile and enemy dolphin is a networked ReplicaObject. Even 
+		though twenty projectiles can be fired every second the network bandwidth is 
+		kept low.<br>
+	</p>
+	<p>This demonstration shows:
+	</p>
+	<P>How the distributed network system can handle a player joining or leaving at any 
+		time.<br>
+		When a master session leaves the network game then a new master session is 
+		quickly found.<br>
+		Fault tolerant enemies since if a session disconnects then the dolphins 
+		allocated to that session are distributed to other sessions. Each new player 
+		creates five new dolphins and these dolphin models are hosted on the local 
+		machine.</P>
+	<P>When displaying the network joining dialog the user can also set various 
+		parameters for the network local session. For example the first column of tick 
+		boxes are these:</P>
+		<P>
+			<TABLE id="Table1" cellSpacing="0" cellPadding="0" width="100%" border="0">
+				<TR>
+					<TD width="282">"Can Spider" = Enables outgoing spider connections for this session<BR>
+						"Can be master" = If a sesion fails this session can take over as the master 
+						session<BR>
+						"Accept objects" = When objects migrate due to a fault this session can accept 
+						objects<BR>
+						<BR>
+						The second column allows the session to decide what to do with the objects when 
+						a session fatal error happens. A fatal error happens when the session cannot 
+						become a master and all other possible sessions leave the session.<BR>
+						<BR>
+						"Migrate" = Allow this session to take over all replica objects.<BR>
+						"Delete" = Delete all replica objects that are not master objects.<BR>
+						"Leave" = Leave the replica objects.<BR>
+                      <br>
+                      Network emulation can be enabled or disabled for all packets sent from this node using the
+                      &quot;Enable&quot; check box.<br>
+                      The packet latency and jitter times are in milliseconds.
+                      The packet loss is expressed as a percentage. The values
+                      are clamped to maximum and minimum ranges.
+					</TD>
+					<TD><IMG alt="The dialog" src="assets\images\Dialog.gif"></TD>
+				</TR>
+			</TABLE>
+			<br>
+		<P>
+			<br>
+			&nbsp;</P>
+	<p align="left">To get technical support on any issues you may have please email <a href="mailto:techsupport@replicanet.com">
+			techsupport@replicanet.com</a></p>
+	</TR></TABLE></HTML>

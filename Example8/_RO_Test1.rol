@@ -1,0 +1,16 @@
+object Test1
+{
+	/* We use the datablock Function type in the example */
+	datablock Function;
+
+	/* These two function definitions are called by the object with various values */
+	/* When each function is called (see Test1.cpp) then the same function is called */
+	/* on the replica objects with the same parameters */
+	extern APublicFunction(int,float);
+
+	/* Share the two functions between objects */
+	networking
+	{
+		Function APublicFunction;
+	}
+}

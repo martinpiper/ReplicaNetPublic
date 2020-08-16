@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ROLFiles">
+      <UniqueIdentifier>{b1421046-06c2-447c-9c4f-bbacad352b12}</UniqueIdentifier>
+      <Extensions>rol</Extensions>
+    </Filter>
+    <Filter Include="CompiledObjects">
+      <UniqueIdentifier>{c72fd939-6ea1-46ea-a44a-0c850174b30a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{886a35a8-64d2-48cc-abf4-58031e6778ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataBlockExtensions">
+      <UniqueIdentifier>{87ec17b2-b1d8-483d-8065-ba7768002369}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="_Def_Example6.cpp">
+      <Filter>CompiledObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="_RO_AnObject.cpp">
+      <Filter>CompiledObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="AnObject.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="DataBlock_GenericSTLVirtual.cpp">
+      <Filter>DataBlockExtensions</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkVector3.cpp">
+      <Filter>DataBlockExtensions</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\ReplicaNetPublic\AmalgamatedReplicaNet.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="_Def_Example6.h">
+      <Filter>CompiledObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="_RO_AnObject.h">
+      <Filter>CompiledObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="AnObject.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="DataBlock_GenericSTLVirtual.h">
+      <Filter>DataBlockExtensions</Filter>
+    </ClInclude>
+    <ClInclude Include="DataBlock_STL.h">
+      <Filter>DataBlockExtensions</Filter>
+    </ClInclude>
+    <ClInclude Include="DataBlock_WatchedFloat.h">
+      <Filter>DataBlockExtensions</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkVector3.h">
+      <Filter>DataBlockExtensions</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="_Def_Example6.rol">
+      <Filter>ROLFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="_RO_AnObject.rol">
+      <Filter>ROLFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="STL.lang">
+      <Filter>ROLFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="WatchedFloat.lang">
+      <Filter>ROLFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

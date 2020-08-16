@@ -1,0 +1,134 @@
+#include <SSE_Standard>
+Label ._startOfSection_GCCstdlib
+// Some GCC functions that need implementing
+
+/*
+void *_ZnwX (size_t) { return NULL; }
+void _ZdlPv (void *) { return; }
+void *_ZnaX (size_t) { return NULL; }
+void _ZdaPv (void *) { return; }
+*/
+
+Label .GCCprintf
+Label .GCCputs
+AsmExternal SSE_Print
+// Return from an ARM BL instruction
+AsmPush r15		// ARM r14 (lr)
+AsmRet
+
+Label .GCC____aeabi__atexit
+Label .GCC____dso__handle
+AsmPush r15		// ARM r14 (lr)
+AsmRet
+
+
+
+// If this happens then an unimplemented pure virtual was called, so we want to complain very loudly and repeatedly
+Label .GCC____cxa__pure__virtual
+AsmExternal SSE_DumpRegisters
+AsmBranch GCC____cxa__pure__virtual
+
+Label ._endOfSection_GCCstdlib
+
+
+Label ._startOfSection_GCCstdlib_heap
+
+Label ._AllocationError
+// Backup some important registers, heap and heap high in this case
+AsmAdd r3 , r2 , r0
+AsmAdd r2 , r1 , r0
+AsmGetNData r1 , "ERROR: ARMHeapHigh reached"
+AsmExternal SSE_Print
+// Produce a deliberate address exception
+AsmGetInt r1 , #-1000
+AsmPush r1
+AsmRet
+
+Label .GCCcalloc
+AsmMul r1 , r1 , r2
+// Note fall through
+Label .GCC__ZnwX
+Label .GCC__ZnaX
+Label .GCC__Znwj	// new
+Label .GCCmalloc
+
+AsmPush r2
+AsmPush r3
+
+// Update ARMHeapLowAddr and return the address for the heap block
+AsmAddr r2 , ARMHeapLowAddr
+AsmLoadRegInt r3 , r2
+AsmAdd r1 , r3 , r1
+AsmStoreReg32 r2 , r1
+
+// Check the end of the heap block isn't over the high end limit of memory
+AsmAddr r2 , ARMHeapHigh
+AsmCmp r1 , r2
+AsmBranch GT _AllocationError
+
+
+// Return the heap block address
+AsmAdd r1 , r3 , r0
+
+AsmPop r0
+AsmPop r0
+
+AsmPush r15		// ARM r14 (lr)
+AsmRet
+
+// These do nothing
+Label .GCCfree
+Label .GCC__ZdaPv	// free
+Label .GCC__ZdlPv	// free
+
+AsmPush r15		// ARM r14 (lr)
+AsmRet
+
+Label .ARMHeapLowAddr
+Word ARMHeapLow + #0
+
+// If ARMGCCstdlib.lang is included near the end of the code (in memory) then with the heap growing upwards it will quickly produce a memory exception if the heap gets too far
+Label .ARMHeapLow
+// Some space for a heap
+
+// Each block is 1024 bytes
+// Each line is 128 bytes (8 * 4 * 4 byte ints)
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+Data $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0, $0,$0,$0,$0,$0,$0,$0,$0
+
+Label .ARMHeapHigh
+
+Label ._endOfSection_GCCstdlib_heap

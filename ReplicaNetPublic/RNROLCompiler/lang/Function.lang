@@ -1,0 +1,4 @@
+class Function : std_datablock
+{
+	Function(x)				_RO_DO_REGISTERBLOCK_FUNCTION_VAR(x);
+};

@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{28c176f6-4f79-419f-a2a4-713d2411ba16}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Media">
+      <UniqueIdentifier>{c21480ff-ce25-4d1d-9f9c-1bbedba74aa4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ROLFiles">
+      <UniqueIdentifier>{ae4a5fed-8eac-47ae-884e-183b1062ea47}</UniqueIdentifier>
+      <Extensions>rol</Extensions>
+    </Filter>
+    <Filter Include="GameObjects">
+      <UniqueIdentifier>{49743413-5b45-43e9-8ab0-08641e3d2573}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CompiledGameObjects">
+      <UniqueIdentifier>{51730370-45d3-450a-85ad-5bb1590d75b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameClass">
+      <UniqueIdentifier>{e5ccc508-3513-446e-b924-a9830b84cb01}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="_Def_Example1.h">
+      <Filter>CompiledGameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="_RO_Camera.h">
+      <Filter>CompiledGameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="_RO_Enemy.h">
+      <Filter>CompiledGameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="_RO_Plane.h">
+      <Filter>CompiledGameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="_RO_Projectile.h">
+      <Filter>CompiledGameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="DIInterface.h">
+      <Filter>GameClass</Filter>
+    </ClInclude>
+    <ClInclude Include="External.h">
+      <Filter>GameClass</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClass.h">
+      <Filter>GameClass</Filter>
+    </ClInclude>
+    <ClInclude Include="GameDatabase.h">
+      <Filter>GameClass</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>GameClass</Filter>
+    </ClInclude>
+    <ClInclude Include="MyReplicaNet.h">
+      <Filter>GameClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Network.h">
+      <Filter>GameClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Shadow.h">
+      <Filter>GameClass</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="winmain.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Plane.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="_Def_Example1.cpp">
+      <Filter>CompiledGameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="_RO_Camera.cpp">
+      <Filter>CompiledGameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="_RO_Enemy.cpp">
+      <Filter>CompiledGameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="_RO_Plane.cpp">
+      <Filter>CompiledGameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="_RO_Projectile.cpp">
+      <Filter>CompiledGameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="DIInterface.cpp">
+      <Filter>GameClass</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClass.cpp">
+      <Filter>GameClass</Filter>
+    </ClCompile>
+    <ClCompile Include="GameDatabase.cpp">
+      <Filter>GameClass</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>GameClass</Filter>
+    </ClCompile>
+    <ClCompile Include="MyReplicaNet.cpp">
+      <Filter>GameClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Network.cpp">
+      <Filter>GameClass</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp" />
+    <ClCompile Include="..\ReplicaNetPublic\AmalgamatedReplicaNet.cpp" />
+    <ClCompile Include="..\Example1\BandwidthGraph.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="airplane 2.x">
+      <Filter>Media</Filter>
+    </CustomBuild>
+    <CustomBuild Include="bihull.bmp">
+      <Filter>Media</Filter>
+    </CustomBuild>
+    <CustomBuild Include="cube.x">
+      <Filter>Media</Filter>
+    </CustomBuild>
+    <CustomBuild Include="directx.ico">
+      <Filter>Media</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Dolphin1.x">
+      <Filter>Media</Filter>
+    </CustomBuild>
+    <CustomBuild Include="seafloor.bmp">
+      <Filter>Media</Filter>
+    </CustomBuild>
+    <CustomBuild Include="seafloor.x">
+      <Filter>Media</Filter>
+    </CustomBuild>
+    <CustomBuild Include="wings.bmp">
+      <Filter>Media</Filter>
+    </CustomBuild>
+    <CustomBuild Include="_Def_Example1.rol">
+      <Filter>ROLFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="_RO_Camera.rol">
+      <Filter>ROLFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="_RO_Enemy.rol">
+      <Filter>ROLFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="_RO_Plane.rol">
+      <Filter>ROLFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="_RO_Projectile.rol">
+      <Filter>ROLFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

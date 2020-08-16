@@ -1,0 +1,321 @@
+#pragma once
+#include <SSE_Stat>
+#define kPrivateRead					0		// Values set by the statistics server.
+#define kPrivateReadWrite				1		// Values set by the owner or the statistics server.
+#define kPublicReadPrivateReadWrite		2		// Values set by the owner or the statistics server.
+#define kPublicReadPrivateRead			3		// Values set by the statistics server.
+
+
+
+// Gets the result fed to the StatServer from stats updates
+//DefProc GetResult(loginID,name,default)
+Label ._startOfSection_GetResult
+Label ._procGetResult
+AsmExternal StatServer_GetResult
+AsmRet
+Label ._endOfSection_GetResult
+
+Label ._startOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession9GetResultEiPKcf
+Label .GCC__ZN12RNReplicaNet7RNLobby17StatServerSession9GetResultEiPKcf
+AsmSetFP r3
+AsmBranch PP _procGetResult
+AsmCastFP r1
+AsmPush r15		// ARM r14 (lr)
+AsmRet
+Label ._endOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession9GetResultEiPKcf
+
+Label ._startOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession9GetResultEiPKci
+Label .GCC__ZN12RNReplicaNet7RNLobby17StatServerSession9GetResultEiPKci
+AsmBranch PP _procGetResult
+AsmCastInt r1
+AsmPush r15		// ARM r14 (lr)
+AsmRet
+Label ._endOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession9GetResultEiPKci
+
+
+
+// Gets the variable from the DB
+//DefProc GetVariable(loginID,section,access,name,default)
+Label ._startOfSection_GetVariable
+Label ._procGetVariable
+AsmExternal StatServer_GetVariable
+AsmRet
+Label ._endOfSection_GetVariable
+
+Label ._startOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession11GetVariableEiiNS0__10UserClient14VariableAccessEPKcf
+Label .GCC__ZN12RNReplicaNet7RNLobby17StatServerSession11GetVariableEiiNS0__10UserClient14VariableAccessEPKcf
+AsmPush r2
+AsmPush r3
+AsmPush r4
+AsmPush r5
+AsmPush r6
+AsmPush r7
+AsmPush r8
+AsmLoadRegFloat r5 , r14
+AsmBranch PP _procGetVariable
+AsmPop r8
+AsmPop r7
+AsmPop r6
+AsmPop r5
+AsmPop r4
+AsmPop r3
+AsmPop r2
+AsmCastFP r1
+AsmPush r15		// ARM r14 (lr)
+AsmRet
+Label ._endOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession11GetVariableEiiNS0__10UserClient14VariableAccessEPKcf
+
+Label ._startOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession11GetVariableEiiNS0__10UserClient14VariableAccessEPKci
+Label .GCC__ZN12RNReplicaNet7RNLobby17StatServerSession11GetVariableEiiNS0__10UserClient14VariableAccessEPKci
+AsmPush r2
+AsmPush r3
+AsmPush r4
+AsmPush r5
+AsmPush r6
+AsmPush r7
+AsmPush r8
+AsmLoadRegInt r5 , r14
+AsmBranch PP _procGetVariable
+AsmPop r8
+AsmPop r7
+AsmPop r6
+AsmPop r5
+AsmPop r4
+AsmPop r3
+AsmPop r2
+AsmCastInt r1
+AsmPush r15		// ARM r14 (lr)
+AsmRet
+Label ._endOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession11GetVariableEiiNS0__10UserClient14VariableAccessEPKci
+
+
+
+// Sets the variable in the DB
+//DefProc SetVariable(loginID,section,access,name,value)
+Label ._startOfSection_SetVariable
+Label ._procSetVariable
+AsmExternal StatServer_SetVariable
+AsmRet
+Label ._endOfSection_SetVariable
+
+Label ._startOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession11SetVariableEiiNS0__10UserClient14VariableAccessEPKcf
+Label .GCC__ZN12RNReplicaNet7RNLobby17StatServerSession11SetVariableEiiNS0__10UserClient14VariableAccessEPKcf
+AsmPush r2
+AsmPush r3
+AsmPush r4
+AsmPush r5
+AsmPush r6
+AsmPush r7
+AsmPush r8
+AsmLoadRegFloat r5 , r14
+AsmBranch PP _procSetVariable
+AsmPop r8
+AsmPop r7
+AsmPop r6
+AsmPop r5
+AsmPop r4
+AsmPop r3
+AsmPop r2
+AsmCastFP r1
+AsmPush r15		// ARM r14 (lr)
+AsmRet
+Label ._endOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession11SetVariableEiiNS0__10UserClient14VariableAccessEPKcf
+
+Label ._startOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession11SetVariableEiiNS0__10UserClient14VariableAccessEPKci
+Label .GCC__ZN12RNReplicaNet7RNLobby17StatServerSession11SetVariableEiiNS0__10UserClient14VariableAccessEPKci
+AsmPush r2
+AsmPush r3
+AsmPush r4
+AsmPush r5
+AsmPush r6
+AsmPush r7
+AsmPush r8
+AsmLoadRegInt r5 , r14
+AsmBranch PP _procSetVariable
+AsmPop r8
+AsmPop r7
+AsmPop r6
+AsmPop r5
+AsmPop r4
+AsmPop r3
+AsmPop r2
+AsmCastInt r1
+AsmPush r15		// ARM r14 (lr)
+AsmRet
+Label ._endOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession11SetVariableEiiNS0__10UserClient14VariableAccessEPKci
+
+
+
+// Shifts the variables in the DB
+//DefProc ShiftVariables(loginID,startSection,access,name,numItems,sectionOffset)
+Label ._startOfSection_ShiftVariables
+Label ._procShiftVariables
+AsmExternal StatServer_ShiftVariables
+AsmRet
+Label ._endOfSection_ShiftVariables
+
+Label ._startOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession14ShiftVariablesEiiNS0__10UserClient14VariableAccessEPKcii
+Label .GCC__ZN12RNReplicaNet7RNLobby17StatServerSession14ShiftVariablesEiiNS0__10UserClient14VariableAccessEPKcii
+AsmPush r1
+AsmPush r2
+AsmPush r3
+AsmPush r4
+AsmPush r5
+AsmPush r6
+AsmPush r7
+AsmPush r8
+AsmLoadRegInt r5 , r14
+AsmGetInt r17 , #4
+AsmAdd r17 , r14 , r17
+AsmLoadRegInt r6 , r17
+AsmBranch PP _procShiftVariables
+AsmPop r8
+AsmPop r7
+AsmPop r6
+AsmPop r5
+AsmPop r4
+AsmPop r3
+AsmPop r2
+AsmPop r1
+AsmPush r15		// ARM r14 (lr)
+AsmRet
+Label ._endOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession11SetVariableEiiNS0__10UserClient14VariableAccessEPKcii
+
+
+
+// Gets the current time in seconds since midnight (00:00:00), January 1, 1970, Coordinated Universal Time (UTC),
+//DefProc GetTimeAsSeconds
+Label ._startOfSection_GetTimeAsSeconds
+Label ._procGetTimeAsSeconds
+AsmExternal StatServer_GetTimeAsSeconds
+AsmRet
+Label ._endOfSection_GetTimeAsSeconds
+
+Label ._startOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession16GetTimeAsSecondsEv
+Label .GCC__ZN12RNReplicaNet7RNLobby17StatServerSession16GetTimeAsSecondsEv
+AsmBranch PP _procGetTimeAsSeconds
+AsmCastInt r1
+AsmPush r15		// ARM r14 (lr)
+AsmRet
+Label ._endOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession16GetTimeAsSecondsEv
+
+
+
+// Gets the result, adds it to any existing variable and returns the stat update got this time round
+DefProc CalcStatVariable(loginID,section,access,variable,default)
+	Decl temp
+	Decl result
+	result = GetResult(loginID,variable,0)
+	temp = GetVariable(loginID,section,access,variable,default)
+	temp = temp + result
+	SetVariable(loginID,section,access,variable,temp)
+	Return result
+EndProc
+
+Label ._startOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession16CalcStatVariableEiiNS0__10UserClient14VariableAccessEPKcf
+Label .GCC__ZN12RNReplicaNet7RNLobby17StatServerSession16CalcStatVariableEiiNS0__10UserClient14VariableAccessEPKcf
+AsmPush r1
+AsmPush r2
+AsmPush r3
+AsmPush r4
+AsmPush r5
+AsmPush r6
+AsmPush r7
+AsmPush r8
+AsmLoadRegFloat r5 , r14
+AsmBranch PP _procCalcStatVariable
+AsmPop r8
+AsmPop r7
+AsmPop r6
+AsmPop r5
+AsmPop r4
+AsmPop r3
+AsmPop r2
+AsmCastFP r1
+AsmPush r15		// ARM r14 (lr)
+AsmRet
+Label ._endOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession16CalcStatVariableEiiNS0__10UserClient14VariableAccessEPKcf
+
+Label ._startOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession16CalcStatVariableEiiNS0__10UserClient14VariableAccessEPKci
+Label .GCC__ZN12RNReplicaNet7RNLobby17StatServerSession16CalcStatVariableEiiNS0__10UserClient14VariableAccessEPKci
+AsmPush r1
+AsmPush r2
+AsmPush r3
+AsmPush r4
+AsmPush r5
+AsmPush r6
+AsmPush r7
+AsmPush r8
+AsmLoadRegInt r5 , r14
+AsmBranch PP _procCalcStatVariable
+AsmPop r8
+AsmPop r7
+AsmPop r6
+AsmPop r5
+AsmPop r4
+AsmPop r3
+AsmPop r2
+AsmCastInt r1
+AsmPush r15		// ARM r14 (lr)
+AsmRet
+Label ._endOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession16CalcStatVariableEiiNS0__10UserClient14VariableAccessEPKci
+
+
+
+// Gets the result, adds it to any existing variable and returns the result
+DefProc CalcStatVariableResult(loginID,section,access,variable,default)
+	Decl temp
+	Decl result
+	result = GetResult(loginID,variable,0)
+	temp = GetVariable(loginID,section,access,variable,default)
+	temp = temp + result
+	SetVariable(loginID,section,access,variable,temp)
+	Return temp
+EndProc
+
+Label ._startOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession22CalcStatVariableResultEiiNS0__10UserClient14VariableAccessEPKcf
+Label .GCC__ZN12RNReplicaNet7RNLobby17StatServerSession22CalcStatVariableResultEiiNS0__10UserClient14VariableAccessEPKcf
+AsmPush r1
+AsmPush r2
+AsmPush r3
+AsmPush r4
+AsmPush r5
+AsmPush r6
+AsmPush r7
+AsmPush r8
+AsmLoadRegFloat r5 , r14
+AsmBranch PP _procCalcStatVariableResult
+AsmPop r8
+AsmPop r7
+AsmPop r6
+AsmPop r5
+AsmPop r4
+AsmPop r3
+AsmPop r2
+AsmCastFP r1
+AsmPush r15		// ARM r14 (lr)
+AsmRet
+Label ._endOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession22CalcStatVariableResultEiiNS0__10UserClient14VariableAccessEPKcf
+
+Label ._startOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession22CalcStatVariableResultEiiNS0__10UserClient14VariableAccessEPKci
+Label .GCC__ZN12RNReplicaNet7RNLobby17StatServerSession22CalcStatVariableResultEiiNS0__10UserClient14VariableAccessEPKci
+AsmPush r2
+AsmPush r3
+AsmPush r4
+AsmPush r5
+AsmPush r6
+AsmPush r7
+AsmPush r8
+AsmLoadRegInt r5 , r14
+AsmBranch PP _procCalcStatVariableResult
+AsmCastInt r1
+AsmPop r8
+AsmPop r7
+AsmPop r6
+AsmPop r5
+AsmPop r4
+AsmPop r3
+AsmPop r2
+AsmPush r15		// ARM r14 (lr)
+AsmRet
+Label ._endOfSection_GCC__ZN12RNReplicaNet7RNLobby17StatServerSession22CalcStatVariableResultEiiNS0__10UserClient14VariableAccessEPKci

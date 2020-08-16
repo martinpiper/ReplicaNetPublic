@@ -1,0 +1,7 @@
+// ..\..\ReplicaNetPublic\RNROLCompiler\bin\RNROLCompiler.exe Application.rol
+
+application
+{
+	object Player;
+	object Enemy;
+}

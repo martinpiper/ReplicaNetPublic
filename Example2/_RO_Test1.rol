@@ -1,0 +1,37 @@
+// Here we use the AddHeadInclude() command and ">" directive to force the extra header file ExampleCustomType.h to be
+// included in the compiled ROL output file.
+object
+		> AddHeaderInclude("ExampleCustomType.h")		// Add the header file for ExampleCustomType.h to the compiled output ROL H file.
+		Test1				// Test1 is the name of the object that follow the ">" directives.
+{
+	/* We use the datablock Function type in the example */
+	datablock Function;
+
+	/* These two function definitions are called by the object with various values */
+	/* When each function is called (see Test1.cpp) then the same function is called */
+	/* on the replica objects with the same parameters */
+	extern APrivateFunction(float);
+	extern APublicFunction(int,float);
+
+	// These two function definitions show how to add custom data types.
+	extern APublicFunctionWithCustomTypeByValue(ExampleCustomType,int);
+	extern APublicFunctionWithCustomTypeByReference(ExampleCustomType&,int);
+
+
+	/* Share the two functions between objects */
+	networking
+	{
+		Function APrivateFunction;
+
+		Function APublicFunction
+		{
+			Reliable;
+		}
+
+		Function APublicFunctionWithCustomTypeByValue;
+		Function APublicFunctionWithCustomTypeByReference;
+	}
+
+	/* This approves fault recoevery of the object by inserting a virtual function over ride */
+	ApproveFault();
+}

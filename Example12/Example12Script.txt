@@ -1,0 +1,42 @@
+// BootStat must be included first or first in the input file list.
+#include <BootStat>
+// Include the standard StatServer functions for database access.
+#include <Stat>
+
+// Reads RandomValue1 and RandomValue2 from the client and adds them to any existing TotalValues user variable
+DefProc ProcessPlayer(loginID)
+	Decl ret
+	ret = 0
+
+	Decl section
+	section = 3
+
+	Decl temp
+
+	// Read RandomValue1 and RandomValue1 sent from the client using UpdatePairsBegin()
+	Decl val1,val2
+	val1 = GetResult(loginID,"RandomValue1",0)
+	val2 = GetResult(loginID,"RandomValue2",0)
+	// Accumulate with the TotalValues variable from the client's persistent data storage.
+	temp = GetVariable(loginID,section,kPrivateRead,"TotalValues",0)
+	temp = temp + val1 + val2
+	SetVariable(loginID,section,kPrivateRead,"TotalValues",temp)
+	Return ret
+EndProc
+
+// Adds 1 to TotalGamesPlayed for all users to read
+DefProc ProcessGame
+	Decl ret
+	ret = 0
+
+	Decl section
+	section = 3
+
+	Decl played
+	// loginId 0 = the game stats since the 0 loginID is never used.
+	played = GetVariable(0,section,kPublicReadPrivateRead,"TotalGamesPlayed",0)
+	played = played + 1
+	SetVariable(0,section,kPublicReadPrivateRead,"TotalGamesPlayed",played)
+
+	Return ret
+EndProc

@@ -1,0 +1,12 @@
+#pragma once
+// Values used by SimpleScriptThread.cpp for AsmExternal calls
+#define SSE_ThreadExit					0
+#define SSE_DumpRegisters				1
+#define SSE_ThreadYield					2
+#define SSE_ThreadCreate				3
+#define SSE_ThreadGetID					4
+#define SSE_ThreadSignalIndexSet		5
+#define SSE_ThreadSignalIndexClear		6
+#define SSE_ThreadGetSignal				7
+#define SSE_ThreadSetSignal				8
+#define SSE_Print						9

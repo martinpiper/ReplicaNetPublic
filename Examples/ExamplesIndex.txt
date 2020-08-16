@@ -1,0 +1,52 @@
+Example 1
+Simple object replication with circling planes.
+
+Example 2
+Calling functions and adding custom types to replicated objects.
+Shutdown ReplicaNet and ensure all memory is freed.
+
+Example 3
+Using XPURL and TransportUDP to send and receive packets.
+
+Example 4
+Planes flying around shooting dolphins.
+Recording and playback of network sessions.
+Fault tolerant objects and session migration.
+How to synchronise DataBlock updates with the game update loop.
+
+Example 5
+Using XPSession with MFC to create a chat application.
+
+Example 6
+Extending a DataBlock with STL and other custom types.
+
+Example 7
+Using XPSession.
+
+Example 8
+Calling functions for a specific set of sessionIDs.
+Expanding ReplicaNet to detect session joiners.
+Using ReplicaNet::CallBackAllocate() with custom classIDs.
+
+Example 9
+Using ReplicaObject session propagation filters useful for MMO servers.
+
+Example 10
+Using ProductPatcher with WTL.
+
+Example 11
+ReplicaNet session advertising and joining with AdvertiseClient and NATUDP.
+
+Example 12
+Using the StatClient and RNSimpleScriptCompiler.
+
+ExampleAndroidNDK
+Shows how to build with the Android NDK.
+
+ExampleMarmalade1
+A simple game with ReplicaNet and RNLobby APIs and the Marmalade SDK.
+http://www.madewithmarmalade.com/
+
+ExampleMarmalade2
+How to use replicaNet and RNLobby APIs with the Marmalade SDK and a very simple interface.
+http://www.madewithmarmalade.com/

@@ -1,0 +1,5 @@
+// This defines the macros used in the compiled _RO_ object.
+class STL : std_datablock
+{
+	STL(x,y)				_RO_DO_REGISTERBLOCK_STL_VAR(x,y);
+};
