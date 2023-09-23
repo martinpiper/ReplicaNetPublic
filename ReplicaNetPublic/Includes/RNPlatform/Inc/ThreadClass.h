@@ -114,6 +114,8 @@ public:
 	 */
 	void Sleep(int milliseconds);
 
+	int GetThreadID(void);
+
 protected:
 friend class Thread;
 	/**
@@ -151,6 +153,8 @@ private:
 	volatile bool mThreadExitingCalled;
 
 	static volatile size_t mNumAllocated;
+
+	int mThreadID;	// Not the same as any OS ID
 };
 
 /**

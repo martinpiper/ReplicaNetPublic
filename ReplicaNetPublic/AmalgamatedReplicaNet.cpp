@@ -6649,8 +6649,10 @@ void MutexClass::UnLock(void)
 }
 
 volatile size_t ThreadClass::mNumAllocated = 0;
+static volatile int sIncrementingID = 0;
 ThreadClass::ThreadClass() : mQuitNow(false) , mBoundThread(0) , mThreadExitingCalled(false)
 {
+	mThreadID = sIncrementingID++;
 	mNumAllocated++;
 //	trigger.Lock();
 	if (!doneatexit)
@@ -6677,6 +6679,11 @@ ThreadClass::~ThreadClass()
 void CurrentThread::Sleep(int milliseconds)
 {
 	CurrentThreadSleep(milliseconds);
+}
+
+int ThreadClass::GetThreadID(void)
+{
+	return mThreadID;
 }
 
 void ThreadClass::Sleep(int milliseconds)
@@ -7280,7 +7287,7 @@ END_LICENSE_HEADER */
 
 using namespace RNReplicaNet;
 
-JobManager::JobManager()
+JobManager::JobManager() : mNumJobsRemaining(0)
 {
 }
 
@@ -7421,6 +7428,7 @@ bool JobManager::AddPoolJob(Job *job)
 		return false;
 	}
 
+	mNumJobsRemaining++;
 	job->mManager = this;
 
 	if (!PlatformInfo::IsThreaded())
@@ -7466,6 +7474,10 @@ int JobManager::CancelJobs(void* const ref)
 	return cancelled;
 }
 
+volatile int JobManager::GetNumberOfJobsRemaining(void)
+{
+	return mNumJobsRemaining;
+}
 
 Worker::Worker() : mParent(0) , mFromIdle(0)
 {
@@ -7529,6 +7541,10 @@ Job::Job() : mManager(0) , mReference(0) , mCancelled(false)
 
 Job::~Job()
 {
+	if (mManager != 0)
+	{
+		mManager->mNumJobsRemaining--;
+	}
 }
 
 bool Job::IsCancelled(void)

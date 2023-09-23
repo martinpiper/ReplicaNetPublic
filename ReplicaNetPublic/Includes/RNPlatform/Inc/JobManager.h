@@ -33,6 +33,7 @@ class Worker;
 class JobManager : public ThreadClass , public Thread
 {
 friend class Worker;
+friend class Job;
 public:
 	/**
 	 * The ctor performs some basic initialisation
@@ -58,6 +59,8 @@ public:
 
 	int CancelJobs(void* const job);
 
+	volatile int GetNumberOfJobsRemaining(void);
+
 private:
 	int ThreadEntry(void);
 	void ThreadExiting(const int returnCode);
@@ -68,6 +71,8 @@ private:
 	std::multimap<void*, Job*> mJobReference;
 
 	std::vector<Worker> mWorkers;
+
+	volatile int mNumJobsRemaining;
 };
 
 class Worker : public ThreadClass , public Thread
