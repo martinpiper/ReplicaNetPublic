@@ -150,7 +150,7 @@ static void RunTest(void)
 #endif
 	// Must have received a kReply_ValidTitleID reply so continue to use other RNLobby functions.
 
-	// Start detecting the type of NAT used for out internet connection.
+	// Start detecting the type of NAT used for our internet connection.
 	// This step is not strictly required but it may be of interest to users who want to test their NAT/Firewall.
 	// Like most RNLobby services this is asynchronous so it can be left to complete.
 	NATDetectClient natDetect;

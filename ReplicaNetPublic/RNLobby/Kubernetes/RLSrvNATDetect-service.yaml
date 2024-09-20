@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rnlobby-rlsrvnatdetect-loadbalancer
+spec:
+  selector:
+    app: rlsrvnatdetect
+  ports:
+    - protocol: UDP
+      port: 4004
+      targetPort: 4004
+      name: udp-4004
+    - protocol: UDP
+      port: 4005
+      targetPort: 4005
+      name: udp-4005
+    - protocol: UDP
+      port: 4006
+      targetPort: 4006
+      name: udp-4006
+    - protocol: UDP
+      port: 4007
+      targetPort: 4007
+      name: udp-4007
+  type: LoadBalancer

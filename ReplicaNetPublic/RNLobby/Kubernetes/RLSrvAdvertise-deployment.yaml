@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rnlobby-rlsrvadvertise-deployment
+  labels:
+    app: rlsrvadvertise
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rlsrvadvertise
+  template:
+    metadata:
+      labels:
+        app: rlsrvadvertise
+    spec:
+      containers:
+      - name: rlsrvadvertise
+        image: martinpiper/rnlobbydockerservices-app:0.0.1
+        command: ["RLSrvAdvertise"]
+        args: ["/d", "-dstart"]
+        ports:
+        - containerPort: 4008
+          protocol: "UDP"
+        resources:
+          requests:
+            cpu: 200m
+            memory: 300M
+          limits:
+            memory: 400M
+            

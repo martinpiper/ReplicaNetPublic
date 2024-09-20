@@ -44,7 +44,7 @@ public:
 	void SetPosition(D3DXVECTOR4 pos)
 	{
 		mPosition = pos;
-		// Our position is being set by an outside class and since we don't know what out new velocity is yet we give the network layer a hint that it's changed
+		// Our position is being set by an outside class and since we don't know what our new velocity is yet we give the network layer a hint that it's changed
 		GiveDeltaHint(mPosition.x,0);
 		GiveDeltaHint(mPosition.y,0);
 		GiveDeltaHint(mPosition.z,0);
@@ -53,12 +53,12 @@ public:
 	D3DXVECTOR4 GetRotation(void)
 	{
 		return mRotation;
-		// Our position is being set by an outside class and since we don't know what out new velocity is yet we give the network layer a hint that it's changed
 	}
 
 	void SetRotation(D3DXVECTOR4 rot)
 	{
 		mRotation = rot;
+		// Our rotation is being set by an outside class, here we give the network layer a hint that it's changed
 		GiveDeltaHint(mRotation.x,0);
 		GiveDeltaHint(mRotation.y,0);
 		GiveDeltaHint(mRotation.z,0);

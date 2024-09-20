@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rnlobby-rlsrvadvertise-loadbalancer
+spec:
+  selector:
+    app: rlsrvadvertise
+  ports:
+    - protocol: UDP
+      port: 4008
+      targetPort: 4008
+  type: LoadBalancer

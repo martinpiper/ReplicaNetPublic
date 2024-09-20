@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rnlobby-rlsrvnatdetect-deployment
+  labels:
+    app: rlsrvnatdetect
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rlsrvnatdetect
+  template:
+    metadata:
+      labels:
+        app: rlsrvnatdetect
+    spec:
+      containers:
+      - name: rlsrvnatdetect
+        image: martinpiper/rnlobbydockerservices-app:0.0.1
+        command: ["RLSrvNATDetect"]
+        args: ["/d", "-addr", "0.0.0.0:4004", "-addr2", "0.0.0.0:4005", "-addr", "0.0.0.0:4006", "-addr2", "0.0.0.0:4007"]
+        ports:
+        - containerPort: 4004
+          protocol: "UDP"
+        - containerPort: 4005
+          protocol: "UDP"
+        - containerPort: 4006
+          protocol: "UDP"
+        - containerPort: 4007
+          protocol: "UDP"
+        resources:
+          requests:
+            cpu: 200m
+            memory: 300M
+          limits:
+            memory: 400M
+            

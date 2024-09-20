@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rnlobby-rlsrvnat-loadbalancer
+spec:
+  selector:
+    app: rlsrvnat
+  ports:
+    - protocol: UDP
+      port: 4002
+      targetPort: 4002
+  type: LoadBalancer

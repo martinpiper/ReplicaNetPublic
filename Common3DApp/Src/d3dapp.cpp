@@ -60,6 +60,7 @@ CD3DApplication::CD3DApplication()
 	m_dwMinDepthBits	= 16;
 	m_dwMinStencilBits  = 0;
 	m_bShowCursorWhenFullscreen = FALSE;
+	m_lastGoodframeTime = 0.0f;
 }
 
 
@@ -1593,8 +1594,17 @@ HRESULT CD3DApplication::Render3DEnvironment()
 		return hr;
 	}
 
-	// Get the app's time, in seconds. Skip rendering if no time elapsed
+	// MPi: Avoid running at more than 100fps
 	FLOAT fAppTime		= DXUtil_Timer( TIMER_GETAPPTIME );
+	if ( (fAppTime - m_lastGoodframeTime) < 0.01f)
+	{
+		Sleep(1);
+		return S_OK;
+	}
+	m_lastGoodframeTime = fAppTime;
+	Sleep(0);	// Sleep to allow a context switch since this can be a heavy graphics user
+
+	// Get the app's time, in seconds. Skip rendering if no time elapsed
 	FLOAT fElapsedAppTime = DXUtil_Timer( TIMER_GETELAPSEDTIME );
 	if( ( 0.0f == fElapsedAppTime ) && m_bFrameMoving )
 		return S_OK;

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rnlobby-rlsrvutility-deployment
+  labels:
+    app: rlsrvutility
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rlsrvutility
+  template:
+    metadata:
+      labels:
+        app: rlsrvutility
+    spec:
+      containers:
+      - name: rlsrvutility
+        image: martinpiper/rnlobbydockerservices-app:0.0.1
+        command: ["RLSrvUtility"]
+        args: ["/d", "-dstart"]
+        ports:
+        - containerPort: 2000
+        resources:
+          requests:
+            cpu: 200m
+            memory: 300M
+          limits:
+            memory: 400M
+            

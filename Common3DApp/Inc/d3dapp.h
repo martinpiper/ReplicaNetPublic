@@ -160,6 +160,7 @@ protected:
 	RECT			  m_rcWindowClient;	// Saved client area size for mode switches
 
 	// Variables for timing
+	FLOAT			 m_lastGoodframeTime;
 	FLOAT			 m_fTime;			 // Current time in seconds
 	FLOAT			 m_fElapsedTime;	  // Time elapsed since last frame
 	FLOAT			 m_fFPS;			  // Instanteous frame rate

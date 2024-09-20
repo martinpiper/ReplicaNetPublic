@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rnlobby-rlsrvbackend-deployment
+  labels:
+    app: rlsrvbackend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rlsrvbackend
+  template:
+    metadata:
+      labels:
+        app: rlsrvbackend
+    spec:
+      containers:
+      - name: rlsrvbackend
+        image: martinpiper/rnlobbydockerservices-app:0.0.1
+        command: ["RLSrvBackend"]
+        args: ["/d", "-dstart", "-addr", "0.0.0.0:4001"]
+        ports:
+        - containerPort: 4000
+          protocol: "UDP"
+        - containerPort: 4001
+          protocol: "UDP"
+        resources:
+          requests:
+            cpu: 200m
+            memory: 300M
+          limits:
+            memory: 400M
+            

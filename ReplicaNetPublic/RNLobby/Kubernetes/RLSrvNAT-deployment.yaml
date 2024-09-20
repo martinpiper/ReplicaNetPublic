@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rnlobby-rlsrvnat-deployment
+  labels:
+    app: rlsrvnat
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rlsrvnat
+  template:
+    metadata:
+      labels:
+        app: rlsrvnat
+    spec:
+      containers:
+      - name: rlsrvnat
+        image: martinpiper/rnlobbydockerservices-app:0.0.1
+        command: ["RLSrvNAT"]
+        args: ["/d", "-dstart"]
+        ports:
+        - containerPort: 4002
+          protocol: "UDP"
+        resources:
+          requests:
+            cpu: 200m
+            memory: 300M
+          limits:
+            memory: 400M
+            

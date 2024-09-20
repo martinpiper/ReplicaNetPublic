@@ -47,10 +47,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMT|Win32'">
     <OutDir>.\Common3DApp___Win32_DebugMT\</OutDir>
     <IntDir>.\Common3DApp___Win32_DebugMT\</IntDir>
+    <IncludePath>C:\DX90SDK\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\DX90SDK\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|Win32'">
     <OutDir>.\Common3DApp___Win32_ReleaseMT\</OutDir>
     <IntDir>.\Common3DApp___Win32_ReleaseMT\</IntDir>
+    <IncludePath>C:\DX90SDK\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\DX90SDK\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugMT|Win32'">
     <ClCompile>

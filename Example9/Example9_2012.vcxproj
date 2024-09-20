@@ -48,11 +48,15 @@
     <OutDir>.\Example9___Win32_ReleaseMT\</OutDir>
     <IntDir>.\Example9___Win32_ReleaseMT\</IntDir>
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\DX90SDK\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\DX90SDK\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugMT|Win32'">
     <OutDir>.\Example9___Win32_DebugMT\</OutDir>
     <IntDir>.\Example9___Win32_DebugMT\</IntDir>
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\DX90SDK\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\DX90SDK\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|Win32'">
     <ClCompile>

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rnlobby-rlsrvuser-deployment
+  labels:
+    app: rlsrvuser
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rlsrvuser
+  template:
+    metadata:
+      labels:
+        app: rlsrvuser
+    spec:
+      containers:
+      - name: rlsrvuser
+        image: martinpiper/rnlobbydockerservices-app:0.0.1
+        command: ["RLSrvUser"]
+        args: ["/d", "-dstart"]
+        ports:
+        - containerPort: 4009
+          protocol: "UDP"
+        resources:
+          requests:
+            cpu: 200m
+            memory: 300M
+          limits:
+            memory: 400M
+            

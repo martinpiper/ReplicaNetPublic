@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rnlobby-rlsrvcode-deployment
+  labels:
+    app: rlsrvcode
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rlsrvcode
+  template:
+    metadata:
+      labels:
+        app: rlsrvcode
+    spec:
+      containers:
+      - name: rlsrvcode
+        image: martinpiper/rnlobbydockerservices-app:0.0.1
+        command: ["RLSrvCode"]
+        args: ["/d", "-dstart", "-file", "/root/cdkeys.txt"]
+        ports:
+        - containerPort: 4003
+          protocol: "UDP"
+        resources:
+          requests:
+            cpu: 200m
+            memory: 300M
+          limits:
+            memory: 400M
+            
