@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rnlobby-rlsrvudprelay-deployment
+  labels:
+    app: rlsrvudprelay
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rlsrvudprelay
+  template:
+    metadata:
+      labels:
+        app: rlsrvudprelay
+    spec:
+      containers:
+      - name: rlsrvudprelay
+        image: martinpiper/rnlobbydockerservices-app:0.0.1
+        command: ["RLSrvUDPRelay"]
+        args: ["/d", "-dstart"]
+        ports:
+        - containerPort: 4011
+          protocol: "UDP"
+        resources:
+          requests:
+            cpu: 200m
+            memory: 300M
+          limits:
+            memory: 400M
+            

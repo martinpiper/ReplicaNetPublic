@@ -59,11 +59,11 @@ public:
 	/// \param length The length of the data to use for creating the key.
 	void SetEncryptionKey(const void *data,const int length);
 
-	/// Hosts a NATResolver server instance on this socket. The socket is automatically polled is SetAutomaticHostSocketReads(true) is used.
+	/// Hosts a NATResolver server instance on this socket. The socket is automatically polled if SetAutomaticHostSocketReads(true) is used.
 	/// If the NATResolver thread has not started then this calls Start() first.
 	bool BeginHosting(t_XPSocket *socket);
 
-	/// Advertises a socket with a set of identifying numbers (isAdvertised, globalID, nonceID) which should be globally unique for this socket.
+	/// Advertises a socket with a set of identifying numbers (isAdvertised, globalID, sessionID, nonceID) which should be globally unique for this socket.
 	// CallbackExternalAddressKnown() can be called.
 	/// If the NATResolver thread has not started then this calls Start() first.
 	/// \param socket The socket to advertise.
@@ -76,7 +76,7 @@ public:
 	/// \param persistant Keeps the socket alive for longer in the NATResolver index.
 	bool BeginAdvertise(t_XPSocket *socket,void *userPointer,const bool isAdvertised,const int globalID,const int sessionID,const int nonceID,const bool externalHost = true,const XPAddress *optionalHost=0,const bool persistant = false);
 
-	/// Starts resolving a connection between this socket and the socket advertised with the set of identifying numbers (isAdvertised, globalID, nonceID).
+	/// Starts resolving a connection between this socket and the socket advertised with the set of identifying numbers (isAdvertised, globalID, sessionID, nonceID).
 	/// Either CallbackResolveFailed() or CallbackResolveResult() will be called.
 	/// If the NATResolver thread has not started then this calls Start() first.
 	/// \param socket The socket to resolve.
@@ -115,8 +115,10 @@ public:
 	/// /param targetAddress The target address the socket can send packets to.
 	virtual void CallbackResolveResult(t_XPSocket *socket,void *userPointer,const XPAddress &targetAddress,const int titleID,const bool isAdvertised,const int globalID,const int sessionID,const int nonceID);
 
-	/// A virtual callback that is triggered when an advertised socket it told the external address from being advertised to an external host.
+	/// A virtual callback that is triggered when an advertised socket is told the external address from being advertised to an external host.
 	virtual void CallbackExternalAddressKnown(t_XPSocket *socket,void *userPointer,const XPAddress &externalAddress,const int titleID,const bool isAdvertised,const int globalID,const int sessionID,const int nonceID);
+
+	int GetCountBySocket(void);
 
 private:
 	int ThreadEntry(void);

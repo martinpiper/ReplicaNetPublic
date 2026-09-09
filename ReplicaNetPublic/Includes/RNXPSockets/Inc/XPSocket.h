@@ -162,6 +162,9 @@ typedef struct XPAddress XPAddress;
 void operator<< (RNReplicaNet::DynamicMessageHelper &message,const XPAddress &a);
 void operator>> (RNReplicaNet::DynamicMessageHelper &message,XPAddress &a);
 
+void SetAddrV4(DynamicMessageHelper &message,const XPAddress &addr);
+void GetAddrV4(DynamicMessageHelper &message,XPAddress &addr);
+
 typedef struct s_XPSocket t_XPSocket;
 
 typedef struct s_XPSocket

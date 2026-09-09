@@ -68,6 +68,7 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1DynamicMessageHelper.html#a9f97e3d90208caa492800ee6b70e7b68"><param name="Name" value="RNReplicaNet::DynamicMessageHelper"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#a2ba99123aa4432fd2e043719475dd57c"><param name="Name" value="RNReplicaNet::MessageHelper"></OBJECT>
   </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#a5b80ab450a8e2054bfdb08f81695e3d6"><param name="Name" value="Advertise"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1AdvertiseServer.html#aa78db7ca3474b1e510094b2adc9a2e8a"><param name="Name" value="AdvertiseServer"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1AdvertiseClient.html#a2b419510a948aeb786abe4a837388d24"><param name="Name" value="AdvertiseSession"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1TransportNATUDP.html#a34f20e3d0555d8083994d524bac588ae"><param name="Name" value="Allocate"></OBJECT>
@@ -115,6 +116,10 @@
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1XPURL.html#aa08780bb68616ea605c9d2279116a996"><param name="Name" value="BeginEnumerateTransports"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#adbccc176f658192eba375cbe66a74d35"><param name="Name" value="BeginHosting"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#adbccc176f658192eba375cbe66a74d35"><param name="Name" value="RNReplicaNet::RNLobby::NATResolver"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#adbccc176f658192eba375cbe66a74d35"><param name="Name" value="RNReplicaNet::RNLobby::UDPRelay"></OBJECT>
+  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RegistryManager.html#a4bfe8bc895880798cea7250f23d0a008"><param name="Name" value="BeginIterate"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RegistryManager.html#a4bfe8bc895880798cea7250f23d0a008"><param name="Name" value="RNReplicaNet::RegistryManager"></OBJECT>
@@ -211,6 +216,7 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BaseServer.html#a29d8c7f6dc1e671f695b62569af17765"><param name="Name" value="RNReplicaNet::RNLobby::BaseServer"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BaseTransportServer.html#a24485bbe958d673db6ca90a1a0237224"><param name="Name" value="RNReplicaNet::RNLobby::BaseTransportServer"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1CodeServer.html#ae150b827c72199a8c23e3a3234f1ef06"><param name="Name" value="RNReplicaNet::RNLobby::CodeServer"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#ae773f129c193993924e262f26c928707"><param name="Name" value="RNReplicaNet::RNLobby::UDPRelay"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BaseServer.html#a15365e52a15a0365ecd84553cae14e0b"><param name="Name" value="CallbackDataSend"></OBJECT>
   <UL>
@@ -229,6 +235,10 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1StatClient.html#afad57e26ac131640f33181ef191a50f6"><param name="Name" value="CallbackEndSessionScriptNotCompleted"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1StatClient.html#abdb6b34d0d25a6836d2d8a9b3c4024a2"><param name="Name" value="CallbackEndSessionScriptNotFound"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#af23204f4ad068f007a7d9d8a154537cd"><param name="Name" value="CallbackExternalAddressKnown"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#af23204f4ad068f007a7d9d8a154537cd"><param name="Name" value="RNReplicaNet::RNLobby::NATResolver"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#af23204f4ad068f007a7d9d8a154537cd"><param name="Name" value="RNReplicaNet::RNLobby::UDPRelay"></OBJECT>
+  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1ProductPatcher.html#aee2eb407b65da10e6a0fff77faa0b7c1"><param name="Name" value="CallbackFailedToReadFile"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserClient.html#ad8d1db19a22b9a78a451e2e67400ca76"><param name="Name" value="CallbackFriendAdded"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserClient.html#a96a746d6489bb156024a07ceeb088482"><param name="Name" value="CallbackFriendDeleted"></OBJECT>
@@ -518,7 +528,15 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1std__datablock.html#a55b3e60fc1974ef55276b99fe5324f6e"><param name="Name" value="ForceReflectionUpdate"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#a3a7a46fd9ebad3fd529a005b6be26cce"><param name="Name" value="ForgetResolve"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#a07dc1a0ea550a6c21f73ffc6f543db35"><param name="Name" value="ForgetSocket"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#a07dc1a0ea550a6c21f73ffc6f543db35"><param name="Name" value="RNReplicaNet::RNLobby::NATResolver"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#a07dc1a0ea550a6c21f73ffc6f543db35"><param name="Name" value="RNReplicaNet::RNLobby::UDPRelay"></OBJECT>
+  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#a7033d014a26930d0b6d9f629e40a85c4"><param name="Name" value="ForgetUserPointer"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#a7033d014a26930d0b6d9f629e40a85c4"><param name="Name" value="RNReplicaNet::RNLobby::NATResolver"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#a7033d014a26930d0b6d9f629e40a85c4"><param name="Name" value="RNReplicaNet::RNLobby::UDPRelay"></OBJECT>
+  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1DynamicMessageHelper.html#a368ed569147b7ec9bc6973832d6d742c"><param name="Name" value="FreeBuffer"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Function.html#a02d10900478fba43a32d70b2368ffe66"><param name="Name" value="FreeSessionBlocks"></OBJECT>
   <UL>
@@ -603,6 +621,11 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1XPSession.html#aac19767f8198d6cd3a5bb4899e7ffe40"><param name="Name" value="RNReplicaNet::XPSession"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BaseTransportServer.html#a7f575b8491e6dd027e8762d75ce47db8"><param name="Name" value="GetConnectionNOnce"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#af933f4a91cd5040ee544e0c1a8ee5513"><param name="Name" value="GetCountBySocket"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#af933f4a91cd5040ee544e0c1a8ee5513"><param name="Name" value="RNReplicaNet::RNLobby::NATResolver"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#af933f4a91cd5040ee544e0c1a8ee5513"><param name="Name" value="RNReplicaNet::RNLobby::UDPRelay"></OBJECT>
+  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#a340aa51eb2e3e05f83b872727fc4788e"><param name="Name" value="GetCurrentPosition"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1Thread.html#a29a07b374ad39f731d55bf57afe2c6aa"><param name="Name" value="GetCurrentProcessorNumber"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1ReplicaNet.html#a781fac919180c3a2a7b7b8501f04607d"><param name="Name" value="GetCurrentReplicaNet"></OBJECT>
@@ -792,6 +815,7 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1ThreadClass.html#a0afaaab6af6eff5b9a2a18b6208268f3"><param name="Name" value="RNReplicaNet::ThreadClass"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1PlatformInfo.html#a5bb5b25e7e6ec406599f51dbb293cbb6"><param name="Name" value="GetNumberOfCores"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1JobManager.html#a0f84221d0d9d4a48b7c24df611592e9e"><param name="Name" value="GetNumberOfJobsRemaining"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Security.html#a7a579af84c8ecb2fc3f7ed27533b29a5"><param name="Name" value="GetNumBlockedThisSession"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BaseTransportServer.html#a06e68128bb50f4db3b9d102710d7b59d"><param name="Name" value="GetNumConnections"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1PatchIndexManager.html#a9d60ab75f2ddc108e43e167d817bd6dd"><param name="Name" value="GetNumEntries"></OBJECT>
@@ -949,6 +973,7 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1SysTime.html#a802678a4ca04c3b59847703b07629206"><param name="Name" value="GetSystemTime"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1Thread.html#a64480a7cdc697773dacb56238e180bae"><param name="Name" value="GetTerminated"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1DataBlock.html#a49c06b33614c81ce2608c5380258e84f"><param name="Name" value="GetThisClassType"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1ThreadClass.html#ac693c280059b4ba6ae0bfe3e7a6a1c1b"><param name="Name" value="GetThreadID"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1SysTime.html#aea4c48e2e0c00c9e6b67f80b70c3d19c"><param name="Name" value="GetTickCount"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1ReplicaNet.html#ab4e62a041909c0e3c508b98fcf196d73"><param name="Name" value="GetTime"></OBJECT>
   <UL>
@@ -1084,6 +1109,10 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1PatchIndexManager.html#a0c93dd130830c1e024a54425612ba682"><param name="Name" value="RNReplicaNet::RNLobby::PatchIndexManager"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1Job.html#a6c239510ca38c3595c506c12eb634c62"><param name="Name" value="Job"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1Job.html#a6c239510ca38c3595c506c12eb634c62"><param name="Name" value="RNReplicaNet::Job"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1JobManager.html#a965d805cf4fa6e7ef721cfad15d99bcd"><param name="Name" value="RNReplicaNet::JobManager"></OBJECT>
+  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1Job.html#a22d5e96819bc7c0bff8d135a21e67b42"><param name="Name" value="JobManager"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1Job.html#a22d5e96819bc7c0bff8d135a21e67b42"><param name="Name" value="RNReplicaNet::Job"></OBJECT>
@@ -1396,6 +1425,9 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#ad3ab716654a6b88d9fe2c280b70794b8"><param name="Name" value="mRLSrvStatAddress"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#acf3aeb36f9726b4c7ed5adc2b6d22d76"><param name="Name" value="mRLSrvStatCrypto"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#ac82231822878ed4d432d8ad839db6bf9"><param name="Name" value="mRLSrvStatPort"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#ac0072b40b16e0a9433f3bf187d88f3f4"><param name="Name" value="mRLSrvUDPRelayAddress"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#acb9c89144b19cd15fb51be3c3c4f22e1"><param name="Name" value="mRLSrvUDPRelayCrypto"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#a34b3b1d5486d30a3d8553c7157ba23e8"><param name="Name" value="mRLSrvUDPRelayPort"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#a4b235a0163cb203f1689d0f7e18e0c4d"><param name="Name" value="mRLSrvUserAddress"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#a9a87612005e6ead763f953db60d472dc"><param name="Name" value="mRLSrvUserCrypto"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#a62b86477a64fbe58cc3924764abb5eaf"><param name="Name" value="mRLSrvUserPort"></OBJECT>
@@ -1548,6 +1580,7 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1DataBlock__NData.html#a387921f25a80d713d655c53d86cc3011"><param name="Name" value="RNReplicaNet::DataBlock_NData"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Predict__Float.html#a387921f25a80d713d655c53d86cc3011"><param name="Name" value="RNReplicaNet::DataBlock_Predict_Float"></OBJECT>
   </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#a6d9133b02f48d86bb5511b0de6b455de"><param name="Name" value="ParsePacketData"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1XPURL.html#a5e26dc48abcb0a3adb06f6abb351eab7"><param name="Name" value="ParseURLs"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Patcher.html#acaf3f980676f39efa69f665d0e1f52e5"><param name="Name" value="PatchFile"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1PlatformHeapBlock.html#a3a09290e4b5129cd26564272312e1b5c"><param name="Name" value="PlatformHeapBlock"></OBJECT>
@@ -2007,6 +2040,8 @@
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1JobManager.html#a0aaa764c84ab346e8d711dac7c798ce1"><param name="Name" value="AddPoolJob"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1JobManager.html#a6a34dd676d6a1d0af19d2c7714317147"><param name="Name" value="CancelJobs"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1JobManager.html#a0f84221d0d9d4a48b7c24df611592e9e"><param name="Name" value="GetNumberOfJobsRemaining"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1JobManager.html#a965d805cf4fa6e7ef721cfad15d99bcd"><param name="Name" value="Job"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1JobManager.html#a156679a07996ff5a0867b852b362dd6c"><param name="Name" value="JobManager"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1JobManager.html#a70e834c2662670493f7d31421561dd8f"><param name="Name" value="SetPoolSize"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1JobManager.html#a94c2f5766df9d2adc8afd9a1f0ae775e"><param name="Name" value="Start"></OBJECT>
@@ -2583,6 +2618,9 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#ad3ab716654a6b88d9fe2c280b70794b8"><param name="Name" value="mRLSrvStatAddress"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#acf3aeb36f9726b4c7ed5adc2b6d22d76"><param name="Name" value="mRLSrvStatCrypto"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#ac82231822878ed4d432d8ad839db6bf9"><param name="Name" value="mRLSrvStatPort"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#ac0072b40b16e0a9433f3bf187d88f3f4"><param name="Name" value="mRLSrvUDPRelayAddress"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#acb9c89144b19cd15fb51be3c3c4f22e1"><param name="Name" value="mRLSrvUDPRelayCrypto"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#a34b3b1d5486d30a3d8553c7157ba23e8"><param name="Name" value="mRLSrvUDPRelayPort"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#a4b235a0163cb203f1689d0f7e18e0c4d"><param name="Name" value="mRLSrvUserAddress"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#a9a87612005e6ead763f953db60d472dc"><param name="Name" value="mRLSrvUserCrypto"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#a62b86477a64fbe58cc3924764abb5eaf"><param name="Name" value="mRLSrvUserPort"></OBJECT>
@@ -2739,6 +2777,7 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#a3a7a46fd9ebad3fd529a005b6be26cce"><param name="Name" value="ForgetResolve"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#a07dc1a0ea550a6c21f73ffc6f543db35"><param name="Name" value="ForgetSocket"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#a7033d014a26930d0b6d9f629e40a85c4"><param name="Name" value="ForgetUserPointer"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#af933f4a91cd5040ee544e0c1a8ee5513"><param name="Name" value="GetCountBySocket"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#aa5127ed2296cda74e7eb29145caa1c2d"><param name="Name" value="SetAutomaticHostSocketReads"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#a443f552cbd526b3bfecb08f35d582350"><param name="Name" value="SetAutomaticThreadStop"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#afc8dd58a7a9ad30e0b783cd6977fca74"><param name="Name" value="SetEncryptionKey"></OBJECT>
@@ -3004,6 +3043,23 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1TransportNATUDP.html#a252eef3e1805dbec3881b557735d6d00"><param name="Name" value="TransportNATUDP"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1TransportNATUDP.html#a2b34237390dff365cf7a3da43c21e78f"><param name="Name" value="~TransportNATUDP"></OBJECT>
   </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html"><param name="Name" value="RNReplicaNet::RNLobby::UDPRelay"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#a5b80ab450a8e2054bfdb08f81695e3d6"><param name="Name" value="Advertise"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#adbccc176f658192eba375cbe66a74d35"><param name="Name" value="BeginHosting"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#ae773f129c193993924e262f26c928707"><param name="Name" value="CallbackDataReceived"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#af23204f4ad068f007a7d9d8a154537cd"><param name="Name" value="CallbackExternalAddressKnown"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#a07dc1a0ea550a6c21f73ffc6f543db35"><param name="Name" value="ForgetSocket"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#a7033d014a26930d0b6d9f629e40a85c4"><param name="Name" value="ForgetUserPointer"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#af933f4a91cd5040ee544e0c1a8ee5513"><param name="Name" value="GetCountBySocket"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#a6d9133b02f48d86bb5511b0de6b455de"><param name="Name" value="ParsePacketData"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#a150ed6f16876d44eef31f16787677858"><param name="Name" value="SendTo"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#aa5127ed2296cda74e7eb29145caa1c2d"><param name="Name" value="SetAutomaticHostSocketReads"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#afc8dd58a7a9ad30e0b783cd6977fca74"><param name="Name" value="SetEncryptionKey"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#abac1d94775f0ac813a9e5a60fe383879"><param name="Name" value="SetServer"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#a94c2f5766df9d2adc8afd9a1f0ae775e"><param name="Name" value="Start"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#ae903cde949cc162bc3fc46472c8a8248"><param name="Name" value="Stop"></OBJECT>
+  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserClient.html"><param name="Name" value="RNReplicaNet::RNLobby::UserClient"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserClient.html#aafc7f98a9f0bd321f45d8885186a04e1"><param name="Name" value="AddFriend"></OBJECT>
@@ -3221,6 +3277,7 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1ThreadClass.html#ae00b203a953594a5bcbf2c66bbfaa02a"><param name="Name" value="CheckQuit"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1ThreadClass.html#a64a1043df94d8cf7d6779fc960e1ade9"><param name="Name" value="DoQuitNow"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1ThreadClass.html#a0afaaab6af6eff5b9a2a18b6208268f3"><param name="Name" value="GetNumAllocated"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1ThreadClass.html#ac693c280059b4ba6ae0bfe3e7a6a1c1b"><param name="Name" value="GetThreadID"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1ThreadClass.html#a78c4b9bd21c44a08696711e7a0076467"><param name="Name" value="Sleep"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1ThreadClass.html#adbc148eaddd341d7ae4d07c9e9e33bfd"><param name="Name" value="Thread"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1ThreadClass.html#a1e0d4c9e6205bef340c120182a2dbfc6"><param name="Name" value="ThreadClass"></OBJECT>
@@ -3515,6 +3572,7 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1Transport.html#a61469866fbac4e20f43cdb460dec8d33"><param name="Name" value="RNReplicaNet::Transport"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1AdvertiseClient.html#af144b23f6c918578f0cd3c0226351bb7"><param name="Name" value="SendReliableMessage"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#a150ed6f16876d44eef31f16787677858"><param name="Name" value="SendTo"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#a30f90f6462c5374db88f4b5cac91d6b8"><param name="Name" value="Service"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="structRNReplicaNet_1_1DataBlock__NData_1_1SessionBlock__NData.html#a3286fc0e4b51ecdceb22c1c3cc068abb"><param name="Name" value="SessionBlock_NData"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1ReplicaNet.html#a982a22bd5cc7e78412d8d53c45f1648a"><param name="Name" value="SessionCreate"></OBJECT>
@@ -3533,6 +3591,10 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#a5cec4ebcd39fa0a7418f99d59dde8129"><param name="Name" value="SetArgs"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BaseTransportServer.html#aea0653ed2782106b7225415d118c17c9"><param name="Name" value="SetAsDisconnecting"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#aa5127ed2296cda74e7eb29145caa1c2d"><param name="Name" value="SetAutomaticHostSocketReads"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#aa5127ed2296cda74e7eb29145caa1c2d"><param name="Name" value="RNReplicaNet::RNLobby::NATResolver"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#aa5127ed2296cda74e7eb29145caa1c2d"><param name="Name" value="RNReplicaNet::RNLobby::UDPRelay"></OBJECT>
+  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1ReplicaNet.html#ab4f6061d91b6df3001a8a2ea7b172eed"><param name="Name" value="SetAutomaticPacketCompression"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1ReplicaNet.html#ab4f6061d91b6df3001a8a2ea7b172eed"><param name="Name" value="RNReplicaNet::ReplicaNet"></OBJECT>
@@ -3628,6 +3690,7 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1CodeClient.html#afc8dd58a7a9ad30e0b783cd6977fca74"><param name="Name" value="RNReplicaNet::RNLobby::CodeClient"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1CodeServer.html#afc8dd58a7a9ad30e0b783cd6977fca74"><param name="Name" value="RNReplicaNet::RNLobby::CodeServer"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#afc8dd58a7a9ad30e0b783cd6977fca74"><param name="Name" value="RNReplicaNet::RNLobby::NATResolver"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#afc8dd58a7a9ad30e0b783cd6977fca74"><param name="Name" value="RNReplicaNet::RNLobby::UDPRelay"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1DataBlock__NData.html#a48d790b40a7659ca2786e87e434b0d28"><param name="Name" value="SetEndianTest"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1Predict__Float.html#a3c7407008e36799facb211fb3223bbb3"><param name="Name" value="SetError"></OBJECT>
@@ -3827,6 +3890,7 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#abac1d94775f0ac813a9e5a60fe383879"><param name="Name" value="RNReplicaNet::RNLobby::NATResolver"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1StatClient.html#abac1d94775f0ac813a9e5a60fe383879"><param name="Name" value="RNReplicaNet::RNLobby::StatClient"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1TransportNATUDP.html#a39329cbed0fcd8a3ecde762c2ee487d0"><param name="Name" value="RNReplicaNet::RNLobby::TransportNATUDP"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#abac1d94775f0ac813a9e5a60fe383879"><param name="Name" value="RNReplicaNet::RNLobby::UDPRelay"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserClient.html#abac1d94775f0ac813a9e5a60fe383879"><param name="Name" value="RNReplicaNet::RNLobby::UserClient"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATDetectClient.html#a079f1850d8fb76e6efdab6c18bb61ee5"><param name="Name" value="SetServers"></OBJECT>
@@ -3908,6 +3972,7 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#a94c2f5766df9d2adc8afd9a1f0ae775e"><param name="Name" value="RNReplicaNet::RNLobby::Service"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1StatClient.html#a94c2f5766df9d2adc8afd9a1f0ae775e"><param name="Name" value="RNReplicaNet::RNLobby::StatClient"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1StatServer.html#abbc27f032cecdcd496b9ed5a9e3dd5c2"><param name="Name" value="RNReplicaNet::RNLobby::StatServer"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#a94c2f5766df9d2adc8afd9a1f0ae775e"><param name="Name" value="RNReplicaNet::RNLobby::UDPRelay"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserClient.html#a94c2f5766df9d2adc8afd9a1f0ae775e"><param name="Name" value="RNReplicaNet::RNLobby::UserClient"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserServer.html#abbc27f032cecdcd496b9ed5a9e3dd5c2"><param name="Name" value="RNReplicaNet::RNLobby::UserServer"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UtilityServer.html#abbc27f032cecdcd496b9ed5a9e3dd5c2"><param name="Name" value="RNReplicaNet::RNLobby::UtilityServer"></OBJECT>
@@ -3931,6 +3996,7 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1ScanPath.html#ae903cde949cc162bc3fc46472c8a8248"><param name="Name" value="RNReplicaNet::RNLobby::ScanPath"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Security.html#ae903cde949cc162bc3fc46472c8a8248"><param name="Name" value="RNReplicaNet::RNLobby::Security"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#ae903cde949cc162bc3fc46472c8a8248"><param name="Name" value="RNReplicaNet::RNLobby::Service"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#ae903cde949cc162bc3fc46472c8a8248"><param name="Name" value="RNReplicaNet::RNLobby::UDPRelay"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserClient.html#ae903cde949cc162bc3fc46472c8a8248"><param name="Name" value="RNReplicaNet::RNLobby::UserClient"></OBJECT>
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1AdvertiseClient.html#a2e0ad8a5ca46e25638929b32a1a07719"><param name="Name" value="StopAdvertiseSession"></OBJECT>

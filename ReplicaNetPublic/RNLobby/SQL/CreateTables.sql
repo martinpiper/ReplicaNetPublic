@@ -6,7 +6,8 @@ CREATE TABLE Backend(TitleID INTEGER PRIMARY KEY, EncryptionKey TEXT, SupportExp
 		RLSrvNATDetect1Address TEXT, RLSrvNATDetect1Port INTEGER, RLSrvNATDetect2Address TEXT, RLSrvNATDetect2Port INTEGER, RLSrvNATDetectCrypto TEXT, 
 		RLSrvStatAddress TEXT, RLSrvStatPort INTEGER, RLSrvStatCrypto TEXT, 
 		RLSrvUserAddress TEXT, RLSrvUserPort INTEGER, RLSrvUserCrypto TEXT, 
-		RLSrvCloudAddress TEXT, RLSrvCloudPort INTEGER, RLSrvCloudCrypto TEXT
+		RLSrvCloudAddress TEXT, RLSrvCloudPort INTEGER, RLSrvCloudCrypto TEXT,
+		RLSrvUDPRelayAddress TEXT, RLSrvUDPRelayPort INTEGER, RLSrvUDPRelayCrypto TEXT
 	);
 
 -- Web

@@ -5,6 +5,8 @@
 #define RNUSETHREAD
 // Define this to remove RNLobby code from the compilation.
 //#define REPLICANET_REMOVE_RNLOBBY
+// Define this to remove ProductPatcher code from the compilation.
+//#define REPLICANET_REMOVE_PRODUCTPATCHER
 // Tells the code below it is amalgamated
 #define REPLICANET_AMALGATED
 // Switches off CRT and PDB warnings for Microsoft compilers
@@ -14,6 +16,7 @@
 #ifndef _WINSOCK_DEPRECATED_NO_WARNINGS
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 #endif
+#pragma warning(disable : 4456 4459 4996 4458 4264 4263 4706 4701 4702)
 #include "RNPlatform/Inc/MemoryTracking.h"		// Always the first header in public ReplicaNet library includes
 #include <algorithm>
 static char _version_id_string[] = "\n\nInfo: " __FILE__ "-" __DATE__ "-" __TIME__ "\n\n";
@@ -120,12 +123,17 @@ END_LICENSE_HEADER */
 #include <sys/socket.h>
 #include <sys/time.h>
 #include <netinet/in.h>
-#include <netdb.h>
 #include <sys/param.h>
-#include <sys/ioctl.h>
 #include <sys/uio.h>
 #include <errno.h>
 #include <arpa/inet.h>
+#if defined (RN_PS4_PS5)
+#include <net.h>
+#include <net6.h>
+#else
+#include <netdb.h>
+#include <sys/ioctl.h>
+#endif
 #endif /* #if defined(RN_UNIX_LIKE) */
 
 #if defined(_PS2)
@@ -221,7 +229,13 @@ void dprintf(const char *format, ...);		/**< output a debug string to the MSDEV 
 //Include inline: #include "RNXPSockets/Ping.h"
 //From: RNXPSockets/Ping.h
 #if defined(RN_UNIX_LIKE)
+#if defined(RN_PS4_PS5)
+#include <net.h>
+#include <net6.h>
+#include <libnetctl.h>
+#else
 #include <netdb.h>
+#endif
 #endif
 #if defined(RN_UNIX_LIKE) || defined(_WIN32)
 // New versions of GCC support this pragma
@@ -765,7 +779,7 @@ t_XPSocket *XPSock_Create(void)
 		}
 
 		/* Make socket non-blocking */
-#ifndef _PS2
+#if !(defined(_PS2)  || defined (RN_PS4_PS5))
 		if (ioctlsocket(thissocket->wins_socket,FIONBIO, (unsigned long *) &opt) == SOCKET_ERROR)
 		{
 //			dprintf("Couldn't make non-blocking socket. Network performance will suffer\n");
@@ -774,6 +788,15 @@ t_XPSocket *XPSock_Create(void)
 
 #ifdef _PS2
 		ret = setsockopt(thissocket->wins_socket, SOL_SOCKET, SO_NBIO, (const char *) &opt, 4);
+#endif
+
+#ifdef RN_PS4_PS5
+		int non_blocking = 1;
+		if (sceNetSetsockopt(thissocket->wins_socket, SCE_NET_SOL_SOCKET, SCE_NET_SO_NBIO, &non_blocking, sizeof(non_blocking)) < 0)
+		{
+			sceNetSocketClose(thissocket->wins_socket);
+			ret = XPSOCK_EERROR;
+		}
 #endif
 
 #ifdef NO_NAGLE
@@ -882,7 +905,11 @@ int XPSock_Connect(t_XPSocket *socket,const t_XPAddress *addr)
 	{
 		char taddr[64];
 #ifndef _PS2
+#ifdef RN_PS4_PS5
+		SceNetSockaddrIn serveraddr;
+#else
 		struct sockaddr_in serveraddr;
+#endif
 #else
 /*
 struct sceEENetSockaddrIn {
@@ -905,7 +932,11 @@ struct sceEENetSockaddrIn {
 		serveraddr.sin_len = sizeof(serveraddr);
 #endif
 		serveraddr.sin_family = AF_INET;
+#ifdef RN_PS4_PS5
+		sceNetInetPton(SCE_NET_AF_INET, taddr, &(serveraddr.sin_addr.s_addr));
+#else
 		serveraddr.sin_addr.s_addr = inet_addr(taddr);
+#endif
 		serveraddr.sin_port = htons(addr->port);
 
 		ret = connect(socket->wins_socket,(struct sockaddr *) &serveraddr,sizeof(serveraddr));
@@ -1292,10 +1323,14 @@ int XPSock_Listen(t_XPSocket *socket,const RNReplicaNet::t_XPAddress *addr)
 
 	if (wsockets_started && socket->wins_socket != SOCKET_ERROR && addr->port != XPSOCK_PORT_LOCAL)
 	{
+#ifdef RN_PS4_PS5
+		SceNetSockaddrIn sa;
+#else
 		struct sockaddr_in sa;
+#endif
 		int ret;
 
-		memset(&sa,0,sizeof(struct sockaddr_in));
+		memset(&sa,0,sizeof(sa));
 #ifdef _PS2
 		sa.sin_len = sizeof(sa);
 #endif
@@ -1333,14 +1368,23 @@ int XPSock_Listen(t_XPSocket *socket,const RNReplicaNet::t_XPAddress *addr)
 
 		if (addr->port == 0)
 		{
+#ifdef RN_PS4_PS5
+			SceNetSockaddr name;
+			SceNetSocklen_t namelen;
+#else
 			struct sockaddr name;
 #ifdef _USING_W32_SOCKETS
 			int namelen;
 #else
 			socklen_t namelen;
 #endif
-			namelen = sizeof(sockaddr_in);
-			if (getsockname (socket->wins_socket,&name,&namelen)  == SOCKET_ERROR)
+#endif // else RN_PS4_PS5
+			namelen = sizeof(name);
+#ifdef RN_PS4_PS5
+			if (sceNetGetsockname(socket->wins_socket, &name, &namelen))
+#else
+			if (getsockname(socket->wins_socket, &name, &namelen) == SOCKET_ERROR)
+#endif
 			{
 //				dprintf("Couldn't get UDP socket port\n");
 				asocket_lasterror = XPSOCK_ECANTBIND;
@@ -1382,7 +1426,12 @@ t_XPSocket *XPSock_Accept(t_XPSocket *socket)
 #else
 		int ret;
 #endif
+
+#ifdef RN_PS4_PS5
+		SceNetSockaddrIn info;
+#else
 		struct sockaddr_in info;
+#endif
 		int addrin;
 		int k,opt = 1;
 
@@ -1402,7 +1451,7 @@ t_XPSocket *XPSock_Accept(t_XPSocket *socket)
 			newsocket->state = XPSOCK_SCONNECT;
 			newsocket->wins_socket = ret;
 
-#ifndef _PS2
+#if !(defined(_PS2) || defined(RN_PS4_PS5))
 			if (ioctlsocket(newsocket->wins_socket,FIONBIO, (unsigned long *) &opt) == SOCKET_ERROR)
 			{
 //				dprintf("Couldn't make socket non blocking from listen\n");
@@ -1412,6 +1461,15 @@ t_XPSocket *XPSock_Accept(t_XPSocket *socket)
 			int iret = 0;
 #ifdef _PS2
 			iret = setsockopt(newsocket->wins_socket, SOL_SOCKET, SO_NBIO, (const char *) &opt, 4);
+#endif
+
+#ifdef RN_PS4_PS5
+			int non_blocking = 1;
+			if (sceNetSetsockopt(newsocket->wins_socket, SCE_NET_SOL_SOCKET, SCE_NET_SO_NBIO, &non_blocking, sizeof(non_blocking)) < 0)
+			{
+				sceNetSocketClose(newsocket->wins_socket);
+				ret = XPSOCK_EERROR;
+			}
 #endif
 
 #ifdef NO_NAGLE
@@ -1519,7 +1577,11 @@ int XPSock_GetAddress(t_XPSocket *socket,t_XPAddress *addr)
 
 		if (socket->wins_socket != SOCKET_ERROR)
 		{
+#ifdef RN_PS4_PS5
+			SceNetSockaddrIn name;
+#else
 			struct sockaddr_in name;
+#endif
 #ifdef _USING_W32_SOCKETS
 			int namelen;
 #else
@@ -1565,7 +1627,12 @@ int XPSock_GetAddress(t_XPSocket *socket,t_XPAddress *addr)
 
 		if (socket->wins_socket6 != SOCKET_ERROR)
 		{
+#ifdef RN_PS4_PS5
+			SceNetSockaddrIn6 name;
+#else
 			struct sockaddr_in6 name;
+#endif
+
 #ifdef _USING_W32_SOCKETS
 			int namelen;
 #else
@@ -1581,7 +1648,11 @@ int XPSock_GetAddress(t_XPSocket *socket,t_XPAddress *addr)
 			int i;
 			for (i=0;i<16;i++)
 			{
+#ifdef RN_PS4_PS5
+				addr->addr6[i] = name.sin6_addr.__u6_addr.__u6_addr8[i];
+#else
 				addr->addr6[i] = name.sin6_addr.s6_addr[i];
+#endif
 			}
 
 			addr->port6 = ntohs( name.sin6_port);
@@ -1649,18 +1720,23 @@ int XPSock_GetPeerAddress(t_XPSocket *socket,t_XPAddress *addr)
 		}
 
 #ifdef _USING_W32_SOCKETS
-		addr->addr[0] = ((sockaddr_in *)(&name))->sin_addr.S_un.S_un_b.s_b1;
-		addr->addr[1] = ((sockaddr_in *)(&name))->sin_addr.S_un.S_un_b.s_b2;
-		addr->addr[2] = ((sockaddr_in *)(&name))->sin_addr.S_un.S_un_b.s_b3;
-		addr->addr[3] = ((sockaddr_in *)(&name))->sin_addr.S_un.S_un_b.s_b4;
+		addr->addr[0] = ((sockaddr_in*)(&name))->sin_addr.S_un.S_un_b.s_b1;
+		addr->addr[1] = ((sockaddr_in*)(&name))->sin_addr.S_un.S_un_b.s_b2;
+		addr->addr[2] = ((sockaddr_in*)(&name))->sin_addr.S_un.S_un_b.s_b3;
+		addr->addr[3] = ((sockaddr_in*)(&name))->sin_addr.S_un.S_un_b.s_b4;
+#elif defined(RN_PS4_PS5)
+		addr->addr[0] = ((unsigned char*)&((SceNetSockaddrIn*)(&name))->sin_addr.s_addr)[0];
+		addr->addr[1] = ((unsigned char*)&((SceNetSockaddrIn*)(&name))->sin_addr.s_addr)[1];
+		addr->addr[2] = ((unsigned char*)&((SceNetSockaddrIn*)(&name))->sin_addr.s_addr)[2];
+		addr->addr[3] = ((unsigned char*)&((SceNetSockaddrIn*)(&name))->sin_addr.s_addr)[3];
+		addr->port = ntohs(((SceNetSockaddrIn*)(&name))->sin_port);
 #else
-		addr->addr[0] = ((unsigned char *)&((sockaddr_in *)(&name))->sin_addr.s_addr)[0];
-		addr->addr[1] = ((unsigned char *)&((sockaddr_in *)(&name))->sin_addr.s_addr)[1];
-		addr->addr[2] = ((unsigned char *)&((sockaddr_in *)(&name))->sin_addr.s_addr)[2];
-		addr->addr[3] = ((unsigned char *)&((sockaddr_in *)(&name))->sin_addr.s_addr)[3];
+		addr->addr[0] = ((unsigned char*)&((sockaddr_in*)(&name))->sin_addr.s_addr)[0];
+		addr->addr[1] = ((unsigned char*)&((sockaddr_in*)(&name))->sin_addr.s_addr)[1];
+		addr->addr[2] = ((unsigned char*)&((sockaddr_in*)(&name))->sin_addr.s_addr)[2];
+		addr->addr[3] = ((unsigned char*)&((sockaddr_in*)(&name))->sin_addr.s_addr)[3];
+		addr->port = ntohs(((sockaddr_in*)(&name))->sin_port);
 #endif
-
-		addr->port = ntohs( ((sockaddr_in *)(&name))->sin_port);
 
 		addr->mIPv4 = true;
 	}
@@ -1701,8 +1777,14 @@ t_XPSocket *XPSock_UrgentCreate(const RNReplicaNet::t_XPAddress *addr)
 	assert(addr && "XPSock_UrgentCreate needs a t_XPAddress");
 
 	t_XPSocket *thissocket;
+#ifdef RN_PS4_PS5
+	SceNetSockaddrIn clientaddr;
+	SceNetSockaddrIn6 clientaddr6;
+#else
 	struct sockaddr_in clientaddr;
 	struct sockaddr_in6 clientaddr6;
+#endif
+
 	int ret = 0;
 
 	thissocket = (t_XPSocket *) calloc(1,sizeof(t_XPSocket));
@@ -1743,7 +1825,7 @@ t_XPSocket *XPSock_UrgentCreate(const RNReplicaNet::t_XPAddress *addr)
 		}
 
 		/* Make socket non-blocking */
-#ifndef _PS2
+#if !(defined(_PS2) || defined(RN_PS4_PS5))
 		if (thissocket->wins_socket != SOCKET_ERROR)
 		{
 			if (ioctlsocket(thissocket->wins_socket,FIONBIO, (unsigned long *) &opt) == SOCKET_ERROR)
@@ -1768,6 +1850,21 @@ t_XPSocket *XPSock_UrgentCreate(const RNReplicaNet::t_XPAddress *addr)
 		if (thissocket->wins_socket6 != SOCKET_ERROR)
 		{
 			ret = setsockopt(thissocket->wins_socket6, SOL_SOCKET, SO_NBIO, (const char *) &opt, 4);
+		}
+#endif
+
+#ifdef RN_PS4_PS5
+		int non_blocking = 1;
+		if (sceNetSetsockopt(thissocket->wins_socket, SCE_NET_SOL_SOCKET, SCE_NET_SO_NBIO, &non_blocking, sizeof(non_blocking)) < 0)
+		{
+			sceNetSocketClose(thissocket->wins_socket);
+			ret = XPSOCK_EERROR;
+		}
+
+		if (sceNetSetsockopt(thissocket->wins_socket6, SCE_NET_SOL_SOCKET, SCE_NET_SO_NBIO, &non_blocking, sizeof(non_blocking)) < 0)
+		{
+			sceNetSocketClose(thissocket->wins_socket6);
+			ret = XPSOCK_EERROR;
 		}
 #endif
 
@@ -1803,7 +1900,11 @@ t_XPSocket *XPSock_UrgentCreate(const RNReplicaNet::t_XPAddress *addr)
 
 			if (addr->port == 0)
 			{
+#ifdef RN_PS4_PS5
+				SceNetSockaddrIn name;
+#else
 				struct sockaddr_in name;
+#endif
 #ifdef _USING_W32_SOCKETS
 				int namelen;
 #else
@@ -1850,7 +1951,12 @@ t_XPSocket *XPSock_UrgentCreate(const RNReplicaNet::t_XPAddress *addr)
 
 			if (addr->port6 == 0)
 			{
+#ifdef RN_PS4_PS5
+				SceNetSockaddrIn6 name;
+#else
 				struct sockaddr_in6 name;
+#endif
+
 #ifdef _USING_W32_SOCKETS
 				int namelen;
 #else
@@ -1912,8 +2018,13 @@ static int RealXPSock_UrgentSend(t_XPSocket *socket,const char *data,int len,con
 {
 	THREADSAFELOCKCLASS(g_xpsockets_lockclass);
 
+#ifdef RN_PS4_PS5
+	SceNetSockaddrIn serveraddr;
+	SceNetSockaddrIn6 serveraddr6;
+#else
 	struct sockaddr_in serveraddr;
 	struct sockaddr_in6 serveraddr6;
+#endif
 	int ret = 0;
 	int ret6 = 0;
 	int retLe = 0;
@@ -2136,8 +2247,13 @@ int XPSock_UrgentRecv(t_XPSocket *socket,char *const data,int maxlen,int flag,t_
 {
 	THREADSAFELOCKCLASS(g_xpsockets_lockclass);
 
+#ifdef RN_PS4_PS5
+	SceNetSockaddrIn clientaddr;
+	SceNetSockaddrIn6 clientaddr6;
+#else
 	struct sockaddr_in clientaddr;
 	struct sockaddr_in6 clientaddr6;
+#endif
 #ifdef _USING_W32_SOCKETS
 	int clientlength;
 #else
@@ -2392,6 +2508,18 @@ int XPSock_GetHostName(char *name,int name_len)
 		//XNET_GET_XNADDR_STATIC The host has a static IP address. 
 		//XNET_GET_XNADDR_TROUBLESHOOT The network configuration requires troubleshooting. 
 
+#elif defined(RN_PS4_PS5)
+		SceNetCtlInfo info;
+		int ret = sceNetCtlGetInfo(SCE_NET_CTL_INFO_IP_ADDRESS, &info);
+		if (ret == 0)
+		{
+			std::printf("Failed to get device IP with error code %X", ret);
+			strcpy(name, "localhost");
+		}
+		else
+		{
+			strncpy(name, info.ip_address, (size_t)name_len);
+		}
 #else
 		gethostname(name,name_len);
 #endif
@@ -2581,6 +2709,55 @@ int XPSock_Resolve(t_XPAddress *resolve,const char *input)
 //	dprintf("XPSock : Resolve '%s'\n",input);
 
 	// First try a numeric conversion
+#if defined (RN_PS4_PS5)
+	int memID = -1;
+	SceNetId resolverID = -1;
+	SceNetId result = -1;
+	SceNetInAddr addrIn;
+	bool error = false;
+
+	memID = sceNetPoolCreate("XPSocketPool", 16 * 1024, 0);
+	if (memID < 0)
+	{
+		printf("failed to create mempool for XPSocket\n");
+		error = true;
+		goto failed;
+	}
+	resolverID = sceNetResolverCreate("XPSock_Resolve", memID, 0);
+	if (resolverID < 0)
+	{
+		printf("failed to create resolver for XPSocket\n");
+		error = true;
+		goto failed;
+	}
+	// in this case 0,0 means 1 second 4 retries
+	result = sceNetResolverStartNtoa(resolverID, input, &addrIn, 0, 0, 0);
+	if (result != SCE_OK)
+	{
+		printf("sceNetResolverStartAton failed with Error %d\n", result);
+		error = true;
+	}
+failed:
+	if (resolverID > 0)
+	{
+		sceNetResolverDestroy(resolverID);
+	}
+	if (memID > 0)
+	{
+		sceNetPoolDestroy(memID);
+	}
+	if (error)
+	{
+		return XPSOCK_EERROR;
+	}
+	got4 = true;
+	got6 = false;
+	// now to extract it again
+	resolve->addr[0] = addrIn.s_addr & 0xFF;
+	resolve->addr[1] = (addrIn.s_addr >> 8) & 0xFF;
+	resolve->addr[2] = (addrIn.s_addr >> 16) & 0xFF;
+	resolve->addr[3] = (addrIn.s_addr >> 24) & 0xFF;
+#else
 	struct addrinfo hints;
 	memset( &hints, 0, sizeof(hints) );
 	// Only used for number format strings, stops resolving.
@@ -2647,7 +2824,7 @@ int XPSock_Resolve(t_XPAddress *resolve,const char *input)
 
 		freeaddrinfo(addrInfo);
 	}
-
+#endif	//<< else RN_PS4_PS5
 #endif	//<< #ifdef NO_GETADDRINFO
 
 	resolve->mIPv4 = got4;
@@ -2849,7 +3026,11 @@ bool XPAddress::Import(const std::string address)
 
 	if (!IPv6.empty())
 	{
+#ifdef RN_PS4_PS5
+		SceNetIn6Addr in;
+#else
 		in6_addr in;
+#endif
 		int inport;
 		if (IPv6[0] == '[')
 		{
@@ -2867,7 +3048,11 @@ bool XPAddress::Import(const std::string address)
 					int i;
 					for (i=0;i<16;i++)
 					{
+#ifdef RN_PS4_PS5
+						addr6[i] = in.__u6_addr.__u6_addr8[i];
+#else
 						addr6[i] = in.s6_addr[i];
+#endif
 					}
 					port6 = inport;
 					mIPv6 = true;
@@ -2992,11 +3177,19 @@ std::string XPAddress::Export(void) const
 	if (mIPv6)
 	{
 		int i;
+#if defined(RN_PS4_PS5)
+		SceNetIn6Addr inaddr;
+		for (i = 0; i < 16; i++)
+		{
+			inaddr.__u6_addr.__u6_addr8[i] = addr6[i];
+		}
+#else
 		in6_addr inaddr;
 		for (i=0;i<16;i++)
 		{
 			inaddr.s6_addr[i] = addr6[i];
 		}
+#endif
 		char buffer[128],buffer2[128];
 //		inet_ntop(AF_INET6,&inaddr,buffer2,sizeof(buffer2));
 		Replacement_inet_ntop6((u_char *)&inaddr,buffer2);
@@ -3012,7 +3205,11 @@ void XPAddress::MakeAny(const int inport)
 	mIPv6 = false;
 	// In most case INADDR_ANY in going to be 0x00000000
 	// But the for the extremely unlikely event that this is not the case we do this conversion instead
+#ifdef RN_PS4_PS5
+	SceNetSockaddrIn serveraddr;
+#else
 	struct sockaddr_in serveraddr;
+#endif
 	serveraddr.sin_addr.s_addr = htonl(INADDR_ANY);
 #ifdef _USING_W32_SOCKETS
 	addr[0] = serveraddr.sin_addr.S_un.S_un_b.s_b1;
@@ -3033,7 +3230,11 @@ void XPAddress::MakeAny(const int inport)
 	for (i=0;i<16;i++)
 	{
 		// Mostly in6addr_any is going to be zeros, but just to be sure we use the constant
+#if defined(RN_PS4_PS5)
+		addr6[i] = 0;
+#else
 		addr6[i] = in6addr_any.s6_addr[i];
+#endif
 	}
 
 	port6 = inport;
@@ -3219,7 +3420,7 @@ t_XPSocket *XPSock_ICMPCreate(void)
 	}
 
 	/* Make socket non-blocking */
-#ifndef _PS2
+#if !(defined(_PS2) || defined(RN_PS4_PS5))
 	ret = ioctlsocket(thissocket->wins_socket,FIONBIO, (unsigned long *) &opt);
 #endif
 
@@ -3227,6 +3428,14 @@ t_XPSocket *XPSock_ICMPCreate(void)
 	ret = setsockopt(thissocket->wins_socket, SOL_SOCKET, SO_NBIO, (const char *) &opt, 4);
 #endif
 
+#ifdef RN_PS4_PS5
+	int non_blocking = 1;
+	if (sceNetSetsockopt(thissocket->wins_socket, SCE_NET_SOL_SOCKET, SCE_NET_SO_NBIO, &non_blocking, sizeof(non_blocking)) < 0)
+	{
+		sceNetSocketClose(thissocket->wins_socket);
+		ret = XPSOCK_EERROR;
+	}
+#endif
 	asocket_lasterror = XPSOCK_EOK;
 	return thissocket;
 }
@@ -3236,7 +3445,11 @@ int XPSock_ICMPSendPing(RNReplicaNet::t_XPSocket * socket,const RNReplicaNet::t_
 	THREADSAFELOCKCLASS(g_xpsockets_lockclass);
 	assert(addr);
 
+#ifdef RN_PS4_PS5
+	SceNetSockaddrIn serveraddr;
+#else
 	struct sockaddr_in serveraddr;
+#endif
 	int ret;
 
 	XPSOCK_PARANOID(socket);
@@ -3331,7 +3544,11 @@ int XPSock_ICMPRecvPing(RNReplicaNet::t_XPSocket * socket,RNReplicaNet::t_XPAddr
 {
 	THREADSAFELOCKCLASS(g_xpsockets_lockclass);
 
+#ifdef RN_PS4_PS5
+	SceNetSockaddrIn clientaddr;
+#else
 	struct sockaddr_in clientaddr;
+#endif
 #ifdef _USING_W32_SOCKETS
 	int clientlength;
 #else
@@ -3697,6 +3914,26 @@ void RNReplicaNet::operator>> (RNReplicaNet::DynamicMessageHelper &message,XPAdd
 		}
 		message >> a.port6;
 	}
+}
+
+void RNReplicaNet::SetAddrV4(DynamicMessageHelper &message,const XPAddress &addr)
+{
+	message << addr.port;
+	message << addr.addr[0];
+	message << addr.addr[1];
+	message << addr.addr[2];
+	message << addr.addr[3];
+}
+
+void RNReplicaNet::GetAddrV4(DynamicMessageHelper &message,XPAddress &addr)
+{
+	message >> addr.port;
+	message >> addr.addr[0];
+	message >> addr.addr[1];
+	message >> addr.addr[2];
+	message >> addr.addr[3];
+	addr.mIPv4 = true;
+	addr.mIPv6 = false;
 }
 //From: RNXPSockets/XPSocketClass.cpp
 /* START_LICENSE_HEADER
@@ -4588,6 +4825,9 @@ void DynamicMessageHelper::operator>>(DynamicMessageHelper &rhs)
 {
 	int len;
 	MESSAGEHELPER_GETVARIABLE(len);
+
+	SanityCheckGuardSize(GetSize() + len);
+
 	// Don't append, replace the rhs with our buffer
 	rhs.SetSize(0);
 	rhs.AddData(GetCurrentPosition(),(int)len);
@@ -4674,6 +4914,9 @@ END_LICENSE_HEADER */
 //Skipping: #include "RNPlatform/Inc/PlatformInfo.h"
 #if defined(RN_UNIX_LIKE)
 #include <unistd.h>
+#if defined(RN_PS4_PS5)
+#include <thread>
+#endif
 #endif
 #if defined(_WIN32)
 #include <windows.h>
@@ -4778,7 +5021,11 @@ int PlatformInfo::GetNumberOfCores(void)
 	{
 		ret = 1;	// Default to 1 core if no other platform code below fills it in
 #if defined(RN_UNIX_LIKE)
-		ret = (int) sysconf(_SC_NPROCESSORS_ONLN);
+#if defined(RN_PS4_PS5)
+		ret = (int)std::thread::hardware_concurrency();
+#else
+		ret = (int)sysconf(_SC_NPROCESSORS_ONLN);
+#endif
 #endif
 #if defined(_WIN32)
 		SYSTEM_INFO sysinfo;
@@ -4823,11 +5070,13 @@ END_LICENSE_HEADER */
 #include <sys/stat.h>
 #include <errno.h>
 #include <stdio.h>
-#include <dirent.h>
 #include <unistd.h>
 #include <sys/mman.h>
 #include <sys/time.h>
 #define USETIMEOFDAY
+#if !defined(RN_PS4_PS5)
+#include <dirent.h>
+#endif
 #endif
 
 #if defined(_PS2)
@@ -4893,7 +5142,9 @@ void SysTime::Reset(void)
 	{
 //		MessageBox(NULL,"No hardware timer available","Error",MB_OK);
 		assert(false && "No hardware timer available");
+#ifndef _GAMING_XBOX
 		exit(-1);
+#endif
 	}
 
 	first = 1;
@@ -5782,7 +6033,9 @@ END_LICENSE_HEADER */
 //Skipping: #include "RNPlatform/DebugSupport.h"
 
 #if defined(RN_UNIX_LIKE)
+#if !defined(RN_PS4_PS5)
 #include <signal.h>
+#endif
 #include <pthread.h>
 #endif
 
@@ -6119,7 +6372,9 @@ END_LICENSE_HEADER */
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
+#if !defined(RN_PS4_PS5)
 #include <signal.h>
+#endif
 #include <unistd.h>
 #endif
 
@@ -6806,7 +7061,9 @@ END_LICENSE_HEADER */
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
+#if !defined(RN_PS4_PS5)
 #include <signal.h>
+#endif
 #include <unistd.h>
 #include <assert.h>
 #endif
@@ -20141,6 +20398,7 @@ public:
 		kBuildUp=8,
 		kNAT=9,
 		kOrdered=10,
+		kRelay=11,
 		// Bit flags
 		kUsingChecksum = (1<<7)
 	};
@@ -32778,6 +33036,7 @@ END_LICENSE_HEADER */
 #define _BACKENDPRIVATE_H_
 //Skipping: #include "RNXPSockets/Inc/XPSocket.h"
 #include "RNLobby/Inc/UserClient.h"
+#include <string.h>
 
 namespace RNReplicaNet
 {
@@ -32810,6 +33069,7 @@ extern void GetNATDetectServerAddress(XPAddress &address1,XPAddress &address2);
 extern XPAddress GetAdvertiseServerAddress(void);
 extern XPAddress GetUserServerAddress(void);
 extern XPAddress GetStatServerAddress(void);
+extern XPAddress GetUDPRelayServerAddress(void);
 
 extern const char *GetCodeServerCrypto(void);
 extern const char *GetNATServerCrypto(void);
@@ -32817,15 +33077,18 @@ extern const char *GetNATDetectServerCrypto(void);
 extern const char *GetAdvertiseServerCrypto(void);
 extern const char *GetUserServerCrypto(void);
 extern const char *GetStatServerCrypto(void);
+extern const char *GetUDPRelayServerCrypto(void);
 
 // Support older compilers like VC6
+#ifndef __PROSPERO__
 #ifndef strnlen
 static size_t strnlen(const char *s, size_t max) {
-	register const char *p;
+	const char *p;
 	for(p = s; *p && max--; ++p);
 	return(p - s);
 }
 #endif
+#endif // __PROSPERO__ 
 
 template<class ServerType> class ServerCryptoHelper
 {
@@ -32846,6 +33109,7 @@ extern bool SetNATServerInformation(const std::string &address, const int port, 
 extern bool SetNATDetectServerInformation(const std::string &address1, const int port1, const std::string &address2, const int port2, const std::string &crypto);
 extern bool SetStatServerInformation(const std::string &address, const int port, const std::string &crypto);
 extern bool SetUserServerInformation(const std::string &address, const int port, const std::string &crypto);
+extern bool SetUDPRelayServerInformation(const std::string &address, const int port, const std::string &crypto);
 extern bool SetCloudServerInformation(const std::string &address, const int port, const std::string &crypto);
 
 } // namespace Backend
@@ -34242,6 +34506,10 @@ bool BackendClient::CallbackParseValidMessage(DynamicMessageHelper &message,cons
 		message >> info.mRLSrvCloudAddress;
 		message >> info.mRLSrvCloudPort;
 		message >> info.mRLSrvCloudCrypto;
+		message >> info.mRLSrvUDPRelayAddress;
+		message >> info.mRLSrvUDPRelayPort;
+		message >> info.mRLSrvUDPRelayCrypto;
+		
 
 		// Default to this error first
 		mReply = BackendServer::kReply_ServerCannotBeContacted;
@@ -34276,6 +34544,11 @@ bool BackendClient::CallbackParseValidMessage(DynamicMessageHelper &message,cons
 			return false;
 		}
 		if (!Backend::SetCloudServerInformation(info.mRLSrvCloudAddress,info.mRLSrvCloudPort,info.mRLSrvCloudCrypto))
+		{
+			CallbackCompleted();
+			return false;
+		}
+		if (!Backend::SetUDPRelayServerInformation(info.mRLSrvUDPRelayAddress,info.mRLSrvUDPRelayPort,info.mRLSrvUDPRelayCrypto))
 		{
 			CallbackCompleted();
 			return false;
@@ -34425,6 +34698,7 @@ END_LICENSE_HEADER */
 #include "RNLobby/Inc/AdvertiseServer.h"
 #include "RNLobby/Inc/UserServer.h"
 #include "RNLobby/Inc/StatServer.h"
+#include "RNLobby/Inc/UDPRelay.h"
 
 namespace RNReplicaNet
 {
@@ -34560,6 +34834,17 @@ const char *GetStatServerCrypto(void)
 	return (char *)sStatServerCrypto;
 }
 
+static XPAddress sUDPRelayServerAddress(UDPRelay::kDefaultPort,127,0,0,1);
+static char sUDPRelayServerCrypto[kMaxServerCryptoLength];
+XPAddress GetUDPRelayServerAddress(void)
+{
+	return sUDPRelayServerAddress;
+}
+const char *GetUDPRelayServerCrypto(void)
+{
+	return (char *)sUDPRelayServerCrypto;
+}
+
 
 // MPi: TODO: Change this to a proper constant
 static XPAddress sCloudServerAddress(0/*StatServer::kDefaultPort*/,127,0,0,1);
@@ -34627,6 +34912,11 @@ bool SetCloudServerInformation(const std::string &address, const int port, const
 {
 	// MPi: TODO: Once CloudServer::kDefaultPort is defined use it below
 	return CommonSetSingleServer(address,port,crypto,port/*CloudServer::kDefaultPort*/,sCloudServerAddress,sCloudServerCrypto);
+}
+
+bool SetUDPRelayServerInformation(const std::string &address, const int port, const std::string &crypto)
+{
+	return CommonSetSingleServer(address,port,crypto,UDPRelay::kDefaultPort,sUDPRelayServerAddress,sUDPRelayServerCrypto);
 }
 
 class EnsureInitialised
@@ -35972,13 +36262,16 @@ using namespace RNReplicaNet;
 using namespace RNLobby;
 
 
-static const int kMaxHostContactTries = 18;
-static const float kHostResendTime = 0.3f;
-static const float kTimeout = 30.0f;	// The time taken for entries to expire from the internal lists.
-static const float kTimeoutPersistent = 60.0f * 5.0f;	// The time taken for persistent entries to expire from the internal lists when not receiving any keep alive packets.
-static const int kMaxClientContactTriesBeforeNext = 7;
-static const float kPersistentSendTime = 30.0f;
-static const float kEmptyListsIdleTime = 10.0f;
+namespace NATResolverOptions
+{
+	static const int kMaxHostContactTries = 18;
+	static const float kHostResendTime = 0.3f;
+	static const float kTimeout = 30.0f;	// The time taken for entries to expire from the internal lists.
+	static const float kTimeoutPersistent = 60.0f * 5.0f;	// The time taken for persistent entries to expire from the internal lists when not receiving any keep alive packets.
+	static const int kMaxClientContactTriesBeforeNext = 7;
+	static const float kPersistentSendTime = 30.0f;
+	static const float kEmptyListsIdleTime = 10.0f;
+}
 
 static SysTime sNATResolverTheTime;
 
@@ -36094,7 +36387,7 @@ class XNATResolverHeapBlock;
 }
 
 static XNATResolverHeapBlock *sTheHeapBlock = 0;
-static int sHostUID = 1;
+static int sHostUIDNATResolver = 1;
 
 namespace RNReplicaNet
 {
@@ -36110,7 +36403,7 @@ public:
 			delete sNATsManager;
 			sNATsManager = 0;
 			sTheHeapBlock = 0;
-			sHostUID = 1;
+			sHostUIDNATResolver = 1;
 		}
 	}
 };
@@ -36200,7 +36493,7 @@ bool NATResolver::Start(void)
 	THREADSAFELOCK();
 	if (!mServerAddressSet)
 	{
-		mServerAddress = Backend::GetNATServerAddress();
+		SetServer(Backend::GetNATServerAddress());
 	}
 	if (!GetIsRunning())
 	{
@@ -36224,7 +36517,7 @@ bool NATResolver::BeginHosting(t_XPSocket *socket)
 	{
 #ifdef DEBUG_PRINTS7
 		XPAddress exportedAddr;
-		XPSock_GetAddress(socket,&exportedAddr);
+		XPSock_GetAddrV4ess(socket,&exportedAddr);
 		dprintf("sock addr %s\n",exportedAddr.Export().c_str());
 #endif
 	}
@@ -36387,21 +36680,21 @@ bool NATResolver::BeginAdvertise(t_XPSocket *socket,void *userPointer,const bool
 	dprintf("NATResolver::BeginAdvertise: state $%p: sock $%p userP $%p isAd %d globalID %d sessionID %d nonceID %d isServer %d\n",
 	(int)state,(int)state->mSocket,(int)state->mUserPointer,(int)state->mIsAdvertised,state->mGlobalID,state->mSessionID,state->mNonceID,state->mIsServer);
 	XPAddress exportedAddr;
-	XPSock_GetAddress(socket,&exportedAddr);
+	XPSock_GetAddrV4ess(socket,&exportedAddr);
 	dprintf("sock addr %s\n",exportedAddr.Export().c_str());
 #endif
 
 	if (externalHost)
 	{
 		PerHostState hostState;
-		hostState.mHostStateUID = sHostUID++;
+		hostState.mHostStateUID = sHostUIDNATResolver++;
 		hostState.mHostAddress = mServerAddress;
 		state->mHostStates.push_back(hostState);
 	}
 	if (optionalHost)
 	{
 		PerHostState hostState;
-		hostState.mHostStateUID = sHostUID++;
+		hostState.mHostStateUID = sHostUIDNATResolver++;
 		hostState.mHostAddress = *optionalHost;
 		state->mHostStates.push_back(hostState);
 	}
@@ -36421,7 +36714,7 @@ bool NATResolver::BeginResolve(t_XPSocket *socket,void *userPointer,const bool i
 	dprintf("NATResolver::BeginResolve: state $%p: sock $%p userP $%p isAd %d globalID %d sessionID %d nonceID %d isServer %d\n",
 	(int)state,(int)state->mSocket,(int)state->mUserPointer,(int)state->mIsAdvertised,state->mGlobalID,state->mSessionID,state->mNonceID,state->mIsServer);
 	XPAddress exportedAddr;
-	XPSock_GetAddress(socket,&exportedAddr);
+	XPSock_GetAddrV4ess(socket,&exportedAddr);
 	dprintf("tryExternalHost %d sock addr %s mServerAddress %s\n",(int)tryExternalHost,exportedAddr.Export().c_str(),mServerAddress.Export().c_str());
 	if (optionalHost)
 	{
@@ -36659,26 +36952,6 @@ void NATResolver::ForgetUserPointer(const void *userPointer)
 	}
 }
 
-static void SetAddr(DynamicMessageHelper &message,const XPAddress &addr)
-{
-	message << addr.port;
-	message << addr.addr[0];
-	message << addr.addr[1];
-	message << addr.addr[2];
-	message << addr.addr[3];
-}
-
-static void GetAddr(DynamicMessageHelper &message,XPAddress &addr)
-{
-	message >> addr.port;
-	message >> addr.addr[0];
-	message >> addr.addr[1];
-	message >> addr.addr[2];
-	message >> addr.addr[3];
-	addr.mIPv4 = true;
-	addr.mIPv6 = false;
-}
-
 bool NATResolver::CallbackParsePacketData(t_XPSocket *socket,const XPAddress &addr,void *data,size_t length)
 {
 	// Do some early out tests
@@ -36766,7 +37039,7 @@ bool NATResolver::CallbackParsePacketData(t_XPSocket *socket,const XPAddress &ad
 #endif
 			tempState.mIsServer = true;
 			XPAddress myMostLocalAddress;
-			GetAddr(message,myMostLocalAddress);
+			GetAddrV4(message,myMostLocalAddress);
 
 			// Look for it
 			std::set<NATState *,ltIDs>::iterator found;
@@ -36813,7 +37086,7 @@ bool NATResolver::CallbackParsePacketData(t_XPSocket *socket,const XPAddress &ad
 				message << includesAddress;
 				if (includesAddress)
 				{
-					SetAddr(message,addr);
+					SetAddrV4(message,addr);
 				}
 
 				PackageAndSendData(socket,message,addr);
@@ -36848,7 +37121,7 @@ bool NATResolver::CallbackParsePacketData(t_XPSocket *socket,const XPAddress &ad
 			XPAddress theAddr;
 			if (includesAddress)
 			{
-				GetAddr(message,theAddr);
+				GetAddrV4(message,theAddr);
 			}
 			tempState.mIsServer = true;
 
@@ -36953,7 +37226,7 @@ bool NATResolver::CallbackParsePacketData(t_XPSocket *socket,const XPAddress &ad
 						message << state->mGlobalID;
 						message << state->mSessionID;
 						message << state->mNonceID;
-						SetAddr(message,addr);
+						SetAddrV4(message,addr);
 						PackageAndSendData(state->mSocket,message,state->mAdvertiseFrom);
 
 						// Tell the client where the server is
@@ -36965,8 +37238,8 @@ bool NATResolver::CallbackParsePacketData(t_XPSocket *socket,const XPAddress &ad
 						message << state->mGlobalID;
 						message << state->mSessionID;
 						message << state->mNonceID;
-						SetAddr(message,state->mAdvertiseFrom);
-						SetAddr(message,state->mServerMostLocalAddress);
+						SetAddrV4(message,state->mAdvertiseFrom);
+						SetAddrV4(message,state->mServerMostLocalAddress);
 						// Send back to the client requesting the resolve
 						PackageAndSendData(socket,message,addr);
 
@@ -36996,9 +37269,9 @@ bool NATResolver::CallbackParsePacketData(t_XPSocket *socket,const XPAddress &ad
 #endif
 			tempState.mIsServer = false;
 			XPAddress toAddr;
-			GetAddr(message,toAddr);
+			GetAddrV4(message,toAddr);
 			XPAddress toAddrMostLocal;
-			GetAddr(message,toAddrMostLocal);
+			GetAddrV4(message,toAddrMostLocal);
 #ifdef DEBUG_PRINTS7
 			dprintf("toAddr = %s\n",toAddr.Export().c_str());
 			dprintf("toAddrMostLocal = %s\n",toAddrMostLocal.Export().c_str());
@@ -37063,7 +37336,7 @@ bool NATResolver::CallbackParsePacketData(t_XPSocket *socket,const XPAddress &ad
 #endif
 			tempState.mIsServer = true;
 			XPAddress toAddr;
-			GetAddr(message,toAddr);
+			GetAddrV4(message,toAddr);
 #ifdef DEBUG_PRINTS7
 			dprintf("toAddr = %s\n",toAddr.Export().c_str());
 #endif
@@ -37224,7 +37497,7 @@ void NATResolver::CallbackResolveFailed(t_XPSocket *socket,void *userPointer,con
 {
 }
 
-void NATResolver::CallbackResolveResult(t_XPSocket *socket,void *userPointer,const XPAddress &targetAddress,const int titleID,const bool isAdvertised,const int globalID,const int sessionID,const int nonceID)
+void NATResolver::CallbackResolveResult(t_XPSocket *socket,void *userPointer,const XPAddress &tarGetAddrV4ess,const int titleID,const bool isAdvertised,const int globalID,const int sessionID,const int nonceID)
 {
 }
 
@@ -37326,7 +37599,7 @@ int NATResolver::ThreadEntry(void)
 
 				if (state->mPersistent)
 				{
-					if ( (sNATResolverTheTime.FloatTime() - state->mTimeAdded) > kTimeoutPersistent)
+					if ( (sNATResolverTheTime.FloatTime() - state->mTimeAdded) > NATResolverOptions::kTimeoutPersistent)
 					{
 #ifdef DEBUG_PRINTS7
 						dprintf("NATResolver::ThreadEntry mPersistent del\n");
@@ -37337,7 +37610,7 @@ int NATResolver::ThreadEntry(void)
 				}
 				else
 				{
-					if ( (sNATResolverTheTime.FloatTime() - state->mTimeAdded) > kTimeout)
+					if ( (sNATResolverTheTime.FloatTime() - state->mTimeAdded) > NATResolverOptions::kTimeout)
 					{
 #ifdef DEBUG_PRINTS7
 						dprintf("NATResolver::ThreadEntry !mPersistent del\n");
@@ -37357,9 +37630,9 @@ int NATResolver::ThreadEntry(void)
 						PerHostState &hostState = *st++;
 						if (!hostState.mGotAckForInfo)
 						{
-							if (hostState.mTries < kMaxHostContactTries)
+							if (hostState.mTries < NATResolverOptions::kMaxHostContactTries)
 							{
-								if ( (sNATResolverTheTime.FloatTime() - hostState.mLastTimeSent) > kHostResendTime )
+								if ( (sNATResolverTheTime.FloatTime() - hostState.mLastTimeSent) > NATResolverOptions::kHostResendTime )
 								{
 									hostState.mLastKeepAliveSent = hostState.mLastTimeSent = sNATResolverTheTime.FloatTime();
 
@@ -37385,7 +37658,7 @@ int NATResolver::ThreadEntry(void)
 							// Got advertise ack so we test for persistent ones and continue to send a smaller advertise
 							if ( state->mPersistent )
 							{
-								if ( (sNATResolverTheTime.FloatTime() - hostState.mLastKeepAliveSent) > kPersistentSendTime )
+								if ( (sNATResolverTheTime.FloatTime() - hostState.mLastKeepAliveSent) > NATResolverOptions::kPersistentSendTime )
 								{
 									hostState.mLastKeepAliveSent = sNATResolverTheTime.FloatTime();
 
@@ -37408,7 +37681,7 @@ int NATResolver::ThreadEntry(void)
 						std::list<PerHostState>::iterator tst = st;
 						PerHostState &hostState = *st++;
 
-						if ( (sNATResolverTheTime.FloatTime() - hostState.mLastTimeSent) > kHostResendTime )
+						if ( (sNATResolverTheTime.FloatTime() - hostState.mLastTimeSent) > NATResolverOptions::kHostResendTime )
 						{
 							hostState.mLastTimeSent = sNATResolverTheTime.FloatTime();
 
@@ -37433,7 +37706,7 @@ int NATResolver::ThreadEntry(void)
 
 
 							hostState.mTries++;
-							if (hostState.mTries > kMaxHostContactTries)
+							if (hostState.mTries > NATResolverOptions::kMaxHostContactTries)
 							{
 								state->mHostAddresses.erase(tst);
 #ifdef DEBUG_PRINTS7
@@ -37452,7 +37725,7 @@ int NATResolver::ThreadEntry(void)
 						} // if ( (sNATResolverTheTime.FloatTime() - hostState.mLastTimeSent) > kHostResendTime )
 
 						// This test causes a little bit of staggering so that we send kMaxClientContactTriesBeforeNext packets before trying the next item in the list
-						if (hostState.mTries < kMaxClientContactTriesBeforeNext)
+						if (hostState.mTries < NATResolverOptions::kMaxClientContactTriesBeforeNext)
 						{
 #ifdef DEBUG_PRINTS7
 							dprintf("NATResolver::ThreadEntry : state $%p from sock $%p skip toaddr %s\n",state,state->mSocket,hostState.mHostAddress.Export().c_str());
@@ -37474,7 +37747,7 @@ int NATResolver::ThreadEntry(void)
 				mBecameEmptyAt = sNATResolverTheTime.FloatTime();
 			}
 			// If we have been empty for more than kEmptyListsIdleTime seconds then we exit this thread
-			if (mAllowAutoThreadStop && mSetBySocket.empty() && (sNATResolverTheTime.FloatTime() - mBecameEmptyAt) > kEmptyListsIdleTime)
+			if (mAllowAutoThreadStop && mSetBySocket.empty() && (sNATResolverTheTime.FloatTime() - mBecameEmptyAt) > NATResolverOptions::kEmptyListsIdleTime)
 			{
 				return 0;
 			}
@@ -37496,10 +37769,1096 @@ bool NATResolver::BuildAndSendAdvertisePacket(DynamicMessageHelper &message,NATS
 	message << state->mPersistent;
 	XPAddress myMostLocalAddress;
 	XPSock_GetAddress(state->mSocket,&myMostLocalAddress);
-	SetAddr(message,myMostLocalAddress);
+	SetAddrV4(message,myMostLocalAddress);
 
 	return PackageAndSendData(state->mSocket,message,hostState.mHostAddress);
 }
+
+int NATResolver::GetCountBySocket(void)
+{
+//	THREADSAFELOCK();	// No need for a lock for size() access
+	return mSetBySocket.size();
+}
+
+//From: RNLobby/UDPRelay.cpp
+/* START_LICENSE_HEADER
+
+Copyright (C) 2000 Martin Piper, original design and program code
+Copyright (C) 2001 Replica Software
+
+This program file is copyright (C) Replica Software and can only be used under license.
+For more information visit: http://www.replicanet.com/
+Or email: info@replicanet.com
+
+END_LICENSE_HEADER */
+//Skipping: #include "RNPlatform/Inc/MemoryTracking.h"
+#include <assert.h>
+#include <time.h>
+//Skipping: #include "RNPlatform/Options.h"
+//Skipping: #include "RNPlatform/DebugSupport.h"
+//Skipping: #include "RNLobby/BackendPrivate.h"
+//Skipping: #include "RNLobby/Inc/UDPRelay.h"
+//Skipping: #include "RNPlatform/Inc/CheckSum.h"
+//Skipping: #include "RNPlatform/Inc/MessageHelper.h"
+//Skipping: #include "RNPlatform/Inc/SysTime.h"
+//Skipping: #include "RNPlatform/Inc/Encryption.h"
+//Skipping: #include "RNPlatform/Inc/RegistryManagerList.h"
+//Skipping: #include "RNPlatform/Inc/PlatformHeap.h"
+//Skipping: #include "RNXPURL/UDPReliableManager.h"
+//Skipping: #include "RNXPURL/Inc/TransportConfig.h"
+
+// Define this to disable the timeout when using breakpoints.
+//#define DISABLE_TIMEOUT
+
+using namespace RNReplicaNet;
+using namespace RNLobby;
+
+
+namespace UDPRelayOptions
+{
+	static const int kMaxHostContactTries = 18;
+	static const float kHostResendTime = 0.3f;
+}
+
+static SysTime sUDPRelayTheTime;
+
+class UDPRelay::PerHostState
+{
+public:
+	PerHostState();
+	virtual ~PerHostState();
+	int mHostStateUID;
+	XPAddress mHostAddress;
+	int mTries;
+	bool mGotAckForInfo;
+	SysTimeType mLastTimeSent;
+	SysTimeType mLastKeepAliveSent;
+};
+
+class UDPRelay::UDPRelayState
+{
+public:
+	enum tPacketType
+	{
+		kAdvertise = 0,
+		kAdvertiseACK,
+		kWantRelayFromClient,
+		kRelayedData,
+		kProbeACK
+	};
+
+	UDPRelayState();
+	UDPRelayState(t_XPSocket *socket,void *userPointer,const int titleID,const bool isAdvertised,const int globalID,const int sessionID,const int nonceID,const bool isServer,const float timeoutData,const float timeoutSession);
+	virtual ~UDPRelayState();
+
+	void Clear(void);
+
+	std::multiset<UDPRelayState *,ltSocket>::iterator mIterBySocket;
+	std::set<UDPRelayState *,ltIDs>::iterator mIterByIDs;
+	std::set<UDPRelayState *,ltIDsWithSocket>::iterator mIterByIDsWithSocket;
+	std::multiset<UDPRelayState *,ltUserPointer>::iterator mIterByUserPointer;
+	std::list<UDPRelayState *>::iterator mIterByOrder;
+
+	t_XPSocket *mSocket;
+	int mTitleID;
+	bool mIsAdvertised;
+	int mGlobalID;
+	int mSessionID;
+	int mNonceID;
+	bool mIsServer;
+
+	std::list<PerHostState> mHostStates;	// Used by BeginAdvertise
+	bool mFailed;
+
+	bool mAdvertiseFromValid;
+	XPAddress mAdvertiseFrom;
+
+	SysTimeType mTimeAdded;
+	SysTimeType mTimeLastData;
+
+	bool mIsLocallyHosted;
+
+	XPAddress mServerMostLocalAddress;
+	bool mAdvertisedExternalAddressValid;
+	XPAddress mAdvertisedExternalAddress;
+
+	void *mUserPointer;
+
+	bool mIncludeAddressInACK;
+
+	t_XPSocket *mReceivedAvertiseOn;		// Not used for sending, just used for pointer testing/debugging purposes.
+
+	bool mCalledFromBeginResolve;
+
+	float mTimeoutData;
+	float mTimeoutSession;
+};
+
+
+static int sHostUIDUDPRelay = 1;
+
+
+UDPRelay::UDPRelay() : mHost(0) , mBecameEmptyAt(0.0f) , mIsEmpty(false) , mServerAddressSet(false)
+{
+	SetAutomaticHostSocketReads();
+}
+
+UDPRelay::~UDPRelay()
+{
+	Stop();
+}
+
+bool UDPRelay::Stop(void)
+{
+	Terminate();
+
+	THREADSAFELOCK();
+
+	std::multiset<UDPRelayState *,ltSocket>::iterator st,en;
+	st = mSetBySocket.begin();
+	en = mSetBySocket.end();
+	while (st != en)
+	{
+		std::multiset<UDPRelayState *,ltSocket>::iterator tst = st;
+		UDPRelayState *state = *st++;
+		assert(state);
+		assert(state->mIterBySocket == tst);		// Paranoia check of the added iterator
+		delete state;
+	}
+	mSetBySocket.clear();
+	mSetByIDs.clear();
+	mSetByUserPointer.clear();
+	mListByOrder.clear();
+	return true;
+}
+
+void UDPRelay::SetAutomaticHostSocketReads(const bool allow)
+{
+	mAllowAutoHostSocketReads = allow;
+}
+
+void UDPRelay::SetEncryptionKey(const void *data,const int length)
+{
+	mCryptoKey.Create((void *)data,length);
+}
+
+bool UDPRelay::Start(void)
+{
+	THREADSAFELOCK();
+	if (!mServerAddressSet)
+	{
+		SetServer(Backend::GetUDPRelayServerAddress());
+	}
+	if (!GetIsRunning())
+	{
+		Backend::ServerCryptoHelper<UDPRelay>::SetEncryption(this,Backend::GetUDPRelayServerCrypto());
+		Begin(this);
+	}
+	return true;
+}
+
+bool UDPRelay::BeginHosting(t_XPSocket *socket)
+{
+	THREADSAFELOCK();
+	Start();
+	mHost = socket;
+
+#ifdef DEBUG_PRINTS7
+	dprintf("UDPRelay::BeginHosting\n");
+#endif
+
+	if (mHost)
+	{
+#ifdef DEBUG_PRINTS7
+		XPAddress exportedAddr;
+		XPSock_GetAddrV4ess(socket,&exportedAddr);
+		dprintf("sock addr %s\n",exportedAddr.Export().c_str());
+#endif
+	}
+
+	return true;
+}
+
+UDPRelay::UDPRelayState::UDPRelayState()
+{
+	mSocket = 0;
+	mUserPointer = 0;
+	mIsServer = false;
+	mTimeoutData = 0.0f;
+	mTimeoutSession = 0.0f;
+	Clear();
+}
+
+void UDPRelay::UDPRelayState::Clear(void)
+{
+	mFailed = false;
+	mAdvertiseFromValid = false;
+	mTimeAdded = -1.0f;
+	mTimeLastData = -1.0f;
+	mIsLocallyHosted = false;
+	mIncludeAddressInACK = false;
+	mAdvertisedExternalAddressValid = false;
+	mCalledFromBeginResolve = false;
+}
+
+UDPRelay::UDPRelayState::UDPRelayState(t_XPSocket *socket,void *userPointer,const int titleID,const bool isAdvertised,const int globalID,const int sessionID,const int nonceID,const bool isServer,const float timeoutData,const float timeoutSession) :
+	mSocket(socket),mUserPointer(userPointer),mTitleID(titleID),mIsAdvertised(isAdvertised),mGlobalID(globalID),
+	mSessionID(sessionID),mNonceID(nonceID),mIsServer(isServer),mReceivedAvertiseOn(0),
+	mTimeoutData(timeoutData),mTimeoutSession(timeoutSession)
+{
+	Clear();
+}
+
+UDPRelay::UDPRelayState::~UDPRelayState()
+{
+}
+
+bool UDPRelay::ltSocket::operator()(const UDPRelayState *a,const UDPRelayState *b) const
+{
+	assert(a);
+	assert(b);
+	return a->mSocket < b->mSocket;
+}
+
+// Whee I love these nested compares
+bool UDPRelay::ltIDs::operator()(const UDPRelayState *a,const UDPRelayState *b) const
+{
+	assert(a);
+	assert(b);
+
+	if (a->mIsAdvertised < b->mIsAdvertised)
+	{
+		return true;
+	}
+	else if (a->mIsAdvertised == b->mIsAdvertised)
+	{
+		if (a->mIsServer < b->mIsServer)
+		{
+			return true;
+		}
+		else if (a->mIsServer == b->mIsServer)
+		{
+			if (a->mTitleID < b->mTitleID)
+			{
+				return true;
+			}
+			else if (a->mTitleID == b->mTitleID)
+			{
+				if (a->mGlobalID < b->mGlobalID)
+				{
+					return true;
+				}
+				else if (a->mGlobalID == b->mGlobalID)
+				{
+					if (a->mSessionID < b->mSessionID)
+					{
+						return true;
+					}
+					else if (a->mSessionID == b->mSessionID)
+					{
+						return (a->mNonceID < b->mNonceID);
+					}
+				}
+			}
+		}
+	}
+	return false;
+}
+
+// Whee I love these nested compares
+bool UDPRelay::ltIDsWithSocket::operator()(const UDPRelayState *a,const UDPRelayState *b) const
+{
+	assert(a);
+	assert(b);
+
+	if (a->mSocket < b->mSocket)
+	{
+		return true;
+	}
+	else if (a->mSocket == b->mSocket)
+	{
+		if (a->mIsAdvertised < b->mIsAdvertised)
+		{
+			return true;
+		}
+		else if (a->mIsAdvertised == b->mIsAdvertised)
+		{
+			if (a->mIsServer < b->mIsServer)
+			{
+				return true;
+			}
+			else if (a->mIsServer == b->mIsServer)
+			{
+				if (a->mTitleID < b->mTitleID)
+				{
+					return true;
+				}
+				else if (a->mTitleID == b->mTitleID)
+				{
+					if (a->mGlobalID < b->mGlobalID)
+					{
+						return true;
+					}
+					else if (a->mGlobalID == b->mGlobalID)
+					{
+						if (a->mSessionID < b->mSessionID)
+						{
+							return true;
+						}
+						else if (a->mSessionID == b->mSessionID)
+						{
+							return (a->mNonceID < b->mNonceID);
+						}
+					}
+				}
+			}
+		}
+	}
+	return false;
+}
+
+bool UDPRelay::ltUserPointer::operator()(const UDPRelayState *a,const UDPRelayState *b) const
+{
+	assert(a);
+	assert(b);
+	return a->mUserPointer < b->mUserPointer;
+}
+
+bool UDPRelay::Advertise(t_XPSocket *socket,void *userPointer,const bool isAdvertised,const int globalID,const int sessionID,const int nonceID,const float timeoutData,const float timeoutSession)
+{
+	THREADSAFELOCK();
+
+	Start();
+	UDPRelayState *state = new UDPRelayState(socket,userPointer,Backend::GetTitleID(),isAdvertised,globalID,sessionID,nonceID,true,timeoutData,timeoutSession);
+
+#ifdef DEBUG_PRINTS7
+	dprintf("UDPRelay::BeginAdvertise: state $%p: sock $%p userP $%p isAd %d globalID %d sessionID %d nonceID %d isServer %d\n",
+	(int)state,(int)state->mSocket,(int)state->mUserPointer,(int)state->mIsAdvertised,state->mGlobalID,state->mSessionID,state->mNonceID,state->mIsServer);
+	XPAddress exportedAddr;
+	XPSock_GetAddrV4ess(socket,&exportedAddr);
+	dprintf("sock addr %s\n",exportedAddr.Export().c_str());
+#endif
+
+	PerHostState hostState;
+	hostState.mHostStateUID = sHostUIDUDPRelay++;
+	hostState.mHostAddress = mServerAddress;
+	state->mHostStates.push_back(hostState);
+
+
+	state->mIsLocallyHosted = true;
+	XPSock_GetAddress(socket,&state->mServerMostLocalAddress);
+
+	std::set<UDPRelayState *,ltIDs>::iterator found;
+	found = mSetByIDs.find(state);
+	if (found != mSetByIDs.end())
+	{
+		// It already exists...
+		delete state;
+
+		state = *found;
+		assert(state);
+		assert(state->mIterByIDs == found);		// Paranoia check of the added iterator
+
+		// Update to any new values
+		state->mTimeoutData = timeoutData;
+		state->mTimeoutSession = timeoutSession;
+
+		// Reset the host states to resend any advertise packets
+		std::list<PerHostState>::iterator st = state->mHostStates.begin();
+		while (st != state->mHostStates.end())
+		{
+			PerHostState &hostStateFromList = *st++;
+
+			hostStateFromList.mGotAckForInfo = false;
+			hostStateFromList.mTries = 0;
+			hostStateFromList.mLastTimeSent = -1000.0f;
+			hostStateFromList.mLastKeepAliveSent = -1000.0f;
+		}
+
+		return true;
+	}
+
+
+	return InsertState(state);
+}
+
+bool UDPRelay::SendTo(t_XPSocket *socket,const bool isAdvertised,const int globalID,const int sessionID,const int nonceID,const char *datain,const int lenin)
+{
+	THREADSAFELOCK();
+
+#ifdef DEBUG_PRINTS7
+	dprintf("UDPRelay::SendTo: sock $%p isAd %d globalID %d sessionID %d nonceID %d\n",
+	(int)socket,(int)isAdvertised,globalID,sessionID,nonceID);
+#endif
+
+	DynamicMessageHelper message;
+	UDPRelayState::tPacketType packet = UDPRelayState::kWantRelayFromClient;
+	message << packet;
+	message << Backend::GetTitleID();
+	message << isAdvertised;
+	message << globalID;
+	message << sessionID;
+	message << nonceID;
+	DynamicMessageHelper data(datain,lenin);
+	message << data;
+
+	if (!mServerAddressSet)
+	{
+		SetServer(Backend::GetUDPRelayServerAddress());
+	}
+
+	return PackageAndSendData(socket,message,mServerAddress);
+}
+
+bool UDPRelay::InsertState(UDPRelayState *state)
+{
+#ifdef DEBUG_PRINTS7
+	dprintf("UDPRelay::InsertState: state $%p: sock $%p userP $%p isAd %d globalID %d sessionID %d nonceID %d isServer %d\n",
+	(int)state,(int)state->mSocket,(int)state->mUserPointer,(int)state->mIsAdvertised,state->mGlobalID,state->mSessionID,state->mNonceID,state->mIsServer);
+#endif
+
+	state->mTimeAdded = sUDPRelayTheTime.FloatTime();
+	state->mTimeLastData = sUDPRelayTheTime.FloatTime();
+	state->mIterBySocket = mSetBySocket.insert(state);
+	state->mIterByUserPointer = mSetByUserPointer.insert(state);
+	bool isInserted = false;
+	if (state->mIsServer)
+	{
+		std::pair<std::set<UDPRelayState *,ltIDs>::iterator,bool> ret1;
+		ret1 = mSetByIDs.insert(state);
+		assert(ret1.second);
+		state->mIterByIDs = ret1.first;
+		isInserted = ret1.second;
+	}
+	else
+	{
+		std::pair<std::set<UDPRelayState *,ltIDsWithSocket>::iterator,bool> ret1;
+		ret1 = mSetByIDsWithSocket.insert(state);
+		assert(ret1.second);
+		state->mIterByIDsWithSocket = ret1.first;
+		isInserted = ret1.second;
+	}
+	mListByOrder.push_back(state);
+	state->mIterByOrder = --mListByOrder.end();
+	return isInserted;
+}
+
+void UDPRelay::DeleteState(UDPRelayState * &state)
+{
+#ifdef DEBUG_PRINTS7
+	dprintf("UDPRelay::DeleteState: state $%p: sock $%p userP $%p isAd %d globalID %d sessionID %d nonceID %d isServer %d\n",
+	(int)state,(int)state->mSocket,(int)state->mUserPointer,(int)state->mIsAdvertised,state->mGlobalID,state->mSessionID,state->mNonceID,state->mIsServer);
+#endif
+
+	if (state->mIsServer)
+	{
+		mSetByIDs.erase(state->mIterByIDs);
+	}
+	else
+	{
+		mSetByIDsWithSocket.erase(state->mIterByIDsWithSocket);
+	}
+	mSetBySocket.erase(state->mIterBySocket);
+	mSetByUserPointer.erase(state->mIterByUserPointer);
+	mListByOrder.erase(state->mIterByOrder);
+	state->mSocket = 0;
+	delete state;
+	state = 0;
+}
+
+void UDPRelay::ForgetSocket(const t_XPSocket *socket)
+{
+	THREADSAFELOCK();
+
+#ifdef DEBUG_PRINTS7
+	dprintf("UDPRelay::ForgetSocket: sock $%p\n",(int)socket);
+#endif
+
+	if (mHost == socket)
+	{
+#ifdef DEBUG_PRINTS7
+		dprintf("Was host\n");
+#endif
+		mHost = 0;
+	}
+
+	UDPRelayState temp;
+	temp.mSocket = (t_XPSocket *) socket;
+	std::pair<std::multiset<UDPRelayState *,ltSocket>::iterator,std::multiset<UDPRelayState *,ltSocket>::iterator> range;
+	range.first = mSetBySocket.lower_bound(&temp);
+	range.second = mSetBySocket.upper_bound(&temp);
+	if (range.first != range.second)
+	{
+		std::multiset<UDPRelayState *,ltSocket>::iterator st = range.first;
+		while (st != range.second)
+		{
+#ifdef DEBUG_PRINTS7
+			dprintf("Found state so delete\n");
+#endif
+
+			std::multiset<UDPRelayState *,ltSocket>::iterator tst = st;
+			UDPRelayState *state = *st++;
+			assert(state);
+			assert(state->mIterBySocket == tst);		// Paranoia check of the added iterator
+			DeleteState(state);
+		}
+	}
+}
+
+void UDPRelay::ForgetUserPointer(const void *userPointer)
+{
+	THREADSAFELOCK();
+
+#ifdef DEBUG_PRINTS7
+	dprintf("UDPRelay::ForgetUserPointer: userPointer $%p\n",(int)userPointer);
+#endif
+
+	UDPRelayState temp;
+	temp.mUserPointer = (void *) userPointer;
+	std::pair<std::multiset<UDPRelayState *,ltUserPointer>::iterator,std::multiset<UDPRelayState *,ltUserPointer>::iterator> range;
+	range.first = mSetByUserPointer.lower_bound(&temp);
+	range.second = mSetByUserPointer.upper_bound(&temp);
+	if (range.first != range.second)
+	{
+		std::multiset<UDPRelayState *,ltUserPointer>::iterator st = range.first;
+		while (st != range.second)
+		{
+#ifdef DEBUG_PRINTS7
+			dprintf("Found state so delete\n");
+#endif
+
+			std::multiset<UDPRelayState *,ltUserPointer>::iterator tst = st;
+			UDPRelayState *state = *st++;
+			assert(state);
+			assert(state->mIterByUserPointer == tst);		// Paranoia check of the added iterator
+			DeleteState(state);
+		}
+	}
+}
+
+bool UDPRelay::ParsePacketData(t_XPSocket *socket,const XPAddress &addr,void *data,size_t length)
+{
+	// Do some early out tests
+	if (length < (sizeof(short) + sizeof(char)))
+	{
+		return false;
+	}
+	MessageHelper tempM;
+	tempM.SetBuffer(data);
+	short theSize;
+	MESSAGEHELPER_GETVARIABLEp(tempM,theSize);
+	char packetType;
+	MESSAGEHELPER_GETVARIABLEp(tempM,packetType);
+
+	if (packetType != UDPReliableManager::kRelay)
+	{
+		return false;
+	}
+
+	if (length < (size_t) theSize)
+	{
+		return false;
+	}
+
+	if ( (theSize < (int)(sizeof(short) + sizeof(char) + sizeof(int))) || (theSize > 2048) )
+	{
+		return false;
+	}
+
+	// It passed these tests so we continue with some slightly more expensive tests
+	int checksum;
+	MESSAGEHELPER_GETVARIABLEp(tempM,checksum);
+
+	DynamicMessageHelper message;
+	message.AddData(tempM.GetCurrentPosition(),theSize - tempM.GetSize());
+
+	// Yes this accesses mCryptoKey which is a class member variable and yes this class could be deleted in a thread other than this one.
+	// But to stop the thread from prematurely locking during the decrypt we accept this small risk since people should not be attempting to call this function during a delete of this class.
+	Encryption::Decrypt(message.GetBuffer(),message.GetSize(),&mCryptoKey);
+	int testChecksum = Checksum::ChecksumData(message.GetBuffer(),message.GetSize());
+	if (testChecksum != checksum)
+	{
+		return false;
+	}
+
+	THREADSAFELOCK();
+
+#ifdef DEBUG_PRINTS7
+	dprintf("UDPRelay::ParsePacketData: Passed inital tests\nsock $%p from %s data %s\n",(int)socket,addr.Export().c_str(),message.DumpAsHex().c_str());
+#endif
+
+
+	Start();
+
+	// Rewind the message
+	message.SetSize(0);
+	UDPRelayState::tPacketType packet;
+	message >> packet;
+	switch(packet)
+	{
+		default:
+		{
+#ifdef DEBUG_PRINTS7
+			dprintf("Got unknown NAT packet %d\n",(int)packet);
+#endif
+			return true;
+			break;
+		}
+		case UDPRelayState::kAdvertise:
+		{
+			// Don't forget kAdvertise is sent even if it is persistent until the host gets its kAdvertiseACK
+			UDPRelayState tempState;
+			PerHostState hostState;
+			message >> hostState.mHostStateUID;
+			message >> tempState.mTitleID;
+			message >> tempState.mIsAdvertised;
+			message >> tempState.mGlobalID;
+			message >> tempState.mSessionID;
+			message >> tempState.mNonceID;
+			message >> tempState.mTimeoutData;
+			message >> tempState.mTimeoutSession;
+#ifdef DEBUG_PRINTS7
+			dprintf("kAdvertise persistent=%d HSUID%d TID%d isAd %d globalID %d sessionID %d nonceID %d\n",packet == UDPRelayState::kAdvertisePersistent,hostState.mHostStateUID,
+				tempState.mTitleID,(int)tempState.mIsAdvertised,tempState.mGlobalID,tempState.mSessionID,tempState.mNonceID);
+#endif
+			tempState.mIsServer = true;
+			XPAddress myMostLocalAddress;
+			GetAddrV4(message,myMostLocalAddress);
+
+			// Look for it
+			std::set<UDPRelayState *,ltIDs>::iterator found;
+			found = mSetByIDs.find(&tempState);
+			UDPRelayState *state = 0;
+			if (found != mSetByIDs.end())
+			{
+				// Don't forget, even a locally hosted UDPRelay can get these packet types
+				state = *found;
+				assert(state);
+				assert(state->mIterByIDs == found);		// Paranoia check of the added iterator
+#ifdef DEBUG_PRINTS7
+				dprintf("UDPRelayState found $%p , $%p\n",state->mSocket , socket);
+#endif
+				// We received an advertise packet, but we have an entry for it already so don't do much.
+				state->mReceivedAvertiseOn = socket;
+				state->mTimeoutData = tempState.mTimeoutData;
+				state->mTimeoutSession = tempState.mTimeoutSession;
+			}
+			else
+			{
+				// Not found so we must be an external host who has received the packet
+				state = new UDPRelayState();
+				*state = tempState;
+				state->mSocket = socket;
+				state->mIncludeAddressInACK = true;
+				InsertState(state);
+				state->mReceivedAvertiseOn = socket;
+			}
+			state->mServerMostLocalAddress = myMostLocalAddress;
+			state->mAdvertiseFrom = addr;
+			state->mAdvertiseFromValid = true;
+
+			message.SetSize(0);
+			UDPRelayState::tPacketType packet = UDPRelayState::kAdvertiseACK;
+			message << packet;
+			message << hostState.mHostStateUID;
+			message << state->mTitleID;
+			message << state->mIsAdvertised;
+			message << state->mGlobalID;
+			message << state->mSessionID;
+			message << state->mNonceID;
+			bool includesAddress = state->mIncludeAddressInACK;
+			message << includesAddress;
+			if (includesAddress)
+			{
+				SetAddrV4(message,addr);
+			}
+
+			PackageAndSendData(socket,message,addr);
+
+			// This notes the last time for timeout reasons.
+			state->mTimeAdded = sUDPRelayTheTime.FloatTime();
+//			printf("state->mTimeAdded %f\n" , state->mTimeAdded);
+			state->mTimeLastData = sUDPRelayTheTime.FloatTime();
+
+
+			return true;
+			break;
+		}
+
+		case UDPRelayState::kAdvertiseACK:
+		{
+			UDPRelayState tempState;
+			PerHostState hostState;
+			message >> hostState.mHostStateUID;
+			message >> tempState.mTitleID;
+			message >> tempState.mIsAdvertised;
+			message >> tempState.mGlobalID;
+			message >> tempState.mSessionID;
+			message >> tempState.mNonceID;
+#ifdef DEBUG_PRINTS7
+			dprintf("kAdvertiseACK HSUID%d TID%d isAd %d globalID %d sessionID %d nonceID %d\n",hostState.mHostStateUID,
+				tempState.mTitleID,(int)tempState.mIsAdvertised,tempState.mGlobalID,tempState.mSessionID,tempState.mNonceID);
+#endif
+			bool includesAddress;
+			message >> includesAddress;
+			XPAddress theAddr;
+			if (includesAddress)
+			{
+				GetAddrV4(message,theAddr);
+			}
+			tempState.mIsServer = true;
+
+			// Look for it
+			std::set<UDPRelayState *,ltIDs>::iterator found;
+			found = mSetByIDs.find(&tempState);
+			UDPRelayState *state = 0;
+			if (found != mSetByIDs.end())
+			{
+				state = *found;
+				assert(state);
+				assert(state->mIterByIDs == found);		// Paranoia check of the added iterator
+#ifdef DEBUG_PRINTS7
+				dprintf("UDPRelayState found $%p , $%p\n",state->mSocket , socket);
+#endif
+				std::list<PerHostState>::iterator st = state->mHostStates.begin();
+				while (st != state->mHostStates.end())
+				{
+					PerHostState &hostStateFromList = *st++;
+					if (hostStateFromList.mHostStateUID == hostState.mHostStateUID)
+					{
+						if (includesAddress)
+						{
+							state->mAdvertisedExternalAddressValid = true;
+							state->mAdvertisedExternalAddress = theAddr;
+							if (!hostStateFromList.mGotAckForInfo)
+							{
+								CallbackExternalAddressKnown(socket,state->mUserPointer,state->mAdvertisedExternalAddress,tempState.mTitleID,tempState.mIsAdvertised,tempState.mGlobalID,tempState.mSessionID,tempState.mNonceID);
+							}
+						}
+						hostStateFromList.mGotAckForInfo = true;
+						return true;
+						break;
+					}
+				}
+			}
+
+			return true;
+			break;
+		}
+
+		case UDPRelayState::kWantRelayFromClient:
+		{
+			UDPRelayState tempState;
+			message >> tempState.mTitleID;
+			message >> tempState.mIsAdvertised;
+			message >> tempState.mGlobalID;
+			message >> tempState.mSessionID;
+			message >> tempState.mNonceID;
+
+#ifdef DEBUG_PRINTS7
+			dprintf("kWantRelayFromClient TID%d isAd %d globalID %d sessionID %d nonceID %d\n",
+				tempState.mTitleID,(int)tempState.mIsAdvertised,tempState.mGlobalID,tempState.mSessionID,tempState.mNonceID);
+#endif
+			tempState.mIsServer = true;
+
+			// Look for it
+			std::set<UDPRelayState *,ltIDs>::iterator found;
+			found = mSetByIDs.find(&tempState);
+			UDPRelayState *state = 0;
+			if (found != mSetByIDs.end())
+			{
+				state = *found;
+				assert(state);
+				assert(state->mIterByIDs == found);		// Paranoia check of the added iterator
+
+				state->mTimeLastData = sUDPRelayTheTime.FloatTime();
+
+#ifdef DEBUG_PRINTS7
+				dprintf("UDPRelayState found $%p , $%p ILH%d AFV%d\n",state->mSocket , socket,(int)state->mIsLocallyHosted,(int)state->mAdvertiseFromValid);
+#endif
+
+				if (state->mIsLocallyHosted && state->mSocket == socket)
+				{
+					DynamicMessageHelper dataGot;
+					message >> dataGot;
+
+					CallbackDataReceived(socket,addr,dataGot.GetBuffer(),dataGot.GetLastSizeAdded());
+				}
+				else
+				{
+					if (state->mAdvertiseFromValid)
+					{
+						DynamicMessageHelper dataGot;
+						message >> dataGot;
+						dataGot.SetSize(dataGot.GetLastSizeAdded());
+
+						// Send to where we know the server side is who advertised
+						message.SetSize(0);
+						packet = UDPRelayState::kRelayedData;
+						message << packet;
+//						message << state->mTitleID;
+//						message << state->mIsAdvertised;
+//						message << state->mGlobalID;
+//						message << state->mSessionID;
+//						message << state->mNonceID;
+						SetAddrV4(message,addr);
+						message << dataGot;
+						PackageAndSendData(state->mSocket,message,state->mAdvertiseFrom);
+
+#ifdef DEBUG_PRINTS7
+						dprintf("kRelayedData sent to %s and kServerIsAtAddress sent to %s\n",state->mAdvertiseFrom.Export().c_str(),addr.Export().c_str());
+#endif
+					}
+				}
+			}
+
+			return true;
+			break;
+		}
+
+		case UDPRelayState::kRelayedData:
+		{
+#ifdef DEBUG_PRINTS7
+			dprintf("kRelayedData\n");
+#endif
+			XPAddress clientAddress;
+			GetAddrV4(message,clientAddress);
+
+			DynamicMessageHelper dataGot;
+			message >> dataGot;
+
+			CallbackDataReceived(socket,clientAddress,dataGot.GetBuffer(),dataGot.GetLastSizeAdded());
+
+			// Update time for last data received for this socket
+			UDPRelayState temp;
+			temp.mSocket = (t_XPSocket *) socket;
+			std::pair<std::multiset<UDPRelayState *,ltSocket>::iterator,std::multiset<UDPRelayState *,ltSocket>::iterator> range;
+			range.first = mSetBySocket.lower_bound(&temp);
+			range.second = mSetBySocket.upper_bound(&temp);
+			if (range.first != range.second)
+			{
+				std::multiset<UDPRelayState *,ltSocket>::iterator st = range.first;
+				while (st != range.second)
+				{
+					std::multiset<UDPRelayState *,ltSocket>::iterator tst = st;
+					UDPRelayState *state = *st++;
+					assert(state);
+					assert(state->mIterBySocket == tst);		// Paranoia check of the added iterator
+					assert(state->mSocket == socket);
+
+					state->mTimeLastData = sUDPRelayTheTime.FloatTime();
+				}
+			}
+
+			return true;
+			break;
+		}
+	}
+
+	return true;
+}
+
+void UDPRelay::SetServer(const XPAddress &address)
+{
+	mServerAddressSet = true;
+	mServerAddress = address;
+}
+
+void UDPRelay::CallbackExternalAddressKnown(t_XPSocket *socket,void *userPointer,const XPAddress &externalAddress,const int titleID,const bool isAdvertised,const int globalID,const int sessionID,const int nonceID)
+{
+}
+
+void UDPRelay::CallbackDataReceived(RNReplicaNet::t_XPSocket *socket,const RNReplicaNet::XPAddress &addr,void *data,size_t length)
+{
+}
+
+bool UDPRelay::PackageAndSendData(t_XPSocket *socket,const DynamicMessageHelper &message,const XPAddress &address)
+{
+	if (message.GetSize() <= 0)
+	{
+		return true;
+	}
+	DynamicMessageHelper target;
+	short theSize = 0;	// To be filled in later
+	target << theSize;
+	char packetType = UDPReliableManager::kRelay;
+	target << packetType;
+
+	target << Checksum::ChecksumData(message.GetBuffer(),message.GetSize());
+
+	DynamicMessageHelper toCrypt;
+	toCrypt.AddData(message.GetBuffer(),message.GetSize());
+	Encryption::Encrypt(toCrypt.GetBuffer(),toCrypt.GetSize(),&mCryptoKey);
+
+	target.AddData(toCrypt.GetBuffer(),toCrypt.GetSize());
+
+	// Update the size
+	MessageHelper tempMessage;
+	tempMessage.SetBuffer(target.GetBuffer());
+	theSize = (short) target.GetSize();
+	MESSAGEHELPER_ADDVARIABLEp(tempMessage,theSize);
+
+	int ret = XPSock_UrgentSend(socket,(char *) target.GetBuffer(), target.GetSize() , &address);
+
+	return (ret == XPSOCK_EOK);
+}
+
+
+UDPRelay::PerHostState::PerHostState() :
+	mHostStateUID(0) , mTries(0) , mGotAckForInfo(false) , mLastTimeSent(-1000.0f) , mLastKeepAliveSent(-1000.0f)
+{
+}
+
+UDPRelay::PerHostState::~PerHostState()
+{
+}
+
+int UDPRelay::ThreadEntry(void)
+{
+	bool gotError = false;
+	while (!gotError)
+	{
+		// Stack context for safe lock
+		{
+			THREADSAFELOCK();
+
+			if (mAllowAutoHostSocketReads && mHost)
+			{
+				RNReplicaNet::DynamicMessageHelper message( RNReplicaNet::TransportConfig::GetPacketMTU() );
+				int times = 100;
+				int ret;
+				do
+				{
+					RNReplicaNet::XPAddress addr;
+					ret = XPSock_UrgentRecv(mHost,(char *) message.GetBuffer(),message.GetBufferSize(),XPSOCK_FNULL,&addr);
+					if (ret > 0)
+					{
+						ParsePacketData(mHost,addr,message.GetBuffer(),ret);
+					}
+					if (ret == XPSOCK_EERROR)
+					{
+						// Expire errors and count them as packets with data
+//						int real = asocket_lasterror;
+						ret = 1;
+					}
+				} while ( (times-- > 0) && (ret > 0) );
+			}
+
+			std::multiset<UDPRelayState *,ltSocket>::iterator st,en;
+			st = mSetBySocket.begin();
+			en = mSetBySocket.end();
+			while (st != en)
+			{
+				std::multiset<UDPRelayState *,ltSocket>::iterator tst = st;
+				UDPRelayState *state = *st++;
+				assert(state);
+				assert(state->mIterBySocket == tst);		// Paranoia check of the added iterator
+
+#ifndef DISABLE_TIMEOUT
+				if (state->mFailed)
+				{
+#ifdef DEBUG_PRINTS7
+					dprintf("UDPRelay::ThreadEntry state->mFailed del\n");
+#endif
+					DeleteState(state);
+					continue;
+				}
+
+				if ( (sUDPRelayTheTime.FloatTime() - state->mTimeAdded) > state->mTimeoutSession)
+				{
+#ifdef DEBUG_PRINTS7
+					dprintf("UDPRelay::ThreadEntry session del\n");
+#endif
+					DeleteState(state);
+					continue;
+				}
+
+				if ( (sUDPRelayTheTime.FloatTime() - state->mTimeLastData) > state->mTimeoutData)
+				{
+#ifdef DEBUG_PRINTS7
+					dprintf("UDPRelay::ThreadEntry !data del\n");
+#endif
+					DeleteState(state);
+					continue;
+				}
+#endif
+
+				if (state->mIsServer)
+				{
+					std::list<PerHostState>::iterator st = state->mHostStates.begin();
+					while (st != state->mHostStates.end())
+					{
+						std::list<PerHostState>::iterator tst = st;
+						PerHostState &hostState = *st++;
+						if (!hostState.mGotAckForInfo)
+						{
+							if (hostState.mTries < UDPRelayOptions::kMaxHostContactTries)
+							{
+								if ( (sUDPRelayTheTime.FloatTime() - hostState.mLastTimeSent) > UDPRelayOptions::kHostResendTime )
+								{
+									hostState.mLastKeepAliveSent = hostState.mLastTimeSent = sUDPRelayTheTime.FloatTime();
+
+									DynamicMessageHelper message;
+									UDPRelayState::tPacketType packet = UDPRelayState::kAdvertise;
+									message << packet;
+									BuildAndSendAdvertisePacket(message,state,hostState);
+									hostState.mTries++;
+								}
+							}
+							else
+							{
+								state->mHostStates.erase(tst);
+								if (state->mHostStates.empty())
+								{
+									state->mFailed = true;
+								}
+								continue;
+							}
+						}
+					} // while (st != state->mHostStates.end())
+				}
+			} // while (st != en)
+			// Was there entries and then an empty list this cycle?
+			if (!mSetBySocket.empty())
+			{
+				mIsEmpty = false;
+			}
+			else if (!mIsEmpty)
+			{
+				mIsEmpty = true;
+				mBecameEmptyAt = sUDPRelayTheTime.FloatTime();
+			}
+		}
+		Sleep(10);
+	}
+
+	return 0;
+}
+
+bool UDPRelay::BuildAndSendAdvertisePacket(DynamicMessageHelper &message,UDPRelayState *state,PerHostState &hostState)
+{
+	message << hostState.mHostStateUID;
+	message << state->mTitleID;
+	message << state->mIsAdvertised;
+	message << state->mGlobalID;
+	message << state->mSessionID;
+	message << state->mNonceID;
+	message << state->mTimeoutData;
+	message << state->mTimeoutSession;
+
+	XPAddress myMostLocalAddress;
+	XPSock_GetAddress(state->mSocket,&myMostLocalAddress);
+	SetAddrV4(message,myMostLocalAddress);
+
+	return PackageAndSendData(state->mSocket,message,hostState.mHostAddress);
+}
+
+int UDPRelay::GetCountBySocket(void)
+{
+//	THREADSAFELOCK();	// No need for a lock for size() access
+	return mSetBySocket.size();
+}
+
 //From: RNLobby/NOnceGen.cpp
 /* START_LICENSE_HEADER
 
@@ -45163,767 +46522,6 @@ bool PatchIndexManager::GetIsModified(const char *filename)
 
 } // namespace RNReplicaNet
 #endif
-//From: RNLobby/ProductPatcher.cpp
-/* START_LICENSE_HEADER
-
-Copyright (C) 2000 Martin Piper, original design and program code
-Copyright (C) 2001 Replica Software
-
-This program file is copyright (C) Replica Software and can only be used under license.
-For more information visit: http://www.replicanet.com/
-Or email: info@replicanet.com
-
-END_LICENSE_HEADER */
-#ifdef _WIN32
-//Skipping: #include "RNPlatform/Inc/MemoryTracking.h"
-#include <assert.h>
-#include <time.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <set>
-#include <list>
-#include <string>
-#include "RNLobby/Inc/ProductPatcher.h"
-//Skipping: #include "RNPlatform/Inc/CheckSum.h"
-//Skipping: #include "RNPlatform/Inc/MessageHelper.h"
-//Skipping: #include "RNLobby/Inc/Patcher.h"
-#include "RNLobby/Inc/ScanPath.h"
-#include "RNLobby/Inc/ScanChecksum.h"
-#include "RNLobby/Inc/ScanForDiffs.h"
-//Skipping: #include "RNLobby/Inc/PatchIndexManager.h"
-//Skipping: #include "RNPlatform/Inc/SysTime.h"
-
-#ifdef _WIN32
-#ifndef _XBOX
-#pragma comment(lib, "wininet.lib")
-#endif
-#endif
-
-
-namespace RNReplicaNet
-{
-
-namespace RNLobby
-{
-
-class MyDecompressFile : public RNReplicaNet::RNLobby::ScanForDiffs
-{
-public:
-	MyDecompressFile(ProductPatcher *worker,const char *patchingFile) : mWorker(worker) , mPatchingFile(patchingFile) {}
-
-	bool CallbackScanning(size_t pos,size_t max,const ScanPath::Entry &entry,const size_t filePos,const size_t fileMax)
-	{
-		assert(mWorker);
-		mWorker->CallbackUpdateProgressFile(mPatchingFile,filePos,fileMax);
-		return true;
-	}
-
-	const char *mPatchingFile;
-	ProductPatcher *mWorker;
-};
-
-} // namespace RNLobby
-
-} // namespace RNReplicaNet
-
-using namespace RNReplicaNet;
-using namespace RNReplicaNet::RNLobby;
-
-static const char *sTempPatchFile = "_tempPatch.tmp";
-
-ProductPatcher::ProductPatcher() : 	mInternet(0) , mTempBuffer(0) , mFile(0) , mFP(0) , mCallCompleteRequired(false)
-									, mDownloadAttempts(0) , mDownloadAttemptsFailed(0)
-									, mDownloadedBytes(0) , mDownloadedOverTime(0.0f)
-{
-}
-
-ProductPatcher::~ProductPatcher()
-{
-	Stop();
-}
-
-void ProductPatcher::OpenInternet(void)
-{
-	if (mInternet)
-	{
-		InternetCloseHandle(mInternet);
-	}
-	mInternet = InternetOpenA("ReplicaNet Product Patcher http://www.replicanet.com/" , INTERNET_OPEN_TYPE_PRECONFIG,0,0,0);
-}
-
-bool ProductPatcher::Start(const char *productPath,const char *patchIndexURL,const char *patchDataURL,const bool multiThread,const size_t chunkSize)
-{
-	// Make sure any previous thread is terminated
-	Stop();
-
-	mChunkSize = chunkSize;
-
-	mTempBuffer = malloc(mChunkSize);
-	if (!mTempBuffer)
-	{
-		return false;
-	}
-
-	OpenInternet();
-
-	mProductPath = productPath;
-	mPatchIndexURL = patchIndexURL;
-	mPatchDataURL = patchDataURL;
-
-	mCallCompleteRequired = true;
-	mAborted = false;
-
-	mDownloadAttempts = 0;
-	mDownloadAttemptsFailed = 0;
-
-	mDownloadedBytes = 0;
-	mDownloadedOverTime = 0.0f;
-
-	if (multiThread)
-	{
-		Begin(this);
-		return true;
-	}
-	// Not using a thread so just call the thread entry
-	ThreadEntry();
-	return true;
-}
-
-bool ProductPatcher::Stop(void)
-{
-	mAborted = true;
-	Terminate();
-	Tidy();
-	return true;
-}
-
-void ProductPatcher::Tidy(void)
-{
-	if (mFP)
-	{
-		fclose(mFP);
-		mFP = 0;
-	}
-	DeleteFileA(sTempPatchFile);
-	if (mFile)
-	{
-		InternetCloseHandle(mFile);
-		mFile = 0;
-	}
-	if (mInternet)
-	{
-		InternetCloseHandle(mInternet);
-		mInternet = 0;
-	}
-	free(mTempBuffer);
-	mTempBuffer = 0;
-}
-
-bool ProductPatcher::GetCompleted(void)
-{
-	return !GetIsRunning();
-}
-
-bool ProductPatcher::CallbackUpdateProgressProduct(const size_t fileIndex,const size_t maxFileIndex)
-{
-	return true;
-}
-
-bool ProductPatcher::CallbackUpdateDownloadPatch(const char *patchingFile,const size_t filePosition,const size_t fileLength)
-{
-	return true;
-}
-
-bool ProductPatcher::CallbackUpdateProgressFile(const char *patchingFile,const size_t filePosition,const size_t fileLength)
-{
-	return true;
-}
-
-void ProductPatcher::CallbackComplete(const Status status)
-{
-}
-
-int ProductPatcher::ThreadEntry(void)
-{
-	int ret = RealThreadEntry(mProductPath.c_str(),mPatchIndexURL.c_str(),mPatchDataURL.c_str());
-	Tidy();
-	if (mCallCompleteRequired)
-	{
-		mCallCompleteRequired = false;
-		if (ret == 0)
-		{
-			CallbackComplete(kSuccess);
-		}
-		else
-		{
-			if (mAborted)
-			{
-				CallbackComplete(kAborted);
-			}
-			else
-			{
-				CallbackComplete(kErrorEncountered);
-			}
-		}
-	}
-	return ret;
-}
-
-namespace RNReplicaNet
-{
-
-namespace RNLobby
-{
-
-struct ltScanPathEntryByName
-{
-	bool operator()(const RNReplicaNet::RNLobby::ScanPath::Entry &s1, const RNReplicaNet::RNLobby::ScanPath::Entry &s2) const
-	{
-		return strcmp(s1.mName.c_str(), s2.mName.c_str()) < 0;
-	}
-};
-
-} // namespace RNLobby
-
-} // namespace RNReplicaNet
-
-#define TMPINDEX "_tempIndex.ind"
-
-int ProductPatcher::RealThreadEntry(const char *productPath,const char *patchIndexURL,const char *patchDataURL)
-{
-	RNReplicaNet::RNLobby::ScanPath scanPath;
-
-	RNReplicaNet::RNLobby::PatchIndexManager index;
-
-	std::string tempName;
-	int retry = 0;
-	const char *failedToReadFile = 0;
-	do
-	{
-		tempName = GetRealFilePath(patchIndexURL,"",TMPINDEX);
-		if (tempName == "")
-		{
-			failedToReadFile = patchIndexURL;
-			OpenInternet();
-			continue;
-		}
-
-		bool retRead = index.ReadIndex(tempName.c_str());
-		DeleteFileA(TMPINDEX);
-		if (!retRead)
-		{
-			mDownloadAttemptsFailed++;
-			failedToReadFile = tempName.c_str();
-			OpenInternet();
-			continue;
-		}
-		// Everything OK
-		failedToReadFile = 0;
-		break;
-	} while (failedToReadFile && (retry++ < 5));
-	if (failedToReadFile)
-	{
-		CallbackFailedToReadFile(failedToReadFile);
-		return -1;
-	}
-
-	index.BeginIterate();
-	RNReplicaNet::RNLobby::PatchIndexManager::EntryInfo *entryInfo = 0;
-	std::string entryIndex;
-
-	// Load the checksum cache if it is available
-	// The cache operates on the slightly more qualified target name *not* the EntryInfo leaf path.
-	std::set<RNReplicaNet::RNLobby::ScanPath::Entry,RNReplicaNet::RNLobby::ltScanPathEntryByName> checksumCache;
-	std::string cachedChecksumIndex = std::string(productPath) + std::string("\\") + std::string("_sumCache.bin");
-	std::list<RNReplicaNet::RNLobby::ScanPath::Entry> tempScansList;
-	if (RNReplicaNet::RNLobby::ScanPath::Read(cachedChecksumIndex.c_str(),tempScansList))
-	{
-		std::list<RNReplicaNet::RNLobby::ScanPath::Entry>::iterator st = tempScansList.begin();
-		while (st != tempScansList.end())
-		{
-			RNReplicaNet::RNLobby::ScanPath::Entry &entry = *st++;
-			checksumCache.insert(entry);
-		}
-	}
-	tempScansList.clear();	// We don't need this to be hanging around
-	size_t maxNumEntries = index.GetNumEntries();
-	int numEntries = 0;
-
-	std::list<RNReplicaNet::RNLobby::ScanPath::Entry> existsSoScan;
-	while ( (entryInfo = index.Iterate(entryIndex)) != 0)
-	{
-/*
-		printf("EntryInfo: file '%s'\n",entryIndex.c_str());
-		printf("FromScratch: V%d : ID%d isPatch %d gives checksum %s\n",entryInfo->mScratch.mProductVersion,entryInfo->mScratch.mUniqueID,(int)entryInfo->mScratch.mIsPatch,RNReplicaNet::MessageHelper::DumpAsHex(entryInfo->mScratch.mChecksum.mValue,sizeof(entryInfo->mScratch.mChecksum.mValue)).c_str());
-		std::list<RNReplicaNet::RNLobby::PatchIndexManager::VersionInfo>::iterator st = entryInfo->mVersions.begin();
-		while (st != entryInfo->mVersions.end())
-		{
-			RNReplicaNet::RNLobby::PatchIndexManager::VersionInfo &versionInfo = *st++;
-			printf("VersionInfo: V%d : ID%d isPatch %d from checksum %s\n",versionInfo.mProductVersion,versionInfo.mUniqueID,(int)versionInfo.mIsPatch,RNReplicaNet::MessageHelper::DumpAsHex(versionInfo.mChecksum.mValue,sizeof(versionInfo.mChecksum.mValue)).c_str());
-		}
-*/
-		std::string targetName = std::string(productPath) + std::string("\\") + entryIndex;
-
-		if (!CallbackProcessFile(entryIndex.c_str()))
-		{
-			continue;
-		}
-
-		FILE *fp = fopen(targetName.c_str() , "rb");
-		if (fp)
-		{
-			fclose(fp);
-
-			RNReplicaNet::RNLobby::ScanPath::Entry toFind;
-			toFind.mName = targetName;
-			std::set<RNReplicaNet::RNLobby::ScanPath::Entry,RNReplicaNet::RNLobby::ltScanPathEntryByName>::iterator found = checksumCache.find(toFind);
-			bool isOK = false;
-			bool needChecksum = true;
-			RNReplicaNet::RNLobby::ScanPath::Entry oneEntry;
-			if (found != checksumCache.end())
-			{
-				const RNReplicaNet::RNLobby::ScanPath::Entry &entry = *found;
-				HANDLE hnd = CreateFileA(targetName.c_str(),GENERIC_READ,FILE_SHARE_READ,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);
-				if (hnd != INVALID_HANDLE_VALUE)
-				{
-					if (GetFileTime(hnd,0,0,&oneEntry.mLastWriteTime))
-					{
-						if (CompareFileTime(&oneEntry.mLastWriteTime,&entry.mLastWriteTime)==0)
-						{
-							needChecksum = false;
-							oneEntry.mChecksum = entry.mChecksum;
-
-							// FILETIME Matches so we can verify the checksum without needing to calculate it
-							if (memcmp(&entryInfo->mScratch.mChecksum,&entry.mChecksum,sizeof(entry.mChecksum)) == 0)
-							{
-								isOK = true;
-							}
-						}
-					}
-					CloseHandle(hnd);
-				}
-			}
-
-			oneEntry.mIsFile = true;
-			if (needChecksum)
-			{
-				oneEntry.mName = targetName;
-				// MPi: Maybe resolve this checksum bit into using the std::list version as one run through the list?
-//				printf("Calculating checksum for file '%s'...",targetName.c_str());
-				RNReplicaNet::RNLobby::ScanChecksum tc;
-				tc.Start(oneEntry);
-				CallbackUpdateProgressFile(entryIndex.c_str(),0,0);
-			}
-
-			// The file is not in the cache or the FILETIME differs so we want to checksum it later on.
-			if (!isOK)
-			{
-				oneEntry.mName = entryIndex;
-				existsSoScan.push_back(oneEntry);
-			}
-			else
-			{
-				CallbackUpdateProgressProduct(numEntries++,maxNumEntries);
-			}
-		}
-		else
-		{
-			// Doesn't exist, so create from scratch.
-			char patchSourceFilename[MAX_PATH];
-			sprintf(patchSourceFilename,"%s\\%d.bin",patchDataURL,entryInfo->mScratch.mUniqueID);
-			// Create the directory path if required.
-			size_t pos = 0;
-			pos = targetName.find('\\',pos);
-			while (pos != std::string::npos)
-			{
-				std::string temp = targetName.substr(0,pos);
-				CreateDirectoryA(temp.c_str(),0);
-				pos = targetName.find('\\',pos+1);
-			}
-
-			int retry = 0;
-			const char *failedToReadFile = 0;
-			do
-			{
-				// Decompress the file from the patch location to the final location
-				tempName = GetRealFilePath(patchSourceFilename,entryIndex.c_str());
-				if (tempName == "")
-				{
-					failedToReadFile = patchIndexURL;
-					OpenInternet();
-					continue;
-				}
-				MyDecompressFile decomp(this,targetName.c_str());
-				ScanPath::Entry entry;
-				if (decomp.DecompressFile(0,0,entry,tempName.c_str(),targetName.c_str()) < 0)
-				{
-					mDownloadAttemptsFailed++;
-					failedToReadFile = tempName.c_str();
-					OpenInternet();
-					continue;
-				}
-				// Everything OK
-				failedToReadFile = 0;
-				break;
-			} while (failedToReadFile && (retry++ < 5));
-			if (failedToReadFile)
-			{
-				CallbackFailedToReadFile(failedToReadFile);
-				return -1;
-			}
-
-			// MPi: TODO: Tidy this common code block with the one above. Same comment line as below.
-			// Update the checksum cache
-			RNReplicaNet::RNLobby::ScanPath::Entry toFind;
-			toFind.mName = targetName;
-			std::set<RNReplicaNet::RNLobby::ScanPath::Entry,RNReplicaNet::RNLobby::ltScanPathEntryByName>::iterator found = checksumCache.find(toFind);
-			if (found != checksumCache.end())
-			{
-				checksumCache.erase(found);
-			}
-			HANDLE hnd = CreateFileA(targetName.c_str(),GENERIC_READ,FILE_SHARE_READ,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);
-			if (hnd != INVALID_HANDLE_VALUE)
-			{
-				RNReplicaNet::RNLobby::ScanPath::Entry entry;
-				entry.mIsFile = true;
-				entry.mName = targetName;
-				if (GetFileTime(hnd,0,0,&entry.mLastWriteTime))
-				{
-					entry.mChecksum = entryInfo->mScratch.mChecksum;
-					checksumCache.insert(entry);
-				}
-				CloseHandle(hnd);
-			}
-			CallbackUpdateProgressFile(entryIndex.c_str(),0,0);
-			CallbackUpdateProgressProduct(numEntries++,maxNumEntries);
-		}
-	}
-
-	// Now work through the existsSoScan list
-	std::list<RNReplicaNet::RNLobby::ScanPath::Entry>::iterator scanIt;
-
-	// The ones that are left are the ones we want to patch because the cache says the FILETIME differs
-	scanIt = existsSoScan.begin();
-	while (scanIt != existsSoScan.end())
-	{
-		RNReplicaNet::RNLobby::ScanPath::Entry oneEntry = *scanIt++;
-		entryIndex = oneEntry.mName;
-		entryInfo = index.GetEntryInfo(entryIndex);
-		std::string targetName = std::string(productPath) + std::string("\\") + entryIndex;
-		oneEntry.mName = targetName;
-
-		// Check to see if the checksum differs from the head revision.
-		if (memcmp(&entryInfo->mScratch.mChecksum,&oneEntry.mChecksum,sizeof(oneEntry.mChecksum)) != 0)
-		{
-//			printf("Patching file '%s'...",targetName.c_str());
-			// Scan for a checksum match.
-			std::list<RNReplicaNet::RNLobby::PatchIndexManager::VersionInfo>::iterator st = entryInfo->mVersions.begin();
-			while (st != entryInfo->mVersions.end())
-			{
-				RNReplicaNet::RNLobby::PatchIndexManager::VersionInfo &versionInfo = *st;
-				if (memcmp(&versionInfo.mChecksum,&oneEntry.mChecksum,sizeof(oneEntry.mChecksum)) == 0 && versionInfo.mIsPatch)
-				{
-					// Matched and found a patch
-					char patchSourceFilename[MAX_PATH];
-					std::string tempDecompPatchName = std::string(productPath) + std::string("\\") + entryIndex + ".dptch";
-					std::string tempTargetName = std::string(productPath) + std::string("\\") + entryIndex + ".tmp";
-					sprintf(patchSourceFilename,"%s\\%d.bin",patchDataURL,versionInfo.mUniqueID);
-
-					int retry = 0;
-					const char *failedToReadFile = 0;
-					do
-					{
-						tempName = GetRealFilePath(patchSourceFilename,entryIndex.c_str());
-						if (tempName == "")
-						{
-							failedToReadFile = patchIndexURL;
-							OpenInternet();
-							continue;
-						}
-						MyDecompressFile decomp(this,targetName.c_str());
-						ScanPath::Entry entry;
-						if (decomp.DecompressFile(0,0,entry,tempName.c_str(),tempDecompPatchName.c_str()) < 0)
-						{
-							mDownloadAttemptsFailed++;
-							failedToReadFile = tempName.c_str();
-							OpenInternet();
-							continue;
-						}
-						// Everything OK
-						failedToReadFile = 0;
-						break;
-					} while (failedToReadFile && (retry++ < 5));
-					if (failedToReadFile)
-					{
-						CallbackFailedToReadFile(failedToReadFile);
-						return -1;
-					}
-
-
-					RNReplicaNet::RNLobby::Patcher tp;
-					tp.PatchFile(targetName.c_str(),tempDecompPatchName.c_str(),tempTargetName.c_str());
-					DeleteFileA(tempDecompPatchName.c_str());
-					DeleteFileA(targetName.c_str());
-					rename(tempTargetName.c_str(),targetName.c_str());
-					// Update the checksum since it got patched
-//					RNReplicaNet::RNLobby::ScanChecksum tc;
-//					tc.Start(oneEntry);
-					oneEntry.mChecksum = entryInfo->mScratch.mChecksum;
-					CallbackUpdateProgressFile(entryIndex.c_str(),0,0);
-					break;
-				}
-				st++;
-			}
-
-			if (st == entryInfo->mVersions.end())
-			{
-				// Just use from scratch since there was no matched version with a patch found
-				char patchSourceFilename[MAX_PATH];
-				sprintf(patchSourceFilename,"%s\\%d.bin",patchDataURL,entryInfo->mScratch.mUniqueID);
-
-
-
-				int retry = 0;
-				const char *failedToReadFile = 0;
-				do
-				{
-					tempName = GetRealFilePath(patchSourceFilename,entryIndex.c_str());
-					if (tempName == "")
-					{
-						failedToReadFile = patchIndexURL;
-						OpenInternet();
-						continue;
-					}
-					MyDecompressFile decomp(this,targetName.c_str());
-					ScanPath::Entry entry;
-					if (decomp.DecompressFile(0,0,entry,tempName.c_str(),targetName.c_str()) < 0)
-					{
-						mDownloadAttemptsFailed++;
-						failedToReadFile = tempName.c_str();
-						OpenInternet();
-						continue;
-					}
-					// Everything OK
-					failedToReadFile = 0;
-					break;
-				} while (failedToReadFile && (retry++ < 5));
-				if (failedToReadFile)
-				{
-					CallbackFailedToReadFile(failedToReadFile);
-					return -1;
-				}
-
-				oneEntry.mChecksum = entryInfo->mScratch.mChecksum;
-				CallbackUpdateProgressFile(entryIndex.c_str(),0,0);
-			}
-		}
-		// MPi: TODO: Tidy this common code block with the one above. Same comment line as below.
-		// Update the checksum cache
-		RNReplicaNet::RNLobby::ScanPath::Entry toFind;
-		toFind.mName = targetName;
-		std::set<RNReplicaNet::RNLobby::ScanPath::Entry,RNReplicaNet::RNLobby::ltScanPathEntryByName>::iterator found = checksumCache.find(toFind);
-		if (found != checksumCache.end())
-		{
-			checksumCache.erase(found);
-		}
-		HANDLE hnd = CreateFileA(targetName.c_str(),GENERIC_READ,FILE_SHARE_READ,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);
-		if (hnd != INVALID_HANDLE_VALUE)
-		{
-			if (GetFileTime(hnd,0,0,&oneEntry.mLastWriteTime))
-			{
-				checksumCache.insert(oneEntry);
-			}
-			CloseHandle(hnd);
-		}
-		CallbackUpdateProgressProduct(numEntries++,maxNumEntries);
-	}
-
-	// Write the cache
-	std::set<RNReplicaNet::RNLobby::ScanPath::Entry,RNReplicaNet::RNLobby::ltScanPathEntryByName>::iterator toSave = checksumCache.begin();
-	tempScansList.clear();
-	while (toSave != checksumCache.end())
-	{
-		tempScansList.push_back(*toSave++);
-	}
-	RNReplicaNet::RNLobby::ScanPath::Write(cachedChecksumIndex.c_str(),tempScansList);
-	tempScansList.clear();
-
-	CallbackUpdateProgressProduct(maxNumEntries,maxNumEntries);
-
-	return 0;
-}
-
-std::string ProductPatcher::GetRealFilePath(const char *url,const char *patchingFile,const char *tempName)
-{
-	mDownloadAttempts++;
-//	OutputDebugStringA("GetRealFilePath\n");
-
-	// First try to open the url as a local file
-	mFP = fopen(url,"rb");
-	if (mFP)
-	{
-		fclose(mFP);
-		mFP = 0;
-		return std::string(url);
-	}
-
-	if (!CallbackUpdateDownloadPatch(patchingFile,0,0))	// MPi: TODO: Implement the file length.
-	{
-		return "";
-	}
-
-	int retries = 0;
-	while(true)
-	{
-		// Open the temp file for writing.
-		if (tempName)
-		{
-			mFP = fopen(tempName,"wb");
-		}
-		else
-		{
-			mFP = fopen(sTempPatchFile,"wb");
-		}
-		if (!mFP)
-		{
-			return "";
-		}
-
-		mFile = InternetOpenUrlA(mInternet,url,0,0,INTERNET_FLAG_NO_COOKIES | INTERNET_FLAG_EXISTING_CONNECT | INTERNET_FLAG_NO_UI | INTERNET_FLAG_RESYNCHRONIZE | INTERNET_FLAG_PASSIVE,0);
-
-		if (!mFile)
-		{
-			mDownloadAttemptsFailed++;
-			if (retries++ > 5)
-			{
-				return "";
-			}
-			else
-			{
-				OpenInternet();
-				continue;
-			}
-		}
-
-		DWORD totalSizeAvailable = 0;
-
-		SysTimeType baseTime = mDownloadedOverTime;
-		SysTime startDownloadTime;	
-
-		totalSizeAvailable = InternetSetFilePointer(mFile,0,0,FILE_END,0);
-		InternetSetFilePointer(mFile,0,0,FILE_BEGIN,0);
-		if (totalSizeAvailable < 0)
-		{
-			if (!InternetQueryDataAvailable(mFile,&totalSizeAvailable,0,0))
-			{
-				totalSizeAvailable = 0;
-			}
-		}
-
-		bool tryAgain = false;
-		DWORD numRead;
-		DWORD totalRead = 0;
-		do
-		{
-			bool success;
-			numRead = 0;
-			success = (InternetReadFile(mFile,mTempBuffer,(DWORD)mChunkSize,&numRead) == TRUE);
-			if (success)
-			{
-				mDownloadedBytes += numRead;
-				totalRead += numRead;
-				// MPi: TODO: Implement the file length as InternetQueryDataAvailable() doesn't seem to be doing the job.
-				// Maybe have the file length used as the first bytes of the data stream?
-				success = CallbackUpdateDownloadPatch(patchingFile,totalRead,totalSizeAvailable);
-				if (!success)
-				{
-					// Early out if the callback indicates we should quit
-					retries = 1000;
-				}
-			}
-
-			mDownloadedOverTime = baseTime + startDownloadTime.FloatTime();
-
-			if (!success)
-			{
-				mDownloadAttemptsFailed++;
-				fclose(mFP);
-				mFP = 0;
-
-				// Delete the partial file that was downloaded
-				if (tempName)
-				{
-					DeleteFileA(tempName);
-				}
-				else
-				{
-					DeleteFileA(sTempPatchFile);
-				}
-
-				InternetCloseHandle(mFile);
-				mFile = 0;
-
-				if (retries++ > 5)
-				{
-					return "";
-				}
-				else
-				{
-					OpenInternet();
-					tryAgain = true;
-					break;
-				}
-			}
-
-//			char tmp[128];
-//			sprintf(tmp,"fwrite %d\n",(int)numRead);
-//			OutputDebugStringA(tmp);
-			fwrite(mTempBuffer,1,numRead,mFP);
-		} while (numRead > 0);
-
-		if (tryAgain)
-		{
-			continue;
-		}
-
-		// Succeeded!
-		fclose(mFP);
-		mFP = 0;
-		InternetCloseHandle(mFile);
-		mFile = 0;
-		break;
-	}
-
-	if (tempName)
-	{
-		return tempName;
-	}
-	return sTempPatchFile;
-}
-
-void ProductPatcher::CallbackFailedToReadFile(const char *file)
-{
-}
-
-bool ProductPatcher::CallbackProcessFile(const char *file)
-{
-	return true;
-}
-
-void ProductPatcher::GetDownloadAttemptsAndFailed(size_t &attempts, size_t &failed) const
-{
-	attempts = mDownloadAttempts;
-	failed = mDownloadAttemptsFailed;
-}
-
-void ProductPatcher::GetDownloadSpeed(size_t &totalBytes, float &overTime) const
-{
-	totalBytes = mDownloadedBytes;
-	overTime = (float) mDownloadedOverTime;
-}
-
-#endif
 //From: RNLobby/ScanChecksum.cpp
 /* START_LICENSE_HEADER
 
@@ -45944,7 +46542,7 @@ END_LICENSE_HEADER */
 #include <string.h>
 #include <list>
 #include <string>
-//Skipping: #include "RNLobby/Inc/ScanChecksum.h"
+#include "RNLobby/Inc/ScanChecksum.h"
 //Skipping: #include "RNPlatform/Inc/CheckSum.h"
 
 using namespace RNReplicaNet::RNLobby;
@@ -46111,7 +46709,7 @@ END_LICENSE_HEADER */
 #include <assert.h>
 #include <map>
 //Skipping: #include "RNLobby/Inc/PatchIndexManager.h"
-//Skipping: #include "RNLobby/Inc/ScanForDiffs.h"
+#include "RNLobby/Inc/ScanForDiffs.h"
 //Skipping: #include "RNLobby/Inc/ScanChecksum.h"
 //Skipping: #include "RNLobby/Inc/Patcher.h"
 //Skipping: #include "RNPlatform/Inc/MessageHelper.h"
@@ -46939,7 +47537,7 @@ END_LICENSE_HEADER */
 #include <TCHAR.h>
 #include <list>
 #include <string>
-//Skipping: #include "RNLobby/Inc/ScanPath.h"
+#include "RNLobby/Inc/ScanPath.h"
 //Skipping: #include "RNPlatform/Inc/MessageHelper.h"
 
 namespace RNReplicaNet
@@ -47208,5 +47806,768 @@ bool ScanPath::Read(const char *path,std::list<Entry> &entries)
 
 };	// namespace RNLobby
 };	// namespace RNReplicaNet
+#endif
+#endif
+#ifndef REPLICANET_REMOVE_PRODUCTPATCHER
+//From: RNLobby/ProductPatcher.cpp
+/* START_LICENSE_HEADER
+
+Copyright (C) 2000 Martin Piper, original design and program code
+Copyright (C) 2001 Replica Software
+
+This program file is copyright (C) Replica Software and can only be used under license.
+For more information visit: http://www.replicanet.com/
+Or email: info@replicanet.com
+
+END_LICENSE_HEADER */
+#ifdef _WIN32
+//Skipping: #include "RNPlatform/Inc/MemoryTracking.h"
+#include <assert.h>
+#include <time.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <set>
+#include <list>
+#include <string>
+#include "RNLobby/Inc/ProductPatcher.h"
+//Skipping: #include "RNPlatform/Inc/CheckSum.h"
+//Skipping: #include "RNPlatform/Inc/MessageHelper.h"
+//Skipping: #include "RNLobby/Inc/Patcher.h"
+//Skipping: #include "RNLobby/Inc/ScanPath.h"
+//Skipping: #include "RNLobby/Inc/ScanChecksum.h"
+//Skipping: #include "RNLobby/Inc/ScanForDiffs.h"
+//Skipping: #include "RNLobby/Inc/PatchIndexManager.h"
+//Skipping: #include "RNPlatform/Inc/SysTime.h"
+
+#ifdef _WIN32
+#ifndef _XBOX
+#pragma comment(lib, "wininet.lib")
+#endif
+#endif
+
+
+namespace RNReplicaNet
+{
+
+namespace RNLobby
+{
+
+class MyDecompressFile : public RNReplicaNet::RNLobby::ScanForDiffs
+{
+public:
+	MyDecompressFile(ProductPatcher *worker,const char *patchingFile) : mWorker(worker) , mPatchingFile(patchingFile) {}
+
+	bool CallbackScanning(size_t pos,size_t max,const ScanPath::Entry &entry,const size_t filePos,const size_t fileMax)
+	{
+		assert(mWorker);
+		mWorker->CallbackUpdateProgressFile(mPatchingFile,filePos,fileMax);
+		return true;
+	}
+
+	const char *mPatchingFile;
+	ProductPatcher *mWorker;
+};
+
+} // namespace RNLobby
+
+} // namespace RNReplicaNet
+
+using namespace RNReplicaNet;
+using namespace RNReplicaNet::RNLobby;
+
+static const char *sTempPatchFile = "_tempPatch.tmp";
+
+ProductPatcher::ProductPatcher() : 	mInternet(0) , mTempBuffer(0) , mFile(0) , mFP(0) , mCallCompleteRequired(false)
+									, mDownloadAttempts(0) , mDownloadAttemptsFailed(0)
+									, mDownloadedBytes(0) , mDownloadedOverTime(0.0f)
+{
+}
+
+ProductPatcher::~ProductPatcher()
+{
+	Stop();
+}
+
+void ProductPatcher::OpenInternet(void)
+{
+	if (mInternet)
+	{
+		InternetCloseHandle(mInternet);
+	}
+	mInternet = InternetOpenA("ReplicaNet Product Patcher http://www.replicanet.com/" , INTERNET_OPEN_TYPE_PRECONFIG,0,0,0);
+}
+
+bool ProductPatcher::Start(const char *productPath,const char *patchIndexURL,const char *patchDataURL,const bool multiThread,const size_t chunkSize)
+{
+	// Make sure any previous thread is terminated
+	Stop();
+
+	mChunkSize = chunkSize;
+
+	mTempBuffer = malloc(mChunkSize);
+	if (!mTempBuffer)
+	{
+		return false;
+	}
+
+	OpenInternet();
+
+	mProductPath = productPath;
+	mPatchIndexURL = patchIndexURL;
+	mPatchDataURL = patchDataURL;
+
+	mCallCompleteRequired = true;
+	mAborted = false;
+
+	mDownloadAttempts = 0;
+	mDownloadAttemptsFailed = 0;
+
+	mDownloadedBytes = 0;
+	mDownloadedOverTime = 0.0f;
+
+	if (multiThread)
+	{
+		Begin(this);
+		return true;
+	}
+	// Not using a thread so just call the thread entry
+	ThreadEntry();
+	return true;
+}
+
+bool ProductPatcher::Stop(void)
+{
+	mAborted = true;
+	Terminate();
+	Tidy();
+	return true;
+}
+
+void ProductPatcher::Tidy(void)
+{
+	if (mFP)
+	{
+		fclose(mFP);
+		mFP = 0;
+	}
+	DeleteFileA(sTempPatchFile);
+	if (mFile)
+	{
+		InternetCloseHandle(mFile);
+		mFile = 0;
+	}
+	if (mInternet)
+	{
+		InternetCloseHandle(mInternet);
+		mInternet = 0;
+	}
+	free(mTempBuffer);
+	mTempBuffer = 0;
+}
+
+bool ProductPatcher::GetCompleted(void)
+{
+	return !GetIsRunning();
+}
+
+bool ProductPatcher::CallbackUpdateProgressProduct(const size_t fileIndex,const size_t maxFileIndex)
+{
+	return true;
+}
+
+bool ProductPatcher::CallbackUpdateDownloadPatch(const char *patchingFile,const size_t filePosition,const size_t fileLength)
+{
+	return true;
+}
+
+bool ProductPatcher::CallbackUpdateProgressFile(const char *patchingFile,const size_t filePosition,const size_t fileLength)
+{
+	return true;
+}
+
+void ProductPatcher::CallbackComplete(const Status status)
+{
+}
+
+int ProductPatcher::ThreadEntry(void)
+{
+	int ret = RealThreadEntry(mProductPath.c_str(),mPatchIndexURL.c_str(),mPatchDataURL.c_str());
+	Tidy();
+	if (mCallCompleteRequired)
+	{
+		mCallCompleteRequired = false;
+		if (ret == 0)
+		{
+			CallbackComplete(kSuccess);
+		}
+		else
+		{
+			if (mAborted)
+			{
+				CallbackComplete(kAborted);
+			}
+			else
+			{
+				CallbackComplete(kErrorEncountered);
+			}
+		}
+	}
+	return ret;
+}
+
+namespace RNReplicaNet
+{
+
+namespace RNLobby
+{
+
+struct ltScanPathEntryByName
+{
+	bool operator()(const RNReplicaNet::RNLobby::ScanPath::Entry &s1, const RNReplicaNet::RNLobby::ScanPath::Entry &s2) const
+	{
+		return strcmp(s1.mName.c_str(), s2.mName.c_str()) < 0;
+	}
+};
+
+} // namespace RNLobby
+
+} // namespace RNReplicaNet
+
+#define TMPINDEX "_tempIndex.ind"
+
+int ProductPatcher::RealThreadEntry(const char *productPath,const char *patchIndexURL,const char *patchDataURL)
+{
+	RNReplicaNet::RNLobby::ScanPath scanPath;
+
+	RNReplicaNet::RNLobby::PatchIndexManager index;
+
+	std::string tempName;
+	int retry = 0;
+	const char *failedToReadFile = 0;
+	do
+	{
+		tempName = GetRealFilePath(patchIndexURL,"",TMPINDEX);
+		if (tempName == "")
+		{
+			failedToReadFile = patchIndexURL;
+			OpenInternet();
+			continue;
+		}
+
+		bool retRead = index.ReadIndex(tempName.c_str());
+		DeleteFileA(TMPINDEX);
+		if (!retRead)
+		{
+			mDownloadAttemptsFailed++;
+			failedToReadFile = tempName.c_str();
+			OpenInternet();
+			continue;
+		}
+		// Everything OK
+		failedToReadFile = 0;
+		break;
+	} while (failedToReadFile && (retry++ < 5));
+	if (failedToReadFile)
+	{
+		CallbackFailedToReadFile(failedToReadFile);
+		return -1;
+	}
+
+	index.BeginIterate();
+	RNReplicaNet::RNLobby::PatchIndexManager::EntryInfo *entryInfo = 0;
+	std::string entryIndex;
+
+	// Load the checksum cache if it is available
+	// The cache operates on the slightly more qualified target name *not* the EntryInfo leaf path.
+	std::set<RNReplicaNet::RNLobby::ScanPath::Entry,RNReplicaNet::RNLobby::ltScanPathEntryByName> checksumCache;
+	std::string cachedChecksumIndex = std::string(productPath) + std::string("\\") + std::string("_sumCache.bin");
+	std::list<RNReplicaNet::RNLobby::ScanPath::Entry> tempScansList;
+	if (RNReplicaNet::RNLobby::ScanPath::Read(cachedChecksumIndex.c_str(),tempScansList))
+	{
+		std::list<RNReplicaNet::RNLobby::ScanPath::Entry>::iterator st = tempScansList.begin();
+		while (st != tempScansList.end())
+		{
+			RNReplicaNet::RNLobby::ScanPath::Entry &entry = *st++;
+			checksumCache.insert(entry);
+		}
+	}
+	tempScansList.clear();	// We don't need this to be hanging around
+	size_t maxNumEntries = index.GetNumEntries();
+	int numEntries = 0;
+
+	std::list<RNReplicaNet::RNLobby::ScanPath::Entry> existsSoScan;
+	while ( (entryInfo = index.Iterate(entryIndex)) != 0)
+	{
+/*
+		printf("EntryInfo: file '%s'\n",entryIndex.c_str());
+		printf("FromScratch: V%d : ID%d isPatch %d gives checksum %s\n",entryInfo->mScratch.mProductVersion,entryInfo->mScratch.mUniqueID,(int)entryInfo->mScratch.mIsPatch,RNReplicaNet::MessageHelper::DumpAsHex(entryInfo->mScratch.mChecksum.mValue,sizeof(entryInfo->mScratch.mChecksum.mValue)).c_str());
+		std::list<RNReplicaNet::RNLobby::PatchIndexManager::VersionInfo>::iterator st = entryInfo->mVersions.begin();
+		while (st != entryInfo->mVersions.end())
+		{
+			RNReplicaNet::RNLobby::PatchIndexManager::VersionInfo &versionInfo = *st++;
+			printf("VersionInfo: V%d : ID%d isPatch %d from checksum %s\n",versionInfo.mProductVersion,versionInfo.mUniqueID,(int)versionInfo.mIsPatch,RNReplicaNet::MessageHelper::DumpAsHex(versionInfo.mChecksum.mValue,sizeof(versionInfo.mChecksum.mValue)).c_str());
+		}
+*/
+		std::string targetName = std::string(productPath) + std::string("\\") + entryIndex;
+
+		if (!CallbackProcessFile(entryIndex.c_str()))
+		{
+			continue;
+		}
+
+		FILE *fp = fopen(targetName.c_str() , "rb");
+		if (fp)
+		{
+			fclose(fp);
+
+			RNReplicaNet::RNLobby::ScanPath::Entry toFind;
+			toFind.mName = targetName;
+			std::set<RNReplicaNet::RNLobby::ScanPath::Entry,RNReplicaNet::RNLobby::ltScanPathEntryByName>::iterator found = checksumCache.find(toFind);
+			bool isOK = false;
+			bool needChecksum = true;
+			RNReplicaNet::RNLobby::ScanPath::Entry oneEntry;
+			if (found != checksumCache.end())
+			{
+				const RNReplicaNet::RNLobby::ScanPath::Entry &entry = *found;
+				HANDLE hnd = CreateFileA(targetName.c_str(),GENERIC_READ,FILE_SHARE_READ,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);
+				if (hnd != INVALID_HANDLE_VALUE)
+				{
+					if (GetFileTime(hnd,0,0,&oneEntry.mLastWriteTime))
+					{
+						if (CompareFileTime(&oneEntry.mLastWriteTime,&entry.mLastWriteTime)==0)
+						{
+							needChecksum = false;
+							oneEntry.mChecksum = entry.mChecksum;
+
+							// FILETIME Matches so we can verify the checksum without needing to calculate it
+							if (memcmp(&entryInfo->mScratch.mChecksum,&entry.mChecksum,sizeof(entry.mChecksum)) == 0)
+							{
+								isOK = true;
+							}
+						}
+					}
+					CloseHandle(hnd);
+				}
+			}
+
+			oneEntry.mIsFile = true;
+			if (needChecksum)
+			{
+				oneEntry.mName = targetName;
+				// MPi: Maybe resolve this checksum bit into using the std::list version as one run through the list?
+//				printf("Calculating checksum for file '%s'...",targetName.c_str());
+				RNReplicaNet::RNLobby::ScanChecksum tc;
+				tc.Start(oneEntry);
+				CallbackUpdateProgressFile(entryIndex.c_str(),0,0);
+			}
+
+			// The file is not in the cache or the FILETIME differs so we want to checksum it later on.
+			if (!isOK)
+			{
+				oneEntry.mName = entryIndex;
+				existsSoScan.push_back(oneEntry);
+			}
+			else
+			{
+				CallbackUpdateProgressProduct(numEntries++,maxNumEntries);
+			}
+		}
+		else
+		{
+			// Doesn't exist, so create from scratch.
+			char patchSourceFilename[MAX_PATH];
+			sprintf(patchSourceFilename,"%s\\%d.bin",patchDataURL,entryInfo->mScratch.mUniqueID);
+			// Create the directory path if required.
+			size_t pos = 0;
+			pos = targetName.find('\\',pos);
+			while (pos != std::string::npos)
+			{
+				std::string temp = targetName.substr(0,pos);
+				CreateDirectoryA(temp.c_str(),0);
+				pos = targetName.find('\\',pos+1);
+			}
+
+			int retry = 0;
+			const char *failedToReadFile = 0;
+			do
+			{
+				// Decompress the file from the patch location to the final location
+				tempName = GetRealFilePath(patchSourceFilename,entryIndex.c_str());
+				if (tempName == "")
+				{
+					failedToReadFile = patchIndexURL;
+					OpenInternet();
+					continue;
+				}
+				MyDecompressFile decomp(this,targetName.c_str());
+				ScanPath::Entry entry;
+				if (decomp.DecompressFile(0,0,entry,tempName.c_str(),targetName.c_str()) < 0)
+				{
+					mDownloadAttemptsFailed++;
+					failedToReadFile = tempName.c_str();
+					OpenInternet();
+					continue;
+				}
+				// Everything OK
+				failedToReadFile = 0;
+				break;
+			} while (failedToReadFile && (retry++ < 5));
+			if (failedToReadFile)
+			{
+				CallbackFailedToReadFile(failedToReadFile);
+				return -1;
+			}
+
+			// MPi: TODO: Tidy this common code block with the one above. Same comment line as below.
+			// Update the checksum cache
+			RNReplicaNet::RNLobby::ScanPath::Entry toFind;
+			toFind.mName = targetName;
+			std::set<RNReplicaNet::RNLobby::ScanPath::Entry,RNReplicaNet::RNLobby::ltScanPathEntryByName>::iterator found = checksumCache.find(toFind);
+			if (found != checksumCache.end())
+			{
+				checksumCache.erase(found);
+			}
+			HANDLE hnd = CreateFileA(targetName.c_str(),GENERIC_READ,FILE_SHARE_READ,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);
+			if (hnd != INVALID_HANDLE_VALUE)
+			{
+				RNReplicaNet::RNLobby::ScanPath::Entry entry;
+				entry.mIsFile = true;
+				entry.mName = targetName;
+				if (GetFileTime(hnd,0,0,&entry.mLastWriteTime))
+				{
+					entry.mChecksum = entryInfo->mScratch.mChecksum;
+					checksumCache.insert(entry);
+				}
+				CloseHandle(hnd);
+			}
+			CallbackUpdateProgressFile(entryIndex.c_str(),0,0);
+			CallbackUpdateProgressProduct(numEntries++,maxNumEntries);
+		}
+	}
+
+	// Now work through the existsSoScan list
+	std::list<RNReplicaNet::RNLobby::ScanPath::Entry>::iterator scanIt;
+
+	// The ones that are left are the ones we want to patch because the cache says the FILETIME differs
+	scanIt = existsSoScan.begin();
+	while (scanIt != existsSoScan.end())
+	{
+		RNReplicaNet::RNLobby::ScanPath::Entry oneEntry = *scanIt++;
+		entryIndex = oneEntry.mName;
+		entryInfo = index.GetEntryInfo(entryIndex);
+		std::string targetName = std::string(productPath) + std::string("\\") + entryIndex;
+		oneEntry.mName = targetName;
+
+		// Check to see if the checksum differs from the head revision.
+		if (memcmp(&entryInfo->mScratch.mChecksum,&oneEntry.mChecksum,sizeof(oneEntry.mChecksum)) != 0)
+		{
+//			printf("Patching file '%s'...",targetName.c_str());
+			// Scan for a checksum match.
+			std::list<RNReplicaNet::RNLobby::PatchIndexManager::VersionInfo>::iterator st = entryInfo->mVersions.begin();
+			while (st != entryInfo->mVersions.end())
+			{
+				RNReplicaNet::RNLobby::PatchIndexManager::VersionInfo &versionInfo = *st;
+				if (memcmp(&versionInfo.mChecksum,&oneEntry.mChecksum,sizeof(oneEntry.mChecksum)) == 0 && versionInfo.mIsPatch)
+				{
+					// Matched and found a patch
+					char patchSourceFilename[MAX_PATH];
+					std::string tempDecompPatchName = std::string(productPath) + std::string("\\") + entryIndex + ".dptch";
+					std::string tempTargetName = std::string(productPath) + std::string("\\") + entryIndex + ".tmp";
+					sprintf(patchSourceFilename,"%s\\%d.bin",patchDataURL,versionInfo.mUniqueID);
+
+					int retry = 0;
+					const char *failedToReadFile = 0;
+					do
+					{
+						tempName = GetRealFilePath(patchSourceFilename,entryIndex.c_str());
+						if (tempName == "")
+						{
+							failedToReadFile = patchIndexURL;
+							OpenInternet();
+							continue;
+						}
+						MyDecompressFile decomp(this,targetName.c_str());
+						ScanPath::Entry entry;
+						if (decomp.DecompressFile(0,0,entry,tempName.c_str(),tempDecompPatchName.c_str()) < 0)
+						{
+							mDownloadAttemptsFailed++;
+							failedToReadFile = tempName.c_str();
+							OpenInternet();
+							continue;
+						}
+						// Everything OK
+						failedToReadFile = 0;
+						break;
+					} while (failedToReadFile && (retry++ < 5));
+					if (failedToReadFile)
+					{
+						CallbackFailedToReadFile(failedToReadFile);
+						return -1;
+					}
+
+
+					RNReplicaNet::RNLobby::Patcher tp;
+					tp.PatchFile(targetName.c_str(),tempDecompPatchName.c_str(),tempTargetName.c_str());
+					DeleteFileA(tempDecompPatchName.c_str());
+					DeleteFileA(targetName.c_str());
+					rename(tempTargetName.c_str(),targetName.c_str());
+					// Update the checksum since it got patched
+//					RNReplicaNet::RNLobby::ScanChecksum tc;
+//					tc.Start(oneEntry);
+					oneEntry.mChecksum = entryInfo->mScratch.mChecksum;
+					CallbackUpdateProgressFile(entryIndex.c_str(),0,0);
+					break;
+				}
+				st++;
+			}
+
+			if (st == entryInfo->mVersions.end())
+			{
+				// Just use from scratch since there was no matched version with a patch found
+				char patchSourceFilename[MAX_PATH];
+				sprintf(patchSourceFilename,"%s\\%d.bin",patchDataURL,entryInfo->mScratch.mUniqueID);
+
+
+
+				int retry = 0;
+				const char *failedToReadFile = 0;
+				do
+				{
+					tempName = GetRealFilePath(patchSourceFilename,entryIndex.c_str());
+					if (tempName == "")
+					{
+						failedToReadFile = patchIndexURL;
+						OpenInternet();
+						continue;
+					}
+					MyDecompressFile decomp(this,targetName.c_str());
+					ScanPath::Entry entry;
+					if (decomp.DecompressFile(0,0,entry,tempName.c_str(),targetName.c_str()) < 0)
+					{
+						mDownloadAttemptsFailed++;
+						failedToReadFile = tempName.c_str();
+						OpenInternet();
+						continue;
+					}
+					// Everything OK
+					failedToReadFile = 0;
+					break;
+				} while (failedToReadFile && (retry++ < 5));
+				if (failedToReadFile)
+				{
+					CallbackFailedToReadFile(failedToReadFile);
+					return -1;
+				}
+
+				oneEntry.mChecksum = entryInfo->mScratch.mChecksum;
+				CallbackUpdateProgressFile(entryIndex.c_str(),0,0);
+			}
+		}
+		// MPi: TODO: Tidy this common code block with the one above. Same comment line as below.
+		// Update the checksum cache
+		RNReplicaNet::RNLobby::ScanPath::Entry toFind;
+		toFind.mName = targetName;
+		std::set<RNReplicaNet::RNLobby::ScanPath::Entry,RNReplicaNet::RNLobby::ltScanPathEntryByName>::iterator found = checksumCache.find(toFind);
+		if (found != checksumCache.end())
+		{
+			checksumCache.erase(found);
+		}
+		HANDLE hnd = CreateFileA(targetName.c_str(),GENERIC_READ,FILE_SHARE_READ,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);
+		if (hnd != INVALID_HANDLE_VALUE)
+		{
+			if (GetFileTime(hnd,0,0,&oneEntry.mLastWriteTime))
+			{
+				checksumCache.insert(oneEntry);
+			}
+			CloseHandle(hnd);
+		}
+		CallbackUpdateProgressProduct(numEntries++,maxNumEntries);
+	}
+
+	// Write the cache
+	std::set<RNReplicaNet::RNLobby::ScanPath::Entry,RNReplicaNet::RNLobby::ltScanPathEntryByName>::iterator toSave = checksumCache.begin();
+	tempScansList.clear();
+	while (toSave != checksumCache.end())
+	{
+		tempScansList.push_back(*toSave++);
+	}
+	RNReplicaNet::RNLobby::ScanPath::Write(cachedChecksumIndex.c_str(),tempScansList);
+	tempScansList.clear();
+
+	CallbackUpdateProgressProduct(maxNumEntries,maxNumEntries);
+
+	return 0;
+}
+
+std::string ProductPatcher::GetRealFilePath(const char *url,const char *patchingFile,const char *tempName)
+{
+	mDownloadAttempts++;
+//	OutputDebugStringA("GetRealFilePath\n");
+
+	// First try to open the url as a local file
+	mFP = fopen(url,"rb");
+	if (mFP)
+	{
+		fclose(mFP);
+		mFP = 0;
+		return std::string(url);
+	}
+
+	if (!CallbackUpdateDownloadPatch(patchingFile,0,0))	// MPi: TODO: Implement the file length.
+	{
+		return "";
+	}
+
+	int retries = 0;
+	while(true)
+	{
+		// Open the temp file for writing.
+		if (tempName)
+		{
+			mFP = fopen(tempName,"wb");
+		}
+		else
+		{
+			mFP = fopen(sTempPatchFile,"wb");
+		}
+		if (!mFP)
+		{
+			return "";
+		}
+
+		mFile = InternetOpenUrlA(mInternet,url,0,0,INTERNET_FLAG_NO_COOKIES | INTERNET_FLAG_EXISTING_CONNECT | INTERNET_FLAG_NO_UI | INTERNET_FLAG_RESYNCHRONIZE | INTERNET_FLAG_PASSIVE,0);
+
+		if (!mFile)
+		{
+			mDownloadAttemptsFailed++;
+			if (retries++ > 5)
+			{
+				return "";
+			}
+			else
+			{
+				OpenInternet();
+				continue;
+			}
+		}
+
+		DWORD totalSizeAvailable = 0;
+
+		SysTimeType baseTime = mDownloadedOverTime;
+		SysTime startDownloadTime;	
+
+		totalSizeAvailable = InternetSetFilePointer(mFile,0,0,FILE_END,0);
+		InternetSetFilePointer(mFile,0,0,FILE_BEGIN,0);
+		if (totalSizeAvailable < 0)
+		{
+			if (!InternetQueryDataAvailable(mFile,&totalSizeAvailable,0,0))
+			{
+				totalSizeAvailable = 0;
+			}
+		}
+
+		bool tryAgain = false;
+		DWORD numRead;
+		DWORD totalRead = 0;
+		do
+		{
+			bool success;
+			numRead = 0;
+			success = (InternetReadFile(mFile,mTempBuffer,(DWORD)mChunkSize,&numRead) == TRUE);
+			if (success)
+			{
+				mDownloadedBytes += numRead;
+				totalRead += numRead;
+				// MPi: TODO: Implement the file length as InternetQueryDataAvailable() doesn't seem to be doing the job.
+				// Maybe have the file length used as the first bytes of the data stream?
+				success = CallbackUpdateDownloadPatch(patchingFile,totalRead,totalSizeAvailable);
+				if (!success)
+				{
+					// Early out if the callback indicates we should quit
+					retries = 1000;
+				}
+			}
+
+			mDownloadedOverTime = baseTime + startDownloadTime.FloatTime();
+
+			if (!success)
+			{
+				mDownloadAttemptsFailed++;
+				fclose(mFP);
+				mFP = 0;
+
+				// Delete the partial file that was downloaded
+				if (tempName)
+				{
+					DeleteFileA(tempName);
+				}
+				else
+				{
+					DeleteFileA(sTempPatchFile);
+				}
+
+				InternetCloseHandle(mFile);
+				mFile = 0;
+
+				if (retries++ > 5)
+				{
+					return "";
+				}
+				else
+				{
+					OpenInternet();
+					tryAgain = true;
+					break;
+				}
+			}
+
+//			char tmp[128];
+//			sprintf(tmp,"fwrite %d\n",(int)numRead);
+//			OutputDebugStringA(tmp);
+			fwrite(mTempBuffer,1,numRead,mFP);
+		} while (numRead > 0);
+
+		if (tryAgain)
+		{
+			continue;
+		}
+
+		// Succeeded!
+		fclose(mFP);
+		mFP = 0;
+		InternetCloseHandle(mFile);
+		mFile = 0;
+		break;
+	}
+
+	if (tempName)
+	{
+		return tempName;
+	}
+	return sTempPatchFile;
+}
+
+void ProductPatcher::CallbackFailedToReadFile(const char *file)
+{
+}
+
+bool ProductPatcher::CallbackProcessFile(const char *file)
+{
+	return true;
+}
+
+void ProductPatcher::GetDownloadAttemptsAndFailed(size_t &attempts, size_t &failed) const
+{
+	attempts = mDownloadAttempts;
+	failed = mDownloadAttemptsFailed;
+}
+
+void ProductPatcher::GetDownloadSpeed(size_t &totalBytes, float &overTime) const
+{
+	totalBytes = mDownloadedBytes;
+	overTime = (float) mDownloadedOverTime;
+}
+
 #endif
 #endif

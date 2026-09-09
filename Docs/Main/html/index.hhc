@@ -167,8 +167,10 @@
           <LI><OBJECT type="text/sitemap"><param name="Name" value="~BackendClient"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BackendClient.html#afe1724ba3a293395b146764456fc1c6a"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="CallbackCompleted"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BackendClient.html#a054c59c8ca42cc7db84a6349b0e3a7c5"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="CallbackServerAddress"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BackendClient.html#ab45a86a9afcd7a0248d686dbe44960f6"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="DisableValidateOrderingCheck"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BackendClient.html#a5de014aafd5a55a0d2aa18e748727938"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="GetCompleted"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BackendClient.html#a6ec30f82a8f3814ccd2e0d5b711efc94"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="GetReply"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BackendClient.html#ad5f8e4b95b96447fc01dad466e67b6bd"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="IsAuthenticated"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BackendClient.html#a83c53a79408cca0f1af61eb6f098186f"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="Start"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BackendClient.html#ab87c572b19f7a7b44107728bde058e10"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="UseReleaseServers"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BackendClient.html#a65aa451719a64b09a06058c9a0b81808"><param name="ImageNumber" value="11"></OBJECT>
           </UL>
@@ -197,6 +199,9 @@
             <LI><OBJECT type="text/sitemap"><param name="Name" value="mRLSrvStatAddress"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#ad3ab716654a6b88d9fe2c280b70794b8"><param name="ImageNumber" value="11"></OBJECT>
             <LI><OBJECT type="text/sitemap"><param name="Name" value="mRLSrvStatCrypto"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#acf3aeb36f9726b4c7ed5adc2b6d22d76"><param name="ImageNumber" value="11"></OBJECT>
             <LI><OBJECT type="text/sitemap"><param name="Name" value="mRLSrvStatPort"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#ac82231822878ed4d432d8ad839db6bf9"><param name="ImageNumber" value="11"></OBJECT>
+            <LI><OBJECT type="text/sitemap"><param name="Name" value="mRLSrvUDPRelayAddress"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#ac0072b40b16e0a9433f3bf187d88f3f4"><param name="ImageNumber" value="11"></OBJECT>
+            <LI><OBJECT type="text/sitemap"><param name="Name" value="mRLSrvUDPRelayCrypto"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#acb9c89144b19cd15fb51be3c3c4f22e1"><param name="ImageNumber" value="11"></OBJECT>
+            <LI><OBJECT type="text/sitemap"><param name="Name" value="mRLSrvUDPRelayPort"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#a34b3b1d5486d30a3d8553c7157ba23e8"><param name="ImageNumber" value="11"></OBJECT>
             <LI><OBJECT type="text/sitemap"><param name="Name" value="mRLSrvUserAddress"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#a4b235a0163cb203f1689d0f7e18e0c4d"><param name="ImageNumber" value="11"></OBJECT>
             <LI><OBJECT type="text/sitemap"><param name="Name" value="mRLSrvUserCrypto"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#a9a87612005e6ead763f953db60d472dc"><param name="ImageNumber" value="11"></OBJECT>
             <LI><OBJECT type="text/sitemap"><param name="Name" value="mRLSrvUserPort"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html#a62b86477a64fbe58cc3924764abb5eaf"><param name="ImageNumber" value="11"></OBJECT>
@@ -215,6 +220,7 @@
           <LI><OBJECT type="text/sitemap"><param name="Name" value="BackendServer"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BackendServer.html#ade8f103931007f18e21eb4e08a1c40f1"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="~BackendServer"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BackendServer.html#af699dcadfd0c85b6233174e42d298bd1"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="Start"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BackendServer.html#abbc27f032cecdcd496b9ed5a9e3dd5c2"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="TranslateReply"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BackendServer.html#ad2448ea5181c106e1b1f809500206fd0"><param name="ImageNumber" value="11"></OBJECT>
           </UL>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="BaseServer"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BaseServer.html"><param name="ImageNumber" value="1"></OBJECT>
           <UL>
@@ -227,6 +233,7 @@
           <LI><OBJECT type="text/sitemap"><param name="Name" value="CallbackPoll"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BaseServer.html#a1ce4a72fa7b7d670047d5c25e5250225"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="CallbackQueryReplyTime"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BaseServer.html#a4ecb9e1328a309e9f08504a9c79a22f7"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="CallbackTidy"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BaseServer.html#a8ebc66ce87e3677c5a5e3d07968c0cb1"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="FloatTime"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BaseServer.html#a9ea4366d522725f912327f409f4fe4c4"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="PackageAndSendData"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BaseServer.html#ab44970bce9a4e91737fda86c1887304b"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="SetEncryptionKey"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BaseServer.html#afc8dd58a7a9ad30e0b783cd6977fca74"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="StartWithSocket"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BaseServer.html#ae8fbf9a90cefaab5b21cad11440bc171"><param name="ImageNumber" value="11"></OBJECT>
@@ -261,6 +268,7 @@
           <LI><OBJECT type="text/sitemap"><param name="Name" value="CallbackQueryReplyTime"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BaseTransportServer.html#a4ecb9e1328a309e9f08504a9c79a22f7"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="CallbackTidy"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BaseTransportServer.html#a8ebc66ce87e3677c5a5e3d07968c0cb1"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="FindEntry"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BaseTransportServer.html#a268073087fc9e229f2282decfd73e478"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="FloatTime"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BaseTransportServer.html#a9ea4366d522725f912327f409f4fe4c4"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="GenerateNewNonce"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BaseTransportServer.html#a50bdd3e7d9781251e9462bfa3df8d483"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="GetConnectionNOnce"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BaseTransportServer.html#a7f575b8491e6dd027e8762d75ce47db8"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="GetNumConnections"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1BaseTransportServer.html#a06e68128bb50f4db3b9d102710d7b59d"><param name="ImageNumber" value="11"></OBJECT>
@@ -397,6 +405,7 @@
           <LI><OBJECT type="text/sitemap"><param name="Name" value="ForgetResolve"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#a3a7a46fd9ebad3fd529a005b6be26cce"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="ForgetSocket"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#a07dc1a0ea550a6c21f73ffc6f543db35"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="ForgetUserPointer"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#a7033d014a26930d0b6d9f629e40a85c4"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="GetCountBySocket"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#af933f4a91cd5040ee544e0c1a8ee5513"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="SetAutomaticHostSocketReads"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#aa5127ed2296cda74e7eb29145caa1c2d"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="SetAutomaticThreadStop"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#a443f552cbd526b3bfecb08f35d582350"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="SetEncryptionKey"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html#afc8dd58a7a9ad30e0b783cd6977fca74"><param name="ImageNumber" value="11"></OBJECT>
@@ -458,6 +467,7 @@
           <LI><OBJECT type="text/sitemap"><param name="Name" value="GetNumEntries"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1PatchIndexManager.html#a9d60ab75f2ddc108e43e167d817bd6dd"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="GetProductVersion"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1PatchIndexManager.html#a32bb947bed84a4e9db4166c0ba85aff4"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="GetUniqueID"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1PatchIndexManager.html#a50b1b9cb444ea855fd33e30369f5f24b"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="GetVersion"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1PatchIndexManager.html#a52c8453907c5eb372f9f045ffcb514fe"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="Iterate"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1PatchIndexManager.html#a0c93dd130830c1e024a54425612ba682"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="ReadIndex"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1PatchIndexManager.html#ab482f2ccf65c6b23af3a6f596b37b09e"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="ReadModified"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1PatchIndexManager.html#a66b6adc7cf66245310c5c1ac5e18434a"><param name="ImageNumber" value="11"></OBJECT>
@@ -534,13 +544,16 @@
           <LI><OBJECT type="text/sitemap"><param name="Name" value="CallbackComplete"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1ScanPath.html#ab3fbfff8699953e28455627eb42f6f8f"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="CallbackUpdate"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1ScanPath.html#a71b8c0f522b61e1cf4e646cf663fd84e"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="GetCompleted"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1ScanPath.html#a6ec30f82a8f3814ccd2e0d5b711efc94"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="Read"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1ScanPath.html#ad1d1802b98f6285084d5b0cc90f2a659"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="Start"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1ScanPath.html#a26193fac89dda984dac2475bb61a1bdc"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="Stop"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1ScanPath.html#ae903cde949cc162bc3fc46472c8a8248"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="Write"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1ScanPath.html#a4ae3ce8600ef1c4565d43df2b91bf6c0"><param name="ImageNumber" value="11"></OBJECT>
           </UL>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Security"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Security.html"><param name="ImageNumber" value="1"></OBJECT>
           <UL>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="Security"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Security.html#a7d3a9b30991b300ab7bc3c735830eb2b"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="~Security"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Security.html#a38df6eaa4d791eccff57b1d0c7806d91"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="GetNumBlockedThisSession"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Security.html#a7a579af84c8ecb2fc3f7ed27533b29a5"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="GetTotalNumBlocked"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Security.html#a5a2bd7f2381fcf4cffae1af23dd60e67"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="RemoveAllBlocksNow"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Security.html#ab02804c40442737f249883646744ee1e"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="SetMaxCurrentBlocks"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Security.html#a8d926e90a9335f5dc4b2861199ba1f4b"><param name="ImageNumber" value="11"></OBJECT>
@@ -554,10 +567,34 @@
           <LI><OBJECT type="text/sitemap"><param name="Name" value="Service"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#a30f90f6462c5374db88f4b5cac91d6b8"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="~Service"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#a899257490b805bae5055a997cfca81d7"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="Create"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#ab973f8f54acbdb4508cab421af160277"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="CreateRegistry"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#a46c97d168d052fdfa885b7436396846b"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="DebugOut"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#afe28bd748f2d0d825b06b3706629c32c"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="DebugPrint"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#a03837758cfc121efbb51eccf17609615"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="DebugPrintCommon"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#a766318e7d447ad690f5e6ec0a2b0ffc6"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="DebugPrintCommonStore"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#a94f043a2f256932ebabbd19b6d69324f"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="DebugPrintFile"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#a2025365eb1df8cc4d1b5ed896cca7b72"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="DebugPrintNoParams"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#af297bce603b9bb2094cc68c7f0941f27"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="Delete"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#ab4c56e5c7880d422cd93eeae9226a975"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="Execute"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#a9bd23d88775b1ac78584a4b3dddb62ae"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="GetArgs"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#a4c7ba03896048fb606c297b8985b72ce"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="GetDebugLine"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#a0ac123a65492a620b2c9e77d3bd5ec4f"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="GetDebugLine"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#a4242094576971a3cb630235df26901d8"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="GetDisplayServiceName"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#adbccf09a8d45931920642877780809df"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="GetFileVersion"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#af69248af318c61ec403f06feeade9ebc"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="GetInternalServiceName"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#a48af30ad6b5cf4ca6b93a813cf58f1fe"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="GetRegistry"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#ada2d58c5c63d926f7f3a58192e3ea236"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="GetRegistry"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#a65d3d16a1a121d5cff55fdd6bf42a805"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="GetServiceList"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#ae2604f5a0d24d08f7e4641a7d3db99e4"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="GetSystemCPUMetrics"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#a532460254dae2ba422f95b040959e95b"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="GetUserInfo"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#a88c90e4d9591fa5ca6488ce30df3d5a6"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="Main"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#aa496bfd41d3b73a90aea2f6b7f4720ed"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="NeedToExitMain"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#afdfa7dcd1a29470641ed0f1cce9aaeba"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="SetArgs"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#a5cec4ebcd39fa0a7418f99d59dde8129"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="SetDebugLine"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#a19619ad9fc3b7231fae53c9fc01aaadb"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="SetDebugNames"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#a32a3df078fadfd5e13e9df6d51b6664e"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="SetDebugOutput"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#ae8480c462dfb6cb6c2e57e7be1e279f9"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="SetRegistry"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#ab73bfd435c4ad9b0c69a139666bf7a5b"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="SetRegistry"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#a391288456ae0043f46b1ccc9f7b7a6c5"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="Start"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#a94c2f5766df9d2adc8afd9a1f0ae775e"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="Stop"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Service.html#ae903cde949cc162bc3fc46472c8a8248"><param name="ImageNumber" value="11"></OBJECT>
           </UL>
@@ -627,6 +664,7 @@
           <LI><OBJECT type="text/sitemap"><param name="Name" value="BeginDiscovery"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1TransportNATUDP.html#aa5c4b3c7853551172d8c95e0ab4b1a02"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="CanAccept"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1TransportNATUDP.html#a53cd64abc297d9050c65be59df7f5d33"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="CanRoute"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1TransportNATUDP.html#aefadd187ea4dbbad7bd3784f829ff254"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="ClearServer"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1TransportNATUDP.html#afe9f795310274b964ef11813d105430e"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="CommonListen"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1TransportNATUDP.html#a9e45d7a42f4682cfe9b9f8f7ca2e4738"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="Connect"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1TransportNATUDP.html#add67f26ff8645f02b07b8298d788b693"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="ExportURL"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1TransportNATUDP.html#aba3fd5e83735d38ca182fc5219ce20e0"><param name="ImageNumber" value="11"></OBJECT>
@@ -662,19 +700,40 @@
           <LI><OBJECT type="text/sitemap"><param name="Name" value="SetMaximumInputBandwidth"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1TransportNATUDP.html#a3de987c4f20df344b690387935480f0f"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="SetMaximumOutputBandwidth"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1TransportNATUDP.html#a6aacee13f73d57b75b69a502d9261164"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="SetNATValues"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1TransportNATUDP.html#a635c667e5beaf60f20219ad22decb131"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="SetServer"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1TransportNATUDP.html#a39329cbed0fcd8a3ecde762c2ee487d0"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="MyNATResolver"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1TransportNATUDP.html#a1ce4616a800f9de1d1d712b771f84d90"><param name="ImageNumber" value="11"></OBJECT>
+          </UL>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="UDPRelay"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html"><param name="ImageNumber" value="1"></OBJECT>
+          <UL>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="kDefaultPort"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#a726ca809ffd3d67ab4b8476646f26635acd1f3a0feca1a01142e3e36e5e2a9a6d"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="UDPRelay"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#a53e74a52569ead336c7c28590c34c4f1"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="~UDPRelay"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#a192549e8faf696f4fc47bf7c1bc4650b"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="Advertise"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#a5b80ab450a8e2054bfdb08f81695e3d6"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="BeginHosting"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#adbccc176f658192eba375cbe66a74d35"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="CallbackDataReceived"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#ae773f129c193993924e262f26c928707"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="CallbackExternalAddressKnown"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#af23204f4ad068f007a7d9d8a154537cd"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="ForgetSocket"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#a07dc1a0ea550a6c21f73ffc6f543db35"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="ForgetUserPointer"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#a7033d014a26930d0b6d9f629e40a85c4"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="GetCountBySocket"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#af933f4a91cd5040ee544e0c1a8ee5513"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="ParsePacketData"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#a6d9133b02f48d86bb5511b0de6b455de"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="SendTo"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#a150ed6f16876d44eef31f16787677858"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="SetAutomaticHostSocketReads"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#aa5127ed2296cda74e7eb29145caa1c2d"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="SetEncryptionKey"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#afc8dd58a7a9ad30e0b783cd6977fca74"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="SetServer"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#abac1d94775f0ac813a9e5a60fe383879"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="Start"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#a94c2f5766df9d2adc8afd9a1f0ae775e"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="Stop"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html#ae903cde949cc162bc3fc46472c8a8248"><param name="ImageNumber" value="11"></OBJECT>
           </UL>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="UserInfo"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserInfo.html"><param name="ImageNumber" value="1"></OBJECT>
           <UL>
-          <LI><OBJECT type="text/sitemap"><param name="Name" value="kAnyLoginID"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserInfo.html#a726ca809ffd3d67ab4b8476646f26635adeedfd97ede699303600ade326e68500"><param name="ImageNumber" value="11"></OBJECT>
-          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_Friend"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserInfo.html#a0411cd49bb5b71852cecd93bcbf0ca2dad0a100603cc5181ed36a5ffbc4880561"><param name="ImageNumber" value="11"></OBJECT>
-          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_FriendRequest"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserInfo.html#a0411cd49bb5b71852cecd93bcbf0ca2da1b801e6c7838743639fb25f5094b2ffe"><param name="ImageNumber" value="11"></OBJECT>
-          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_Online"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserInfo.html#a0411cd49bb5b71852cecd93bcbf0ca2dac271fc0f50c1ccba383590fe6b6cda55"><param name="ImageNumber" value="11"></OBJECT>
-          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_GameInvite"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserInfo.html#a0411cd49bb5b71852cecd93bcbf0ca2daa82380b8ddd89ea241bcd8aaed086fce"><param name="ImageNumber" value="11"></OBJECT>
-          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_Speaking"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserInfo.html#a0411cd49bb5b71852cecd93bcbf0ca2da8ee4d6399328d9a50bc5f064b270097f"><param name="ImageNumber" value="11"></OBJECT>
-          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_Ignored"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserInfo.html#a0411cd49bb5b71852cecd93bcbf0ca2dabb2559701156f76b7026c9eef87138ad"><param name="ImageNumber" value="11"></OBJECT>
-          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_InARoom"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserInfo.html#a0411cd49bb5b71852cecd93bcbf0ca2daf36c6f8c4038f08965e46b71924b47b0"><param name="ImageNumber" value="11"></OBJECT>
-          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_PlayingAGame"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserInfo.html#a0411cd49bb5b71852cecd93bcbf0ca2da1d7ec49b5b6027a6122a25c02e2920a9"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="kAnyLoginID"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserInfo.html#a0411cd49bb5b71852cecd93bcbf0ca2dadeedfd97ede699303600ade326e68500"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_Friend"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserInfo.html#abed82baf7f470b522273a3e37c24c600ad0a100603cc5181ed36a5ffbc4880561"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_FriendRequest"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserInfo.html#abed82baf7f470b522273a3e37c24c600a1b801e6c7838743639fb25f5094b2ffe"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_Online"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserInfo.html#abed82baf7f470b522273a3e37c24c600ac271fc0f50c1ccba383590fe6b6cda55"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_GameInvite"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserInfo.html#abed82baf7f470b522273a3e37c24c600aa82380b8ddd89ea241bcd8aaed086fce"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_Speaking"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserInfo.html#abed82baf7f470b522273a3e37c24c600a8ee4d6399328d9a50bc5f064b270097f"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_Ignored"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserInfo.html#abed82baf7f470b522273a3e37c24c600abb2559701156f76b7026c9eef87138ad"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_InARoom"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserInfo.html#abed82baf7f470b522273a3e37c24c600af36c6f8c4038f08965e46b71924b47b0"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_PlayingAGame"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserInfo.html#abed82baf7f470b522273a3e37c24c600a1d7ec49b5b6027a6122a25c02e2920a9"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="UserInfo"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserInfo.html#a0ab18d3220b81916910df7a18f0c0236"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="~UserInfo"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserInfo.html#ad5296e3b3273a0ff96137157b7baf89c"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="GetGameInvite"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserInfo.html#ae7093252b5f90511b5d69fd13400ddad"><param name="ImageNumber" value="11"></OBJECT>
@@ -693,10 +752,10 @@
           </UL>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="UserClient"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserClient.html"><param name="ImageNumber" value="1"></OBJECT>
           <UL>
-          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_Online"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserClient.html#abed82baf7f470b522273a3e37c24c600ac271fc0f50c1ccba383590fe6b6cda55"><param name="ImageNumber" value="11"></OBJECT>
-          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_FriendRequest"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserClient.html#abed82baf7f470b522273a3e37c24c600a1b801e6c7838743639fb25f5094b2ffe"><param name="ImageNumber" value="11"></OBJECT>
-          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_GameInvite"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserClient.html#abed82baf7f470b522273a3e37c24c600aa82380b8ddd89ea241bcd8aaed086fce"><param name="ImageNumber" value="11"></OBJECT>
-          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_Message"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserClient.html#abed82baf7f470b522273a3e37c24c600ae726b9faa211f351a1875e27c2b26ad5"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_Online"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserClient.html#ab04a0655cd1e3bcac5e8f48c18df1a57ac271fc0f50c1ccba383590fe6b6cda55"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_FriendRequest"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserClient.html#ab04a0655cd1e3bcac5e8f48c18df1a57a1b801e6c7838743639fb25f5094b2ffe"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_GameInvite"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserClient.html#ab04a0655cd1e3bcac5e8f48c18df1a57aa82380b8ddd89ea241bcd8aaed086fce"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="kState_Message"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserClient.html#ab04a0655cd1e3bcac5e8f48c18df1a57ae726b9faa211f351a1875e27c2b26ad5"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="Reason"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserClient.html#af38960e2d1da2c992b2232eb3f285c4e"><param name="ImageNumber" value="1"></OBJECT>
             <UL>
             <LI><OBJECT type="text/sitemap"><param name="Name" value="kReason_ClientForcedLogout"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserClient.html#af38960e2d1da2c992b2232eb3f285c4ea84f721ba400a58f4c8948a3fabe1c2d6"><param name="ImageNumber" value="11"></OBJECT>
@@ -806,15 +865,23 @@
           </UL>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="UserServer"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserServer.html"><param name="ImageNumber" value="1"></OBJECT>
           <UL>
-          <LI><OBJECT type="text/sitemap"><param name="Name" value="kDefaultPort"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserServer.html#ab04a0655cd1e3bcac5e8f48c18df1a57acd1f3a0feca1a01142e3e36e5e2a9a6d"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="kDefaultPort"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserServer.html#a385c44f6fb256e5716a2302a5b940388acd1f3a0feca1a01142e3e36e5e2a9a6d"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="UserServer"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserServer.html#af365a23f59af1b723d45eb5b89de238e"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="~UserServer"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserServer.html#abfecba8ec42ab6b26050437275891f1f"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="DeleteVariable"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserServer.html#a5a47e02c2904e3722489fdaca6174674"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="GetNumTotal"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserServer.html#aa0671701c242e65004a22a0f893337c9"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="GetVariable"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserServer.html#af7e29860145d07512d26e7804266eb72"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="GetVariable"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserServer.html#ac3684ae5b5444bde96105aa289526198"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="GetVariable"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserServer.html#a4723b598fb0bd309def870343e3c2cc7"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="SetVariable"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserServer.html#a10be6bd5043d0afb692e27f047bf4995"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="SetVariable"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserServer.html#a7a5e87132fbf104ba46d8cb65ccb643d"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="SetVariable"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserServer.html#af5c7933128e7fcbc1fafb98fff1cbb34"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="Start"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserServer.html#abbc27f032cecdcd496b9ed5a9e3dd5c2"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="VerifyUserNonce"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UserServer.html#aeb52ca7782a444fc2c6da582f3b44d54"><param name="ImageNumber" value="11"></OBJECT>
           </UL>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="UtilityServer"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UtilityServer.html"><param name="ImageNumber" value="1"></OBJECT>
           <UL>
-          <LI><OBJECT type="text/sitemap"><param name="Name" value="kDefaultPort"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UtilityServer.html#a385c44f6fb256e5716a2302a5b940388acd1f3a0feca1a01142e3e36e5e2a9a6d"><param name="ImageNumber" value="11"></OBJECT>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="kDefaultPort"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UtilityServer.html#abc5c98fcc1211af2b80116dd6e0a035dacd1f3a0feca1a01142e3e36e5e2a9a6d"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="UtilityServer"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UtilityServer.html#af7ff3deaec88d426098e148cefc73569"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="~UtilityServer"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UtilityServer.html#a52d66b2a30935e196ca44892a4f3d434"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="CreateWorker"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UtilityServer.html#af1e3e9432a6974fbace7d7ea1d9643e2"><param name="ImageNumber" value="11"></OBJECT>
@@ -922,9 +989,13 @@
         <LI><OBJECT type="text/sitemap"><param name="Name" value="OwnerChanged"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Function.html#ac770268af75f734fad5a7fae38bb31ca"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="ParseMessage"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Function.html#a387921f25a80d713d655c53d86cc3011"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Poll"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Function.html#a90b60dd857c79c0f0986584fb9df5c99"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="Register"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Function.html#a7f8ea73c6fde96184d29d2bf8ae37fef"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="RegisterInClassPointer"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Function.html#a0dfab7e7268ff861bafc9d710b3d395c"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="RN_CLASS_MINIMAL_RTTI"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Function.html#a84b311cdb15e796604436c2c0161d7d3"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetSessionIDFilter"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Function.html#a8d4165f027ff2b360eba33c0543cada2"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="mClassp"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Function.html#ab978e4c5a6c90606aafb70c6a7d3fbbf"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="mConfiguredNumSessions"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Function.html#a2d98ebc0026e9a900e768372b0a0f0b3"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="mConfiguredSessionIDs"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Function.html#a13d0ededf650dc6de0c13e75bd5d26d7"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="mData"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Function.html#a51b7425164ba7e5d14d5828d2249c2e1"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="mFunctionStateChanges"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Function.html#a15022dbb187951c2f294ae4379db4a25"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="mPerSessionFunction"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Function.html#ab3ffcc7f9945862a9e728c44b77a3d7b"><param name="ImageNumber" value="11"></OBJECT>
@@ -948,6 +1019,7 @@
         <LI><OBJECT type="text/sitemap"><param name="Name" value="OwnerChanged"><param name="Local" value="classRNReplicaNet_1_1DataBlock__NData.html#ac770268af75f734fad5a7fae38bb31ca"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="ParseMessage"><param name="Local" value="classRNReplicaNet_1_1DataBlock__NData.html#a387921f25a80d713d655c53d86cc3011"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Poll"><param name="Local" value="classRNReplicaNet_1_1DataBlock__NData.html#a90b60dd857c79c0f0986584fb9df5c99"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="Register"><param name="Local" value="classRNReplicaNet_1_1DataBlock__NData.html#a584b11ee92046ffd714e5db1117d2e43"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="RegisterInClassPointer"><param name="Local" value="classRNReplicaNet_1_1DataBlock__NData.html#ae9b07b93948ba6a97e7ee338880dfcb9"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="RN_CLASS_MINIMAL_RTTI"><param name="Local" value="classRNReplicaNet_1_1DataBlock__NData.html#a84b311cdb15e796604436c2c0161d7d3"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="SetDefaultData"><param name="Local" value="classRNReplicaNet_1_1DataBlock__NData.html#a268d828c15ebd72ea7ec29b9766721a5"><param name="ImageNumber" value="11"></OBJECT>
@@ -1004,6 +1076,7 @@
         <LI><OBJECT type="text/sitemap"><param name="Name" value="AddDataBlockData"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Predict__Float.html#a51091bf44d045dae7a86779ec9f63b30"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="ApplyBoundaryToValue"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Predict__Float.html#a5397b4f9cb2f0cd31387bdd6ad6f3bc2"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="BoundaryApplyToMaster"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Predict__Float.html#affcf4749dcd91ffc808420f6e362563d"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="BoundaryApplyToValue"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Predict__Float.html#affd53063d726e615c68e1990a07cc28e"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="BoundaryCapped"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Predict__Float.html#a0b30c3b7f81a43ed0323782d7ec9c2ff"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="BoundaryDisable"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Predict__Float.html#aac18a1e17a70b109b8d1446ebf69d427"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="BoundaryDoNotApplyToMaster"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Predict__Float.html#aa7a3cca1fd5e8b505c09841a5edddff6"><param name="ImageNumber" value="11"></OBJECT>
@@ -1019,6 +1092,7 @@
         <LI><OBJECT type="text/sitemap"><param name="Name" value="IsAttached"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Predict__Float.html#a8acee7f9b4f38ce490e1ad560bd024d3"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="ParseMessage"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Predict__Float.html#a387921f25a80d713d655c53d86cc3011"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Poll"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Predict__Float.html#a90b60dd857c79c0f0986584fb9df5c99"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="Register"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Predict__Float.html#ad47fef5375dd7f039d06c1bb51317f35"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="RegisterInClassPointer"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Predict__Float.html#a3803a64eb918c40f9008846fd98e2be6"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="ReplicaContinuityBreak"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Predict__Float.html#af15ceeab3c1c54ed14edba9b55488ce6"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="RN_CLASS_MINIMAL_RTTI"><param name="Local" value="classRNReplicaNet_1_1DataBlock__Predict__Float.html#a84b311cdb15e796604436c2c0161d7d3"><param name="ImageNumber" value="11"></OBJECT>
@@ -1115,6 +1189,7 @@
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetCanSpider"><param name="Local" value="classRNReplicaNet_1_1ReplicaNet.html#a294038eabf6d308a1a7a11bafff6c2ec"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetClientOnly"><param name="Local" value="classRNReplicaNet_1_1ReplicaNet.html#a34ada5aa17a238e47197bfbefd2e17c0"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetCompressionStatistics"><param name="Local" value="classRNReplicaNet_1_1ReplicaNet.html#aac19767f8198d6cd3a5bb4899e7ffe40"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetCurrentReplicaNet"><param name="Local" value="classRNReplicaNet_1_1ReplicaNet.html#a781fac919180c3a2a7b7b8501f04607d"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetDataBlockUpdatePolicy"><param name="Local" value="classRNReplicaNet_1_1ReplicaNet.html#a63fc835f1b24afdf2f48a3901fb9ceab"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetDataRetention"><param name="Local" value="classRNReplicaNet_1_1ReplicaNet.html#a7b16b130f1999a56800c3f8d11340f92"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetEncryption"><param name="Local" value="classRNReplicaNet_1_1ReplicaNet.html#ad9f29c67e35c02a992dac276430b84a2"><param name="ImageNumber" value="11"></OBJECT>
@@ -1184,6 +1259,7 @@
         <LI><OBJECT type="text/sitemap"><param name="Name" value="SetCanBecomeMaster"><param name="Local" value="classRNReplicaNet_1_1ReplicaNet.html#a6581beeedeb6d6ffe025e77a92c2fe58"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="SetCanSpider"><param name="Local" value="classRNReplicaNet_1_1ReplicaNet.html#a92f710662018cb6fe8ace8203b68a423"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="SetClientOnly"><param name="Local" value="classRNReplicaNet_1_1ReplicaNet.html#a97272099fdeb6cb7784f9db77d42954c"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetCurrentReplicaNet"><param name="Local" value="classRNReplicaNet_1_1ReplicaNet.html#a0d0e02b8abbec285662378fab3a69a5c"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="SetDataBlockUpdatePolicy"><param name="Local" value="classRNReplicaNet_1_1ReplicaNet.html#aa453f9e3ca7b6d9c3ffc597d65ad2501"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="SetDataRetention"><param name="Local" value="classRNReplicaNet_1_1ReplicaNet.html#a95555200914ccfe2b098c7edac02533f"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="SetEncryption"><param name="Local" value="classRNReplicaNet_1_1ReplicaNet.html#a42b5d6994bf8f9605a3ff2e881e00a34"><param name="ImageNumber" value="11"></OBJECT>
@@ -1251,6 +1327,7 @@
         <LI><OBJECT type="text/sitemap"><param name="Name" value="_Internal_SetupPropagateDistanceIncludeDefault"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a2d13de39990da9a676e25d19a90ad900"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="_Internal_SetupPropagateToSessionDistanceRecalculationDelay"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a83b871e6d343b00e910b0618b0fdd5df"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="AddAutoRegisterDataBlock"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a4a415a403218ea9e3c55c1a388659223"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="AllocateForReplicaNet"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a3eb4aeca7c9c1396df0477f3013cfb5b"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="ApproveFault"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a99b5a1a3a8659827c38fcdfd028f9eb0"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="ApproveMigration"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a68ef4f289a90b973105ac0a67308b1af"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="CalculateDistanceToObject"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#ac46f95d348f1aabccfc6766295a53725"><param name="ImageNumber" value="11"></OBJECT>
@@ -1263,13 +1340,16 @@
         <LI><OBJECT type="text/sitemap"><param name="Name" value="DataSend"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#af84b06f1b00765658a6beaf320570af3"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="DelayedDelete"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a5d0ed6878a22a286050a2901ce77a013"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="DelayedDeleteCancel"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a800942b0f7ccbc4604e7c67be5a0e934"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="DeleteForReplicaNet"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a7d1d214b852366b4a04110a771ba7725"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="FindDataBlock"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a0911979102a6d1d3cf3b2bac8286a84f"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="FindDataBlock"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a6c3dbaad793045a06617802951a62188"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetBand"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a3d5df4b70cd591c5db94a401a1bf3cf9"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetBoundReplicaNet"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a9ec864b5d579eaacd2cad82bdca758f1"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetClassID"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a3f05c50e7f13faf7a02a273080c56e02"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetDelayBind"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a08ce99c2dc13ed8be837be23df2ca091"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetDelayedDelete"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a22c2fd2c0925b0c08c6fb64655b1d300"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetDelayedDelete"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a650592a3edaf57baa3b85cd71c3286d8"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetDelayIDFetch"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a69480f5b1438eae557ef441c1edb714e"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetDistanceToObject"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a9f31a5de054bcbe2766445cc50573b84"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetLoadBalancing"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a72f8db0d7fd0c058086f70eba51a6e50"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetLoadScore"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a36fc82b9e77ff3ba42fa16ea33355be9"><param name="ImageNumber" value="11"></OBJECT>
@@ -1302,6 +1382,8 @@
         <LI><OBJECT type="text/sitemap"><param name="Name" value="SessionPropagationAddSession"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a2fd9e2fa8640201c010364eb66063b23"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="SessionPropagationRemoveSession"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a33be5c2e2cddfc4a3939fada9ce953a4"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="SetBand"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#abc86cdf8174ea68cbc4b53b4e5e954ea"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetDelayBind"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a446309c6df9871106bc241386594a5c9"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetDelayIDFetch"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a9030e3a44c0e71f7f0a6f95fdd172fdf"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="SetLoadBalancing"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a3742a004ac5dd9a6ff42b54805024eb4"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="SetLoadBalancingDefault"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#add3b9109b960a8d762fb1a91d45a0bb5"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="SetLoadScore"><param name="Local" value="classRNReplicaNet_1_1ReplicaObject.html#a4342ce342af3fcb44bbacc6f02dc6130"><param name="ImageNumber" value="11"></OBJECT>
@@ -1348,6 +1430,8 @@
         </UL>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="Checksum"><param name="Local" value="classRNReplicaNet_1_1Checksum.html"><param name="ImageNumber" value="1"></OBJECT>
         <UL>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="ChecksumData"><param name="Local" value="classRNReplicaNet_1_1Checksum.html#a5d9bb3a75c2c3fd8940807d464df6502"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="ChecksumDataWithSlots"><param name="Local" value="classRNReplicaNet_1_1Checksum.html#ad8ebe35c565c35b187a559eaead8c372"><param name="ImageNumber" value="11"></OBJECT>
         </UL>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="Encryption"><param name="Local" value="classRNReplicaNet_1_1Encryption.html"><param name="ImageNumber" value="1"></OBJECT>
         <UL>
@@ -1361,6 +1445,12 @@
           <LI><OBJECT type="text/sitemap"><param name="Name" value="Create"><param name="Local" value="structRNReplicaNet_1_1Encryption_1_1Key.html#a785361f0fc7efcf1be869e511d1198ff"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="mKey"><param name="Local" value="structRNReplicaNet_1_1Encryption_1_1Key.html#af0c20bb8c4c0c61168a01ddae74432d6"><param name="ImageNumber" value="11"></OBJECT>
           </UL>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="CommutativeDecrypt"><param name="Local" value="classRNReplicaNet_1_1Encryption.html#a452b78730bd4af38a19b593c30c2f81c"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="CommutativeDecryptBytewise"><param name="Local" value="classRNReplicaNet_1_1Encryption.html#a6ef18ae7edff10e5032c9578c51c7712"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="CommutativeEncrypt"><param name="Local" value="classRNReplicaNet_1_1Encryption.html#aa728af151e3d27cd3264ee91a56bfb29"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="CommutativeEncryptBytewise"><param name="Local" value="classRNReplicaNet_1_1Encryption.html#a2162e8bbc48e9a98ac2131e37ae84840"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="Decrypt"><param name="Local" value="classRNReplicaNet_1_1Encryption.html#a6590349d71b1f5bb054108a7b436c3eb"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="Encrypt"><param name="Local" value="classRNReplicaNet_1_1Encryption.html#a4dabfdc9e5b53c9e10820dc92a88f536"><param name="ImageNumber" value="11"></OBJECT>
         </UL>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="JobManager"><param name="Local" value="classRNReplicaNet_1_1JobManager.html"><param name="ImageNumber" value="1"></OBJECT>
         <UL>
@@ -1368,9 +1458,11 @@
         <LI><OBJECT type="text/sitemap"><param name="Name" value="~JobManager"><param name="Local" value="classRNReplicaNet_1_1JobManager.html#ac3fb04f9a50a21ba3a39c93b8dff1db4"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="AddPoolJob"><param name="Local" value="classRNReplicaNet_1_1JobManager.html#a0aaa764c84ab346e8d711dac7c798ce1"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="CancelJobs"><param name="Local" value="classRNReplicaNet_1_1JobManager.html#a6a34dd676d6a1d0af19d2c7714317147"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetNumberOfJobsRemaining"><param name="Local" value="classRNReplicaNet_1_1JobManager.html#a0f84221d0d9d4a48b7c24df611592e9e"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="SetPoolSize"><param name="Local" value="classRNReplicaNet_1_1JobManager.html#a70e834c2662670493f7d31421561dd8f"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Start"><param name="Local" value="classRNReplicaNet_1_1JobManager.html#a94c2f5766df9d2adc8afd9a1f0ae775e"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Stop"><param name="Local" value="classRNReplicaNet_1_1JobManager.html#ae903cde949cc162bc3fc46472c8a8248"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="Job"><param name="Local" value="classRNReplicaNet_1_1JobManager.html#a965d805cf4fa6e7ef721cfad15d99bcd"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Worker"><param name="Local" value="classRNReplicaNet_1_1JobManager.html#a9de4a9533dff2ecc0919852d4c05a67b"><param name="ImageNumber" value="11"></OBJECT>
         </UL>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="Worker"><param name="Local" value="classRNReplicaNet_1_1Worker.html"><param name="ImageNumber" value="1"></OBJECT>
@@ -1404,15 +1496,20 @@
         <LI><OBJECT type="text/sitemap"><param name="Name" value="AddFloat"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#a67791beb6e6b909d713f71f6f4342a4e"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="AddInteger"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#a183fb4b2e960c28315f013cb5277091b"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="AddVariable"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#a2ba99123aa4432fd2e043719475dd57c"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="AddVariable"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#a89f0e4c8cf5256e9cf126ec0d15003fd"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="DumpAsHex"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#a507149ef21a97feaeee45d4013e48e03"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="DumpAsHex"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#a5ca7ae7b83b83203cf8a71bdea8b47f8"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetBuffer"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#a2a84b43c7643058d67a7d04f33f2ce01"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetCurrentPosition"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#a340aa51eb2e3e05f83b872727fc4788e"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetData"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#a38148ad4b8c4c7d93082902b2c2eaac1"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetFloat"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#ae9448a3994d497d4cf0674b1bcd95910"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetInt"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#ac5dee07422d4f053283c667dc5ce91fa"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetInteger"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#ae5b9f9dfb325447c5ee713680e9ca041"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetLastSizeAdded"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#adba1045c2f3309cb5c2958236bbcc5ea"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetShort"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#a5bf93b11f4fa347bc1ab70f1b2e242c8"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetSize"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#a43967bc8651bafeb9bd16c6b7d60557e"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetVariable"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#a6b6eca474d016aa2bc9c8b0572910e1d"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetVariable"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#a7f2a0ee2fa241eb55d32cd8fcccf61ea"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="operator<<"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#a55ed27079ff927e6ae54e02e69fbe437"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="operator<<"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#a4a18a80c765dbf71d2f053fc0beac3c4"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="operator<<"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#abe214436db853e3b4a21494214fbadb7"><param name="ImageNumber" value="11"></OBJECT>
@@ -1423,6 +1520,8 @@
         <LI><OBJECT type="text/sitemap"><param name="Name" value="SanityCheckGuardSize"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#ab941d2992120caa421730ba5dc02c70a"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="SetBuffer"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#a020af62239ee45df6fa582f2c999395e"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="SetGuardSize"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#a3e53fbcf808043508f797c4c43529bc3"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetInt"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#a97a9ffaa856a3448110e7db9fc558a80"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetShort"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#aef19e43bf2419959378b1e854fa7e94e"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="SetSize"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#a71d702b9b338df0da1f52f621fd3574f"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="SkipData"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#a028f83b154a877121231e9361efed2b5"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="mLastSizeAdded"><param name="Local" value="classRNReplicaNet_1_1MessageHelper.html#a82047e002ea4dc816f230f473eaee5b0"><param name="ImageNumber" value="11"></OBJECT>
@@ -1463,9 +1562,20 @@
         </UL>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="PlatformHeap"><param name="Local" value="classRNReplicaNet_1_1PlatformHeap.html"><param name="ImageNumber" value="1"></OBJECT>
         <UL>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="ForceFree"><param name="Local" value="classRNReplicaNet_1_1PlatformHeap.html#aaa353d9de40a51ad30f86d8447485745"><param name="ImageNumber" value="11"></OBJECT>
         </UL>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="PlatformInfo"><param name="Local" value="classRNReplicaNet_1_1PlatformInfo.html"><param name="ImageNumber" value="1"></OBJECT>
         <UL>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetNumberOfCores"><param name="Local" value="classRNReplicaNet_1_1PlatformInfo.html#a5bb5b25e7e6ec406599f51dbb293cbb6"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetProcessorReplicaNet"><param name="Local" value="classRNReplicaNet_1_1PlatformInfo.html#a5d97afc7df5d207d8aef22bfe91173f6"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetProcessorXPSession"><param name="Local" value="classRNReplicaNet_1_1PlatformInfo.html#a5d1add339887c751038bc60383e5c357"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetProcessorXPURL"><param name="Local" value="classRNReplicaNet_1_1PlatformInfo.html#af60ebd3bcca36d8f95a6d8c98cd5da20"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="IsLittleEndian"><param name="Local" value="classRNReplicaNet_1_1PlatformInfo.html#afdb5c7203dbe3cec672abe5b2699d379"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="IsThreaded"><param name="Local" value="classRNReplicaNet_1_1PlatformInfo.html#ac586228bae7202d3de63ea8b7cf1d0d6"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetProcessorReplicaNet"><param name="Local" value="classRNReplicaNet_1_1PlatformInfo.html#a076a4363b1212c5ef4250b142b83cd75"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetProcessorXPSession"><param name="Local" value="classRNReplicaNet_1_1PlatformInfo.html#a8c96024ba639f3333432f1c5a29e6acc"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetProcessorXPURL"><param name="Local" value="classRNReplicaNet_1_1PlatformInfo.html#a82e9ea2338dcb7dcb2960f2c52e0bcf1"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetThreaded"><param name="Local" value="classRNReplicaNet_1_1PlatformInfo.html#a0d8e6a53cfad3fbb91cf57d6f4ee04dc"><param name="ImageNumber" value="11"></OBJECT>
         </UL>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="RegistryManager"><param name="Local" value="classRNReplicaNet_1_1RegistryManager.html"><param name="ImageNumber" value="1"></OBJECT>
         <UL>
@@ -1554,6 +1664,8 @@
         <LI><OBJECT type="text/sitemap"><param name="Name" value="SysTime"><param name="Local" value="classRNReplicaNet_1_1SysTime.html#ab1d1c838698749270606c9120c7e361c"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="~SysTime"><param name="Local" value="classRNReplicaNet_1_1SysTime.html#a0fcb3d2b51d218973180a0f394a40698"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="FloatTime"><param name="Local" value="classRNReplicaNet_1_1SysTime.html#a41de210c68b861e7e32c66793468ccb8"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetSystemTime"><param name="Local" value="classRNReplicaNet_1_1SysTime.html#a802678a4ca04c3b59847703b07629206"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetTickCount"><param name="Local" value="classRNReplicaNet_1_1SysTime.html#aea4c48e2e0c00c9e6b67f80b70c3d19c"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Reset"><param name="Local" value="classRNReplicaNet_1_1SysTime.html#aed19948be38e80a0af0f88a8ef598706"><param name="ImageNumber" value="11"></OBJECT>
         </UL>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="Thread"><param name="Local" value="classRNReplicaNet_1_1Thread.html"><param name="ImageNumber" value="1"></OBJECT>
@@ -1561,8 +1673,12 @@
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Thread"><param name="Local" value="classRNReplicaNet_1_1Thread.html#a7542b81caf3dbfcbd2b2f217fd10c240"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="~Thread"><param name="Local" value="classRNReplicaNet_1_1Thread.html#a1d39e605a8fe420b213cbdd9605f525f"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Begin"><param name="Local" value="classRNReplicaNet_1_1Thread.html#a24e4620f873a669327e7b9300a848d9a"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="CallThreadEntry"><param name="Local" value="classRNReplicaNet_1_1Thread.html#aee044b0218cc8233a0c083f05447dbe7"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetCurrentProcessorNumber"><param name="Local" value="classRNReplicaNet_1_1Thread.html#a29a07b374ad39f731d55bf57afe2c6aa"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetEverTerminated"><param name="Local" value="classRNReplicaNet_1_1Thread.html#a12d2f78228efd76d28d64b34c49f3b04"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetIsRunning"><param name="Local" value="classRNReplicaNet_1_1Thread.html#a6d1b05ef0142aa8899fe2c533ccc4cbe"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetNumActive"><param name="Local" value="classRNReplicaNet_1_1Thread.html#af189bd56f4e5463b2989b537c9dc66e0"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetNumAllocated"><param name="Local" value="classRNReplicaNet_1_1Thread.html#a0afaaab6af6eff5b9a2a18b6208268f3"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetPreferredProcessor"><param name="Local" value="classRNReplicaNet_1_1Thread.html#a1a71adc772ef273f9c94e298263cdabd"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetTerminated"><param name="Local" value="classRNReplicaNet_1_1Thread.html#a64480a7cdc697773dacb56238e180bae"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="SetPreferredProcessor"><param name="Local" value="classRNReplicaNet_1_1Thread.html#aecb066d57bcfc4803da563c94f34a0f3"><param name="ImageNumber" value="11"></OBJECT>
@@ -1571,7 +1687,7 @@
         </UL>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="MutexClass"><param name="Local" value="classRNReplicaNet_1_1MutexClass.html"><param name="ImageNumber" value="1"></OBJECT>
         <UL>
-        <LI><OBJECT type="text/sitemap"><param name="Name" value="kNoOwnerThread"><param name="Local" value="classRNReplicaNet_1_1MutexClass.html#abc5c98fcc1211af2b80116dd6e0a035dac60b43adefebb22374dfc910a0d57c91"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="kNoOwnerThread"><param name="Local" value="classRNReplicaNet_1_1MutexClass.html#ac36f475ca5b446f4fde4c9b90bec77c8ac60b43adefebb22374dfc910a0d57c91"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="MutexClass"><param name="Local" value="classRNReplicaNet_1_1MutexClass.html#a28999ddfb715c727b21249e745818a90"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="~MutexClass"><param name="Local" value="classRNReplicaNet_1_1MutexClass.html#ab3cba9547b8c5d0aa8745206ece715f7"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Lock"><param name="Local" value="classRNReplicaNet_1_1MutexClass.html#aaf4421ed012f07118fb821fee61ed047"><param name="ImageNumber" value="11"></OBJECT>
@@ -1583,6 +1699,8 @@
         <LI><OBJECT type="text/sitemap"><param name="Name" value="~ThreadClass"><param name="Local" value="classRNReplicaNet_1_1ThreadClass.html#a4c8b35329890ca78752ddac788910a60"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="CheckQuit"><param name="Local" value="classRNReplicaNet_1_1ThreadClass.html#ae00b203a953594a5bcbf2c66bbfaa02a"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="DoQuitNow"><param name="Local" value="classRNReplicaNet_1_1ThreadClass.html#a64a1043df94d8cf7d6779fc960e1ade9"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetNumAllocated"><param name="Local" value="classRNReplicaNet_1_1ThreadClass.html#a0afaaab6af6eff5b9a2a18b6208268f3"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetThreadID"><param name="Local" value="classRNReplicaNet_1_1ThreadClass.html#ac693c280059b4ba6ae0bfe3e7a6a1c1b"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Sleep"><param name="Local" value="classRNReplicaNet_1_1ThreadClass.html#a78c4b9bd21c44a08696711e7a0076467"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="ThreadEntry"><param name="Local" value="classRNReplicaNet_1_1ThreadClass.html#a3f245b28a781c840fe18b4cb60b3acf5"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="ThreadExiting"><param name="Local" value="classRNReplicaNet_1_1ThreadClass.html#ad0a5593e9576cf0d43509ef7b998e020"><param name="ImageNumber" value="11"></OBJECT>
@@ -1595,6 +1713,7 @@
         </UL>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="CurrentThread"><param name="Local" value="classRNReplicaNet_1_1CurrentThread.html"><param name="ImageNumber" value="1"></OBJECT>
         <UL>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="Sleep"><param name="Local" value="classRNReplicaNet_1_1CurrentThread.html#aceae7dc951c9f21338637dcb7b67a25c"><param name="ImageNumber" value="11"></OBJECT>
         </UL>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="RNROLCompiler"><param name="Local" value="classRNReplicaNet_1_1RNROLCompiler.html"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="networking"><param name="Local" value="classRNReplicaNet_1_1networking.html"><param name="ImageNumber" value="11"></OBJECT>
@@ -1717,6 +1836,7 @@
           </UL>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="XPSession"><param name="Local" value="classRNReplicaNet_1_1XPSession.html#aa1eb6a54db8d26beacde42c8540139f0"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="~XPSession"><param name="Local" value="classRNReplicaNet_1_1XPSession.html#a4aca2be0011cf61487ccbad085ba115d"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="Allocate"><param name="Local" value="classRNReplicaNet_1_1XPSession.html#a3ad01f7758e54c7f5814134216bf401a"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Create"><param name="Local" value="classRNReplicaNet_1_1XPSession.html#a2d334bea825e35c01e4868deb9154e5a"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Create"><param name="Local" value="classRNReplicaNet_1_1XPSession.html#a2b4aab89856bf24f63030f7aeccf5c68"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="DataReceive"><param name="Local" value="classRNReplicaNet_1_1XPSession.html#a80a10e2637eb8d6788e1307dfd576d21"><param name="ImageNumber" value="11"></OBJECT>
@@ -1803,6 +1923,7 @@
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Import"><param name="Local" value="structRNReplicaNet_1_1XPAddress.html#ab8b7b4b610f836e8674206480446d364"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="IsLocalhost"><param name="Local" value="structRNReplicaNet_1_1XPAddress.html#a3de73fcb6d3e1b57aaa2055c95f8d6d1"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="MakeAny"><param name="Local" value="structRNReplicaNet_1_1XPAddress.html#a3ccec426af6ecab699ef0228815df100"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="Null"><param name="Local" value="structRNReplicaNet_1_1XPAddress.html#ac24c34628259f584d6992345423e182a"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="operator!="><param name="Local" value="structRNReplicaNet_1_1XPAddress.html#aa91b1c74a39863fdbdc69af184e3ce83"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="operator<"><param name="Local" value="structRNReplicaNet_1_1XPAddress.html#a821d17bc1d90c646058b9964d8dbcc13"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="operator=="><param name="Local" value="structRNReplicaNet_1_1XPAddress.html#a0d56754c9e7260a5910b012e73986ef2"><param name="ImageNumber" value="11"></OBJECT>
@@ -1851,6 +1972,8 @@
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Connect"><param name="Local" value="classRNReplicaNet_1_1XPSocket.html#acc1751fa8a17c8cdb4364c3d2a603d0f"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Create"><param name="Local" value="classRNReplicaNet_1_1XPSocket.html#a1deb7b045ad33a2f4ec5d3cf92aa8b1f"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetAddress"><param name="Local" value="classRNReplicaNet_1_1XPSocket.html#a745e49bd012608919e1f557766c4221e"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetLastError"><param name="Local" value="classRNReplicaNet_1_1XPSocket.html#a3340f3c2a868ae89d4c435c9ff1289d9"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetMaxPacketSize"><param name="Local" value="classRNReplicaNet_1_1XPSocket.html#abaaf26045aa6e97bad830bd99954065e"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetPeerAddress"><param name="Local" value="classRNReplicaNet_1_1XPSocket.html#a7d0d3bcc372a6391fc27a7d28aa4ec0e"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="GetSocketPointer"><param name="Local" value="classRNReplicaNet_1_1XPSocket.html#a4771a21b5758d6eeba80585668f0594a"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="IsAlive"><param name="Local" value="classRNReplicaNet_1_1XPSocket.html#a379953c800a707578f8ac68ef6bbbb93"><param name="ImageNumber" value="11"></OBJECT>
@@ -1870,6 +1993,7 @@
         <LI><OBJECT type="text/sitemap"><param name="Name" value="~XPSocketUrgent"><param name="Local" value="classRNReplicaNet_1_1XPSocketUrgent.html#aad9df6d426b255601442ff77f44959b6"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Create"><param name="Local" value="classRNReplicaNet_1_1XPSocketUrgent.html#a79e79d05b48360f9efbb6b2b86e58e9b"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Create"><param name="Local" value="classRNReplicaNet_1_1XPSocketUrgent.html#a4536971d60d79edd35cc018d1eea1f57"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetMaxPacketSize"><param name="Local" value="classRNReplicaNet_1_1XPSocketUrgent.html#abaaf26045aa6e97bad830bd99954065e"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="MakeBroadcast"><param name="Local" value="classRNReplicaNet_1_1XPSocketUrgent.html#a32bbedf60a1298e799e503eb57bbf64b"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Recv"><param name="Local" value="classRNReplicaNet_1_1XPSocketUrgent.html#af1d8a2f81147aebd1941f9e48a59e6fa"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Send"><param name="Local" value="classRNReplicaNet_1_1XPSocketUrgent.html#a5083cd047ab8be4294487145ebd60df1"><param name="ImageNumber" value="11"></OBJECT>
@@ -1902,6 +2026,19 @@
           <LI><OBJECT type="text/sitemap"><param name="Name" value="kDSL512MB_Down128Up"><param name="Local" value="classRNReplicaNet_1_1NetworkEmulation.html#a29aacbb82ad8875ded50e7c00e273841a36e6e9b55686f36721dfaf3987d524a8"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="kLAN"><param name="Local" value="classRNReplicaNet_1_1NetworkEmulation.html#a29aacbb82ad8875ded50e7c00e273841a108dcb1646e33b462cb9c92e7a84d14d"><param name="ImageNumber" value="11"></OBJECT>
           </UL>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetAverageLatency"><param name="Local" value="classRNReplicaNet_1_1NetworkEmulation.html#a9a26ce89f32bf2bb7f77ffd1de7bbdf5"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetEnabled"><param name="Local" value="classRNReplicaNet_1_1NetworkEmulation.html#a4537075fd167c48dc19afebeaeb77464"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetJitter"><param name="Local" value="classRNReplicaNet_1_1NetworkEmulation.html#a3238bbd0a4798ca787e1bf4d7734c906"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetMaximumInputBandwidth"><param name="Local" value="classRNReplicaNet_1_1NetworkEmulation.html#aec580a42e2436ea4ccb4605edaf16cf0"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetMaximumOutputBandwidth"><param name="Local" value="classRNReplicaNet_1_1NetworkEmulation.html#a13781c7cecd3553e2d8433088f991192"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetPacketLoss"><param name="Local" value="classRNReplicaNet_1_1NetworkEmulation.html#a127f234f92ec5260b213c969e7e05b38"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetAverageLatency"><param name="Local" value="classRNReplicaNet_1_1NetworkEmulation.html#ae5b91a116a46231d1c163411941e476c"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetConnection"><param name="Local" value="classRNReplicaNet_1_1NetworkEmulation.html#ad762f204a338073778df54c2b049d337"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetEnabled"><param name="Local" value="classRNReplicaNet_1_1NetworkEmulation.html#ad231a4d565e72c14af56e6be737fc7f5"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetJitter"><param name="Local" value="classRNReplicaNet_1_1NetworkEmulation.html#a74f70fae1a6000f66c324cb760030bfb"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetMaximumInputBandwidth"><param name="Local" value="classRNReplicaNet_1_1NetworkEmulation.html#a3d6bca8542e69046ef85def6eed13c89"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetMaximumOutputBandwidth"><param name="Local" value="classRNReplicaNet_1_1NetworkEmulation.html#ab3adb122fe50300600733a2eb99270d9"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetPacketLoss"><param name="Local" value="classRNReplicaNet_1_1NetworkEmulation.html#a08ed91ee23a0f3e01e53538816b1904d"><param name="ImageNumber" value="11"></OBJECT>
         </UL>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="Transport"><param name="Local" value="classRNReplicaNet_1_1Transport.html"><param name="ImageNumber" value="1"></OBJECT>
         <UL>
@@ -1961,6 +2098,33 @@
         </UL>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="TransportConfig"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html"><param name="ImageNumber" value="1"></OBJECT>
         <UL>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetEnablePacketSelect"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#a78a193424bc069dea6da73d77cb70526"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetExternalIP"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#a9bf6a3cce8bab7d092ab486451d20a51"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetExtraPacketSecurity"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#aa31f141313287c7bc6493d8deb613583"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetInfoString"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#ab26e399c5e4895a54ad89234e0b0c432"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetIPv4Detected"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#a0a8ba3ca384027f147347950f7314f1c"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetIPv4Detection"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#a6f7cec8e077f3fd3c4cf5d26c9b9c6c3"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetIPv6Detected"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#a8a2f33e1ad229906a32ebbd20fd8dc05"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetIPv6Detection"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#a32af83e0a8d357b994ec17563c2f1556"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetPacketBufferEnable"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#abbee94ed84b45bb61ffc9b3fa494db1d"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetPacketBufferTime"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#aabc52281229e0c883037f65979ebc2cf"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetPacketMTU"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#ad9ba8df8e23e078858eccabf4eff95f1"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetResendTimes"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#abdaf0cc299b9ce51a547cb91384811de"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetTransparentPacketCompressionBytesSaved"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#a3e2d85779d488b2f6c6ef5bdb0d7198b"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="PacketBufferBeginCaptureWindow"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#a41591fded5d63c05816e494bbadcf3a2"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="PacketBufferEndCaptureWindow"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#a4452d816845414ce9fddd49ac9ee6407"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetEnablePacketSelect"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#af689917ec5b081239c7424e158dc04eb"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetExternalIP"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#aec42a1f82ed89d49838e6d197f3113ce"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetExtraPacketSecurity"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#a446732d2330b9ba4e1eba3ba904d7800"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetInfoString"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#a123be17fd69d8023c1daef685c2ff72d"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetIPv4Detected"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#a6bf74f23b76744ea465227c4bb789b3e"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetIPv4Detection"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#ae70d95e1978128a7cc8dfee9e5f71507"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetIPv6Detected"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#ab60e2c6bdf0ea214683e13912baab3c2"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetIPv6Detection"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#a4501c180013d0ec7e858474650081fe9"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetPacketBufferEnable"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#ab05bcb859a54bf816e6cb9f285f535ed"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetPacketBufferTime"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#a6cc4de1fc29765c8ae06dc387677c4f3"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetPacketMTU"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#ab7b99ba15470a461c22d04954674f790"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="SetResendTimes"><param name="Local" value="classRNReplicaNet_1_1TransportConfig.html#a9554a0ce274e2e8bd2aebc4e710b2d8d"><param name="ImageNumber" value="11"></OBJECT>
         </UL>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="XPURL"><param name="Local" value="classRNReplicaNet_1_1XPURL.html"><param name="ImageNumber" value="1"></OBJECT>
         <UL>
@@ -1968,10 +2132,18 @@
         <LI><OBJECT type="text/sitemap"><param name="Name" value="~XPURL"><param name="Local" value="classRNReplicaNet_1_1XPURL.html#a4e404e640f9883a96fbe0966ce4ca8e2"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="BeginEnumerateTransports"><param name="Local" value="classRNReplicaNet_1_1XPURL.html#aa08780bb68616ea605c9d2279116a996"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="EnumerateTransports"><param name="Local" value="classRNReplicaNet_1_1XPURL.html#ab51e18ba6d361e51611f1d7e5e0b2c47"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="FindTransport"><param name="Local" value="classRNReplicaNet_1_1XPURL.html#acd643e7202e7c195ed11c32fb6d6e253"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="FreeTransport"><param name="Local" value="classRNReplicaNet_1_1XPURL.html#a18c639a6c05835e92fea28d299345dee"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="GetDebugHandler"><param name="Local" value="classRNReplicaNet_1_1XPURL.html#a1533f9c851623727e8492ba63660efe7"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="InitialiseNetwork"><param name="Local" value="classRNReplicaNet_1_1XPURL.html#a2ac1e065c9253999e3d1d98c02c719c9"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="ParseURLs"><param name="Local" value="classRNReplicaNet_1_1XPURL.html#a5e26dc48abcb0a3adb06f6abb351eab7"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Poll"><param name="Local" value="classRNReplicaNet_1_1XPURL.html#a52e5d0689ab10e993cfea71d5f248cca"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="RegisterDebugHandler"><param name="Local" value="classRNReplicaNet_1_1XPURL.html#ae9417f435d02b12d9edca1b01a21ebba"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="RegisterDefaultTransports"><param name="Local" value="classRNReplicaNet_1_1XPURL.html#a97974fbf1827f8d4116c4906510a06d5"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="RegisterTransport"><param name="Local" value="classRNReplicaNet_1_1XPURL.html#a71d248d798aced3981f48cc61adc0d1b"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="SetAutomaticPoll"><param name="Local" value="classRNReplicaNet_1_1XPURL.html#a9b53d44ad3a5a7324104b300f78c2522"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="SetManualPoll"><param name="Local" value="classRNReplicaNet_1_1XPURL.html#a108af1ac13bb52b2c2d764701791e702"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="ShutdownNetwork"><param name="Local" value="classRNReplicaNet_1_1XPURL.html#af3f146130479b62cb3d69539f732d655"><param name="ImageNumber" value="11"></OBJECT>
         </UL>
       </UL>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="ASyncUpdateCheck"><param name="Local" value="classASyncUpdateCheck.html"><param name="ImageNumber" value="1"></OBJECT>
@@ -2067,6 +2239,7 @@
         <LI><OBJECT type="text/sitemap"><param name="Name" value="ScanChecksum"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1ScanChecksum.html"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="ScanPath"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1ScanPath.html"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Security"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Security.html"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="UDPRelay"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="Worker"><param name="Local" value="classRNReplicaNet_1_1Worker.html"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="XPSession"><param name="Local" value="classRNReplicaNet_1_1XPSession.html"><param name="ImageNumber" value="11"></OBJECT>
         </UL>
@@ -2084,10 +2257,10 @@
     <LI><OBJECT type="text/sitemap"><param name="Name" value="RegistryManager< T >"><param name="Local" value="classRNReplicaNet_1_1RegistryManager.html"><param name="ImageNumber" value="11"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="RegistryManagerList< T >"><param name="Local" value="classRNReplicaNet_1_1RegistryManagerList.html"><param name="ImageNumber" value="11"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="RegistryManagerMap< I, T, C >"><param name="Local" value="classRNReplicaNet_1_1RegistryManagerMap.html"><param name="ImageNumber" value="11"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Name" value="RegistryManagerMap< int, RNReplicaNet::DataBlock_NData::SessionBlock_NData >"><param name="Local" value="classRNReplicaNet_1_1RegistryManagerMap.html"><param name="ImageNumber" value="11"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Name" value="RegistryManagerMap< int, RNReplicaNet::DataBlock_Predict_Float::SessionBlock_Predict_Float >"><param name="Local" value="classRNReplicaNet_1_1RegistryManagerMap.html"><param name="ImageNumber" value="11"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="RegistryManagerMap< int, SessionBlock_Function >"><param name="Local" value="classRNReplicaNet_1_1RegistryManagerMap.html"><param name="ImageNumber" value="11"></OBJECT>
-    <LI><OBJECT type="text/sitemap"><param name="Name" value="RegistryManagerMap< std::string, RNReplicaNet::RNLobby::CodeServer::CodeEntry, RNReplicaNet::RNLobby::CodeServer::CodeEntry::ThisLess >"><param name="Local" value="classRNReplicaNet_1_1RegistryManagerMap.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="RegistryManagerMap< int, SessionBlock_NData >"><param name="Local" value="classRNReplicaNet_1_1RegistryManagerMap.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="RegistryManagerMap< int, SessionBlock_Predict_Float >"><param name="Local" value="classRNReplicaNet_1_1RegistryManagerMap.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="RegistryManagerMap< std::string, CodeEntry, CodeEntry::ThisLess >"><param name="Local" value="classRNReplicaNet_1_1RegistryManagerMap.html"><param name="ImageNumber" value="11"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="RegistryManagerSet< T, C >"><param name="Local" value="classRNReplicaNet_1_1RegistryManagerSet.html"><param name="ImageNumber" value="11"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="DataBlock_Predict_Float::ReplicaData"><param name="Local" value="structRNReplicaNet_1_1DataBlock__Predict__Float_1_1ReplicaData.html"><param name="ImageNumber" value="11"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="ReplicaNet"><param name="Local" value="classRNReplicaNet_1_1ReplicaNet.html"><param name="ImageNumber" value="11"></OBJECT>
@@ -2123,6 +2296,7 @@
     <LI><OBJECT type="text/sitemap"><param name="Name" value="SysTime"><param name="Local" value="classRNReplicaNet_1_1SysTime.html"><param name="ImageNumber" value="1"></OBJECT>
       <UL>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="NATResolver"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1NATResolver.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="UDPRelay"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="XPSession"><param name="Local" value="classRNReplicaNet_1_1XPSession.html"><param name="ImageNumber" value="11"></OBJECT>
       </UL>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="CodeServer::CodeEntry::ThisLess"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1CodeServer_1_1CodeEntry_1_1ThisLess.html"><param name="ImageNumber" value="11"></OBJECT>
@@ -2140,6 +2314,7 @@
       <LI><OBJECT type="text/sitemap"><param name="Name" value="ScanChecksum"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1ScanChecksum.html"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="ScanPath"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1ScanPath.html"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="Security"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1Security.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="UDPRelay"><param name="Local" value="classRNReplicaNet_1_1RNLobby_1_1UDPRelay.html"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="Worker"><param name="Local" value="classRNReplicaNet_1_1Worker.html"><param name="ImageNumber" value="11"></OBJECT>
       </UL>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="BackendServer::TitleIDInfo"><param name="Local" value="structRNReplicaNet_1_1RNLobby_1_1BackendServer_1_1TitleIDInfo.html"><param name="ImageNumber" value="11"></OBJECT>
@@ -2167,57 +2342,57 @@
     <LI><OBJECT type="text/sitemap"><param name="Name" value="All"><param name="Local" value="functions.html"><param name="ImageNumber" value="1"></OBJECT>
       <UL>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="a"><param name="Local" value="functions.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="b"><param name="Local" value="functions_b.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="c"><param name="Local" value="functions_c.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="d"><param name="Local" value="functions_d.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="e"><param name="Local" value="functions_e.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="f"><param name="Local" value="functions_f.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="g"><param name="Local" value="functions_g.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="h"><param name="Local" value="functions_h.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="i"><param name="Local" value="functions_i.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="j"><param name="Local" value="functions_j.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="k"><param name="Local" value="functions_k.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="l"><param name="Local" value="functions_l.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="m"><param name="Local" value="functions_m.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="n"><param name="Local" value="functions_n.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="o"><param name="Local" value="functions_o.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="p"><param name="Local" value="functions_p.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="q"><param name="Local" value="functions_q.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="r"><param name="Local" value="functions_r.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="s"><param name="Local" value="functions_s.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="t"><param name="Local" value="functions_t.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="u"><param name="Local" value="functions_u.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="v"><param name="Local" value="functions_v.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="w"><param name="Local" value="functions_w.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="x"><param name="Local" value="functions_x.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="~"><param name="Local" value="functions_~.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="b"><param name="Local" value="functions_0x62.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="c"><param name="Local" value="functions_0x63.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="d"><param name="Local" value="functions_0x64.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="e"><param name="Local" value="functions_0x65.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="f"><param name="Local" value="functions_0x66.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="g"><param name="Local" value="functions_0x67.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="h"><param name="Local" value="functions_0x68.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="i"><param name="Local" value="functions_0x69.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="j"><param name="Local" value="functions_0x6a.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="k"><param name="Local" value="functions_0x6b.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="l"><param name="Local" value="functions_0x6c.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="m"><param name="Local" value="functions_0x6d.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="n"><param name="Local" value="functions_0x6e.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="o"><param name="Local" value="functions_0x6f.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="p"><param name="Local" value="functions_0x70.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="q"><param name="Local" value="functions_0x71.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="r"><param name="Local" value="functions_0x72.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="s"><param name="Local" value="functions_0x73.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="t"><param name="Local" value="functions_0x74.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="u"><param name="Local" value="functions_0x75.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="v"><param name="Local" value="functions_0x76.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="w"><param name="Local" value="functions_0x77.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="x"><param name="Local" value="functions_0x78.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="~"><param name="Local" value="functions_0x7e.html"><param name="ImageNumber" value="11"></OBJECT>
       </UL>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="Functions"><param name="Local" value="functions_func.html"><param name="ImageNumber" value="1"></OBJECT>
       <UL>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="a"><param name="Local" value="functions_func.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="b"><param name="Local" value="functions_func_b.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="c"><param name="Local" value="functions_func_c.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="d"><param name="Local" value="functions_func_d.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="e"><param name="Local" value="functions_func_e.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="f"><param name="Local" value="functions_func_f.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="g"><param name="Local" value="functions_func_g.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="h"><param name="Local" value="functions_func_h.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="i"><param name="Local" value="functions_func_i.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="j"><param name="Local" value="functions_func_j.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="l"><param name="Local" value="functions_func_l.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="m"><param name="Local" value="functions_func_m.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="n"><param name="Local" value="functions_func_n.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="o"><param name="Local" value="functions_func_o.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="p"><param name="Local" value="functions_func_p.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="q"><param name="Local" value="functions_func_q.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="r"><param name="Local" value="functions_func_r.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="s"><param name="Local" value="functions_func_s.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="t"><param name="Local" value="functions_func_t.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="u"><param name="Local" value="functions_func_u.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="v"><param name="Local" value="functions_func_v.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="w"><param name="Local" value="functions_func_w.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="x"><param name="Local" value="functions_func_x.html"><param name="ImageNumber" value="11"></OBJECT>
-      <LI><OBJECT type="text/sitemap"><param name="Name" value="~"><param name="Local" value="functions_func_~.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="b"><param name="Local" value="functions_func_0x62.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="c"><param name="Local" value="functions_func_0x63.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="d"><param name="Local" value="functions_func_0x64.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="e"><param name="Local" value="functions_func_0x65.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="f"><param name="Local" value="functions_func_0x66.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="g"><param name="Local" value="functions_func_0x67.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="h"><param name="Local" value="functions_func_0x68.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="i"><param name="Local" value="functions_func_0x69.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="j"><param name="Local" value="functions_func_0x6a.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="l"><param name="Local" value="functions_func_0x6c.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="m"><param name="Local" value="functions_func_0x6d.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="n"><param name="Local" value="functions_func_0x6e.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="o"><param name="Local" value="functions_func_0x6f.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="p"><param name="Local" value="functions_func_0x70.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="q"><param name="Local" value="functions_func_0x71.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="r"><param name="Local" value="functions_func_0x72.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="s"><param name="Local" value="functions_func_0x73.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="t"><param name="Local" value="functions_func_0x74.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="u"><param name="Local" value="functions_func_0x75.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="v"><param name="Local" value="functions_func_0x76.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="w"><param name="Local" value="functions_func_0x77.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="x"><param name="Local" value="functions_func_0x78.html"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="~"><param name="Local" value="functions_func_0x7e.html"><param name="ImageNumber" value="11"></OBJECT>
       </UL>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="Variables"><param name="Local" value="functions_vars.html"><param name="ImageNumber" value="11"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="Enumerations"><param name="Local" value="functions_enum.html"><param name="ImageNumber" value="11"></OBJECT>
@@ -2294,6 +2469,7 @@
     <LI><OBJECT type="text/sitemap"><param name="Name" value="Transport.h"><param name="Local" value="Transport_8h_source.html"><param name="ImageNumber" value="11"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="TransportConfig.h"><param name="Local" value="TransportConfig_8h_source.html"><param name="ImageNumber" value="11"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="TransportNATUDP.h"><param name="Local" value="TransportNATUDP_8h_source.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="UDPRelay.h"><param name="Local" value="UDPRelay_8h_source.html"><param name="ImageNumber" value="11"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="UserClient.h"><param name="Local" value="UserClient_8h_source.html"><param name="ImageNumber" value="11"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="UserServer.h"><param name="Local" value="UserServer_8h_source.html"><param name="ImageNumber" value="11"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="UtilityServer.h"><param name="Local" value="UtilityServer_8h_source.html"><param name="ImageNumber" value="11"></OBJECT>
@@ -2326,6 +2502,14 @@
       <LI><OBJECT type="text/sitemap"><param name="Name" value="WSAECONNRESET"><param name="Local" value="XPSocket_8cpp.html#a990acc876290fc28437b4cce88c897a8"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="WSAENOTCONN"><param name="Local" value="XPSocket_8cpp.html#ad4f4949f636b6a79e3b98467afbc2b16"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="WSAEWOULDBLOCK"><param name="Local" value="XPSocket_8cpp.html#a4ba23242bee4784b72a0a170e2f975a0"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="in_cksum"><param name="Local" value="XPSocket_8cpp.html#a9f80024f44c1a8b283c633cdca44cd0c"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="KeepPacketYesOrNo"><param name="Local" value="XPSocket_8cpp.html#af1f7b2c7147b8d298cdf9196b6d0a99e"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="RealXPSock_UrgentSend"><param name="Local" value="XPSocket_8cpp.html#a359818e1dd14769e5475110af444b160"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Replacement_inet_ntop6"><param name="Local" value="XPSocket_8cpp.html#a6a4e2da12279e1dc22783de6136f483f"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Replacement_inet_pton6"><param name="Local" value="XPSocket_8cpp.html#a6fb1921a890578bd29ec9fa65aa7d1fd"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="RetireAllPackets"><param name="Local" value="XPSocket_8cpp.html#a68d1ff7dd79d12202559439a0221b999"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="RetireClosedSocket"><param name="Local" value="XPSocket_8cpp.html#a015c2810f8eb080008c97a97d09d70b5"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="RetireImpairedPackets"><param name="Local" value="XPSocket_8cpp.html#a71dc399298b53ea4de9f8a5a8e123d4f"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="WSAGetLastError"><param name="Local" value="XPSocket_8cpp.html#a769ab7694609741a96263a1e3e37599c"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="XPSock_Accept"><param name="Local" value="XPSocket_8cpp.html#a7d4f58899770c1941360c2a673a3ccc3"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="XPSock_Close"><param name="Local" value="XPSocket_8cpp.html#acf264b343020e020809e780636f8e907"><param name="ImageNumber" value="11"></OBJECT>
@@ -2362,6 +2546,7 @@
       <LI><OBJECT type="text/sitemap"><param name="Name" value="XPSock_UrgentMakeBroadcast"><param name="Local" value="XPSocket_8cpp.html#a5fbdb15d3b803cedd96d2d536b952ab5"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="XPSock_UrgentRecv"><param name="Local" value="XPSocket_8cpp.html#a5b55d568eb3a5db9508d0deb16452815"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="XPSock_UrgentSend"><param name="Local" value="XPSocket_8cpp.html#a9b79d026627d450b9366fefb459e5aa5"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="_version_id_string"><param name="Local" value="XPSocket_8cpp.html#abbf93c3feda0c69004ffe5d7114f043c"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="asocket_lasterror"><param name="Local" value="XPSocket_8cpp.html#a0af6024f79f309c740b13054ad8f16e0"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="asocket_packets_got"><param name="Local" value="XPSocket_8cpp.html#aa097688bc2b1002a2ccb21edd36512a2"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="asocket_packets_got_per_second"><param name="Local" value="XPSocket_8cpp.html#a6c3e8aec01643d75ded3d690964998dd"><param name="ImageNumber" value="11"></OBJECT>
@@ -2378,6 +2563,33 @@
       <LI><OBJECT type="text/sitemap"><param name="Name" value="gXPSock_PacketLossEmulation"><param name="Local" value="XPSocket_8cpp.html#aaaeaa4a3e6b08eadadb4dc1ebb008e99"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="gXPSock_PacketLossEmulationPercent"><param name="Local" value="XPSocket_8cpp.html#aac59e2364b0b7331a432c68fed71f7ab"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="gXPSock_UDPProtoParameter"><param name="Local" value="XPSocket_8cpp.html#aaf3a4c91a22b9817a3ce5280cb1da3b1"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="hostaddr"><param name="Local" value="XPSocket_8cpp.html#a18dc2eb5bdd0371f2e1a62bda3bfbb7d"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="hostaddr_got"><param name="Local" value="XPSocket_8cpp.html#a35016d6ece6196e8ce67edea4fc25d52"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="lastSentTime"><param name="Local" value="XPSocket_8cpp.html#a91f33ac88308e7a20659b508e9e712b9"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="loopback_socket_client"><param name="Local" value="XPSocket_8cpp.html#af5cec241ecbf564194337242d5d5c110"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="loopback_socket_listen"><param name="Local" value="XPSocket_8cpp.html#a6249c3465b7735c9f3e08bb679297290"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="loopback_socket_server"><param name="Local" value="XPSocket_8cpp.html#a90191af796551ee2bdca9cbe86d97981"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="loopback_usocket_client"><param name="Local" value="XPSocket_8cpp.html#a730a686af4c24b693bc28db245c4792d"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="loopback_usocket_listen"><param name="Local" value="XPSocket_8cpp.html#a713655739e43ec1d5f7090226cdd2d6d"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="loopback_usocket_server"><param name="Local" value="XPSocket_8cpp.html#a256d4a674b58352d1c4e93a55b823b08"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="my_special_mach_name"><param name="Local" value="XPSocket_8cpp.html#acef18bd401368f0e97f7f130dfb16981"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="s_init_done"><param name="Local" value="XPSocket_8cpp.html#a1dc821252736b24cc7f04d0957c787b3"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="s_recvHistogram"><param name="Local" value="XPSocket_8cpp.html#a5dcbf17a4554dad984d9882da4896a1b"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="s_recvHistogramLen"><param name="Local" value="XPSocket_8cpp.html#a0c43cbc9749e8a1046ef50d463e83d71"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="s_sentHistogram"><param name="Local" value="XPSocket_8cpp.html#a9b20065e33a6456c95ada7984963cba5"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="s_sentHistogramLen"><param name="Local" value="XPSocket_8cpp.html#a4ab37f534cd17529877a9427becc4ab8"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="serrorstrings"><param name="Local" value="XPSocket_8cpp.html#ad848788c2f67ad446e9001980e854ad5"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="seweirderror"><param name="Local" value="XPSocket_8cpp.html#aebe0dfba6dd81627bdf36735a916b52b"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="sImpairedPackets"><param name="Local" value="XPSocket_8cpp.html#aecb48e23767d6a8f1ba9da3779c5fdc5"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="sLastGotTime"><param name="Local" value="XPSocket_8cpp.html#a2212cdd2cde2459cce6ea5d40a73dd9b"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="sLastPacketsGot"><param name="Local" value="XPSocket_8cpp.html#a70ae9541645301f7528eb622c6acf674"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="sLastPacketsGotSize"><param name="Local" value="XPSocket_8cpp.html#af6fb5536d12f68bd05aef9886979cfc0"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="sLastPacketsSent"><param name="Local" value="XPSocket_8cpp.html#a7425ca3da3d5c6c000156851a0c461a0"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="sLastPacketsSentSize"><param name="Local" value="XPSocket_8cpp.html#a92a6433e21bf99b19c13c7498d45b436"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="sweirderror"><param name="Local" value="XPSocket_8cpp.html#afba7d12883fa8779f5b6e6eeb2735442"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="sXPSocketsHeapBlockDone"><param name="Local" value="XPSocket_8cpp.html#a07215e31ab130e8540d9bbe9c7bc6ccc"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="theTimer"><param name="Local" value="XPSocket_8cpp.html#ad1b83ee4e10d75a2766de84ae6155b1a"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="wsockets_started"><param name="Local" value="XPSocket_8cpp.html#a96b1174b2e30001d2c0ab6d7708780a1"><param name="ImageNumber" value="11"></OBJECT>
       </UL>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="XPSocket.h"><param name="Local" value="XPSocket_8h_source.html"><param name="ImageNumber" value="11"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="XPSocketClass.h"><param name="Local" value="XPSocketClass_8h_source.html"><param name="ImageNumber" value="11"></OBJECT>

@@ -30,6 +30,9 @@ END_LICENSE_HEADER */
 // Unix/Linux like platforms can be grouped together into one define for most cases
 #if defined(__linux__) || defined(__unix__) || defined(__APPLE__) || defined(__ANDROID__) || defined(IW_SDK)
 #define RN_UNIX_LIKE
+#if defined(__PROSPERO__) || defined(__ORBIS__)
+#define RN_PS4_PS5
+#endif
 #endif
 
 // Define RN_EXCEPTIONS_IGNORE to ignore this check

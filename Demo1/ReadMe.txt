@@ -7,7 +7,7 @@ The Home button will display the statistics for this demonstration using ASP gen
 The "Host game" button will start Demo1.exe.
 
 When the Demo1.exe demonstration loads you can choose to join or create a game.
-Pilot the planes using the cursor keys and CTRL to fire. 'S' and 'D' will slow down and speed up.
+Pilot the planes using the cursor keys and CTRL to fire. 'D' and 'F' will slow down and speed up.
 Each plane, projectile and enemy dolphin is a networked ReplicaObject. Even though twenty projectiles can be fired every second the network bandwidth is kept low.
 
 This demonstration shows: 

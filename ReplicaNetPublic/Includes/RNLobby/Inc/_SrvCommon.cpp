@@ -540,7 +540,7 @@ int MyService::Main(int argc,char **argv)
 
 			DebugOut("Starting\n");
 
-#ifdef NATSERVER
+#ifdef UDPSERVER
 			XPSock_Init();
 			RNReplicaNet::t_XPSocket *masterServer = XPSock_UrgentCreate(&addr);
 			// Locally hosted NAT server.

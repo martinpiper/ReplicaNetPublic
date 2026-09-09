@@ -6,6 +6,7 @@
 docker pull postgres
 docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d -p 5432:5432 postgres
 docker inspect -f "{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}" some-postgres
+Container->Exec
 psql -U postgres
 create database rnlobby;
 
@@ -30,7 +31,8 @@ docker run -d -p 4009:4009/udp rnlobbydockerservices-app RLSrvUser /d -dstart
 docker run -d -p 4010:4010/udp rnlobbydockerservices-app RLSrvStat /d -dstart
 docker run -d -p 4003:4003/udp rnlobbydockerservices-app RLSrvCode /d -dstart -file /root/cdkeys.txt
 docker run -d -p 2000:2000 rnlobbydockerservices-app RLSrvUtility /d -dstart
-docker run -d rnlobbydockerservices-app RLSrvWatchdog /d -dstart
+docker run -d -p 4011:4011/udp rnlobbydockerservices-app RLSrvUDPRelay /d -dstart
+>> Not used in Linux: docker run -d rnlobbydockerservices-app RLSrvWatchdog /d -dstart
 >> Not used in Linux: docker run -d rnlobbydockerservices-app RLSrvSecurity /d -securityRoute 88.208.234.1 -dstart
 
 
@@ -53,6 +55,7 @@ docker run -d -p 4009:4009/udp martinpiper/rnlobbydockerservices-app:0.0.1 RLSrv
 docker run -d -p 4010:4010/udp martinpiper/rnlobbydockerservices-app:0.0.1 RLSrvStat /d -dstart
 docker run -d -p 4003:4003/udp martinpiper/rnlobbydockerservices-app:0.0.1 RLSrvCode /d -dstart -file /root/cdkeys.txt
 docker run -d -p 2000:2000 martinpiper/rnlobbydockerservices-app:0.0.1 RLSrvUtility /d -dstart
+docker run -d -p 4011:4011/udp martinpiper/rnlobbydockerservices-app:0.0.1 RLSrvUDPRelay /d -dstart
 >> Not used in Linux: docker run -d martinpiper/rnlobbydockerservices-app:0.0.1 RLSrvWatchdog /d -dstart
 >> Not used in Linux: docker run -d martinpiper/rnlobbydockerservices-app:0.0.1 RLSrvSecurity /d -securityRoute 88.208.234.1 -dstart
 
@@ -73,3 +76,4 @@ kubectl expose deployment rnlobby-rlsrvadvertise-deployment --type=LoadBalancer 
 kubectl expose deployment rnlobby-rlsrvuser-deployment --type=LoadBalancer --name=rnlobby-rlsrvuser
 kubectl expose deployment rnlobby-rlsrvstat-deployment --type=LoadBalancer --name=rnlobby-rlsrvstat
 kubectl expose deployment rnlobby-rlsrvcode-deployment --type=LoadBalancer --name=rnlobby-rlsrvcode
+kubectl expose deployment rnlobby-rlsrvudprelay-deployment --type=LoadBalancer --name=rnlobby-rlsrvudprelay

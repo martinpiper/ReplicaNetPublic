@@ -85,6 +85,9 @@ public:
 		std::string mRLSrvCloudAddress;
 		int mRLSrvCloudPort;
 		std::string mRLSrvCloudCrypto;
+		std::string mRLSrvUDPRelayAddress;
+		int mRLSrvUDPRelayPort;
+		std::string mRLSrvUDPRelayCrypto;
 	};
 
 private:
